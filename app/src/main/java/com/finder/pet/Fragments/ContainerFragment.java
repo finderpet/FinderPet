@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,8 +16,6 @@ import android.view.ViewGroup;
 
 import com.finder.pet.R;
 import com.finder.pet.Utilities.Utilities;
-import com.finder.pet.ui.gallery.GalleryFragment;
-import com.finder.pet.ui.home.HomeFragment;
 import com.finder.pet.ui.send.SendFragment;
 import com.finder.pet.ui.share.ShareFragment;
 import com.finder.pet.ui.tools.ToolsFragment;
@@ -101,6 +100,7 @@ public class ContainerFragment extends Fragment {
     }
 
     private void fillViewPager(ViewPager viewPager) {
+        //ViewAdapter adapter = new ViewAdapter(getFragmentManager());
         ViewAdapter adapter = new ViewAdapter(getFragmentManager());
         adapter.addFragment(new ShareFragment(), "Encontrados");
         adapter.addFragment(new ToolsFragment(), "Perdidos");
@@ -117,7 +117,16 @@ public class ContainerFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (Utilities.rotation == 0){
+            appBar.removeView(tabs);
+        }
+
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
