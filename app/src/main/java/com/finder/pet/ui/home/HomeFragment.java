@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,6 +21,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Button btn;
+    private CardView cardViewFound, cardViewLost, cardViewAdopted;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,10 +39,31 @@ public class HomeFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Fragment miFrag = new ContainerFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, miFrag).addToBackStack(null).commit();*/
-                findNavController(view).navigate(R.id.action_nav_home_to_contenedorFragment);
+                findNavController(view).navigate(R.id.action_nav_home_to_tabsActivity);
+            }
+        });
+
+        cardViewFound = root.findViewById(R.id.id_cardViewFound);
+        cardViewFound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(R.id.action_nav_home_to_foundFragment);
+            }
+        });
+
+        cardViewLost = root.findViewById(R.id.id_cardViewLost);
+        cardViewLost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(R.id.action_nav_home_to_lostFragment);
+            }
+        });
+
+        cardViewAdopted = root.findViewById(R.id.id_cardViewAdopted);
+        cardViewAdopted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(R.id.action_nav_home_to_adoptedFragment);
             }
         });
 

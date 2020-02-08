@@ -11,16 +11,28 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_contenedorFragment"
-            app:destination="@id/contenedorFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+            android:id="@+id/action_nav_home_to_tabsActivity"
+            app:destination="@id/tabsActivity" />
+        <action
+            android:id="@+id/action_nav_home_to_foundFragment"
+            app:destination="@id/foundFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_lostFragment"
+            app:destination="@id/lostFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_adoptedFragment"
+            app:destination="@id/adoptedFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.finder.pet.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -36,7 +48,14 @@
         android:id="@+id/nav_tools"
         android:name="com.finder.pet.ui.tools.ToolsFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_tools" >
+        <action
+            android:id="@+id/action_nav_tools_to_servicesFragment"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_nav_tools_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_share"
@@ -62,17 +81,73 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/foundFragment"
-        android:name="com.finder.pet.FoundFragment"
-        android:label="fragment_found"
+        android:name="com.finder.pet.Fragments.FoundFragment"
+        android:label="Encontrados"
         tools:layout="@layout/fragment_found" />
     <fragment
         android:id="@+id/lostFragment"
-        android:name="com.finder.pet.LostFragment"
-        android:label="fragment_lost"
+        android:name="com.finder.pet.Fragments.LostFragment"
+        android:label="Perdidos"
         tools:layout="@layout/fragment_lost" />
     <fragment
         android:id="@+id/adoptedFragment"
-        android:name="com.finder.pet.AdoptedFragment"
-        android:label="fragment_adopted"
+        android:name="com.finder.pet.Fragments.AdoptedFragment"
+        android:label="Adopciones"
         tools:layout="@layout/fragment_adopted" />
+    <activity
+        android:id="@+id/tabsActivity"
+        android:name="com.finder.pet.TabsActivity"
+        android:label="activity_tabs"
+        tools:layout="@layout/activity_tabs" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.finder.pet.Main.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.finder.pet.servicesFragment"
+        android:label="fragment_services"
+        tools:layout="@layout/fragment_services" >
+        <action
+            android:id="@+id/action_servicesFragment_to_listServicesFragment"
+            app:destination="@id/listServicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.finder.pet.productsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_listProductsFragment"
+            app:destination="@id/listProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listServicesFragment"
+        android:name="com.finder.pet.listServicesFragment"
+        android:label="fragment_list_services"
+        tools:layout="@layout/fragment_list_services" >
+        <action
+            android:id="@+id/action_listServicesFragment_to_detailsServicesFragment"
+            app:destination="@id/detailsServicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listProductsFragment"
+        android:name="com.finder.pet.listProductsFragment"
+        android:label="fragment_list_products"
+        tools:layout="@layout/fragment_list_products" >
+        <action
+            android:id="@+id/action_listProductsFragment_to_detailsProductsFragment"
+            app:destination="@id/detailsProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsServicesFragment"
+        android:name="com.finder.pet.detailsServicesFragment"
+        android:label="fragment_details_services"
+        tools:layout="@layout/fragment_details_services" />
+    <fragment
+        android:id="@+id/detailsProductsFragment"
+        android:name="com.finder.pet.detailsProductsFragment"
+        android:label="fragment_details_products"
+        tools:layout="@layout/fragment_details_products" />
 </navigation>
