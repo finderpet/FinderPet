@@ -35,7 +35,7 @@ public class ToolsFragment extends Fragment {
             }
         });
 
-        cardView1 = root.findViewById(R.id.cardView);
+        cardView1 = root.findViewById(R.id.id_cardViewServices);
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

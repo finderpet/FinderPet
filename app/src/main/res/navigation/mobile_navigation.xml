@@ -107,7 +107,7 @@
     <fragment
         android:id="@+id/servicesFragment"
         android:name="com.finder.pet.servicesFragment"
-        android:label="fragment_services"
+        android:label="Servicios"
         tools:layout="@layout/fragment_services" >
         <action
             android:id="@+id/action_servicesFragment_to_listServicesFragment"
@@ -116,7 +116,7 @@
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.finder.pet.productsFragment"
-        android:label="fragment_products"
+        android:label="Productos"
         tools:layout="@layout/fragment_products" >
         <action
             android:id="@+id/action_productsFragment_to_listProductsFragment"
@@ -150,4 +150,14 @@
         android:name="com.finder.pet.detailsProductsFragment"
         android:label="fragment_details_products"
         tools:layout="@layout/fragment_details_products" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.finder.pet.Conexion.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.finder.pet.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

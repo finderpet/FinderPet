@@ -6,19 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.FoundFragment">
 
-
-
-    <androidx.appcompat.widget.AppCompatButton
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="REPORTAR MASCOTA ENCONTRADA"
-        android:layout_gravity="bottom"
-        android:layout_margin="8dp"
-        style="@style/Widget.AppCompat.Button"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recycler_found"
+            android:layout_weight="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="REPORTAR UNA MASCOTA ENCONTRADA"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimaryDark"
+            android:layout_gravity="bottom"/>
+
+    </LinearLayout>
+
+
 
 </FrameLayout>

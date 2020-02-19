@@ -1,65 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.AdoptedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="ADOPCIONES"
-        android:textSize="40dp"
-        android:gravity="center"/>
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardAdopted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="6dp"
-        android:foreground="?selectableItemBackground">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recycler_lost"
+            android:layout_weight="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="REPORTAR UNA MASCOTA PERDIDA"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimaryDark"
+            android:layout_gravity="bottom"/>
 
-            <ImageView
-                android:layout_width="140dp"
-                android:layout_height="160dp"
-                android:layout_gravity="left"
-                android:src="@mipmap/adoptado"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ADOPCION"
-                    android:textAlignment="center"
-                    android:textColor="#0436A3"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tengo en adopción un lindo perrito de 5 meeses. está vacunado y capado. Mayor informacioón en los telefonos 350 9876 8765"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

@@ -35,7 +35,7 @@ public class FoundFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_found, container, false);
-        recyclerView=view.findViewById(R.id.id_recycler);
+        recyclerView=view.findViewById(R.id.id_recycler_found);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listFound=new ArrayList<String>();
 
