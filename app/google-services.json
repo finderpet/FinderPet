@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "123728816656",
+    "firebase_url": "https://maxipollo-app.firebaseio.com",
+    "project_id": "maxipollo-app",
+    "storage_bucket": "maxipollo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123728816656:android:c24c00a49a5fa0a6",
+        "android_client_info": {
+          "package_name": "co.edu.udea.compumovil.gr01_20182.lab4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123728816656-2ick22n2qr9cbfts52v8risgcho8gt0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.udea.compumovil.gr01_20182.lab4",
+            "certificate_hash": "5099adc0d8230a393128eec17f4080bbfd888201"
+          }
+        },
+        {
+          "client_id": "123728816656-sccat9l48d0kge28vju32mjhstd7uf3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClg-Cva-APOrm7AoEZ7sjx1s0nfLN_O5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123728816656-hu7tmpgf0ftmsmhsjk28up1obgn1tdn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123728816656:android:a3309b0fd4525bf8817895",
+        "android_client_info": {
+          "package_name": "com.finder.pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123728816656-4eurdkq72s4uu99jrkjc2gd1okomlgl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "e207635bc97c72d4c5eb869f18bcba232af11fb8"
+          }
+        },
+        {
+          "client_id": "123728816656-sccat9l48d0kge28vju32mjhstd7uf3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClg-Cva-APOrm7AoEZ7sjx1s0nfLN_O5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123728816656-hu7tmpgf0ftmsmhsjk28up1obgn1tdn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

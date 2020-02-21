@@ -155,9 +155,4 @@
         android:name="com.finder.pet.Conexion.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.finder.pet.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
 </navigation>
