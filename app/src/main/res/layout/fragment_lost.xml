@@ -12,17 +12,18 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/id_recycler_adopted"
+            android:id="@+id/recycler_lost"
             android:layout_weight="100"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_new_lost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ADOPTA UNA MASCOTA"
-            android:textColor="@color/colorWhite"
+            android:text="REPORTAR UNA MASCOTA PERDIDA"
+            android:textColor="@color/colorAccent"
             android:background="@color/colorPrimaryDark"
             android:layout_gravity="bottom"/>
 

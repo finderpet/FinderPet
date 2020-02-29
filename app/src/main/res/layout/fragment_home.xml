@@ -20,7 +20,7 @@
         android:orientation="horizontal"
         android:background="@drawable/btn_redondeado_greendark"
         android:text="VER PROMOCIONES!!"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorAccent"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/id_cardViewFound"

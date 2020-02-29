@@ -18,13 +18,14 @@
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNewFound_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="REPORTAR UNA MASCOTA ENCONTRADA"
-            android:textColor="@color/colorWhite"
             android:background="@color/colorPrimaryDark"
-            android:layout_gravity="bottom"/>
+            android:text="REPORTAR UNA MASCOTA ENCONTRADA"
+            android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 

@@ -97,13 +97,13 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:text="@string/login"
-            android:textColor="@color/colorLetter"
-            android:textStyle="bold" />
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Recuperar su contraseña"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_marginTop="16dp"
             android:textAlignment="center"
             android:background="@android:color/transparent"
@@ -123,6 +123,7 @@
 
     <Button
         android:id="@+id/btn_register_email"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_email"

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".formLostFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/add_img_lost"
+            android:layout_width="179dp"
+            android:layout_height="131dp"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:src="@drawable/sin_imagen" />
+
+        <Button
+            android:id="@+id/btn_img_lost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="Cargar imagen"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"/>
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp"
+        android:background="@drawable/btn_redondeado_greendark">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perro"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gato"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otro"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"/>
+
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/add_name_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:hint="Nombre Mascota"
+            android:inputType="textCapWords"/>
+
+        <EditText
+            android:id="@+id/add_address_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:hint="Ubicación"
+            android:inputType="textCapWords"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/add_email_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:hint="Email de contacto"
+            android:inputType="textEmailAddress"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/add_phone_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:hint="Teléfono"
+            android:inputType="number" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/add_description_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:hint="Descripción / observaciones"
+            android:inputType="textMultiLine" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/save_new_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/agregar"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

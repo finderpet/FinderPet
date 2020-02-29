@@ -31,6 +31,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static androidx.navigation.Navigation.findNavController;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +66,15 @@ public class FoundFragment extends Fragment {
 
         consultListFounds();
 
+        Button btn = view.findViewById(R.id.btnNewFound_id);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                findNavController(view).navigate(R.id.action_foundFragment_to_formFoundFragment);
+
+            }
+        });
         return view;
     }
 
@@ -72,7 +83,6 @@ public class FoundFragment extends Fragment {
      */
     private void consultListFounds() {
 
-        Toast.makeText(getContext(), "Punto de prueba", Toast.LENGTH_SHORT).show();
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -80,7 +90,6 @@ public class FoundFragment extends Fragment {
                 Found_Vo foundVo;
                 //clearing the previous Founds list
                 ListFound.clear();
-
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
@@ -130,7 +139,6 @@ public class FoundFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
 
     }
 

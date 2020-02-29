@@ -83,12 +83,20 @@
         android:id="@+id/foundFragment"
         android:name="com.finder.pet.Fragments.FoundFragment"
         android:label="Encontrados"
-        tools:layout="@layout/fragment_found" />
+        tools:layout="@layout/fragment_found" >
+        <action
+            android:id="@+id/action_foundFragment_to_formFoundFragment"
+            app:destination="@id/formFoundFragment" />
+    </fragment>
     <fragment
         android:id="@+id/lostFragment"
         android:name="com.finder.pet.Fragments.LostFragment"
         android:label="Perdidos"
-        tools:layout="@layout/fragment_lost" />
+        tools:layout="@layout/fragment_lost" >
+        <action
+            android:id="@+id/action_lostFragment_to_formLostFragment"
+            app:destination="@id/formLostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adoptedFragment"
         android:name="com.finder.pet.Fragments.AdoptedFragment"
@@ -153,6 +161,16 @@
     <activity
         android:id="@+id/loginActivity"
         android:name="com.finder.pet.Conexion.LoginActivity"
-        android:label="activity_login"
+        android:label="Iniciar Sesión"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/formFoundFragment"
+        android:name="com.finder.pet.formFoundFragment"
+        android:label="Agregar encontrado"
+        tools:layout="@layout/fragment_form_found" />
+    <fragment
+        android:id="@+id/formLostFragment"
+        android:name="com.finder.pet.formLostFragment"
+        android:label="Agregar Perdida"
+        tools:layout="@layout/fragment_form_lost" />
 </navigation>
