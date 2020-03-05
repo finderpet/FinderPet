@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.finder.pet.Adapters.FoundAdapter;
@@ -44,6 +45,8 @@ public class FoundFragment extends Fragment {
     RecyclerView recyclerListFound;
     ArrayList<Found_Vo> ListFound;
 
+    private ProgressBar progressBar;
+
     //Comunicación entre fragments
     //Activity activity;
     //IComunicaFragments interfaceComunicaFragments;
@@ -64,6 +67,8 @@ public class FoundFragment extends Fragment {
         recyclerListFound.setLayoutManager(new LinearLayoutManager(getContext()));
         ListFound=new ArrayList<>();
 
+        progressBar =  view.findViewById(R.id.progressBarFound);
+
         consultListFounds();
 
         Button btn = view.findViewById(R.id.btnNewFound_id);
@@ -83,6 +88,7 @@ public class FoundFragment extends Fragment {
      */
     private void consultListFounds() {
 
+        progressBar.setVisibility(View.VISIBLE);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -119,6 +125,7 @@ public class FoundFragment extends Fragment {
 
                 FoundAdapter adapter =  new FoundAdapter(ListFound);
                 recyclerListFound.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
 //                adapter.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {

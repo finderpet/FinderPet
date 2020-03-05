@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.finder.pet.Adapters.FoundAdapter;
@@ -44,6 +45,8 @@ public class LostFragment extends Fragment {
     RecyclerView recyclerListLost;
     ArrayList<Lost_Vo> ListLost;
 
+    private ProgressBar progressBar;
+
     //Comunicación entre fragments
     //Activity activity;
     //IComunicaFragments interfaceComunicaFragments;
@@ -63,6 +66,7 @@ public class LostFragment extends Fragment {
         recyclerListLost=view.findViewById(R.id.recycler_lost);
         recyclerListLost.setLayoutManager(new LinearLayoutManager(getContext()));
         ListLost=new ArrayList<>();
+        progressBar =  view.findViewById(R.id.progressBarLost);
 
         consultListLost();
 
@@ -83,6 +87,7 @@ public class LostFragment extends Fragment {
      */
     private void consultListLost() {
 
+        progressBar.setVisibility(View.VISIBLE);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -119,6 +124,7 @@ public class LostFragment extends Fragment {
 
                 LostAdapter adapter =  new LostAdapter(ListLost);
                 recyclerListLost.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
 //                adapter.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {

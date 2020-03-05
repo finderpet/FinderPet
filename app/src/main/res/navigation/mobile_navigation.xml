@@ -101,7 +101,11 @@
         android:id="@+id/adoptedFragment"
         android:name="com.finder.pet.Fragments.AdoptedFragment"
         android:label="Adopciones"
-        tools:layout="@layout/fragment_adopted" />
+        tools:layout="@layout/fragment_adopted" >
+        <action
+            android:id="@+id/action_adoptedFragment_to_formAdoptedFragment"
+            app:destination="@id/formAdoptedFragment" />
+    </fragment>
     <activity
         android:id="@+id/tabsActivity"
         android:name="com.finder.pet.TabsActivity"
@@ -173,4 +177,9 @@
         android:name="com.finder.pet.formLostFragment"
         android:label="Agregar Perdida"
         tools:layout="@layout/fragment_form_lost" />
+    <fragment
+        android:id="@+id/formAdoptedFragment"
+        android:name="com.finder.pet.formAdoptedFragment"
+        android:label="fragment_form_adopted"
+        tools:layout="@layout/fragment_form_adopted" />
 </navigation>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/img_adopted"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:src="@drawable/sin_imagen"
+                android:layout_margin="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/layout_desc_adopted"
+                android:layout_width="215dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name_adopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Tipo de mascota"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address_adopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ubicación:" />
+
+                <TextView
+                    android:id="@+id/email_adopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo de contacto:" />
+
+                <TextView
+                    android:id="@+id/phone_adopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono:" />
+                <TextView
+                    android:id="@+id/observations_adopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Observaciones:" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/mark_adopted"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/mark"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"/>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
