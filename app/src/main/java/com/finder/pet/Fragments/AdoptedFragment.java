@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -43,6 +44,8 @@ public class AdoptedFragment extends Fragment {
     RecyclerView recyclerListAdopted;
     ArrayList<Adopted_Vo> ListAdopted;
 
+    private ProgressBar progressBar;
+
     //Comunicación entre fragments
     //Activity activity;
     //IComunicaFragments interfaceComunicaFragments;
@@ -63,6 +66,8 @@ public class AdoptedFragment extends Fragment {
         recyclerListAdopted.setLayoutManager(new LinearLayoutManager(getContext()));
         ListAdopted=new ArrayList<>();
 
+        progressBar =  view.findViewById(R.id.progressBarAdopted);
+
         consultListAdopted();
 
         Button btn = view.findViewById(R.id.btn_new_adopted);
@@ -82,6 +87,7 @@ public class AdoptedFragment extends Fragment {
      */
     private void consultListAdopted() {
 
+        progressBar.setVisibility(View.VISIBLE);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -118,6 +124,7 @@ public class AdoptedFragment extends Fragment {
 
                 AdoptedAdapter adapter =  new AdoptedAdapter(ListAdopted);
                 recyclerListAdopted.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
 //                adapter.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {

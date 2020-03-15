@@ -36,7 +36,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/main_found_card">
+            android:background="@mipmap/main_found">
 
         </FrameLayout>
         <LinearLayout
@@ -85,7 +85,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/main_lost_card">
+            android:background="@mipmap/main_lost">
 
         </FrameLayout>
         <LinearLayout

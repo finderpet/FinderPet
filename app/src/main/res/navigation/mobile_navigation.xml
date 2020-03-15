@@ -77,7 +77,7 @@
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.finder.pet.Fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/foundFragment"
@@ -108,7 +108,7 @@
     </fragment>
     <activity
         android:id="@+id/tabsActivity"
-        android:name="com.finder.pet.TabsActivity"
+        android:name="com.finder.pet.Main.TabsActivity"
         android:label="activity_tabs"
         tools:layout="@layout/activity_tabs" />
     <activity
@@ -164,7 +164,7 @@
         tools:layout="@layout/fragment_details_products" />
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.finder.pet.Conexion.LoginActivity"
+        android:name="com.finder.pet.Authentication.LoginActivity"
         android:label="Iniciar Sesión"
         tools:layout="@layout/activity_login" />
     <fragment
@@ -180,6 +180,6 @@
     <fragment
         android:id="@+id/formAdoptedFragment"
         android:name="com.finder.pet.formAdoptedFragment"
-        android:label="fragment_form_adopted"
+        android:label="Agregar Adopciòn"
         tools:layout="@layout/fragment_form_adopted" />
 </navigation>

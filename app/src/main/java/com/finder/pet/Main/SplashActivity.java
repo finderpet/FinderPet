@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.finder.pet.Conexion.LoginActivity;
+import com.finder.pet.Authentication.LoginActivity;
 import com.finder.pet.R;
 
 public class SplashActivity extends AppCompatActivity {

@@ -1,8 +1,9 @@
-package com.finder.pet;
+package com.finder.pet.Main;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.finder.pet.R;
 import com.finder.pet.ui.main.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

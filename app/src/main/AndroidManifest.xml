@@ -17,10 +17,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Main.RegisterActivity"></activity>
         <activity
-            android:name=".TabsActivity"
+            android:name=".Main.TabsActivity"
             android:label="@string/title_activity_tabs"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Conexion.LoginActivity" />
+        <activity android:name=".Authentication.LoginActivity" />
         <activity android:name=".Main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

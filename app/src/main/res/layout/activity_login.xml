@@ -6,7 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".Conexion.LoginActivity">
+    tools:context=".Authentication.LoginActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -40,7 +48,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <EditText
-                android:id="@+id/id_editText_loginEmail"
+                android:id="@+id/fieldEmail"
                 android:drawableLeft="@drawable/email"
                 android:drawablePadding="8dp"
                 android:drawableTint="@color/colorAccent"
@@ -60,7 +68,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <EditText
-                android:id="@+id/id_editText_loginPass"
+                android:id="@+id/fieldPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
@@ -79,7 +87,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/email_sign_in_button"
+            android:id="@+id/emailSignInButton"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="61dp"
