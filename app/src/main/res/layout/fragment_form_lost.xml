@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/lost_back_form"
     tools:context=".formLostFragment">
 
     <LinearLayout
@@ -14,21 +15,30 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/add_img_lost"
-            android:layout_width="179dp"
-            android:layout_height="131dp"
+            android:id="@+id/imagenLost_1"
+            android:layout_width="80dp"
+            android:layout_height="67dp"
             android:layout_margin="16dp"
             android:layout_weight="1"
-            android:src="@drawable/sin_imagen" />
-
-        <Button
-            android:id="@+id/btn_img_lost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:text="Cargar imagen"
+            android:tint="@color/colorWhite"
+            android:src="@drawable/ic_menu_camera" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagenLost_2"
+            android:layout_width="80dp"
+            android:layout_height="67dp"
+            android:layout_margin="16dp"
             android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:tint="@color/colorWhite"
+            android:src="@drawable/ic_menu_camera" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagenLost_3"
+            android:layout_width="80dp"
+            android:layout_height="67dp"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:tint="@color/colorWhite"
+            android:src="@drawable/ic_menu_camera" />
+
 
     </LinearLayout>
 
