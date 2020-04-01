@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -13,11 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.finder.pet.Entities.Found_Vo;
+import com.finder.pet.Fragments.DetailFoundFragment;
+import com.finder.pet.Interfaces.IComunicaFragments;
 import com.finder.pet.R;
 
 import static androidx.navigation.Navigation.findNavController;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
     private HomeViewModel homeViewModel;
     private Button btn;
@@ -39,7 +43,8 @@ public class HomeFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_home_to_tabsActivity);
+                //findNavController(view).navigate(R.id.action_nav_home_to_tabsActivity);
+                Toast.makeText(getContext(), "¡No tenemos promociones activas!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -69,4 +74,6 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+
 }

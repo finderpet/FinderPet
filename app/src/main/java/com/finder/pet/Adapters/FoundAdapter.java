@@ -42,16 +42,16 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
 
     @Override
     public void onBindViewHolder(@NonNull FoundViewHolder holder, int position) {
-        holder.txtNombre.setText(listFound.get(position).getName()); //para traer un entero colocar .toString
-        //holder.txtDescrip.setText(listFoods.get(position).getDescription());
-        holder.txtTipo.setText("Tipo comida: "+listFound.get(position).getType());
-        holder.txtTiempo.setText("Tiempo preparación: "+listFound.get(position).getTime()+" min.");
-        holder.txtPrecio.setText("Precio: $"+listFound.get(position).getPrice());
-        String url = listFound.get(position).getImage();
+        holder.txtType.setText("Tipo mascota: "+listFound.get(position).getFound_type()); //para traer un entero colocar .toString
+        holder.txtLocation.setText("Dirección: "+listFound.get(position).getFound_address());
+        holder.txtEmail.setText("Correo: "+listFound.get(position).getFound_email());
+        holder.txtPhone.setText("Teléfono: "+listFound.get(position).getFound_phone());
+        //holder.txtObservation.setText("Descripción: "+listFound.get(position).getFound_description());
+        String url = listFound.get(position).getFound_image();
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .into(holder.foto);
+                .into(holder.mPhoto);
 
     }
 
@@ -73,17 +73,17 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
 
     public class FoundViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtNombre, txtTipo, txtPrecio, txtTiempo;
-        ImageView foto;
+        TextView txtType, txtLocation, txtEmail, txtPhone, txtObservation;
+        ImageView mPhoto;
 
         public FoundViewHolder(View itemView) {
             super(itemView);
-            txtNombre=itemView.findViewById(R.id.id_name_listPlate);
-            //txtDescrip=itemView.findViewById(R.id.id_nam)
-            txtTipo=itemView.findViewById(R.id.id_type_listPlate);
-            txtPrecio=itemView.findViewById(R.id.id_price_listPlate);
-            txtTiempo=itemView.findViewById(R.id.id_time_listPlate);
-            foto=itemView.findViewById(R.id.id_photo_listPlate);
+            txtType=itemView.findViewById(R.id.typeFound);
+            txtLocation=itemView.findViewById(R.id.locationFound);
+            txtEmail=itemView.findViewById(R.id.emailContactFound);
+            txtPhone=itemView.findViewById(R.id.phoneContactFound);
+            //txtObservation=itemView.findViewById(R.id.observationsContactFound);
+            mPhoto=itemView.findViewById(R.id.imgFound);
         }
     }
 }

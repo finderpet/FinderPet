@@ -70,11 +70,6 @@
         tools:layout="@layout/fragment_send" />
 
     <fragment
-        android:id="@+id/contenedorFragment"
-        android:name="com.finder.pet.Fragments.ContenedorFragment"
-        android:label="fragment_contenedor"
-        tools:layout="@layout/fragment_contenedor" />
-    <fragment
         android:id="@+id/nav_profile"
         android:name="com.finder.pet.Fragments.ProfileFragment"
         android:label="Perfil"
@@ -87,6 +82,9 @@
         <action
             android:id="@+id/action_foundFragment_to_formFoundFragment"
             app:destination="@id/formFoundFragment" />
+        <action
+            android:id="@+id/action_foundFragment_to_detailFoundFragment"
+            app:destination="@id/detailFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/lostFragment"
@@ -118,7 +116,7 @@
         tools:layout="@layout/activity_maps" />
     <fragment
         android:id="@+id/servicesFragment"
-        android:name="com.finder.pet.servicesFragment"
+        android:name="com.finder.pet.Fragments.servicesFragment"
         android:label="Servicios"
         tools:layout="@layout/fragment_services" >
         <action
@@ -127,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.finder.pet.productsFragment"
+        android:name="com.finder.pet.Fragments.productsFragment"
         android:label="Productos"
         tools:layout="@layout/fragment_products" >
         <action
@@ -136,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/listServicesFragment"
-        android:name="com.finder.pet.listServicesFragment"
+        android:name="com.finder.pet.Fragments.listServicesFragment"
         android:label="fragment_list_services"
         tools:layout="@layout/fragment_list_services" >
         <action
@@ -145,7 +143,7 @@
     </fragment>
     <fragment
         android:id="@+id/listProductsFragment"
-        android:name="com.finder.pet.listProductsFragment"
+        android:name="com.finder.pet.Fragments.listProductsFragment"
         android:label="fragment_list_products"
         tools:layout="@layout/fragment_list_products" >
         <action
@@ -154,12 +152,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailsServicesFragment"
-        android:name="com.finder.pet.detailsServicesFragment"
+        android:name="com.finder.pet.Fragments.detailsServicesFragment"
         android:label="fragment_details_services"
         tools:layout="@layout/fragment_details_services" />
     <fragment
         android:id="@+id/detailsProductsFragment"
-        android:name="com.finder.pet.detailsProductsFragment"
+        android:name="com.finder.pet.Fragments.detailsProductsFragment"
         android:label="fragment_details_products"
         tools:layout="@layout/fragment_details_products" />
     <activity
@@ -169,17 +167,22 @@
         tools:layout="@layout/activity_login" />
     <fragment
         android:id="@+id/formFoundFragment"
-        android:name="com.finder.pet.formFoundFragment"
+        android:name="com.finder.pet.Fragments.formFoundFragment"
         android:label="Agregar encontrado"
         tools:layout="@layout/fragment_form_found" />
     <fragment
         android:id="@+id/formLostFragment"
-        android:name="com.finder.pet.formLostFragment"
+        android:name="com.finder.pet.Fragments.formLostFragment"
         android:label="Agregar Perdida"
         tools:layout="@layout/fragment_form_lost" />
     <fragment
         android:id="@+id/formAdoptedFragment"
-        android:name="com.finder.pet.formAdoptedFragment"
+        android:name="com.finder.pet.Fragments.formAdoptedFragment"
         android:label="Agregar Adopciòn"
         tools:layout="@layout/fragment_form_adopted" />
+    <fragment
+        android:id="@+id/detailFoundFragment"
+        android:name="com.finder.pet.Fragments.DetailFoundFragment"
+        android:label="Ver Detalle"
+        tools:layout="@layout/fragment_detail_found" />
 </navigation>

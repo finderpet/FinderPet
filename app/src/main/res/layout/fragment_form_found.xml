@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/found_back_form"
-    tools:context=".formFoundFragment">
+    tools:context=".Fragments.formFoundFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:id="@+id/imagenFound_1"
             android:layout_width="80dp"
             android:layout_height="67dp"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:tint="@color/colorWhite"
             android:src="@drawable/ic_menu_camera" />
@@ -26,7 +26,7 @@
             android:id="@+id/imagenFound_2"
             android:layout_width="80dp"
             android:layout_height="67dp"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:tint="@color/colorWhite"
             android:src="@drawable/ic_menu_camera" />
@@ -34,7 +34,7 @@
             android:id="@+id/imagenFound_3"
             android:layout_width="80dp"
             android:layout_height="67dp"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:tint="@color/colorWhite"
             android:src="@drawable/ic_menu_camera" />
@@ -89,7 +89,8 @@
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:hint="Ubicación"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:inputType="textCapWords"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -100,6 +101,8 @@
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:hint="Email de contacto"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:inputType="textEmailAddress"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -110,6 +113,8 @@
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:hint="Teléfono"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:inputType="number" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -120,6 +125,8 @@
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:hint="Descripción / observaciones"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:inputType="textMultiLine" />
 
     </LinearLayout>

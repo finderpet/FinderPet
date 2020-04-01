@@ -1,4 +1,4 @@
-package com.finder.pet;
+package com.finder.pet.Fragments;
 
 
 import android.os.Bundle;
@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.finder.pet.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class detailsProductsFragment extends Fragment {
+public class formFoundFragment extends Fragment {
 
 
-    public detailsProductsFragment() {
+    public formFoundFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +27,7 @@ public class detailsProductsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details_products, container, false);
+        return inflater.inflate(R.layout.fragment_form_found, container, false);
     }
 
 }

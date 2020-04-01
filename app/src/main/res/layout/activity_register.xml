@@ -5,9 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@mipmap/img_login"
     tools:context=".Main.RegisterActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/id_image_profile"
@@ -27,20 +35,21 @@
 
     <TextView
         android:id="@+id/idTxtRegister"
-        android:layout_width="181dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Registro"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/register_new_user"
         android:textAlignment="center"
-        android:textSize="20dp"
         android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -51,14 +60,13 @@
         tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/register_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/fieldRegisterUser"
+            style="@style/Widget.FinderPet.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:hint="Usuario"
-            android:textColorHint="#8BD0F0">
+            android:hint="Usuario">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -72,60 +80,71 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_email"
+        android:id="@+id/textInputEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorLetterHint"
         android:layout_margin="8dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:hint="Correo electrónico"
-        android:textColorHint="#8BD0F0">
+        tools:layout_editor_absoluteX="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fieldRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/colorAccent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textColorHint="#8BD0F0" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_password1"
+
+        android:id="@+id/textInputPassword1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="@string/password"
-        android:textColorHint="#8BD0F0"
-        app:layout_constraintTop_toBottomOf="@+id/register_email"
+        android:textColorHint="@color/colorLetterHint"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEmail"
         tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fieldRegisterPassword1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#8BD0F0" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_password2"
+
+        android:id="@+id/textInputPassword2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="Confirme contraseña"
-        android:textColorHint="#8BD0F0"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/register_password1"
+        android:textColorHint="@color/colorLetterHint"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPassword1"
         tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fieldRegisterPassword2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#8BD0F0" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
@@ -137,23 +156,24 @@
         tools:layout_editor_absoluteX="24dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/register_button"
+            android:id="@+id/btnRegisterUser"
+            style="@style/Widget.FinderPet.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Registrar" />
+            android:text="@string/save_register" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_btn_register"
+            android:id="@+id/btnCancelRegister"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
-            android:layout_toStartOf="@id/register_button"
-            android:layout_toLeftOf="@id/register_button"
-            android:text="Cancelar" />
+            android:layout_toStartOf="@id/btnRegisterUser"
+            android:layout_toLeftOf="@id/btnRegisterUser"
+            android:text="@string/cancel" />
     </RelativeLayout>
 
 

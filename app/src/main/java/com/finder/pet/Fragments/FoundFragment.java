@@ -1,29 +1,20 @@
 package com.finder.pet.Fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.finder.pet.Adapters.FoundAdapter;
 import com.finder.pet.Entities.Found_Vo;
 import com.finder.pet.R;
-import com.finder.pet.Utilities.Utilities;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,13 +23,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import static androidx.navigation.Navigation.findNavController;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoundFragment extends Fragment {
+public class FoundFragment extends Fragment{
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,13 +42,10 @@ public class FoundFragment extends Fragment {
     ArrayList<Found_Vo> ListFound;
 
     private ProgressBar progressBar;
-
-    //Comunicación entre fragments
-    //Activity activity;
-    //IComunicaFragments interfaceComunicaFragments;
+    private TextView txtLoad;
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference databaseRef = ref.child("foods");
+    DatabaseReference databaseRef = ref.child("pet_found");
 
     public FoundFragment() {
         // Required empty public constructor
@@ -68,6 +61,7 @@ public class FoundFragment extends Fragment {
         ListFound=new ArrayList<>();
 
         progressBar =  view.findViewById(R.id.progressBarFound);
+        txtLoad = view.findViewById(R.id.textLoad);
 
         consultListFounds();
 
@@ -89,6 +83,7 @@ public class FoundFragment extends Fragment {
     private void consultListFounds() {
 
         progressBar.setVisibility(View.VISIBLE);
+        txtLoad.setVisibility(View.VISIBLE);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -102,22 +97,12 @@ public class FoundFragment extends Fragment {
 
                     foundVo=new Found_Vo();
 
-                    foundVo.setName(postSnapshot.child("name").getValue().toString());
-                    Utilities.WG_NAME=postSnapshot.child("name").getValue().toString();
-                    foundVo.setDescription(postSnapshot.child("description").getValue().toString());
-                    foundVo.setImage(postSnapshot.child("image").getValue().toString());
-                    foundVo.setType(postSnapshot.child("type").getValue().toString());
-                    Utilities.WG_TYPE=postSnapshot.child("type").getValue().toString();
-                    foundVo.setTime(postSnapshot.child("time").getValue().toString());
-                    foundVo.setPrice(postSnapshot.child("price").getValue().toString());
-                    Utilities.WG_PRICE=postSnapshot.child("price").getValue().toString();
-
-                    SharedPreferences preferences = getActivity().getSharedPreferences("credentials", getContext().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("wg_name", Utilities.WG_NAME);
-                    editor.putString("wg_type", Utilities.WG_TYPE);
-                    editor.putString("wg_price", Utilities.WG_PRICE);
-                    editor.commit();
+                    foundVo.setFound_email(postSnapshot.child("email").getValue().toString());
+                    foundVo.setFound_image(postSnapshot.child("image").getValue().toString());
+                    foundVo.setFound_address(postSnapshot.child("location").getValue().toString());
+                    foundVo.setFound_description(postSnapshot.child("observations").getValue().toString());
+                    foundVo.setFound_phone(postSnapshot.child("phone").getValue().toString());
+                    foundVo.setFound_type(postSnapshot.child("type").getValue().toString());
 
                     //We are filling the list of found
                     ListFound.add(foundVo);
@@ -126,16 +111,18 @@ public class FoundFragment extends Fragment {
                 FoundAdapter adapter =  new FoundAdapter(ListFound);
                 recyclerListFound.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
-//                adapter.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        //evento para llamar DetailplateFragment
-//                        interfaceComunicaFragments.sendFood
-//                                (ListFound.get(recyclerListFound.getChildAdapterPosition(view)));
-//                    }
-//                });
-            }
+                txtLoad.setVisibility(View.GONE);
+                adapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+                        // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
+                        Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
+                        bundle.putSerializable("objeto", ListFound.get(recyclerListFound.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico
+                        findNavController(view).navigate(R.id.action_foundFragment_to_detailFoundFragment, bundle); //Ejecutamos el action junto con el bundle
+                    }
+                });
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
@@ -144,9 +131,8 @@ public class FoundFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
     }
 
     @Override
@@ -154,6 +140,7 @@ public class FoundFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

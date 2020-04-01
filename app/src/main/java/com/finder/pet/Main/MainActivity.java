@@ -19,7 +19,7 @@ import android.view.Menu;
 
 import static androidx.navigation.Navigation.findNavController;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -29,15 +29,6 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /**FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -52,8 +43,12 @@ public class MainActivity extends AppCompatActivity  {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //Intent intent = new Intent(MainActivity.this, TabsActivity.class);
-        //startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, TabsActivity.class);
+//        startActivity(intent);
+
+//        foundFragment = new FoundFragment();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.nav_host_fragment, foundFragment).addToBackStack(null).commit();
 
     }
 
@@ -70,4 +65,5 @@ public class MainActivity extends AppCompatActivity  {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

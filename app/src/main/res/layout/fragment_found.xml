@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:tag="found_tag"
+    android:background="@drawable/fondo_nav"
     tools:context=".Fragments.FoundFragment">
 
     <LinearLayout
@@ -24,19 +26,32 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
-            android:text="REPORTAR UNA MASCOTA ENCONTRADA"
+            android:text="@string/report_new_pet_found"
             android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 
-
-    <ProgressBar
-        android:id="@+id/progressBarFound"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
-        />
+        android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/progressBarFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/textLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/load"
+            android:visibility="gone"/>
+    </LinearLayout>
+
 
 
 </FrameLayout>

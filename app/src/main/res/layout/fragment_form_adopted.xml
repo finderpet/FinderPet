@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/adopted_back_form"
-    tools:context=".formAdoptedFragment">
+    tools:context=".Fragments.formAdoptedFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,6 +87,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:hint="Nombre Mascota"
             android:inputType="textCapWords"/>
 
@@ -97,6 +99,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:hint="Ubicación"
             android:inputType="textCapWords"/>
 
@@ -107,6 +111,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:hint="Email de contacto"
             android:inputType="textEmailAddress"/>
 
@@ -117,6 +123,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:hint="Teléfono"
             android:inputType="number" />
 
@@ -127,6 +135,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorLetterHint"
             android:hint="Descripción / observaciones"
             android:inputType="textMultiLine" />
 

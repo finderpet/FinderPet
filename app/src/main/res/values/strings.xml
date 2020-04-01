@@ -128,4 +128,16 @@
     <string name="tab_found">ENCONTRADOS</string>
     <string name="tab_lost">PERDIDOS</string>
     <string name="tab_adopted">ADOPCIONES</string>
+    <string name="confirm_password">Confirme contraseña</string>
+    <string name="save_register">Registrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="register_new_user">Registrar nuevo usuario</string>
+    <string name="pet_type">Tipo de mascota</string>
+    <string name="location">Ubicación:</string>
+    <string name="email_contact">Correo de contacto:</string>
+    <string name="phone">Teléfono:</string>
+    <string name="observations">Observaciones:</string>
+    <string name="type_pet_exam">Tipo de mascota:</string>
+    <string name="load">Cargando...</string>
+    <string name="report_new_pet_found">REPORTAR UNA MASCOTA ENCONTRADA</string>
 </resources>
