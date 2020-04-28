@@ -97,12 +97,14 @@ public class FoundFragment extends Fragment{
 
                     foundVo=new Found_Vo();
 
-                    foundVo.setFound_email(postSnapshot.child("email").getValue().toString());
-                    foundVo.setFound_image(postSnapshot.child("image").getValue().toString());
-                    foundVo.setFound_address(postSnapshot.child("location").getValue().toString());
-                    foundVo.setFound_description(postSnapshot.child("observations").getValue().toString());
-                    foundVo.setFound_phone(postSnapshot.child("phone").getValue().toString());
-                    foundVo.setFound_type(postSnapshot.child("type").getValue().toString());
+                    foundVo.setEmail(postSnapshot.child("email").getValue().toString());
+                    foundVo.setImage1(postSnapshot.child("image1").getValue().toString());
+                    foundVo.setImage2(postSnapshot.child("image2").getValue().toString());
+                    foundVo.setImage3(postSnapshot.child("image3").getValue().toString());
+                    foundVo.setLocation(postSnapshot.child("location").getValue().toString());
+                    foundVo.setObservations(postSnapshot.child("observations").getValue().toString());
+                    foundVo.setPhone(postSnapshot.child("phone").getValue().toString());
+                    foundVo.setType(postSnapshot.child("type").getValue().toString());
 
                     //We are filling the list of found
                     ListFound.add(foundVo);

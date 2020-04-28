@@ -6,167 +6,172 @@
     android:id="@+id/contain_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_nav"
     android:orientation="vertical">
+    <!-- android:background="@drawable/fondo_nav" -->
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_pager"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        android:background="@drawable/btn_redondeado_greendark"
-        android:text="VER PROMOCIONES!!"
-        android:textColor="@color/colorAccent"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/id_cardViewFound"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardElevation="30dp"
-        app:cardCornerRadius="15dp">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/found_card">
-
-        </FrameLayout>
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="4dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_dog"
-                android:tint="@color/colorWhite"/>
-            <TextView
+            android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pager"
+                style="@style/Widget.FinderPet.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mascotas Encontradas"
-                android:textColor="@color/colorWhite"
-                android:layout_weight="2"
-                android:gravity="bottom"
-                android:textStyle="bold"
-                android:textSize="22sp" />
-            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                android:text="@string/see_promotions"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/id_cardViewFound"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Reporta aquí mascotas que encuentres o que reporten como perdidas"
-                android:textColor="@color/colorWhite"
-                android:textSize="10sp" />
+                android:layout_height="140dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="15dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/found_card">
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_dog"
+                        android:tint="@color/colorWhite"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mascotas Encontradas"
+                        android:textColor="@color/colorWhite"
+                        android:layout_weight="2"
+                        android:gravity="bottom"
+                        android:textStyle="bold"
+                        android:textSize="22sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reporta aquí mascotas que encuentres o que reporten como perdidas"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/id_cardViewLost"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="15dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/lost_card">
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_cat"
+                        android:tint="@color/colorWhite"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mascotas Perdidas"
+                        android:textColor="@color/colorWhite"
+                        android:layout_weight="2"
+                        android:gravity="bottom"
+                        android:textStyle="bold"
+                        android:textSize="22sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reporta aquí mascotas extraviadas o robadas"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/id_cardViewAdopted"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="15dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/adopted_card">
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_adopted"
+                        android:tint="@color/colorWhite"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mascotas en adopción"
+                        android:textColor="@color/colorWhite"
+                        android:layout_weight="2"
+                        android:gravity="bottom"
+                        android:textStyle="bold"
+                        android:textSize="22sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Encuentra la mascota ideal para tí"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/id_cardViewLost"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardElevation="30dp"
-        app:cardCornerRadius="15dp">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/lost_card">
-
-        </FrameLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="4dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_cat"
-                android:tint="@color/colorWhite"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mascotas Perdidas"
-                android:textColor="@color/colorWhite"
-                android:layout_weight="2"
-                android:gravity="bottom"
-                android:textStyle="bold"
-                android:textSize="22sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Reporta aquí mascotas extraviadas o robadas"
-                android:textColor="@color/colorWhite"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/id_cardViewAdopted"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardElevation="30dp"
-        app:cardCornerRadius="15dp">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/adopted_card">
-
-        </FrameLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="4dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_adopted"
-                android:tint="@color/colorWhite"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mascotas en adopción"
-                android:textColor="@color/colorWhite"
-                android:layout_weight="2"
-                android:gravity="bottom"
-                android:textStyle="bold"
-                android:textSize="22sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Encuentra la mascota ideal para tí"
-                android:textColor="@color/colorWhite"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

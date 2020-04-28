@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 
 import com.finder.pet.R;
 import com.finder.pet.Utilities.Utilities;
-import com.finder.pet.ui.send.SendFragment;
+import com.finder.pet.ui.Account.AccountFragment;
 import com.finder.pet.ui.share.ShareFragment;
 import com.finder.pet.ui.tools.ToolsFragment;
 import com.google.android.material.appbar.AppBarLayout;
@@ -104,7 +104,7 @@ public class ContainerFragment extends Fragment {
         ViewAdapter adapter = new ViewAdapter(getFragmentManager());
         adapter.addFragment(new ShareFragment(), "Encontrados");
         adapter.addFragment(new ToolsFragment(), "Perdidos");
-        adapter.addFragment(new SendFragment(), "Adopciones");
+        adapter.addFragment(new AccountFragment(), "Adopciones");
 
         viewPager.setAdapter(adapter);
     }

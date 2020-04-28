@@ -11,7 +11,6 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@android:drawable/ic_dialog_map"
-            android:iconTint="@color/cardview_dark_background"
             android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_slideshow"
@@ -30,9 +29,9 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_share" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:id="@+id/nav_account"
+                android:icon="@mipmap/ic_menu_profile"
+                android:title="@string/menu_account" />
         </menu>
     </item>
 

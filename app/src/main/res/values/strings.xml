@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">FinderPet</string>
-    <string name="nav_header_subtitle">finderpet@gmail.com</string>
+    <string name="nav_header_subtitle">finderpetapp@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -12,42 +12,8 @@
     <string name="menu_slideshow">Preferencias</string>
     <string name="menu_tools">Comercial</string>
     <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_account">Mi cuenta</string>
     <string name="title_activity_maps">Map</string>
-
-    <string name="Comidas">Comidas</string>
-    <string name="bebidas">Bebidas</string>
-    <string name="title_activity_navigation_drawer">activity_navigation_drawer</string>
-    <string name="nombre">Nombre</string>
-    <string name="manana">Mañana</string>
-    <string name="tarde">Tarde</string>
-    <string name="precio">Precio</string>
-    <string name="noche">Noche</string>
-    <string name="entrada">Entrada</string>
-    <string name="plato_fuerte">Plato Fuerte</string>
-    <string name="ingrese_los_ingredientes">Ingrese los ingredientes</string>
-    <string name="ingreComidas">Ingredientes:</string>
-    <string name="ingreBebidas">Ingredientes:</string>
-    <string name="maniana">Mañana</string>
-    <string name="tipo_comida">Tipo Comida:</string>
-    <string name="horario">Horario:</string>
-    <string name="precio_comida">Precio $</string>
-    <string name="precio_bebida">Precio $</string>
-    <string name="tiempo_preparacion">Tiempo Preparación</string>
-    <string name="nombre_bebida">Nombre</string>
-    <string name="informacion_ingresada">Información Ingresada</string>
-    <string name="seleccionar_imagen">Seleccionar Imagen</string>
-    <string name="registrar">Registrar</string>
-    <string name="limpiar">Limpiar</string>
-    <string name="exit">Salir</string>
-    <string name="title_activity_comidas2">activity_comidas2</string>
-    <string name="maxipollo">Maxipollo</string>
-    <string name="infoMaxipollo">Maxi Pollo es una empresa cien por ciento colombiana que se preocupa por innovar y ofrecer a los clientes variedad de alternativas de alimentación manteniendo siempre las premisas de servicio y calidad.</string>
-    <string name="computacion_movil">Computación Móvil</string>
-    <string name="infoCurso">Este curso está orientado a adquirir conocimientos en el desarrollo de aplicaciones para dispositivos móviles. Conocer las particularidades de los dispositivos móviles en su arquitectura de hardware y los sistemas operativos. Conocer conceptos básicos de programación de dispositivos móviles. Adquirir la capacidad de realizar proyectos de computación móvil.</string>
-    <string name="register">Registrarse</string>
-    <string name="login_user">Iniciar Sesión con usuario y contraseña</string>
-    <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -75,7 +41,7 @@
     <string name="menu">Menú</string>
     <string name="agregar">Agregar</string>
     <string name="detail_pet">Detalle de la Mascota</string>
-    <string name="name_pet">Nombre:</string>
+    <string name="name_pet">Nombre de la mascota:</string>
     <string name="detalle_bebida">Detalle Bebida</string>
     <string name="editar_perfil">Editar Perfil</string>
     <string name="time">Tiempo de preparación</string>
@@ -95,30 +61,12 @@
     <string name="next_main">Continuar</string>
     <string name="welcome">Bienvenido</string>
 
-    <string-array name="updateTime">
-        <item>60 Seg</item>
-        <item>10 Seg</item>
-        <item>30 Seg</item>
-        <item>300 Seg</item>
-    </string-array>
-
     <string-array name="especie">
         <item></item>
         <item>Perro</item>
         <item>Gato</item>
         <item>Otro</item>
     </string-array>
-
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
-    <string name="register_email">REGISTRARSE</string>
-    <string name="title_activity_swipe">SwipeActivity</string>
-    <string name="ubicacion">Ubicación</string>
-    <string name="especie">Especie</string>
-    <string name="raza">Raza</string>
-    <string name="nombre_contacto">Nombre de Contacto</string>
-    <string name="telefono_contacto">Teléfono de Contacto</string>
-    <string name="observaciones">Observaciones</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -129,7 +77,7 @@
     <string name="tab_lost">PERDIDOS</string>
     <string name="tab_adopted">ADOPCIONES</string>
     <string name="confirm_password">Confirme contraseña</string>
-    <string name="save_register">Registrar</string>
+    <string name="save_register">Guardar</string>
     <string name="cancel">Cancelar</string>
     <string name="register_new_user">Registrar nuevo usuario</string>
     <string name="pet_type">Tipo de mascota</string>
@@ -140,4 +88,29 @@
     <string name="type_pet_exam">Tipo de mascota:</string>
     <string name="load">Cargando...</string>
     <string name="report_new_pet_found">REPORTAR UNA MASCOTA ENCONTRADA</string>
+    <string name="login_facebook">Iniciar Sesión con Facebook</string>
+    <string name="dog">Perro</string>
+    <string name="cat">Gato</string>
+    <string name="other">Otro</string>
+    <string name="description_observations">Descripción / Observaciones</string>
+    <string name="new_pet_found">Nueva mascota encontrada</string>
+    <string name="add_img_pet">Agrega 3 imágenes de la mascota</string>
+    <string name="new_pet_lost">Nueva mascota perdida</string>
+    <string name="new_pet_adoption">Nueva mascota en adopción</string>
+    <string name="register_user">REGISTRARSE</string>
+    <string name="no_account">¿No tienes una cuenta?</string>
+    <string name="or_login_with">o inicia con...</string>
+    <string name="recover_password">Recuperar su contraseña</string>
+    <string name="title_init_session">Iniciar sesión</string>
+    <string name="type_pet">Tipo de mascota:</string>
+    <string name="create_new_record">Creando nuevo registro...</string>
+    <string name="registry_new_user">Registrar nuevo usuario</string>
+    <string name="oops">Oops!</string>
+    <string name="no_connection_alert">No hay conexión a internet. Para continuar revisa si tus datos móviles están encendidos o si estás conectado a una red wifi</string>
+    <string name="exit">Salir</string>
+    <string name="let_continue">Continuar</string>
+    <string name="see_promotions">** Ver Promociones **</string>
+    <string name="select_type_pet">Escoge el tipo de mascota:</string>
+    <string name="email">Correo electrónico</string>
+    <string name="account_information">Información de mi cuenta</string>
 </resources>

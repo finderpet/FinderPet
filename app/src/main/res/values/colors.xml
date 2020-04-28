@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#182B92</color>
-    <color name="colorPrimaryDark">#0A1972</color>
-    <color name="colorPrimarySoft">#C5CAE9</color>
-    <color name="colorAccent">#03A9F4</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#EDEDED</color>
+    <color name="colorPrimarySoft">#4fc3f7</color>
+    <color name="colorAccent">#03a9f4</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLetterHint">#C2C1C1</color>
     <color name="colorBlancoTransparente">#cccccc</color>
-    <color name="primary_text">#212121</color>
+    <color name="primary_text">#202020</color>
     <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
+    <color name="icons">#202020</color>
     <color name="divider">#BDBDBD</color>
-    <color name="textInputOutlineColor">#C2C1C1</color>
+    <color name="textInputOutlineColor">#03a9f4</color>
+    <color name="colorBlack">#000000</color>
+    <color name="ColorActionBarTitle">#202020</color>
+
 </resources>

@@ -64,10 +64,10 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.finder.pet.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_account"
+        android:name="com.finder.pet.ui.Account.AccountFragment"
+        android:label="@string/menu_account"
+        tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/nav_profile"
@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_lostFragment_to_formLostFragment"
             app:destination="@id/formLostFragment" />
+        <action
+            android:id="@+id/action_lostFragment_to_detailLostFragment"
+            app:destination="@id/detailLostFragment" />
     </fragment>
     <fragment
         android:id="@+id/adoptedFragment"
@@ -103,6 +106,9 @@
         <action
             android:id="@+id/action_adoptedFragment_to_formAdoptedFragment"
             app:destination="@id/formAdoptedFragment" />
+        <action
+            android:id="@+id/action_adoptedFragment_to_detailAdoptedFragment"
+            app:destination="@id/detailAdoptedFragment" />
     </fragment>
     <activity
         android:id="@+id/tabsActivity"
@@ -178,11 +184,38 @@
     <fragment
         android:id="@+id/formAdoptedFragment"
         android:name="com.finder.pet.Fragments.formAdoptedFragment"
-        android:label="Agregar Adopciòn"
+        android:label="Agregar Adopción"
         tools:layout="@layout/fragment_form_adopted" />
     <fragment
         android:id="@+id/detailFoundFragment"
         android:name="com.finder.pet.Fragments.DetailFoundFragment"
         android:label="Ver Detalle"
-        tools:layout="@layout/fragment_detail_found" />
+        tools:layout="@layout/fragment_detail_found" >
+        <action
+            android:id="@+id/action_detailFoundFragment_to_viewImageFragment"
+            app:destination="@id/viewImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailLostFragment"
+        android:name="com.finder.pet.Fragments.detailLostFragment"
+        android:label="Ver el detalle"
+        tools:layout="@layout/fragment_detail_lost" >
+        <action
+            android:id="@+id/action_detailLostFragment_to_viewImageFragment"
+            app:destination="@id/viewImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAdoptedFragment"
+        android:name="com.finder.pet.Fragments.detailAdoptedFragment"
+        android:label="Ver el detalle"
+        tools:layout="@layout/fragment_detail_adopted" >
+        <action
+            android:id="@+id/action_detailAdoptedFragment_to_viewImageFragment"
+            app:destination="@id/viewImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewImageFragment"
+        android:name="com.finder.pet.ViewImageFragment"
+        android:label="fragment_view_image"
+        tools:layout="@layout/fragment_view_image" />
 </navigation>

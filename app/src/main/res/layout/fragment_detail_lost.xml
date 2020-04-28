@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.detailLostFragment">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/imgDetailLost1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:src="@drawable/sin_imagen" />
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"/>
+            <ImageView
+                android:id="@+id/imgDetailLost2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:src="@drawable/sin_imagen" />
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite" />
+            <ImageView
+                android:id="@+id/imgDetailLost3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:src="@drawable/sin_imagen" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_margin="2dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/detailLostName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+        <TextView
+            android:id="@+id/detailLostTypePet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+        <TextView
+            android:id="@+id/detailLostLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+        <TextView
+            android:id="@+id/detailLostEmailContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+        <TextView
+            android:id="@+id/detailLostPhoneContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+        <TextView
+            android:id="@+id/detailLostObservations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texto de prueba"/>
+    </LinearLayout>
+
+</LinearLayout>

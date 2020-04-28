@@ -1,153 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/found_back_form"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.formFoundFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imagenFound_1"
-            android:layout_width="80dp"
-            android:layout_height="67dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:tint="@color/colorWhite"
-            android:src="@drawable/ic_menu_camera" />
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imagenFound_2"
-            android:layout_width="80dp"
-            android:layout_height="67dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:tint="@color/colorWhite"
-            android:src="@drawable/ic_menu_camera" />
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imagenFound_3"
-            android:layout_width="80dp"
-            android:layout_height="67dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:tint="@color/colorWhite"
-            android:src="@drawable/ic_menu_camera" />
-
-
-    </LinearLayout>
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="8dp"
-        android:background="@drawable/btn_redondeado_greendark">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perro"
-            android:layout_marginLeft="12dp"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gato"
-            android:layout_marginLeft="12dp"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Otro"
-            android:layout_marginLeft="12dp"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
-
-    </RadioGroup>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/nomBebida_id"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:hint="Ubicación"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorLetterHint"
-            android:inputType="textCapWords"/>
+            android:layout_marginTop="16sp"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/descripBebidas_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:hint="Email de contacto"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorLetterHint"
-            android:inputType="textEmailAddress"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/precioBebida_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:hint="Teléfono"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorLetterHint"
-            android:inputType="number" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/eMailContacto_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:hint="Descripción / observaciones"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorLetterHint"
-            android:inputType="textMultiLine" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/new_pet_found"
+                        android:layout_marginTop="18dp"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textColor="@color/primary_text"/>
 
-    </LinearLayout>
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="8dp"
+                        android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/rbDogFound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/primary_text"
+                            android:text="@string/dog"
+                            android:textColor="@color/primary_text" />
 
-        <Button
-            android:id="@+id/id_btnAddDrink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@color/colorPrimaryDark"
-            android:text="@string/agregar"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+                        <RadioButton
+                            android:id="@+id/rbCatFound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/primary_text"
+                            android:text="@string/cat"
+                            android:textColor="@color/primary_text" />
 
-    </RelativeLayout>
+                        <RadioButton
+                            android:id="@+id/rbOtherFound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/primary_text"
+                            android:text="@string/other"
+                            android:textColor="@color/primary_text" />
 
-</LinearLayout>
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputAddFoundType"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="8dp"
+                        android:textColorHint="@color/colorLetterHint">
+                        <AutoCompleteTextView
+                            android:id="@+id/fieldAddFoundType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_type_pet"
+                            android:inputType="none"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorAccent" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputAddFoundLocation"
+                        style="@style/Widget.FinderPet.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="8dp"
+                        app:errorIconDrawable="@null"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_location_24"
+                        app:endIconTint="@color/colorBlack">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fieldAddFoundLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/location"
+                            android:inputType="textCapWords"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputAddFoundEmail"
+                        style="@style/Widget.FinderPet.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fieldAddFoundEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/email_contact"
+                            android:inputType="textEmailAddress"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorAccent" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputAddFoundPhone"
+                        style="@style/Widget.FinderPet.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fieldAddFoundPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/phone"
+                            android:inputType="phone"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorAccent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputAddFoundDescription"
+                        style="@style/Widget.FinderPet.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginRight="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fieldAddFoundDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/description_observations"
+                            android:inputType="textMultiLine"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorAccent" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_img_pet"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/primary_text"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_image"
+                        android:layout_width="80dp"
+                        android:layout_height="67dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_menu_camera"
+                        android:tint="@color/colorAccent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_1"
+                        android:layout_width="80dp"
+                        android:layout_height="67dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_photo1"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_2"
+                        android:layout_width="80dp"
+                        android:layout_height="67dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_photo2"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_3"
+                        android:layout_width="80dp"
+                        android:layout_height="67dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_photo3"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btnAddNewFound"
+                style="@style/Widget.FinderPet.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/save_register"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                app:cornerRadius="6dp"
+                app:icon="@drawable/ic_chevron_right_24" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

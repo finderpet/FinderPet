@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.LostFragment">
 
     <LinearLayout
@@ -23,19 +24,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="REPORTAR UNA MASCOTA PERDIDA"
-            android:textColor="@color/colorAccent"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorWhite"
             android:layout_gravity="bottom"/>
 
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBarLost"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
-        />
+        android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/progressBarLost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/textLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/load"
+            android:visibility="gone"/>
+    </LinearLayout>
 
 
 

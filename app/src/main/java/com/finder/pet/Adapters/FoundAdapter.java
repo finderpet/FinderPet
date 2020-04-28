@@ -42,15 +42,16 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
 
     @Override
     public void onBindViewHolder(@NonNull FoundViewHolder holder, int position) {
-        holder.txtType.setText("Tipo mascota: "+listFound.get(position).getFound_type()); //para traer un entero colocar .toString
-        holder.txtLocation.setText("Dirección: "+listFound.get(position).getFound_address());
-        holder.txtEmail.setText("Correo: "+listFound.get(position).getFound_email());
-        holder.txtPhone.setText("Teléfono: "+listFound.get(position).getFound_phone());
+        holder.txtType.setText("Tipo mascota: "+listFound.get(position).getType()); //para traer un entero colocar .toString
+        holder.txtLocation.setText("Dirección: "+listFound.get(position).getLocation());
+        holder.txtEmail.setText("Correo: "+listFound.get(position).getEmail());
+        holder.txtPhone.setText("Teléfono: "+listFound.get(position).getPhone());
         //holder.txtObservation.setText("Descripción: "+listFound.get(position).getFound_description());
-        String url = listFound.get(position).getFound_image();
+        String url = listFound.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
+                .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
                 .into(holder.mPhoto);
 
     }

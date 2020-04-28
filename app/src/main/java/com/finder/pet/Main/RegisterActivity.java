@@ -27,9 +27,7 @@ public class RegisterActivity extends BaseActivity {
     private static final String TAG = "EmailPassword";
     MaterialButton btn_cancel, btn_save_register;
     private TextInputLayout mEmailTextInput, mPasswordTextInput1, mPasswordTextInput2;
-    private TextInputEditText mEmailRegister;
-    private TextInputEditText mPasswordRegister1;
-    private TextInputEditText mPasswordRegister2;
+    private TextInputEditText mEmailRegister, mPasswordRegister1, mPasswordRegister2;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;

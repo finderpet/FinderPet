@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -45,13 +46,10 @@ public class AdoptedFragment extends Fragment {
     ArrayList<Adopted_Vo> ListAdopted;
 
     private ProgressBar progressBar;
-
-    //Comunicación entre fragments
-    //Activity activity;
-    //IComunicaFragments interfaceComunicaFragments;
+    private TextView txtLoad;
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference databaseRef = ref.child("foods");
+    DatabaseReference databaseRef = ref.child("pet_adopted");
 
     public AdoptedFragment() {
         // Required empty public constructor
@@ -67,6 +65,7 @@ public class AdoptedFragment extends Fragment {
         ListAdopted=new ArrayList<>();
 
         progressBar =  view.findViewById(R.id.progressBarAdopted);
+        txtLoad = view.findViewById(R.id.textLoad);
 
         consultListAdopted();
 
@@ -88,6 +87,7 @@ public class AdoptedFragment extends Fragment {
     private void consultListAdopted() {
 
         progressBar.setVisibility(View.VISIBLE);
+        txtLoad.setVisibility(View.VISIBLE);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -102,21 +102,14 @@ public class AdoptedFragment extends Fragment {
                     adoptedVo=new Adopted_Vo();
 
                     adoptedVo.setName(postSnapshot.child("name").getValue().toString());
-                    Utilities.WG_NAME=postSnapshot.child("name").getValue().toString();
-                    adoptedVo.setDescription(postSnapshot.child("description").getValue().toString());
-                    adoptedVo.setImage(postSnapshot.child("image").getValue().toString());
+                    adoptedVo.setEmail(postSnapshot.child("email").getValue().toString());
+                    adoptedVo.setImage1(postSnapshot.child("image1").getValue().toString()); //Acá traigo la dirección de la imagen, debo crear las otras en firebase
+                    adoptedVo.setImage2(postSnapshot.child("image2").getValue().toString());
+                    adoptedVo.setImage3(postSnapshot.child("image3").getValue().toString());
+                    adoptedVo.setLocation(postSnapshot.child("location").getValue().toString());
+                    adoptedVo.setObservations(postSnapshot.child("observations").getValue().toString());
+                    adoptedVo.setPhone(postSnapshot.child("phone").getValue().toString());
                     adoptedVo.setType(postSnapshot.child("type").getValue().toString());
-                    Utilities.WG_TYPE=postSnapshot.child("type").getValue().toString();
-                    adoptedVo.setTime(postSnapshot.child("time").getValue().toString());
-                    adoptedVo.setPrice(postSnapshot.child("price").getValue().toString());
-                    Utilities.WG_PRICE=postSnapshot.child("price").getValue().toString();
-
-                    SharedPreferences preferences = getActivity().getSharedPreferences("credentials", getContext().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("wg_name", Utilities.WG_NAME);
-                    editor.putString("wg_type", Utilities.WG_TYPE);
-                    editor.putString("wg_price", Utilities.WG_PRICE);
-                    editor.commit();
 
                     //We are filling the list of found
                     ListAdopted.add(adoptedVo);
@@ -125,14 +118,17 @@ public class AdoptedFragment extends Fragment {
                 AdoptedAdapter adapter =  new AdoptedAdapter(ListAdopted);
                 recyclerListAdopted.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
-//                adapter.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        //evento para llamar DetailplateFragment
-//                        interfaceComunicaFragments.sendFood
-//                                (ListFound.get(recyclerListFound.getChildAdapterPosition(view)));
-//                    }
-//                });
+                txtLoad.setVisibility(View.GONE);
+                adapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        // Evento para llamar al fragment DetailAdoptedFragment pasandole un objeto tipo bundle
+                        Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
+                        bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico
+                        findNavController(view).navigate(R.id.action_adoptedFragment_to_detailAdoptedFragment, bundle); //Ejecutamos el action junto con el bundle
+                    }
+                });
             }
 
             @Override

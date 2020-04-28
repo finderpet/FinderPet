@@ -42,16 +42,17 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull LostViewHolder holder, int position) {
-        holder.txtNombre.setText(listLost.get(position).getName()); //para traer un entero colocar .toString
-        //holder.txtDescrip.setText(listFoods.get(position).getDescription());
-        holder.txtTipo.setText("Ubicación: "+listLost.get(position).getType());
-        holder.txtTiempo.setText("Email: "+listLost.get(position).getTime());
-        holder.txtPrecio.setText("Teléfono: "+listLost.get(position).getPrice());
-        String url = listLost.get(position).getImage();
+        holder.txtType.setText("Tipo mascota: "+listLost.get(position).getType()); //para traer un entero colocar .toString
+        holder.txtLocation.setText("Dirección: "+listLost.get(position).getLocation());
+        holder.txtEmail.setText("Correo: "+listLost.get(position).getEmail());
+        holder.txtPhone.setText("Teléfono: "+listLost.get(position).getPhone());
+        //holder.txtObservation.setText("Descripción: "+listFound.get(position).getFound_description());
+        String url = listLost.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .into(holder.foto);
+                .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
+                .into(holder.mPhoto);
 
     }
 
@@ -73,17 +74,17 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
 
     public class LostViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtNombre, txtTipo, txtPrecio, txtTiempo;
-        ImageView foto;
+        TextView txtName, txtType, txtLocation, txtEmail, txtPhone, txtObservation;
+        ImageView mPhoto;
 
         public LostViewHolder(View itemView) {
             super(itemView);
-            txtNombre=itemView.findViewById(R.id.name_lost);
-            //txtDescrip=itemView.findViewById(R.id.id_nam)
-            txtTipo=itemView.findViewById(R.id.address_lost);
-            txtPrecio=itemView.findViewById(R.id.phone_lost);
-            txtTiempo=itemView.findViewById(R.id.email_lost);
-            foto=itemView.findViewById(R.id.img_lost);
+            txtType=itemView.findViewById(R.id.typeLost);
+            txtLocation=itemView.findViewById(R.id.locationLost);
+            txtEmail=itemView.findViewById(R.id.emailContactLost);
+            txtPhone=itemView.findViewById(R.id.phoneContactLost);
+            //txtObservation=itemView.findViewById(R.id.observationsContactFound);
+            mPhoto=itemView.findViewById(R.id.imgLost);
         }
     }
 }

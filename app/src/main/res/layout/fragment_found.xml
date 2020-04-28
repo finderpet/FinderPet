@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:tag="found_tag"
-    android:background="@drawable/fondo_nav"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.FoundFragment">
 
     <LinearLayout
@@ -25,9 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@color/colorPrimaryDark"
-            android:text="@string/report_new_pet_found"
-            android:textColor="@color/colorAccent" />
+            android:background="@color/colorWhite"
+            android:text="@string/report_new_pet_found" />
 
     </LinearLayout>
 
