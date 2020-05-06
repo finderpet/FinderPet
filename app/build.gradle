@@ -51,6 +51,9 @@ dependencies {
     //imageView cicle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Floating action menu
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
 
     // Firebase UI
     // Used in FirebaseUIActivity.

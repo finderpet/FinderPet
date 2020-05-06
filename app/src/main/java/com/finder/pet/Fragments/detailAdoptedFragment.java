@@ -9,10 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.Entities.Adopted_Vo;
+import com.finder.pet.Main.MainActivity;
 import com.finder.pet.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -22,7 +35,7 @@ import static androidx.navigation.Navigation.findNavController;
  * Use the {@link detailAdoptedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class detailAdoptedFragment extends Fragment {
+public class detailAdoptedFragment extends Fragment implements OnMapReadyCallback{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,6 +48,11 @@ public class detailAdoptedFragment extends Fragment {
     private TextView txtName, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
+    private String namePet;
+    private double lat, lng;
+
+    private GoogleMap mMap;
+    SupportMapFragment mapFragment;
 
     public detailAdoptedFragment() {
         // Required empty public constructor
@@ -83,18 +101,23 @@ public class detailAdoptedFragment extends Fragment {
         imgPet2 = view.findViewById(R.id.imgDetailAdopted2);
         imgPet3 = view.findViewById(R.id.imgDetailAdopted3);
 
+        // Asociamos el fragment que contendra el mapa en el detalle
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
+
         Bundle objectAdopted=getArguments();
         Adopted_Vo adopted_vo;
         if (objectAdopted != null){
             adopted_vo = (Adopted_Vo) objectAdopted.getSerializable("objeto");
 
             //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas perdidas
-            txtName.setText("Nombre de la mascota: "+adopted_vo.getName());
-            txtType.setText("Tipo de mascota: "+adopted_vo.getType());
-            txtLocation.setText("Mascota vista en: "+adopted_vo.getLocation());
-            txtEmail.setText("Correo de contacto: "+adopted_vo.getEmail());
-            txtPhone.setText("Teléfono de contacto: "+adopted_vo.getPhone());
-            txtObservations.setText("Observaciones: "+adopted_vo.getObservations());
+            txtName.setText(adopted_vo.getName());
+            txtType.setText(adopted_vo.getType());
+            txtLocation.setText(adopted_vo.getLocation());
+            txtEmail.setText(adopted_vo.getEmail());
+            txtPhone.setText(adopted_vo.getPhone());
+            txtObservations.setText(adopted_vo.getObservations());
             imgUrl_1=adopted_vo.getImage1();
             imgUrl_2=adopted_vo.getImage2();
             imgUrl_3=adopted_vo.getImage3();
@@ -110,6 +133,10 @@ public class detailAdoptedFragment extends Fragment {
                     .load(imgUrl_3)
                     .placeholder(R.drawable.sin_imagen)
                     .into(imgPet3);
+            lat = adopted_vo.getLatitude();
+            lng = adopted_vo.getLongitude();
+            //Toast.makeText(getContext(), String.valueOf(lng), Toast.LENGTH_LONG).show();
+            namePet = adopted_vo.getName();
         }
 
         imgPet1.setOnClickListener(new View.OnClickListener() {
@@ -142,4 +169,22 @@ public class detailAdoptedFragment extends Fragment {
 
         return view;
     }
+
+    // Create map
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        //mMap = googleMap;
+        createMarker(googleMap);
+    }
+
+    // Create map marker
+    public void createMarker(GoogleMap googleMap){
+        mMap = googleMap;
+        LatLng latLng = new LatLng(lat, lng);
+        mMap.addMarker(new MarkerOptions().position(latLng).title(namePet)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).showInfoWindow();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+    }
+
+
 }

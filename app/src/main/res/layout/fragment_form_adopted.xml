@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_login"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.formAdoptedFragment">
 
     <ScrollView
@@ -15,8 +15,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutSearchAdopted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/svMapsAdopted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:queryHint="Buscar dirección..."
+                    app:iconifiedByDefault="false"
+                    android:elevation="5dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/sv_map"/>
+
+                <fragment
+                    android:id="@+id/mapSearchAdopted"
+                    android:layout_marginTop="4dp"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp" />
+
+                <Button
+                    android:id="@+id/btnConfirmLocAdopted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    style="@style/Widget.FinderPet.Button"
+                    android:text="@string/confirm_location"/>
+
+            </LinearLayout>
+
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -95,6 +130,7 @@
                             android:id="@+id/fieldAddAdoptedLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint="@string/location"
                             android:inputType="textCapWords"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"

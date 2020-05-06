@@ -1,6 +1,5 @@
 package com.finder.pet.Fragments;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,11 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.Entities.Found_Vo;
 import com.finder.pet.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -27,7 +34,7 @@ import static androidx.navigation.Navigation.findNavController;
  * Use the {@link DetailFoundFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailFoundFragment extends Fragment {
+public class DetailFoundFragment extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,7 +49,12 @@ public class DetailFoundFragment extends Fragment {
     private TextView txtType, txtEmail, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
-    private ViewFlipper viewFlipper;
+    private double lat, lng;
+    private String namePet;
+    //private ViewFlipper viewFlipper;
+
+    private GoogleMap mMap;
+    SupportMapFragment mapFragment;
 
     public DetailFoundFragment() {
         // Required empty public constructor
@@ -88,17 +100,22 @@ public class DetailFoundFragment extends Fragment {
         imgPet2 = view.findViewById(R.id.imgDetailFound2);
         imgPet3 = view.findViewById(R.id.imgDetailFound3);
 
+        // Asociamos el fragment que contendra el mapa en el detalle
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
+
         Bundle objectFound=getArguments();
         Found_Vo found_vo;
         if (objectFound != null){
             found_vo = (Found_Vo) objectFound.getSerializable("objeto");
 
             //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas encontradas
-            txtType.setText("Tipo de mascota: "+found_vo.getType());
-            txtLocation.setText("Mascota vista en: "+found_vo.getLocation());
-            txtEmail.setText("Correo de contacto: "+found_vo.getEmail());
-            txtPhone.setText("Teléfono de contacto: "+found_vo.getPhone());
-            txtObservations.setText("Observaciones: "+found_vo.getObservations());
+            txtType.setText(found_vo.getType());
+            txtLocation.setText(found_vo.getLocation());
+            txtEmail.setText(found_vo.getEmail());
+            txtPhone.setText(found_vo.getPhone());
+            txtObservations.setText(found_vo.getObservations());
             imgUrl_1=found_vo.getImage1();
             imgUrl_2=found_vo.getImage2();
             imgUrl_3=found_vo.getImage3();
@@ -114,12 +131,17 @@ public class DetailFoundFragment extends Fragment {
                     .load(imgUrl_3)
                     .placeholder(R.drawable.sin_imagen)
                     .into(imgPet3);
+            lat = found_vo.getLatitude();
+            lng = found_vo.getLongitude();
+            //Toast.makeText(getContext(), String.valueOf(lng), Toast.LENGTH_LONG).show();
+            namePet = found_vo.getType();
         }
-        String imagesUrl[] = {imgUrl_1, imgUrl_2, imgUrl_3};
-        viewFlipper = view.findViewById(R.id.viewFlipperFound);
-        for (String image: imagesUrl){
-            flipperImg(image);
-        }
+//        //Código para mostrar el flipper de imagenes
+//        String imagesUrl[] = {imgUrl_1, imgUrl_2, imgUrl_3};
+//        viewFlipper = view.findViewById(R.id.viewFlipperFound);
+//        for (String image: imagesUrl){
+//            flipperImg(image);
+//        }
 
         imgPet1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,19 +174,36 @@ public class DetailFoundFragment extends Fragment {
         return view;
     }
 
-    public void flipperImg(String imageUrl){
-        ImageView imageView = new ImageView(getContext());
-        imageView.setBackgroundColor(Color.parseColor("#000000"));
-        Glide.with(getContext())
-                .load(imageUrl)
-                .placeholder(R.drawable.sin_imagen)
-                .into(imageView);
-        viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(4000);
-        viewFlipper.setAutoStart(true);
-        viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
+    // Create map
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        //mMap = googleMap;
+        createMarker(googleMap);
     }
+
+    // Create map marker
+    public void createMarker(GoogleMap googleMap){
+        mMap = googleMap;
+        final LatLng latLng = new LatLng(lat, lng);
+        mMap.addMarker(new MarkerOptions().position(latLng).title(namePet)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))).showInfoWindow();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+    }
+
+//    // Metodo para mostrar el flipper de imagenes
+//    public void flipperImg(String imageUrl){
+//        ImageView imageView = new ImageView(getContext());
+//        imageView.setBackgroundColor(Color.parseColor("#000000"));
+//        Glide.with(getContext())
+//                .load(imageUrl)
+//                .placeholder(R.drawable.sin_imagen)
+//                .into(imageView);
+//        viewFlipper.addView(imageView);
+//        viewFlipper.setFlipInterval(4000);
+//        viewFlipper.setAutoStart(true);
+//        viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
+//        viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
+//    }
 
     /**
      * This interface must be implemented by activities that contain this

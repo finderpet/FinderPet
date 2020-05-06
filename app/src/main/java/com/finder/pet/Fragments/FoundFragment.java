@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.finder.pet.Adapters.FoundAdapter;
 import com.finder.pet.Entities.Found_Vo;
 import com.finder.pet.R;
+import com.finder.pet.Utilities.Utilities;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -105,6 +106,8 @@ public class FoundFragment extends Fragment{
                     foundVo.setObservations(postSnapshot.child("observations").getValue().toString());
                     foundVo.setPhone(postSnapshot.child("phone").getValue().toString());
                     foundVo.setType(postSnapshot.child("type").getValue().toString());
+                    foundVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
+                    foundVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
 
                     //We are filling the list of found
                     ListFound.add(foundVo);

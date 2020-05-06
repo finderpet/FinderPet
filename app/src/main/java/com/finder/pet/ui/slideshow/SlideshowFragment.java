@@ -33,13 +33,13 @@ public class SlideshowFragment extends Fragment {
             }
         });
 
-        btn = root.findViewById(R.id.btn_pref);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_slideshow_to_nav_profile);
-            }
-        });
+//        btn = root.findViewById(R.id.btn_pref);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                findNavController(view).navigate(R.id.action_nav_slideshow_to_nav_profile);
+//            }
+//        });
         return root;
     }
 }

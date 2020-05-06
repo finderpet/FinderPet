@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -33,6 +34,13 @@ import com.finder.pet.Entities.Adopted_Vo;
 import com.finder.pet.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -50,6 +58,7 @@ import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
@@ -62,7 +71,7 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class formAdoptedFragment extends Fragment {
+public class formAdoptedFragment extends Fragment implements OnMapReadyCallback {
 
     // The fragment initialization parameters
     private RadioButton rbDog, rbCat, rbOther;
@@ -72,10 +81,19 @@ public class formAdoptedFragment extends Fragment {
     private Uri pathLocal1, pathLocal2, pathLocal3; // Local path of the images to upload
     private String path_uri_1, path_uri_2, path_uri_3; // Path of images saved in storage firebase
     private String pathPhoto; // Photo path taken with the camera
+    private double latitude, longitude;
     private int imgNumber;
     private Button btnSave;
+    private Button btnConfirmLoc;
+    private String searchLoc;
     private ProgressDialog progressDialog;
     private FusedLocationProviderClient fusedLocationClient; // Get the last know location
+    private LinearLayout linearLayout; // LinearLayout para mostrar buscador de dirección y mapa
+
+    private GoogleMap map;
+    private SupportMapFragment mapFragment;
+    private androidx.appcompat.widget.SearchView search_view;
+
 
     private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference databaseRef = ref.child("pet_adopted");
@@ -126,6 +144,52 @@ public class formAdoptedFragment extends Fragment {
         path_uri_1="null";
         path_uri_2="null";
         path_uri_3="null";
+        latitude = 6.2443382;
+        longitude = -75.573553;
+
+        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocAdopted);
+
+        linearLayout = view.findViewById(R.id.layoutSearchAdopted);
+        search_view = view.findViewById(R.id.svMapsAdopted);
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapSearchAdopted);
+
+        // Capturamos el evento de la busqueda de dirección o zona
+        search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String location = search_view.getQuery().toString();
+                searchLoc = location;
+                List<Address> addressList = null;
+                if (location != null){
+                    Geocoder geocoder = new Geocoder(getContext());
+                    try {
+                        addressList = geocoder.getFromLocationName(location,1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    if (addressList.size() != 0){
+                        Address address = addressList.get(0);
+                        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                        latitude = address.getLatitude();
+                        longitude = address.getLongitude();
+                        map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+                    }else {
+                        searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
+                        Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        mapFragment.getMapAsync(this); // sincronizamos el mapa con los nuevos parametros
 
         // Reference FirebaseStorage instance
         progressDialog = new ProgressDialog(getContext());
@@ -174,19 +238,44 @@ public class formAdoptedFragment extends Fragment {
             }
         });
 
-        // Con este evento traemos la dirección actual del usuario
+        // Con este evento traemos la dirección actual o manual  del usuario
         textInputLocation.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getLocation();
+                final CharSequence[] opciones={"Ubicación actual","Ubicación manual"};
+                final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getContext());
+                alertOpciones.setTitle("Ingrese la ubicación de la mascota:");
+                alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (opciones[i].equals("Ubicación actual")){
+                            getCurrentLocation();
+                        }else{
+                            //dialogInterface.dismiss();
+                            linearLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+                alertOpciones.show();
             }
         });
 
+        // Con este evento confirmamos la dirección que buscamos manualmente
+        btnConfirmLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSearchLocation();
+            }
+        });
         return view;
     }
 
-    private void getLocation() {
+    private void getSearchLocation(){
+        fieldLocation.setText(searchLoc);
+        linearLayout.setVisibility(View.GONE);
+    }
 
+    private void getCurrentLocation(){
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
                     @Override
@@ -195,6 +284,8 @@ public class formAdoptedFragment extends Fragment {
                         if (location != null) {
                             Log.e("Location ","Lat: "+location.getLatitude()+" Lng: "+location.getLongitude());
                             List<Address> addresses = null;
+                            latitude = location.getLatitude();
+                            longitude = location.getLongitude();
                             String errorMessage = "";
                             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                             try {
@@ -223,7 +314,6 @@ public class formAdoptedFragment extends Fragment {
         progressDialog.show();
         progressDialog.setContentView(R.layout.layout_pdialog); // No usamos esta linea cuando usamos setTitle
     };
-
 
     private void saveNewAdopted() {
 
@@ -266,7 +356,7 @@ public class formAdoptedFragment extends Fragment {
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Adopted_Vo adopted_vo = new Adopted_Vo(name, email, type, description, phone, img_1, img_2, img_3, location);
+                Adopted_Vo adopted_vo = new Adopted_Vo(name, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet
                 databaseRef.child(id).setValue(adopted_vo);
@@ -280,6 +370,8 @@ public class formAdoptedFragment extends Fragment {
                 img1.setImageResource(R.mipmap.ic_photo1);
                 img2.setImageResource(R.mipmap.ic_photo2);
                 img3.setImageResource(R.mipmap.ic_photo3);
+                latitude = 6.2443382;
+                longitude = -75.573553;
 
                 progressDialog.dismiss();
                 //displaying a success toast
@@ -335,9 +427,7 @@ public class formAdoptedFragment extends Fragment {
         } else {
             textInputDescription.setError(null);
         }
-
         return valid;
-
     }
 
     /**
@@ -604,4 +694,17 @@ public class formAdoptedFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        final LatLng medellin = new LatLng(6.2443382, -75.573553);
+        //map.addMarker(new MarkerOptions().position(medellin).title("Medellín")).showInfoWindow();
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(medellin, 12));
+//        map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+//            @Override
+//            public void onInfoWindowClick(Marker marker) {
+//                Toast.makeText(getContext(),"Medellín Antioquia", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
 }

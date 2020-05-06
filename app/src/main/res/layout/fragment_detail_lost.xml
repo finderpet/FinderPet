@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.detailLostFragment">
 
     <HorizontalScrollView
@@ -17,8 +18,8 @@
             android:orientation="horizontal">
             <ImageView
                 android:id="@+id/imgDetailLost1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:src="@drawable/sin_imagen" />
@@ -30,8 +31,8 @@
                 android:background="@color/colorWhite"/>
             <ImageView
                 android:id="@+id/imgDetailLost2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:src="@drawable/sin_imagen" />
@@ -43,8 +44,8 @@
                 android:background="@color/colorWhite" />
             <ImageView
                 android:id="@+id/imgDetailLost3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:src="@drawable/sin_imagen" />
@@ -58,42 +59,157 @@
         android:layout_height="2dp"
         android:background="?android:attr/listDivider" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:layout_margin="8dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/detailLostName"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-        <TextView
-            android:id="@+id/detailLostTypePet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-        <TextView
-            android:id="@+id/detailLostLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-        <TextView
-            android:id="@+id/detailLostEmailContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-        <TextView
-            android:id="@+id/detailLostPhoneContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-        <TextView
-            android:id="@+id/detailLostObservations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto de prueba"/>
-    </LinearLayout>
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:text="@string/detail_info_pet"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_text"
+                        android:text="Nombre de la mascota"/>
+                    <TextView
+                        android:id="@+id/detailLostName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="nombre mascota"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_text"
+                        android:text="Tipo de mascota"/>
+                    <TextView
+                        android:id="@+id/detailLostTypePet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="tipo mascota"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_text"
+                        android:text="Localización / Ubicación"/>
+                    <TextView
+                        android:id="@+id/detailLostLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ubicación"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_text"
+                        android:text="Correo de contacto"/>
+                    <TextView
+                        android:id="@+id/detailLostEmailContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="correo"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_text"
+                        android:text="Teléfono de contacto"/>
+                    <TextView
+                        android:id="@+id/detailLostPhoneContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="teléfono"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_text"
+                        android:text="Observaciones"/>
+                    <TextView
+                        android:id="@+id/detailLostObservations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="observaciones"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/primary_text"
+                android:text="@string/map_location_pet"/>
+            <fragment
+                android:id="@+id/mapView"
+                android:layout_marginTop="4dp"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

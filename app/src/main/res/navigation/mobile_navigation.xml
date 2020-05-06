@@ -215,7 +215,16 @@
     </fragment>
     <fragment
         android:id="@+id/viewImageFragment"
-        android:name="com.finder.pet.ViewImageFragment"
+        android:name="com.finder.pet.Fragments.ViewImageFragment"
         android:label="fragment_view_image"
         tools:layout="@layout/fragment_view_image" />
+
+    <!--
+    <activity
+        android:id="@+id/closeApp"
+        android:name="com.finder.pet.Main.CloseActivity"
+        android:label="activity_close"
+        tools:layout="@layout/activity_close" />
+        -->
+
 </navigation>

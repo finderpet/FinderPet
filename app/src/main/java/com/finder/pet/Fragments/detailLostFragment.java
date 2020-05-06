@@ -13,6 +13,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.finder.pet.Entities.Lost_Vo;
 import com.finder.pet.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -22,7 +29,7 @@ import static androidx.navigation.Navigation.findNavController;
  * Use the {@link detailLostFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class detailLostFragment extends Fragment {
+public class detailLostFragment extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,6 +42,11 @@ public class detailLostFragment extends Fragment {
     private TextView txtName, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
+    private String namePet;
+    private double lat, lng;
+
+    private GoogleMap mMap;
+    SupportMapFragment mapFragment;
 
     public detailLostFragment() {
         // Required empty public constructor
@@ -83,18 +95,23 @@ public class detailLostFragment extends Fragment {
         imgPet2 = view.findViewById(R.id.imgDetailLost2);
         imgPet3 = view.findViewById(R.id.imgDetailLost3);
 
+        // Asociamos el fragment que contendra el mapa en el detalle
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
+
         Bundle objectLost=getArguments();
         Lost_Vo lost_vo;
         if (objectLost != null){
             lost_vo = (Lost_Vo) objectLost.getSerializable("objeto");
 
             //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas perdidas
-            txtName.setText("Nombre de la mascota: "+lost_vo.getName());
-            txtType.setText("Tipo de mascota: "+lost_vo.getType());
-            txtLocation.setText("Mascota vista en: "+lost_vo.getLocation());
-            txtEmail.setText("Correo de contacto: "+lost_vo.getEmail());
-            txtPhone.setText("Teléfono de contacto: "+lost_vo.getPhone());
-            txtObservations.setText("Observaciones: "+lost_vo.getObservations());
+            txtName.setText(lost_vo.getName());
+            txtType.setText(lost_vo.getType());
+            txtLocation.setText(lost_vo.getLocation());
+            txtEmail.setText(lost_vo.getEmail());
+            txtPhone.setText(lost_vo.getPhone());
+            txtObservations.setText(lost_vo.getObservations());
             imgUrl_1=lost_vo.getImage1();
             imgUrl_2=lost_vo.getImage2();
             imgUrl_3=lost_vo.getImage3();
@@ -110,6 +127,10 @@ public class detailLostFragment extends Fragment {
                     .load(imgUrl_3)
                     .placeholder(R.drawable.sin_imagen)
                     .into(imgPet3);
+            lat = lost_vo.getLatitude();
+            lng = lost_vo.getLongitude();
+            //Toast.makeText(getContext(), String.valueOf(lng), Toast.LENGTH_LONG).show();
+            namePet = lost_vo.getName();
         }
 
         imgPet1.setOnClickListener(new View.OnClickListener() {
@@ -141,5 +162,21 @@ public class detailLostFragment extends Fragment {
         });
 
         return view;
+    }
+
+    // Create map
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        //mMap = googleMap;
+        createMarker(googleMap);
+    }
+
+    // Create map marker
+    public void createMarker(GoogleMap googleMap){
+        mMap = googleMap;
+        final LatLng latLng = new LatLng(lat, lng);
+        mMap.addMarker(new MarkerOptions().position(latLng).title(namePet)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))).showInfoWindow();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
     }
 }

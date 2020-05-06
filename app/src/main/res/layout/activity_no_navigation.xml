@@ -19,7 +19,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:src="@mipmap/ic_launcher_maxi2" />
+            android:src="@mipmap/ic_splash_new2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,6 +67,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnExitApp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textColor="@color/colorAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"

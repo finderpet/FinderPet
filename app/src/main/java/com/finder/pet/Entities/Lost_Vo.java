@@ -16,6 +16,8 @@ public class Lost_Vo implements Serializable {
     private String image2; //Foto 1 de la mascota perdida
     private String image3; //Foto 1 de la mascota perdida
     private String location; //Dirección o lugar donde se perdió la mascota
+    private double latitude; //Location latitude
+    private double longitude; //Location longitude
 
     /**
      * Empty Constructor
@@ -23,8 +25,8 @@ public class Lost_Vo implements Serializable {
     public Lost_Vo() {
     }
 
-    public Lost_Vo(String name, String email, String type, String observations, String phone,
-                   String image1, String image2, String image3, String location) {
+    public Lost_Vo(String name, String email, String type, String observations, String phone, String image1,
+                   String image2, String image3, String location, double latitude, double longitude) {
         this.name = name;
         this.email = email;
         this.type = type;
@@ -34,6 +36,8 @@ public class Lost_Vo implements Serializable {
         this.image2 = image2;
         this.image3 = image3;
         this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     //Getters and Setters
@@ -91,5 +95,17 @@ public class Lost_Vo implements Serializable {
     }
     public void setLocation(String location) {
         this.location = location;
+    }
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

@@ -24,23 +24,23 @@
         android:roundIcon="@mipmap/ic_launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Authentication.NoNavigationActivity"></activity>
+        <activity android:name=".Main.CloseActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Authentication.NoNavigationActivity" />
         <activity android:name=".Main.RegisterActivity" />
         <activity
             android:name=".Main.TabsActivity"
-            android:label="@string/title_activity_tabs"/>
-
-        <activity android:name=".Authentication.LoginActivity"/>
-
+            android:label="@string/title_activity_tabs" />
+        <activity android:name=".Authentication.LoginActivity" />
         <activity
             android:name=".Main.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- Este provider es el que permite el manejo de la camara para tomar fotos desde la aplicación -->
+        </activity> <!-- Este provider es el que permite el manejo de la camara para tomar fotos desde la aplicación -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

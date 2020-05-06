@@ -110,6 +110,8 @@ public class AdoptedFragment extends Fragment {
                     adoptedVo.setObservations(postSnapshot.child("observations").getValue().toString());
                     adoptedVo.setPhone(postSnapshot.child("phone").getValue().toString());
                     adoptedVo.setType(postSnapshot.child("type").getValue().toString());
+                    adoptedVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
+                    adoptedVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
 
                     //We are filling the list of found
                     ListAdopted.add(adoptedVo);

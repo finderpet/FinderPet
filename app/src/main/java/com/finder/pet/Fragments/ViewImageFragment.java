@@ -1,4 +1,4 @@
-package com.finder.pet;
+package com.finder.pet.Fragments;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.finder.pet.R;
 
 
 /**

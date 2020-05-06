@@ -197,6 +197,7 @@ public class LoginActivity extends BaseActivity {
 
     // [START signinGoogle]
     private void signInGoogle() {
+        showProgressBar();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -222,6 +223,7 @@ public class LoginActivity extends BaseActivity {
                 // [END_EXCLUDE]
             }
         }
+        hideProgressBar();
     }
     // [END onactivityresult]
 

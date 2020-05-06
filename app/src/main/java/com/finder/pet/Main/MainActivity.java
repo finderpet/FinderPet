@@ -1,30 +1,25 @@
 package com.finder.pet.Main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.R;
-
-import androidx.navigation.NavController;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import android.view.Menu;
-import android.view.View;
-import android.widget.TextView;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -34,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     // [START declare_auth ]
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener firebaseAuthListener;
-    // [END declare_auth]
-    private GoogleSignInClient mGoogleSignInClient;
+    //private GoogleSignInClient mGoogleSignInClient;
 
     private CircleImageView circleImageView;
     private TextView txtName, txtEmail;
@@ -52,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         //navigationView.setBackgroundColor(getResources().getColor(R.color.colorAccent)); //Cambia color de fondo del navigation view
-//        NavigationView navigationView2 = findViewById(R.id.nav_view);
-//        navigationView2.setNavigationItemSelectedListener(this);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -65,22 +57,18 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        mView = navigationView.getHeaderView(0); // Creamos la instancia del nav_header
+        // Creamos la instancia del nav_header para manejar sus objetos
+        mView = navigationView.getHeaderView(0);
 
         circleImageView = mView.findViewById(R.id.profileImage);
         txtName = mView.findViewById(R.id.profileName);
         txtEmail = mView.findViewById(R.id.profileEmail);
 
+        // [START declare_auth ]
         firebaseAuth = FirebaseAuth.getInstance();
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        // [END config_signin]
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);  // we received the google client
         FirebaseUser user = firebaseAuth.getCurrentUser();
         setUserProfile(user);
+        // [END declare_auth]
 
 //        Intent intent = new Intent(MainActivity.this, TabsActivity.class);
 //        startActivity(intent);
@@ -91,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to update logged in user information
+     * @param user FirebaseUser containing current user information
+     */
     private void setUserProfile(FirebaseUser user) {
         txtName.setText(user.getDisplayName());
         txtEmail.setText(user.getEmail());
@@ -114,27 +106,79 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    // With this method we capture the event of an item in the navigation drawer
+    public void onclickItem(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.closeApp) {
+            Intent intent = new Intent(MainActivity.this, CloseActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                          | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                          | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                          | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("EXIT", true);
+            startActivity(intent);
+        }
+    }
 
-//    // Este metodo no esta funcionando para capturar un evento de los items del navigation view
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        int title;
-//        switch (menuItem.getItemId()) {
+//    @Override // Este método hace que de cualquier lugar de la aplicación al pulsar boton atras pregunte al usuario si quiere salir de la aplicación
+//    public void onBackPressed() {
 //
-//            case R.id.nav_account:
-//                title = R.string.menu_send;
-//                Toast.makeText(MainActivity.this, "Probando Menuitem",
-//                        Toast.LENGTH_SHORT).show();
-//                break;
-//            default:
-//                throw new IllegalArgumentException("menu option not implemented!!");
+//        if (Utilities.CLOSE_APP == "true"){
+//            final CharSequence[] opciones={"Aceptar","Cancelar"};
+//            final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(this);
+//            alertOpciones.setTitle("¿Desea salir de la aplicación?");
+//            alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    if (opciones[i].equals("Aceptar")){
+//                        //firebaseAuth.signOut();
+//                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+//                                | Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                                | Intent.FLAG_ACTIVITY_NEW_TASK); // Cerramos sesión de usuario de firebase, de google y eliminamos la pila de actividades y fragments
+//                        startActivity(intent);
+//                    }else{
+//                        dialogInterface.dismiss();
+//                    }
+//                }
+//            });
+//            alertOpciones.show();
+//        }else {
+//            onBackPressed();
 //        }
 //
-//
-//        return true;
 //    }
+
 //    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
+//    public boolean onKeyDown(int keyCode, KeyEvent event)
+//    {
+//        if ((keyCode == KeyEvent.KEYCODE_BACK))
+//        {
+//            //codigo adicional
 //
+//            final CharSequence[] opciones={"Aceptar","Cancelar"};
+//            final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(this);
+//            alertOpciones.setTitle("¿Desea salir de la aplicación?");
+//            alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    if (opciones[i].equals("Aceptar")){
+//                        //firebaseAuth.signOut();
+//                        finish();
+//                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+//                                | Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                                | Intent.FLAG_ACTIVITY_NEW_TASK); // Cerramos sesión de usuario de firebase, de google y eliminamos la pila de actividades y fragments
+//                        startActivity(intent);
+//                    }else{
+//                        dialogInterface.dismiss();
+//                    }
+//                }
+//            });
+//            alertOpciones.show();
+//        }
+//        return super.onKeyDown(keyCode, event);
 //    }
+
 
 }

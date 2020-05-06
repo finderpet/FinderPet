@@ -113,4 +113,12 @@
     <string name="select_type_pet">Escoge el tipo de mascota:</string>
     <string name="email">Correo electrónico</string>
     <string name="account_information">Información de mi cuenta</string>
+    <string name="communicate">Communicate</string>
+    <string name="detail_info_pet">Información detallada de la mascota</string>
+    <string name="map_location_pet">Ubicación de las mascota</string>
+    <string name="banner_inferior_ad_unit_id">Ads by Google</string>
+    <string name="confirm_location">Confirmar ubicación o zona</string>
+    <string name="location_not_found">Dirección o zona no encontrada</string>
+    <string name="msg_close_app">Cerrando aplicación...</string>
+    <string name="msg_come_back_soon">¡Vuelve pronto!</string>
 </resources>

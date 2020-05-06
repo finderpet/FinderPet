@@ -43,8 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void createMarker(GoogleMap googleMap){
         mMap = googleMap;
-        final LatLng medellin = new LatLng(6.2443382, -75.573553);
-        mMap.addMarker(new MarkerOptions().position(medellin).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(medellin, 12));
+        final LatLng latLng = new LatLng(6.2443382, -75.573553);
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Medellín").draggable(true));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
     }
 }

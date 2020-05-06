@@ -80,6 +80,13 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/view_construction" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

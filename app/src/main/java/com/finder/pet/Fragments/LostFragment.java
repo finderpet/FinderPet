@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.finder.pet.Adapters.LostAdapter;
 import com.finder.pet.Entities.Lost_Vo;
 import com.finder.pet.R;
+import com.finder.pet.Utilities.Utilities;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -107,6 +108,8 @@ public class LostFragment extends Fragment {
                     lostVo.setObservations(postSnapshot.child("observations").getValue().toString());
                     lostVo.setPhone(postSnapshot.child("phone").getValue().toString());
                     lostVo.setType(postSnapshot.child("type").getValue().toString());
+                    lostVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
+                    lostVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
 
                     //We are filling the list of found
                     ListLost.add(lostVo);

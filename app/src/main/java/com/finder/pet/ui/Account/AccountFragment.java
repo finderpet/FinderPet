@@ -19,7 +19,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.Authentication.LoginActivity;
+import com.finder.pet.Main.CloseActivity;
 import com.finder.pet.R;
+import com.finder.pet.Utilities.Utilities;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -65,17 +67,6 @@ public class AccountFragment extends Fragment {
 
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);  // we received the google client
 
-//        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    setUserData(user);
-//                } else {
-//                    goLogInScreen();
-//                }
-//            }
-//        };
         FirebaseUser user = firebaseAuth.getCurrentUser();
         setUserData(user);
 
@@ -91,16 +82,20 @@ public class AccountFragment extends Fragment {
     }
 
     private void signOutUser() {
-        final CharSequence[] opciones={"Cerrar Sesión","Cancelar"};
+        final CharSequence[] opciones={"Aceptar","Cancelar"};
         final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getContext());
-        alertOpciones.setTitle("¿Desea salir de la aplicación?");
+        alertOpciones.setTitle("¿Desea cerrar la sesión y salir de la aplicación?");
         alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (opciones[i].equals("Cerrar Sesión")){
+                if (opciones[i].equals("Aceptar")){
                     firebaseAuth.signOut();
                     mGoogleSignInClient.revokeAccess();
-                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    Intent intent = new Intent(getContext(), CloseActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            | Intent.FLAG_ACTIVITY_NEW_TASK); // Cerramos sesión de usuario de firebase, de google y eliminamos la pila de actividades y fragments
+                    intent.putExtra("EXIT", true);
                     startActivity(intent);
                 }else{
                     dialogInterface.dismiss();
