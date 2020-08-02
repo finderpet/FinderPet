@@ -5,7 +5,7 @@
     android:layout_height="200dp"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:background="@drawable/nav_1"
+    android:background="@drawable/bg_profile"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -31,18 +31,18 @@
         android:text="@string/nav_header_title"
         android:textStyle="bold"
         android:lines="1"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     <TextView
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="4dp"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/colorWhite"
         android:text="@string/nav_header_subtitle" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="6dp"
-        android:background="@color/primary_text" />
+        android:background="@color/colorWhite" />
 </LinearLayout>

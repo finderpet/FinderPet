@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.finder.pet.Entities.Lost_Vo;
 import com.finder.pet.R;
+import com.finder.pet.Utilities.commonMethods;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -57,6 +58,7 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.FileProvider;
@@ -115,68 +117,22 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_form_lost, container, false);
+        return inflater.inflate(R.layout.fragment_form_lost, container, false);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // Initialize variables
-        rbDog = view.findViewById(R.id.rbDogFound);
-        rbCat = view.findViewById(R.id.rbCatFound);
-        rbOther = view.findViewById(R.id.rbOtherFound);
-        textInputLocation = view.findViewById(R.id.textInputAddLostLocation);
-        textInputName = view.findViewById(R.id.textInputAddLostName);
-        textInputEmail = view.findViewById(R.id.textInputAddLostEmail);
-        textInputPhone = view.findViewById(R.id.textInputAddLostPhone);
-        textInputDescription = view.findViewById(R.id.textInputAddLostDescription);
-        fieldLocation = view.findViewById(R.id.fieldAddLostLocation);
-        fieldNamePet = view.findViewById(R.id.fieldAddLostName);
-        fieldEmail = view.findViewById(R.id.fieldAddLostEmail);
-        fieldPhone = view.findViewById(R.id.fieldAddLostPhone);
-        fieldDescription = view.findViewById(R.id.fieldAddLostDescription);
-        img1 = view.findViewById(R.id.imageLost_1);
-        img2 = view.findViewById(R.id.imageLost_2);
-        img3 = view.findViewById(R.id.imageLost_3);
-        btnSave = view.findViewById(R.id.btnAddNewLost);
-        pathLocal1=null;
-        pathLocal2=null;
-        pathLocal3=null;
-        path_uri_1="null";
-        path_uri_2="null";
-        path_uri_3="null";
-        latitude = 6.2443382;
-        longitude = -75.573553;
-
-        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
-
-        linearLayout = view.findViewById(R.id.layoutSearchLost);
-        search_view = view.findViewById(R.id.svMapsLost);
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapSearchLost);
+        setupViews(view);
 
         // Capturamos el evento de la busqueda de dirección o zona
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                String location = search_view.getQuery().toString();
-                searchLoc = location;
-                List<Address> addressList = null;
-                if (location != null){
-                    Geocoder geocoder = new Geocoder(getContext());
-                    try {
-                        addressList = geocoder.getFromLocationName(location,1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    if (addressList.size() != 0){
-                        Address address = addressList.get(0);
-                        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                        latitude = address.getLatitude();
-                        longitude = address.getLongitude();
-                        map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
-                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-                    }else {
-                        searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
-                        Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
-                    }
-                }
+                manualSearchLocation();
                 return false;
             }
 
@@ -262,8 +218,66 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 getSearchLocation();
             }
         });
+    }
 
-        return view;
+    private void manualSearchLocation() {
+        String location = search_view.getQuery().toString();
+        searchLoc = location;
+        List<Address> addressList = null;
+        if (location != null){
+            Geocoder geocoder = new Geocoder(getContext());
+            try {
+                addressList = geocoder.getFromLocationName(location,1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (addressList.size() != 0){
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                latitude = address.getLatitude();
+                longitude = address.getLongitude();
+                map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+            }else {
+                searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
+                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void setupViews(View view) {
+        rbDog = view.findViewById(R.id.rbDogFound);
+        rbCat = view.findViewById(R.id.rbCatFound);
+        rbOther = view.findViewById(R.id.rbOtherFound);
+        textInputLocation = view.findViewById(R.id.textInputAddLostLocation);
+        textInputName = view.findViewById(R.id.textInputAddLostName);
+        textInputEmail = view.findViewById(R.id.textInputAddLostEmail);
+        textInputPhone = view.findViewById(R.id.textInputAddLostPhone);
+        textInputDescription = view.findViewById(R.id.textInputAddLostDescription);
+        fieldLocation = view.findViewById(R.id.fieldAddLostLocation);
+        fieldNamePet = view.findViewById(R.id.fieldAddLostName);
+        fieldEmail = view.findViewById(R.id.fieldAddLostEmail);
+        fieldPhone = view.findViewById(R.id.fieldAddLostPhone);
+        fieldDescription = view.findViewById(R.id.fieldAddLostDescription);
+        img1 = view.findViewById(R.id.imageLost_1);
+        img2 = view.findViewById(R.id.imageLost_2);
+        img3 = view.findViewById(R.id.imageLost_3);
+        btnSave = view.findViewById(R.id.btnAddNewLost);
+        pathLocal1=null;
+        pathLocal2=null;
+        pathLocal3=null;
+        path_uri_1="null";
+        path_uri_2="null";
+        path_uri_3="null";
+        latitude = 6.2443382;
+        longitude = -75.573553;
+
+        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
+
+        linearLayout = view.findViewById(R.id.layoutSearchLost);
+        search_view = view.findViewById(R.id.svMapsLost);
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapSearchLost);
     }
 
     private void getSearchLocation(){
@@ -319,12 +333,14 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
             progressDialog.dismiss();
             return;
         }
+        fillEmptyFields();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 // Create variables to the object
                 String rbPet="null";
+                String date = "null";
                 String name = "null";
                 String email = "null";
                 String type = "null";
@@ -339,6 +355,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 if (rbDog.isChecked()) rbPet = "Perro";
                 if (rbCat.isChecked()) rbPet = "Gato";
                 if (rbOther.isChecked()) rbPet = "Otro";
+                date = commonMethods.getDateTime();
                 name = fieldNamePet.getText().toString().trim();
                 email = fieldEmail.getText().toString().trim();
                 type = rbPet;
@@ -354,7 +371,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Lost_Vo lost_vo = new Lost_Vo(name, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
+                Lost_Vo lost_vo = new Lost_Vo(date, name, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet
                 databaseRef.child(id).setValue(lost_vo);
@@ -365,9 +382,9 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 fieldPhone.setText("");
                 fieldEmail.setText("");
                 fieldDescription.setText("");
-                img1.setImageResource(R.mipmap.ic_photo1);
-                img2.setImageResource(R.mipmap.ic_photo2);
-                img3.setImageResource(R.mipmap.ic_photo3);
+                img1.setImageResource(R.drawable.img_upload_1);
+                img2.setImageResource(R.drawable.img_upload_2);
+                img3.setImageResource(R.drawable.img_upload_3);
                 latitude = 6.2443382;
                 longitude = -75.573553;
 
@@ -380,20 +397,36 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    private void fillEmptyFields() {
+        String email = fieldEmail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            //email = getResources().getString(R.string)
+            fieldEmail.setText("Sin información");
+        } else {
+            textInputEmail.setError(null);
+        }
+        String description = fieldDescription.getText().toString();
+        if (TextUtils.isEmpty(description)) {
+            fieldDescription.setText("Sin información");
+        } else {
+            textInputDescription.setError(null);
+        }
+    }
+
     private boolean validateForm() {
         boolean valid = true;
 
         if (!rbDog.isChecked() && !rbCat.isChecked() && !rbOther.isChecked()){
-            Toast.makeText(getContext(), "Debes seleccionar un tipo de mascota", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Debes seleccionar un tipo de mascota", Toast.LENGTH_SHORT).show();
             valid = false;
         }
         if (pathLocal1 == null){
-            Toast.makeText(getContext(), "Debe agregar por lo menos la imagen 1", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Debe agregar por lo menos la imagen 1", Toast.LENGTH_SHORT).show();
             valid = false;
         }
         String location = fieldLocation.getText().toString();
         if (TextUtils.isEmpty(location)) {
-            textInputLocation.setError("La dirección es olbigatoria");
+            textInputLocation.setError("La dirección o ubicación es obligatoria");
             valid = false;
         } else {
             textInputLocation.setError(null);
@@ -405,13 +438,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         } else {
             textInputName.setError(null);
         }
-        String email = fieldEmail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            textInputEmail.setError("Correo Obligatorio");
-            valid = false;
-        } else {
-            textInputEmail.setError(null);
-        }
         String phone = fieldPhone.getText().toString();
         if (TextUtils.isEmpty(phone)) {
             textInputPhone.setError("El teléfono es Obligatorio");
@@ -419,16 +445,21 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         } else {
             textInputPhone.setError(null);
         }
-        String description = fieldDescription.getText().toString();
-        if (TextUtils.isEmpty(description)) {
-            textInputDescription.setError("La descripción es Obligatoria");
-            valid = false;
-        } else {
-            textInputDescription.setError(null);
-        }
-
+//        String description = fieldDescription.getText().toString();
+//        if (TextUtils.isEmpty(description)) {
+//            textInputDescription.setError("La descripción es Obligatoria");
+//            valid = false;
+//        } else {
+//            textInputDescription.setError(null);
+//        }
+//        String email = fieldEmail.getText().toString();
+//        if (TextUtils.isEmpty(email)) {
+//            textInputEmail.setError("Correo Obligatorio");
+//            valid = false;
+//        } else {
+//            textInputEmail.setError(null);
+//        }
         return valid;
-
     }
 
     /**

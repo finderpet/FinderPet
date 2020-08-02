@@ -42,11 +42,10 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
 
     @Override
     public void onBindViewHolder(@NonNull AdoptedViewHolder holder, int position) {
-        holder.txtType.setText("Tipo mascota: "+listAdopted.get(position).getType()); //para traer un entero colocar .toString
-        holder.txtLocation.setText("Dirección: "+listAdopted.get(position).getLocation());
-        holder.txtEmail.setText("Correo: "+listAdopted.get(position).getEmail());
+        holder.txtName.setText("Nombre: "+listAdopted.get(position).getName());
+        holder.txtAge.setText("Edad: "+listAdopted.get(position).getAge());
+        holder.txtTimePost.setText("Publicado "+listAdopted.get(position).getDate());
         holder.txtPhone.setText("Teléfono: "+listAdopted.get(position).getPhone());
-        //holder.txtObservation.setText("Descripción: "+listFound.get(position).getFound_description());
         String url = listAdopted.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
@@ -54,6 +53,12 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
                 .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
                 .into(holder.mPhoto);
 
+        if (listAdopted.get(position).getType().equals("Perro")){
+            holder.markType.setImageResource(R.mipmap.ic_dog);
+        }
+        if (listAdopted.get(position).getType().equals("Gato")){
+            holder.markType.setImageResource(R.mipmap.ic_cat);
+        }
     }
 
     @Override
@@ -74,17 +79,17 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
 
     public class AdoptedViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtName, txtType, txtLocation, txtEmail, txtPhone, txtObservation;
-        ImageView mPhoto;
+        TextView txtName, txtTimePost, txtAge, txtPhone;
+        ImageView mPhoto, markType;
 
         public AdoptedViewHolder(View itemView) {
             super(itemView);
-            txtType=itemView.findViewById(R.id.typeAdopted);
-            txtLocation=itemView.findViewById(R.id.locationAdopted);
-            txtEmail=itemView.findViewById(R.id.emailContactAdopted);
+            txtName=itemView.findViewById(R.id.nameAdopted);
+            txtTimePost =itemView.findViewById(R.id.timePostAdopted);
+            txtAge =itemView.findViewById(R.id.AgeAdopted);
             txtPhone=itemView.findViewById(R.id.phoneContactAdopted);
-            //txtObservation=itemView.findViewById(R.id.observationsContactFound);
             mPhoto=itemView.findViewById(R.id.imgAdopted);
+            markType=itemView.findViewById(R.id.markAdopted);
         }
     }
 }

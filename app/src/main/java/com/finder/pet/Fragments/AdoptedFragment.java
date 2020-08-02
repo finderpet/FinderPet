@@ -24,13 +24,18 @@ import com.finder.pet.Adapters.AdoptedAdapter;
 import com.finder.pet.Entities.Adopted_Vo;
 import com.finder.pet.R;
 import com.finder.pet.Utilities.Utilities;
+import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -73,9 +78,7 @@ public class AdoptedFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 findNavController(view).navigate(R.id.action_adoptedFragment_to_formAdoptedFragment);
-
             }
         });
         return view;
@@ -101,17 +104,45 @@ public class AdoptedFragment extends Fragment {
 
                     adoptedVo=new Adopted_Vo();
 
-                    adoptedVo.setName(postSnapshot.child("name").getValue().toString());
-                    adoptedVo.setEmail(postSnapshot.child("email").getValue().toString());
+                    if (postSnapshot.child("date").exists()){
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        adoptedVo.setDate(timeDays);
+                    }else { adoptedVo.setDate("Sin fecha"); }
+                    if (postSnapshot.child("name").exists()){
+                        adoptedVo.setName(postSnapshot.child("name").getValue().toString());
+                    }else { adoptedVo.setName("No se encontró nombre"); }
+                    if (postSnapshot.child("name").exists()){
+                        adoptedVo.setEmail(postSnapshot.child("email").getValue().toString());
+                    }else { adoptedVo.setName("No se encontró nombre"); }
+                    if (postSnapshot.child("age").exists()){
+                        adoptedVo.setAge(postSnapshot.child("age").getValue().toString());
+                    }else { adoptedVo.setAge("Sin edad"); }
+                    if (postSnapshot.child("breed").exists()){
+                        adoptedVo.setBreed(postSnapshot.child("breed").getValue().toString());
+                    }else { adoptedVo.setBreed("Sin Raza"); }
+                    if (postSnapshot.child("sterilized").exists()){
+                        adoptedVo.setSterilized(postSnapshot.child("sterilized").getValue().toString());
+                    }else { adoptedVo.setSterilized("Sin información"); }
+                    if (postSnapshot.child("vaccines").exists()){
+                        adoptedVo.setVaccines(postSnapshot.child("vaccines").getValue().toString());
+                    }else { adoptedVo.setVaccines("Sin información de vacunas"); }
+                    if (postSnapshot.child("location").exists()){
+                        adoptedVo.setLocation(postSnapshot.child("location").getValue().toString());
+                    }else { adoptedVo.setVaccines("Sin ubicación"); }
+                    if (postSnapshot.child("observations").exists()){
+                        adoptedVo.setObservations(postSnapshot.child("observations").getValue().toString());
+                    }else { adoptedVo.setVaccines("Sin observaciones"); }
+                    if (postSnapshot.child("phone").exists()){
+                        adoptedVo.setPhone(postSnapshot.child("phone").getValue().toString());
+                    }else { adoptedVo.setVaccines("Sin teléfono"); }
+                    if (postSnapshot.child("type").exists()){
+                        adoptedVo.setType(postSnapshot.child("type").getValue().toString());
+                    }else { adoptedVo.setVaccines("Sin tipo"); }
+                    adoptedVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
+                    adoptedVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
                     adoptedVo.setImage1(postSnapshot.child("image1").getValue().toString()); //Acá traigo la dirección de la imagen, debo crear las otras en firebase
                     adoptedVo.setImage2(postSnapshot.child("image2").getValue().toString());
                     adoptedVo.setImage3(postSnapshot.child("image3").getValue().toString());
-                    adoptedVo.setLocation(postSnapshot.child("location").getValue().toString());
-                    adoptedVo.setObservations(postSnapshot.child("observations").getValue().toString());
-                    adoptedVo.setPhone(postSnapshot.child("phone").getValue().toString());
-                    adoptedVo.setType(postSnapshot.child("type").getValue().toString());
-                    adoptedVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
-                    adoptedVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
 
                     //We are filling the list of found
                     ListAdopted.add(adoptedVo);
@@ -124,7 +155,6 @@ public class AdoptedFragment extends Fragment {
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         // Evento para llamar al fragment DetailAdoptedFragment pasandole un objeto tipo bundle
                         Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
                         bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico

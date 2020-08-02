@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contain_profile"
+    tools:context=".Fragments.frequentQuestionsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/question1"
+            style="@style/Widget.FinderPet.ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="4dp"
+            android:textColor="@color/primary_text"
+            android:textAllCaps="false"
+            android:gravity="start"
+            android:textSize="13sp"
+            android:text="@string/question_1" />
+        <TextView
+            android:id="@+id/answerQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="13sp"
+            android:justificationMode="inter_word"
+            android:background="@color/colorBackground"
+            android:text="@string/answer_1"
+            android:visibility="gone"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/question2"
+            style="@style/Widget.FinderPet.ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="4dp"
+            android:textColor="@color/primary_text"
+            android:textAllCaps="false"
+            android:gravity="start"
+            android:textSize="13sp"
+            android:text="@string/question_2" />
+        <TextView
+            android:id="@+id/answerQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="13sp"
+            android:justificationMode="inter_word"
+            android:background="@color/colorBackground"
+            android:text="@string/answer_2"
+            android:visibility="gone"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/question3"
+            style="@style/Widget.FinderPet.ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="4dp"
+            android:textColor="@color/primary_text"
+            android:textAllCaps="false"
+            android:gravity="start"
+            android:textSize="13sp"
+            android:text="@string/question_3" />
+        <TextView
+            android:id="@+id/answerQ3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="13sp"
+            android:justificationMode="inter_word"
+            android:background="@color/colorBackground"
+            android:text="@string/answer_3"
+            android:visibility="gone"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

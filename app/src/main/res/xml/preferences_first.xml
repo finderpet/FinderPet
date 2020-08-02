@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="UBICACIÓN">
+        <ListPreference
+            android:key="country"
+            android:title="País"
+            android:summary="Elige el país donde vives"
+            android:entries="@array/country"
+            android:entryValues="@array/country"
+            android:icon="@drawable/ic_outline_location_32" />
+        <ListPreference
+            android:key="city_state"
+            android:title="Estado o Ciudad"
+            android:summary="Elige una Ciudad o un Estado"
+            android:entries="@array/city_colombia"
+            android:entryValues="@array/city_colombia"
+            android:icon="@drawable/ic_my_location_32"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="IDIOMA">
+        <ListPreference
+            android:key="language"
+            android:title="Idioma de la aplicación"
+            android:summary="Elige el idioma de tu preferencia"
+            android:entries="@array/language"
+            android:entryValues="@array/language"
+            android:icon="@drawable/ic_language_32"/>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

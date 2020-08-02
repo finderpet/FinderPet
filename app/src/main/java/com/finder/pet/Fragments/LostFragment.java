@@ -22,6 +22,7 @@ import com.finder.pet.Adapters.LostAdapter;
 import com.finder.pet.Entities.Lost_Vo;
 import com.finder.pet.R;
 import com.finder.pet.Utilities.Utilities;
+import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -98,6 +99,11 @@ public class LostFragment extends Fragment {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     lostVo=new Lost_Vo();
+
+                    if (postSnapshot.child("date").exists()){
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        lostVo.setDate(timeDays);
+                    }else { lostVo.setDate("Sin fecha"); }
 
                     lostVo.setName(postSnapshot.child("name").getValue().toString());
                     lostVo.setEmail(postSnapshot.child("email").getValue().toString());

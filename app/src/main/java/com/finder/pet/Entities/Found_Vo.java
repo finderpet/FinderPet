@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Found_Vo implements Serializable {
 
+    private String date; //Fecha en que se hizo el post
     private String email; //Correo de quién encontró la mascota
     private String type; //Tipo de mascota encontrada
     private String observations; //Descrición de la mascota
@@ -22,8 +23,9 @@ public class Found_Vo implements Serializable {
 
     }
 
-    public Found_Vo(String email, String type, String observations, String phone, String image1,
+    public Found_Vo(String date, String email, String type, String observations, String phone, String image1,
                     String image2, String image3, String location, double latitude, double longitude) {
+        this.date = date;
         this.email = email;
         this.type = type;
         this.observations = observations;
@@ -36,6 +38,12 @@ public class Found_Vo implements Serializable {
         this.longitude = longitude;
     }
 
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
     public String getEmail() {
         return email;
     }

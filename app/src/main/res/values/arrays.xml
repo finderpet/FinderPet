@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="country">
+        <item>Colombia</item>
+        <item>México</item>
+    </array>
+
+    <array name="city_colombia">
+        <item>Arauca</item>
+        <item>Armenia</item>
+        <item>Barranquilla</item>
+        <item>Bogotá</item>
+        <item>Bucaramanga</item>
+        <item>Cali</item>
+        <item>Cartagena</item>
+        <item>Cúcuta</item>
+        <item>Florencia</item>
+        <item>Ibagué</item>
+        <item>Inírida</item>
+        <item>Leticia</item>
+        <item>Manizales</item>
+        <item>Medellín</item>
+        <item>Mitú</item>
+        <item>Mocoa</item>
+        <item>Montería</item>
+        <item>Neiva</item>
+        <item>Pasto</item>
+        <item>Pereira</item>
+        <item>Popayán</item>
+        <item>Puerto Carreño</item>
+        <item>Quibdó</item>
+        <item>Riohacha</item>
+        <item>San Andrés</item>
+        <item>San José del Guaviare</item>
+        <item>Santa Marta</item>
+        <item>Sincelejo</item>
+        <item>Tunja</item>
+        <item>Valledupar</item>
+        <item>Villavicencio</item>
+        <item>Yopal</item>
+    </array>
+
+    <array name="state_mexico">
+        <item>Aguascalientes</item>
+        <item>Baja California</item>
+        <item>Baja California Sur</item>
+        <item>Campeche</item>
+        <item>Chihuahua</item>
+        <item>Chiapas</item>
+        <item>Coahuila</item>
+        <item>Colima</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>México</item>
+        <item>Michoacán</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nuevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </array>
+
+    <array name="language">
+        <item>Español</item>
+        <item>English</item>
+    </array>
+
+
+
+</resources>

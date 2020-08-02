@@ -15,7 +15,6 @@ import com.finder.pet.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegisterActivity extends BaseActivity {
 
     private static final String TAG = "EmailPassword";
-    MaterialButton btn_cancel, btn_save_register;
+    MaterialButton btnCancelRegister, btnSaveRegister;
     private TextInputLayout mEmailTextInput, mPasswordTextInput1, mPasswordTextInput2;
     private TextInputEditText mEmailRegister, mPasswordRegister1, mPasswordRegister2;
 
@@ -39,8 +38,8 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
 
         // Buttons
-        btn_cancel = findViewById(R.id.btnCancelRegister);
-        btn_save_register =findViewById(R.id.btnRegisterUser);
+        btnCancelRegister = findViewById(R.id.btnCancelRegister);
+        btnSaveRegister =findViewById(R.id.btnRegisterUser);
         // Views
         mEmailRegister = findViewById(R.id.fieldRegisterEmail);
         mPasswordRegister1 = findViewById(R.id.fieldRegisterPassword1);
@@ -56,7 +55,7 @@ public class RegisterActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        btnCancelRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(RegisterActivity.this, LoginActivity.class);
@@ -64,13 +63,10 @@ public class RegisterActivity extends BaseActivity {
             }
         });
 
-        btn_save_register.setOnClickListener(new View.OnClickListener() {
+        btnSaveRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Aún no podemos hacer tu registro", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
                 createAccount(mEmailRegister.getText().toString(), mPasswordRegister1.getText().toString());
-
             }
         });
 
@@ -79,7 +75,7 @@ public class RegisterActivity extends BaseActivity {
 
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
-        if (!validateForm()) {
+        if (!validateFormRegister()) {
             return;
         }
 
@@ -116,7 +112,7 @@ public class RegisterActivity extends BaseActivity {
         // [END create_user_with_email]
     }
 
-    private boolean validateForm() {
+    private boolean validateFormRegister() {
         boolean valid = true;
 
         String email = mEmailRegister.getText().toString();
@@ -143,7 +139,7 @@ public class RegisterActivity extends BaseActivity {
         password1 = mPasswordRegister1.getText().toString();
         password2 = mPasswordRegister2.getText().toString();
         if (!password1.equals(password2)){
-            mPasswordTextInput2.setError("Contraseña diferente");
+            mPasswordTextInput2.setError("Las contraseñas no concuerdan");
             valid = false;
         } else {
             mPasswordTextInput2.setError(null);

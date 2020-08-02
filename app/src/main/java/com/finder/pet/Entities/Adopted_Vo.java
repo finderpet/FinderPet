@@ -7,9 +7,14 @@ public class Adopted_Vo implements Serializable {
     /**
      * Attributes
      */
+    private String date; //Fecha de registro de la mascota
     private String name; //Nombre de la mascota para adoptar
     private String email; //Correo de quién perdió la mascota
     private String type; //Tipo de mascota para adoptar
+    private String age; //Edad de la mascota para adoptar
+    private String breed; //Raza de la mascota para adoptar
+    private String sterilized; //Mascota esterilizada si, no
+    private String vaccines; //Vacunas que tiene las mascota
     private String observations; //Descrición de la mascota
     private String phone; //Teléfono de contacto de quién entrega la mascota
     private String image1; //Foto 1 de la mascota para adoptar
@@ -25,11 +30,18 @@ public class Adopted_Vo implements Serializable {
     public Adopted_Vo() {
     }
 
-    public Adopted_Vo(String name, String email, String type, String observations, String phone, String image1,
-                      String image2, String image3, String location, double latitude, double longitude) {
+    public Adopted_Vo(String date, String name, String email, String type, String age, String breed,
+                      String sterilized, String vaccines, String observations, String phone,
+                      String image1, String image2, String image3, String location,
+                      double latitude, double longitude) {
+        this.date = date;
         this.name = name;
         this.email = email;
         this.type = type;
+        this.age = age;
+        this.breed = breed;
+        this.sterilized = sterilized;
+        this.vaccines = vaccines;
         this.observations = observations;
         this.phone = phone;
         this.image1 = image1;
@@ -57,6 +69,36 @@ public class Adopted_Vo implements Serializable {
     }
     public void setType(String type) {
         this.type = type;
+    }
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public String getAge() {
+        return age;
+    }
+    public void setAge(String age) {
+        this.age = age;
+    }
+    public String getBreed() {
+        return breed;
+    }
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+    public String getSterilized() {
+        return sterilized;
+    }
+    public void setSterilized(String sterilized) {
+        this.sterilized = sterilized;
+    }
+    public String getVaccines() {
+        return vaccines;
+    }
+    public void setVaccines(String vaccines) {
+        this.vaccines = vaccines;
     }
     public String getObservations() {
         return observations;
@@ -106,5 +148,6 @@ public class Adopted_Vo implements Serializable {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
 }
 

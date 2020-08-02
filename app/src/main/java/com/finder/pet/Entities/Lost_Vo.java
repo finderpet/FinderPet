@@ -7,6 +7,7 @@ public class Lost_Vo implements Serializable {
     /**
      * Attributes
      */
+    private String date; //Fecha en que se hizo el post
     private String name; //Nombre de la mascota perdida
     private String email; //Correo de quién perdió la mascota
     private String type; //Tipo de mascota perdida
@@ -25,8 +26,9 @@ public class Lost_Vo implements Serializable {
     public Lost_Vo() {
     }
 
-    public Lost_Vo(String name, String email, String type, String observations, String phone, String image1,
+    public Lost_Vo(String date, String name, String email, String type, String observations, String phone, String image1,
                    String image2, String image3, String location, double latitude, double longitude) {
+        this.date = date;
         this.name = name;
         this.email = email;
         this.type = type;
@@ -41,10 +43,16 @@ public class Lost_Vo implements Serializable {
     }
 
     //Getters and Setters
+
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }

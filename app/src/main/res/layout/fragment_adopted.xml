@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorBackground"
     tools:context=".Fragments.AdoptedFragment">
 
     <LinearLayout
@@ -18,13 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.FinderPet.Button"
             android:id="@+id/btn_new_adopted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="AGREGA UNA MASCOTA PARA ADOPTAR"
-            android:background="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@string/report_new_pet_adopted"
             android:layout_gravity="bottom"/>
 
     </LinearLayout>

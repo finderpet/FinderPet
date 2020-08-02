@@ -16,6 +16,7 @@ import com.finder.pet.Adapters.FoundAdapter;
 import com.finder.pet.Entities.Found_Vo;
 import com.finder.pet.R;
 import com.finder.pet.Utilities.Utilities;
+import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -97,6 +98,11 @@ public class FoundFragment extends Fragment{
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     foundVo=new Found_Vo();
+
+                    if (postSnapshot.child("date").exists()){
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        foundVo.setDate(timeDays);
+                    }else { foundVo.setDate("Sin fecha"); }
 
                     foundVo.setEmail(postSnapshot.child("email").getValue().toString());
                     foundVo.setImage1(postSnapshot.child("image1").getValue().toString());

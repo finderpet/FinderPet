@@ -8,16 +8,19 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Inicio</string>
-    <string name="menu_gallery">Mapas</string>
-    <string name="menu_slideshow">Preferencias</string>
-    <string name="menu_tools">Comercial</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_map">Mapas</string>
+    <string name="menu_setting">Ajustes</string>
+    <string name="menu_advert">Anuncios</string>
+    <string name="menu_donate">Donar</string>
+    <string name="menu_share">Compartir</string>
     <string name="menu_account">Mi cuenta</string>
+    <string name="menu_info">Información</string>
+    <string name="menu_help">Ayuda</string>
     <string name="title_activity_maps">Map</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -27,11 +30,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
-    <!-- Twitter consumer key and secret -->
-    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
-    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
+    <string name="facebook_app_id">320939478933651</string>
+    <string name="fb_login_protocol_scheme">fb320939478933651</string>
 
 
     <string name="name">Nombre</string>
@@ -56,7 +56,7 @@
     <string name="not_close_session">No se pudo cerrar sesión</string>
     <string name="not_revoke">No se pudo revocar el acceso</string>
     <string name="not_firebase_auth">No se pudo autenticar con Firebase</string>
-    <string name="login_google">Iniciar Sesión con Google</string>
+    <string name="login_google">"Continuar con Google       "</string>
     <string name="login">Ingresar</string>
     <string name="next_main">Continuar</string>
     <string name="welcome">Bienvenido</string>
@@ -77,11 +77,11 @@
     <string name="tab_lost">PERDIDOS</string>
     <string name="tab_adopted">ADOPCIONES</string>
     <string name="confirm_password">Confirme contraseña</string>
-    <string name="save_register">Guardar</string>
+    <string name="save_register">Registrar</string>
     <string name="cancel">Cancelar</string>
     <string name="register_new_user">Registrar nuevo usuario</string>
     <string name="pet_type">Tipo de mascota</string>
-    <string name="location">Ubicación:</string>
+    <string name="location">Dirección / Ubicación:</string>
     <string name="email_contact">Correo de contacto:</string>
     <string name="phone">Teléfono:</string>
     <string name="observations">Observaciones:</string>
@@ -94,14 +94,14 @@
     <string name="other">Otro</string>
     <string name="description_observations">Descripción / Observaciones</string>
     <string name="new_pet_found">Nueva mascota encontrada</string>
-    <string name="add_img_pet">Agrega 3 imágenes de la mascota</string>
+    <string name="add_img_pet">Puedes agregar hasta 3 imágenes de la mascota</string>
     <string name="new_pet_lost">Nueva mascota perdida</string>
     <string name="new_pet_adoption">Nueva mascota en adopción</string>
-    <string name="register_user">REGISTRARSE</string>
+    <string name="create_new_account">Crear una cuenta</string>
     <string name="no_account">¿No tienes una cuenta?</string>
     <string name="or_login_with">o inicia con...</string>
-    <string name="recover_password">Recuperar su contraseña</string>
-    <string name="title_init_session">Iniciar sesión</string>
+    <string name="recover_password">Olvidé mi contraseña</string>
+    <string name="title_init_session">Inicia sesión con tu cuenta</string>
     <string name="type_pet">Tipo de mascota:</string>
     <string name="create_new_record">Creando nuevo registro...</string>
     <string name="registry_new_user">Registrar nuevo usuario</string>
@@ -114,11 +114,83 @@
     <string name="email">Correo electrónico</string>
     <string name="account_information">Información de mi cuenta</string>
     <string name="communicate">Communicate</string>
-    <string name="detail_info_pet">Información detallada de la mascota</string>
-    <string name="map_location_pet">Ubicación de las mascota</string>
+    <string name="detail_info_pet">Información de la mascota</string>
+    <string name="map_location_pet">Ubicación de la mascota</string>
     <string name="banner_inferior_ad_unit_id">Ads by Google</string>
     <string name="confirm_location">Confirmar ubicación o zona</string>
     <string name="location_not_found">Dirección o zona no encontrada</string>
     <string name="msg_close_app">Cerrando aplicación...</string>
     <string name="msg_come_back_soon">¡Vuelve pronto!</string>
+    <string name="select_category">Selecciona una categoría</string>
+    <string name="report_new_pet_lost">REPORTAR UNA MASCOTA PERDIDA</string>
+    <string name="report_new_pet_adopted">AGREGA UNA MASCOTA PARA ADOPTAR</string>
+    <string name="field_without_info">Sin Información</string>
+    <string name="age">Edad</string>
+    <string name="breed">Raza</string>
+    <string name="sterilized">Esterilizado</string>
+    <string name="vaccines">Vacunas</string>
+    <string name="time_post">Tiempo de publicación</string>
+    <string name="pet_age">Edad</string>
+    <string name="date">Fecha</string>
+    <string name="user_manual">Manual de uso</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="video_tutorial">Ver video tutorial</string>
+    <string name="report_problem">Informar de un problema</string>
+    <string name="label_data_policy">Política de datos</string>
+    <string name="link_data_policy">&lt;u>Política de datos&lt;/u></string>
+    <string name="link_terms_use">&lt;u>Condiciones de uso&lt;/u></string>
+    <string name="terms_use">Condiciones de uso</string>
+    <string name="about_app">Acerca de la aplicación</string>
+    <string name="developer_info">Información de los desarrolladores</string>
+    <string name="title_advert">Título del anuncio</string>
+    <string name="description_advert">Descripción del anuncio</string>
+    <string name="phone_advert">Teléfono del anuncio</string>
+    <string name="url_advert">Página del anuncio</string>
+    <string name="call_advert">Llamar al anunciante</string>
+    <string name="msg_conf_initial">Antes de comenzar debes elegir el País, la ciudad y el idioma de tu preferencia. Esta configuración la puedes cambiar en cualquier momento ingresando a la sección de Ajustes.</string>
+    <string name="initial_config">Configuración inicial</string>
+    <string name="accept">Aceptar</string>
+    <string name="more">Más...</string>
+    <string name="donate_for_help">Con tu aporte nos ayudas a mantener operativa nuestra aplicación y así poder beneficiar a miles de personas que buscan su mascota.</string>
+    <string name="donate">donar</string>
+    <string name="method_to_donate">Métodos para donar</string>
+    <string name="title_activity_container_tutorial">ContainerTutorialActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="about_finder_pet">FinderPet es una aplicación que busca formar una comunidad de personas enamorados de los animales y que quieren colaborar de manera desinteresada para ayudar a encontrar mascotas perdidas, ayudar a adoptar mascotas que buscan hogar y publicar las mascotas que se han estraviado.</string>
+    <string name="tutorial_settings">Cuando inicias la aplicación por primera vez, debes hacer la configuración inicial de tu país, tu ciudad y tu idioma de preferencia para brindarte una mejor experiencia con nuestros servicios.</string>
+    <string name="finish">Finalizar</string>
+
+    <!-- Sección de preguntas frecuentes -->
+    <string name="frequents_questions">Preguntas frecuentes</string>
+    <string name="question_1">¿Cómo hacer una publicación nueva de una mascota encontrada, perdida o en adopción?</string>
+    <string name="question_2">¿Cómo puedo cambiar los ajustes de País o ciudad?</string>
+    <string name="question_3">¿Cómo puedo eliminar una publicación que hice?</string>
+    <string name="answer_1">Debes dirigirte a la pantalla de inicio, luego debes escoger entre las 3 opciones que tenemos para publicar, puede ser encontrados, Perdidos o en Adopción, te aparecerá la lista de las mascotas con tu elección y en la parte inferior encontraras on botón que te permite agregar una nueva publicación, Te aparece un formulario que debes diligenciar y luego das clic en Guardar.</string>
+    <string name="answer_2">Debes dirigirte a la sección de Ajustes del menú desplegable, luego en la sección de UBICACIÓN seleccionas "País" o "Estado o Ciudad" dependiendo de lo que quieres cambiar, te aparece una lista donde puedes seleccionar el País o Ciudad de tu preferencia.</string>
+    <string name="answer_3">Si quieres eliminar una publicación porque tiene algún error en los datos ingresados, puedes enviar un correo a nuestra área de soporte (finderpetapp@gmail.com) para que tu publicación sea corregida, debes informar en que campo quedó el error y la información correcta que se ingresará. En el caso de que ya no quieras que aparezca tu publicación en nuestra App, envía el correo con el asunto Eliminar publicación definitivamente.</string>
+    <string name="send">Enviar</string>
+    <string name="problem_description">Descripción del problema</string>
+    <string name="problem_title">Título del problema</string>
+    <string name="mail_problem">Correo para contacto (Opcional)</string>
+    <string name="add_problem_image">Puedes tomar un pantallazo del error que se está presentando y enviarla para evidenciar mejor el problema (Opcional).</string>
+    <string name="delete_account">Eliminar cuenta</string>
+    <string name="news_and_events"><![CDATA[Noticias & Eventos]]></string>
+    <string name="save">Guardar</string>
+    <string name="and">" y "</string>
+    <string name="label_policy_terms">Al acceder, aceptas nuestra:</string>
+    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
+    <string name="start_level">Level 1</string>
+    <string name="next_level">Next Level</string>
+    <string name="level_text">Level %1$d</string>
+    <!-- -
+    This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+    For more information, see https://support.google.com/admob/answer/3052638
+<!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="adaptive_banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="content_description_media">Imagen o multimedia</string>
+    <string name="contact_us">Contáctanos</string>
+    <string name="version_app">Versión 1.0.0</string>
+
 </resources>

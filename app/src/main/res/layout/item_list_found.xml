@@ -10,9 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:layout_marginTop="6dp"
-        app:cardElevation="2dp"
-        android:background="@color/colorWhite">
+        android:layout_marginTop="6dp">
 
         <LinearLayout
             android:id="@+id/linear_layout"
@@ -41,7 +39,7 @@
                     android:layout_marginTop="8dp"
                     android:textColor="@color/primary_text"
                     android:text="@string/pet_type"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -51,24 +49,32 @@
                     android:text="@string/location" />
 
                 <TextView
-                    android:id="@+id/emailContactFound"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email_contact" />
-
-                <TextView
                     android:id="@+id/phoneContactFound"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phone" />
+
+                <TextView
+                    android:id="@+id/timePostFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/back_found"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="start"
+                    android:text="@string/time_post"  />
+
             </LinearLayout>
             <ImageView
-                android:id="@+id/markMapFound"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/mark"
+                android:id="@+id/markFound"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:srcCompat="@mipmap/ic_adopted"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="5dp"/>
 
 
         </LinearLayout>

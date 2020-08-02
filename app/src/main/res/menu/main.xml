@@ -2,8 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_help"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:icon="@drawable/ic_help_outline_128"
+        android:title="@string/menu_help"
+        android:onClick="onclickItem"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_pqr"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_outline_event_32"
+        android:title="Preguntas frecuentes"
+        android:onClick="onclickItem"
         app:showAsAction="never" />
 </menu>

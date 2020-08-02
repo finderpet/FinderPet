@@ -11,9 +11,6 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_tabsActivity"
-            app:destination="@id/tabsActivity" />
-        <action
             android:id="@+id/action_nav_home_to_foundFragment"
             app:destination="@id/foundFragment" />
         <action
@@ -25,55 +22,65 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.finder.pet.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" >
+        android:id="@+id/nav_map"
+        android:name="com.finder.pet.ui.maps.MapsFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_maps" >
         <action
             android:id="@+id/action_nav_gallery_to_mapsActivity"
             app:destination="@id/mapsActivity" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.finder.pet.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" >
+        android:id="@+id/nav_setting"
+        android:name="com.finder.pet.ui.settings.SettingsFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_nav_slideshow_to_nav_profile"
-            app:destination="@id/nav_profile" />
+            android:id="@+id/action_nav_setting_to_nav_account"
+            app:destination="@id/nav_account" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.finder.pet.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" >
+        android:id="@+id/nav_advert"
+        android:name="com.finder.pet.ui.adverts.AdvertsFragment"
+        android:label="@string/menu_advert"
+        tools:layout="@layout/fragment_adverts" >
         <action
-            android:id="@+id/action_nav_tools_to_servicesFragment"
-            app:destination="@id/servicesFragment" />
-        <action
-            android:id="@+id/action_nav_tools_to_productsFragment"
+            android:id="@+id/action_nav_advert_to_productsFragment"
             app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_nav_advert_to_listServicesFragment"
+            app:destination="@id/listServicesFragment" />
+        <action
+            android:id="@+id/action_nav_advert_to_pruebasFragment"
+            app:destination="@id/adsInterstitialFragment" />
+        <action
+            android:id="@+id/action_nav_advert_to_pruebasFragment2"
+            app:destination="@id/pruebasFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.finder.pet.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_donate"
+        android:name="com.finder.pet.ui.donate.DonateFragment"
+        android:label="@string/menu_donate"
+        tools:layout="@layout/fragment_donate" >
+        <action
+            android:id="@+id/action_nav_donate_to_detailsProductsFragment"
+            app:destination="@id/detailsProductsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_account"
-        android:name="com.finder.pet.ui.Account.AccountFragment"
+        android:name="com.finder.pet.ui.account.AccountFragment"
         android:label="@string/menu_account"
         tools:layout="@layout/fragment_account" />
 
     <fragment
-        android:id="@+id/nav_profile"
-        android:name="com.finder.pet.Fragments.ProfileFragment"
-        android:label="Perfil"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/nav_pqr"
+        android:name="com.finder.pet.Fragments.frequentQuestionsFragment"
+        android:label="Preguntas Frecuentes"
+        tools:layout="@layout/fragment_frequent_questions" />
     <fragment
         android:id="@+id/foundFragment"
         android:name="com.finder.pet.Fragments.FoundFragment"
@@ -111,11 +118,6 @@
             app:destination="@id/detailAdoptedFragment" />
     </fragment>
     <activity
-        android:id="@+id/tabsActivity"
-        android:name="com.finder.pet.Main.TabsActivity"
-        android:label="activity_tabs"
-        tools:layout="@layout/activity_tabs" />
-    <activity
         android:id="@+id/mapsActivity"
         android:name="com.finder.pet.Main.MapsActivity"
         android:label="activity_maps"
@@ -124,11 +126,7 @@
         android:id="@+id/servicesFragment"
         android:name="com.finder.pet.Fragments.servicesFragment"
         android:label="Servicios"
-        tools:layout="@layout/fragment_services" >
-        <action
-            android:id="@+id/action_servicesFragment_to_listServicesFragment"
-            app:destination="@id/listServicesFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_services" />
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.finder.pet.Fragments.productsFragment"
@@ -141,31 +139,23 @@
     <fragment
         android:id="@+id/listServicesFragment"
         android:name="com.finder.pet.Fragments.listServicesFragment"
-        android:label="fragment_list_services"
-        tools:layout="@layout/fragment_list_services" >
-        <action
-            android:id="@+id/action_listServicesFragment_to_detailsServicesFragment"
-            app:destination="@id/detailsServicesFragment" />
-    </fragment>
+        android:label="Tiendas y Veterinarias"
+        tools:layout="@layout/fragment_list_services" />
     <fragment
         android:id="@+id/listProductsFragment"
         android:name="com.finder.pet.Fragments.listProductsFragment"
         android:label="fragment_list_products"
-        tools:layout="@layout/fragment_list_products" >
-        <action
-            android:id="@+id/action_listProductsFragment_to_detailsProductsFragment"
-            app:destination="@id/detailsProductsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_list_products" />
     <fragment
-        android:id="@+id/detailsServicesFragment"
-        android:name="com.finder.pet.Fragments.detailsServicesFragment"
-        android:label="fragment_details_services"
-        tools:layout="@layout/fragment_details_services" />
+        android:id="@+id/dataPolicyFragment"
+        android:name="com.finder.pet.Fragments.informationShowFragment"
+        android:label="@string/label_data_policy"
+        tools:layout="@layout/fragment_information_show" />
     <fragment
         android:id="@+id/detailsProductsFragment"
-        android:name="com.finder.pet.Fragments.detailsProductsFragment"
-        android:label="fragment_details_products"
-        tools:layout="@layout/fragment_details_products" />
+        android:name="com.finder.pet.Fragments.methodDonateFragment"
+        android:label="Métodos de Donación"
+        tools:layout="@layout/fragment_method_donate" />
     <activity
         android:id="@+id/loginActivity"
         android:name="com.finder.pet.Authentication.LoginActivity"
@@ -188,12 +178,12 @@
         tools:layout="@layout/fragment_form_adopted" />
     <fragment
         android:id="@+id/detailFoundFragment"
-        android:name="com.finder.pet.Fragments.DetailFoundFragment"
+        android:name="com.finder.pet.Fragments.detailFoundFragment"
         android:label="Ver Detalle"
         tools:layout="@layout/fragment_detail_found" >
         <action
-            android:id="@+id/action_detailFoundFragment_to_viewImageFragment"
-            app:destination="@id/viewImageFragment" />
+            android:id="@+id/action_detailFoundFragment_to_pagerPhotoFragment"
+            app:destination="@id/pagerPhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailLostFragment"
@@ -201,8 +191,8 @@
         android:label="Ver el detalle"
         tools:layout="@layout/fragment_detail_lost" >
         <action
-            android:id="@+id/action_detailLostFragment_to_viewImageFragment"
-            app:destination="@id/viewImageFragment" />
+            android:id="@+id/action_detailLostFragment_to_pagerPhotoFragment"
+            app:destination="@id/pagerPhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailAdoptedFragment"
@@ -210,14 +200,50 @@
         android:label="Ver el detalle"
         tools:layout="@layout/fragment_detail_adopted" >
         <action
-            android:id="@+id/action_detailAdoptedFragment_to_viewImageFragment"
-            app:destination="@id/viewImageFragment" />
+            android:id="@+id/action_detailAdoptedFragment_to_pagerPhotoFragment"
+            app:destination="@id/pagerPhotoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/viewImageFragment"
-        android:name="com.finder.pet.Fragments.ViewImageFragment"
-        android:label="fragment_view_image"
-        tools:layout="@layout/fragment_view_image" />
+        android:id="@+id/nav_info"
+        android:name="com.finder.pet.ui.information.InformationFragment"
+        android:label="@string/menu_info"
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_nav_info_to_dataPolicyFragment"
+            app:destination="@id/dataPolicyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.finder.pet.ui.help.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help">
+        <action
+            android:id="@+id/action_nav_help_to_nav_pqr"
+            app:destination="@id/nav_pqr" />
+        <action
+            android:id="@+id/action_nav_help_to_reportProblemFragment"
+            app:destination="@id/reportProblemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagerPhotoFragment"
+        android:name="com.finder.pet.Fragments.PagerPhotoFragment"
+        android:label="fragment_pager_photo"
+        tools:layout="@layout/fragment_pager_photo" />
+    <fragment
+        android:id="@+id/reportProblemFragment"
+        android:name="com.finder.pet.Fragments.reportProblemFragment"
+        android:label="Informar un problema"
+        tools:layout="@layout/fragment_report_problem" />
+    <fragment
+        android:id="@+id/adsInterstitialFragment"
+        android:name="com.finder.pet.Fragments.adsInterstitialFragment"
+        android:label="fragment_ads_interstitial"
+        tools:layout="@layout/fragment_ads_interstitial" />
+    <fragment
+        android:id="@+id/pruebasFragment"
+        android:name="com.finder.pet.Fragments.pruebasFragment"
+        android:label="fragment_pruebas"
+        tools:layout="@layout/fragment_pruebas" />
 
     <!--
     <activity

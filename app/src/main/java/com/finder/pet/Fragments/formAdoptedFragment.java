@@ -22,6 +22,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 
 import com.finder.pet.Entities.Adopted_Vo;
 import com.finder.pet.R;
+import com.finder.pet.Utilities.commonMethods;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -53,6 +56,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -75,8 +81,9 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
     // The fragment initialization parameters
     private RadioButton rbDog, rbCat, rbOther;
-    private TextInputLayout textInputLocation, textInputName, textInputEmail, textInputPhone, textInputDescription;
-    private TextInputEditText fieldLocation, fieldNamePet, fieldEmail, fieldPhone, fieldDescription;
+    private TextInputLayout textInputLocation, textInputName, textInputEmail, textInputPhone, textInputAge, textInputBreed, textInputSterilized, textInputVaccines, textInputDescription;
+    private TextInputEditText fieldLocation, fieldNamePet, fieldEmail, fieldPhone, fieldAge, fieldBreed, fieldVaccines, fieldDescription;
+    private AutoCompleteTextView fieldSterilized;
     private ImageView img1, img2, img3, imgUpdate;
     private Uri pathLocal1, pathLocal2, pathLocal3; // Local path of the images to upload
     private String path_uri_1, path_uri_2, path_uri_3; // Path of images saved in storage firebase
@@ -128,11 +135,19 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         textInputName = view.findViewById(R.id.textInputAddAdoptedName);
         textInputEmail = view.findViewById(R.id.textInputAddAdoptedEmail);
         textInputPhone = view.findViewById(R.id.textInputAddAdoptedPhone);
+        textInputAge = view.findViewById(R.id.textInputAddAdoptedAge);
+        textInputBreed = view.findViewById(R.id.textInputAddAdoptedBreed);
+        textInputSterilized = view.findViewById(R.id.textInputAddAdoptedSterilized);
+        textInputVaccines = view.findViewById(R.id.textInputAddAdoptedVaccines);
         textInputDescription = view.findViewById(R.id.textInputAddAdoptedDescription);
         fieldLocation = view.findViewById(R.id.fieldAddAdoptedLocation);
         fieldNamePet = view.findViewById(R.id.fieldAddAdoptedName);
         fieldEmail = view.findViewById(R.id.fieldAddAdoptedEmail);
         fieldPhone = view.findViewById(R.id.fieldAddAdoptedPhone);
+        fieldAge = view.findViewById(R.id.fieldAddAdoptedAge);
+        fieldBreed = view.findViewById(R.id.fieldAddAdoptedBreed);
+        fieldSterilized = view.findViewById(R.id.fieldAddAdoptedSterilized);
+        fieldVaccines = view.findViewById(R.id.fieldAddAdoptedVaccines);
         fieldDescription = view.findViewById(R.id.fieldAddAdoptedDescription);
         img1 = view.findViewById(R.id.imageAdopted_1);
         img2 = view.findViewById(R.id.imageAdopted_2);
@@ -146,6 +161,11 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         path_uri_3="null";
         latitude = 6.2443382;
         longitude = -75.573553;
+
+        // Creamos el adapter con los items para el textfield de Esterilizado
+        String[] Types = new String[] {"Sí", "No"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.list_type_item, Types);
+        fieldSterilized.setAdapter(adapter);
 
         btnConfirmLoc = view.findViewById(R.id.btnConfirmLocAdopted);
 
@@ -327,9 +347,14 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
             public void run() {
                 // Create variables to the object
                 String rbPet="null";
+                String date = "null";
                 String name = "null";
                 String email = "null";
                 String type = "null";
+                String age = "null";
+                String breed = "null";
+                String sterilized = "null";
+                String vaccines = "null";
                 String description = "null";
                 String phone = "null";
                 String img_1 = "null";
@@ -341,9 +366,14 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 if (rbDog.isChecked()) rbPet = "Perro";
                 if (rbCat.isChecked()) rbPet = "Gato";
                 if (rbOther.isChecked()) rbPet = "Otro";
+                date = commonMethods.getDateTime();
                 name = fieldNamePet.getText().toString().trim();
                 email = fieldEmail.getText().toString().trim();
                 type = rbPet;
+                age = fieldAge.getText().toString().trim();
+                breed = fieldBreed.getText().toString().trim();
+                sterilized = fieldSterilized.getText().toString().trim();
+                vaccines = fieldVaccines.getText().toString().trim();
                 description = fieldDescription.getText().toString().trim();
                 phone = fieldPhone.getText().toString().trim();
                 img_1 = path_uri_1;
@@ -356,7 +386,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Adopted_Vo adopted_vo = new Adopted_Vo(name, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
+                Adopted_Vo adopted_vo = new Adopted_Vo(date, name, email, type, age, breed, sterilized, vaccines, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet
                 databaseRef.child(id).setValue(adopted_vo);
@@ -366,10 +396,14 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 fieldLocation.setText("");
                 fieldPhone.setText("");
                 fieldEmail.setText("");
+                fieldAge.setText("");
+                fieldBreed.setText("");
+                fieldSterilized.setText("");
+                fieldVaccines.setText("");
                 fieldDescription.setText("");
-                img1.setImageResource(R.mipmap.ic_photo1);
-                img2.setImageResource(R.mipmap.ic_photo2);
-                img3.setImageResource(R.mipmap.ic_photo3);
+                img1.setImageResource(R.drawable.img_upload_1);
+                img2.setImageResource(R.drawable.img_upload_2);
+                img3.setImageResource(R.drawable.img_upload_3);
                 latitude = 6.2443382;
                 longitude = -75.573553;
 
@@ -426,6 +460,34 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
             valid = false;
         } else {
             textInputDescription.setError(null);
+        }
+        String age = fieldAge.getText().toString();
+        if (TextUtils.isEmpty(age)) {
+            textInputAge.setError("Edad Obligatoria");
+            valid = false;
+        } else {
+            textInputAge.setError(null);
+        }
+        String breed = fieldBreed.getText().toString();
+        if (TextUtils.isEmpty(breed)) {
+            textInputBreed.setError("Raza Obligatoria");
+            valid = false;
+        } else {
+            textInputBreed.setError(null);
+        }
+        String sterilized = fieldSterilized.getText().toString();
+        if (TextUtils.isEmpty(sterilized)) {
+            textInputSterilized.setError("Campo obligatorio");
+            valid = false;
+        } else {
+            textInputSterilized.setError(null);
+        }
+        String vaccines = fieldVaccines.getText().toString();
+        if (TextUtils.isEmpty(vaccines)) {
+            textInputVaccines.setError("La descripción es Obligatoria");
+            valid = false;
+        } else {
+            textInputVaccines.setError(null);
         }
         return valid;
     }
@@ -707,4 +769,5 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 //            }
 //        });
     }
+
 }

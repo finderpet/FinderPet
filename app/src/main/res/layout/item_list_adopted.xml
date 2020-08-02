@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
@@ -35,45 +34,52 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/typeAdopted"
+                    android:id="@+id/nameAdopted"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/primary_text"
-                    android:text="@string/pet_type"
-                    android:textSize="18sp"
+                    android:text="@string/name"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/locationAdopted"
+                    android:id="@+id/AgeAdopted"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/location" />
-
-                <TextView
-                    android:id="@+id/emailContactAdopted"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email_contact" />
+                    android:text="@string/pet_age" />
 
                 <TextView
                     android:id="@+id/phoneContactAdopted"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phone" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/markMapAdopted"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/mark"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"/>
 
+                <TextView
+                    android:id="@+id/timePostAdopted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/back_adopted"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="start"
+                    android:text="@string/time_post" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/markAdopted"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/ic_adopted"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"/>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </LinearLayout>

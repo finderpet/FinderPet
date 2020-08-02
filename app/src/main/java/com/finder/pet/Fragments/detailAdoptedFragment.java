@@ -2,11 +2,14 @@ package com.finder.pet.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +48,7 @@ public class detailAdoptedFragment extends Fragment implements OnMapReadyCallbac
     private String mParam1;
     private String mParam2;
 
-    private TextView txtName, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
+    private TextView txtDate, txtName, txtEmail, txtType, txtAge, txtBreed, txtSterilized, txtVaccines, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
     private String namePet;
@@ -89,21 +92,17 @@ public class detailAdoptedFragment extends Fragment implements OnMapReadyCallbac
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_detail_adopted, container, false);
+        return inflater.inflate(R.layout.fragment_detail_adopted, container, false);
 
-        txtName = view.findViewById(R.id.detailAdoptedName);
-        txtType = view.findViewById(R.id.detailAdoptedTypePet);
-        txtLocation = view.findViewById(R.id.detailAdoptedLocation);
-        txtEmail = view.findViewById(R.id.detailAdoptedEmailContact);
-        txtPhone = view.findViewById(R.id.detailAdoptedPhoneContact);
-        txtObservations = view.findViewById(R.id.detailAdoptedObservations);
-        imgPet1 = view.findViewById(R.id.imgDetailAdopted1);
-        imgPet2 = view.findViewById(R.id.imgDetailAdopted2);
-        imgPet3 = view.findViewById(R.id.imgDetailAdopted3);
+    }
 
-        // Asociamos el fragment que contendra el mapa en el detalle
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapView);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Initialize variables
+        setupViews(view);
+
         mapFragment.getMapAsync(this);
 
         Bundle objectAdopted=getArguments();
@@ -112,10 +111,15 @@ public class detailAdoptedFragment extends Fragment implements OnMapReadyCallbac
             adopted_vo = (Adopted_Vo) objectAdopted.getSerializable("objeto");
 
             //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas perdidas
+            txtDate.setText(adopted_vo.getDate());
             txtName.setText(adopted_vo.getName());
-            txtType.setText(adopted_vo.getType());
-            txtLocation.setText(adopted_vo.getLocation());
             txtEmail.setText(adopted_vo.getEmail());
+            txtType.setText(adopted_vo.getType());
+            txtAge.setText(adopted_vo.getAge());
+            txtBreed.setText(adopted_vo.getBreed());
+            txtSterilized.setText(adopted_vo.getSterilized());
+            txtVaccines.setText(adopted_vo.getVaccines());
+            txtLocation.setText(adopted_vo.getLocation());
             txtPhone.setText(adopted_vo.getPhone());
             txtObservations.setText(adopted_vo.getObservations());
             imgUrl_1=adopted_vo.getImage1();
@@ -135,39 +139,60 @@ public class detailAdoptedFragment extends Fragment implements OnMapReadyCallbac
                     .into(imgPet3);
             lat = adopted_vo.getLatitude();
             lng = adopted_vo.getLongitude();
-            //Toast.makeText(getContext(), String.valueOf(lng), Toast.LENGTH_LONG).show();
             namePet = adopted_vo.getName();
         }
 
         imgPet1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
         imgPet2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
         imgPet3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailAdoptedFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
+    }
 
-        return view;
+    private void setupViews(View view) {
+        txtDate= view.findViewById(R.id.detailAdoptedDate);
+        txtName = view.findViewById(R.id.detailAdoptedName);
+        txtEmail = view.findViewById(R.id.detailAdoptedEmailContact);
+        txtType = view.findViewById(R.id.detailAdoptedTypePet);
+        txtAge = view.findViewById(R.id.detailAdoptedAgePet);
+        txtBreed = view.findViewById(R.id.detailAdoptedBreed);
+        txtSterilized = view.findViewById(R.id.detailAdoptedSterilized);
+        txtVaccines = view.findViewById(R.id.detailAdoptedVaccines);
+        txtLocation = view.findViewById(R.id.detailAdoptedLocation);
+        txtPhone = view.findViewById(R.id.detailAdoptedPhoneContact);
+        txtObservations = view.findViewById(R.id.detailAdoptedObservations);
+        imgPet1 = view.findViewById(R.id.imgDetailAdopted1);
+        imgPet2 = view.findViewById(R.id.imgDetailAdopted2);
+        imgPet3 = view.findViewById(R.id.imgDetailAdopted3);
+
+        // Asociamos el fragment que contendra el mapa en el detalle
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapView);
     }
 
     // Create map

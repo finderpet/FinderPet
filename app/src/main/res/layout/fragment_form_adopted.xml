@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorBackground"
     tools:context=".Fragments.formAdoptedFragment">
 
     <ScrollView
@@ -52,11 +52,13 @@
 
             </LinearLayout>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="4dp"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
@@ -69,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/new_pet_adoption"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="12dp"
                         android:textSize="20sp"
                         android:gravity="center"
                         android:textColor="@color/primary_text"/>
@@ -78,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginRight="8dp"
                         android:orientation="horizontal">
 
@@ -122,10 +124,11 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp"
-                        app:errorIconDrawable="@null"
+                        app:endIconDrawable="@drawable/ic_my_location_24"
                         app:endIconMode="custom"
-                        app:endIconDrawable="@drawable/ic_location_24"
-                        app:endIconTint="@color/colorBlack">
+                        app:endIconTint="@color/colorBlack"
+                        app:errorIconDrawable="@null">
+
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/fieldAddAdoptedLocation"
                             android:layout_width="match_parent"
@@ -138,8 +141,141 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedName"
+                            style="@style/Widget.FinderPet.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="4dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddAdoptedName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/name_pet"
+                                android:inputType="textCapWords"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedAge"
+                            style="@style/Widget.FinderPet.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddAdoptedAge"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/age"
+                                android:inputType="textCapWords"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedBreed"
+                            style="@style/Widget.FinderPet.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="4dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddAdoptedBreed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/breed"
+                                android:inputType="textCapWords"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedSterilized"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxStrokeWidth="2dp"
+                            app:boxStrokeColor="@color/primary_text"
+                            android:textColorHint="@color/colorLetterHint"
+                            app:hintTextColor="@color/colorPrimarySoft"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp">
+                            <AutoCompleteTextView
+                                android:id="@+id/fieldAddAdoptedSterilized"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/sterilized"
+                                android:inputType="none"
+                                tools:ignore="Deprecated,LabelFor"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedEmail"
+                            style="@style/Widget.FinderPet.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="4dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddAdoptedEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/email_contact"
+                                android:inputType="textEmailAddress"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddAdoptedPhone"
+                            style="@style/Widget.FinderPet.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddAdoptedPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/phone"
+                                android:inputType="phone"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddAdoptedName"
+                        android:id="@+id/textInputAddAdoptedVaccines"
                         style="@style/Widget.FinderPet.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -147,49 +283,11 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddAdoptedName"
+                            android:id="@+id/fieldAddAdoptedVaccines"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/name_pet"
-                            android:inputType="textEmailAddress"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/primary_text" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddAdoptedEmail"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddAdoptedEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/email_contact"
-                            android:inputType="textEmailAddress"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/primary_text" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddAdoptedPhone"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddAdoptedPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/phone"
-                            android:inputType="phone"
+                            android:hint="@string/vaccines"
+                            android:inputType="textCapWords|textMultiLine"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="@color/primary_text" />
 
@@ -203,7 +301,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="12dp">
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/fieldAddAdoptedDescription"
                             android:layout_width="match_parent"
@@ -215,64 +313,47 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_img_pet"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:textColor="@color/primary_text"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_img_pet"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:textColor="@color/primary_text"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="4dp">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageAdopted_1"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/img_upload_1"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageAdopted_2"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/img_upload_2"/>
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_image"
-                        android:layout_width="80dp"
-                        android:layout_height="67dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_menu_camera"
-                        android:tint="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageAdopted_3"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/img_upload_3"/>
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageAdopted_1"
-                        android:layout_width="80dp"
-                        android:layout_height="67dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_photo1"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageAdopted_2"
-                        android:layout_width="80dp"
-                        android:layout_height="67dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_photo2"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageAdopted_3"
-                        android:layout_width="80dp"
-                        android:layout_height="67dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_photo3"/>
+                    </LinearLayout>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -281,15 +362,13 @@
                 android:id="@+id/btnAddNewAdopted"
                 style="@style/Widget.FinderPet.Button"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:text="@string/save_register"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/save"
                 app:cornerRadius="6dp"
-                app:icon="@drawable/ic_chevron_right_24" />
+                app:icon="@drawable/ic_outline_save_24" />
 
         </LinearLayout>
 

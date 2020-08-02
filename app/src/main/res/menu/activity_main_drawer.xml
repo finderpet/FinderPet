@@ -7,32 +7,45 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@mipmap/ic_home"
+            android:icon="@drawable/ic_outline_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_ubication"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_outline_location_32"
+            android:title="@string/menu_map" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_advert"
+            android:icon="@mipmap/ic_campaign_black_24dp"
+            android:title="@string/menu_advert" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_share" />
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_outline_settings_128"
+            android:title="@string/menu_setting" />
         <item
             android:id="@+id/nav_account"
-            android:icon="@drawable/ic_profile"
+            android:icon="@drawable/ic_outline_account_32"
             android:title="@string/menu_account" />
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_outline_info_32"
+            android:title="@string/menu_info" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_outline_128"
+            android:title="@string/menu_help" />
+        <item
+            android:id="@+id/nav_donate"
+            android:icon="@drawable/ic_giftcard_24"
+            android:title="Donar" />
     </group>
 
-    <item android:title="@string/communicate">
+    <item android:title="@string/more">
         <menu>
+            <item
+                android:id="@+id/shareApp"
+                android:icon="@drawable/ic_outline_share_24"
+                android:onClick="onclickItem"
+                android:title="@string/menu_share" />
             <item
                 android:id="@+id/closeApp"
                 android:onClick="onclickItem"

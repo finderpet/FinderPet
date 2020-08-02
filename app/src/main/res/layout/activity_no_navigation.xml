@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/fui_bgEmail"
+                android:textColor="@android:color/holo_red_light"
                 android:layout_marginRight="8dp"
                 android:text="@string/oops" />
 

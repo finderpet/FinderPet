@@ -44,15 +44,21 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
     public void onBindViewHolder(@NonNull FoundViewHolder holder, int position) {
         holder.txtType.setText("Tipo mascota: "+listFound.get(position).getType()); //para traer un entero colocar .toString
         holder.txtLocation.setText("Dirección: "+listFound.get(position).getLocation());
-        holder.txtEmail.setText("Correo: "+listFound.get(position).getEmail());
         holder.txtPhone.setText("Teléfono: "+listFound.get(position).getPhone());
-        //holder.txtObservation.setText("Descripción: "+listFound.get(position).getFound_description());
+        holder.txtTimePost.setText("Publicado "+listFound.get(position).getDate());
         String url = listFound.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
                 .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
                 .into(holder.mPhoto);
+
+        if (listFound.get(position).getType().equals("Perro")){
+            holder.markType.setImageResource(R.mipmap.ic_dog);
+        }
+        if (listFound.get(position).getType().equals("Gato")){
+            holder.markType.setImageResource(R.mipmap.ic_cat);
+        }
 
     }
 
@@ -74,17 +80,17 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
 
     public class FoundViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtType, txtLocation, txtEmail, txtPhone, txtObservation;
-        ImageView mPhoto;
+        TextView txtType, txtLocation, txtTimePost, txtPhone;
+        ImageView mPhoto, markType;
 
         public FoundViewHolder(View itemView) {
             super(itemView);
             txtType=itemView.findViewById(R.id.typeFound);
             txtLocation=itemView.findViewById(R.id.locationFound);
-            txtEmail=itemView.findViewById(R.id.emailContactFound);
+            txtTimePost =itemView.findViewById(R.id.timePostFound);
             txtPhone=itemView.findViewById(R.id.phoneContactFound);
-            //txtObservation=itemView.findViewById(R.id.observationsContactFound);
             mPhoto=itemView.findViewById(R.id.imgFound);
+            markType=itemView.findViewById(R.id.markFound);
         }
     }
 }

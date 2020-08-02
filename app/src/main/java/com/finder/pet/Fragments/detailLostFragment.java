@@ -2,6 +2,8 @@ package com.finder.pet.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -39,7 +41,7 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
     private String mParam1;
     private String mParam2;
 
-    private TextView txtName, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
+    private TextView txtDate, txtName, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
     private String namePet;
@@ -83,21 +85,16 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_detail_lost, container, false);
+        return inflater.inflate(R.layout.fragment_detail_lost, container, false);
+    }
 
-        txtName = view.findViewById(R.id.detailLostName);
-        txtType = view.findViewById(R.id.detailLostTypePet);
-        txtLocation = view.findViewById(R.id.detailLostLocation);
-        txtEmail = view.findViewById(R.id.detailLostEmailContact);
-        txtPhone = view.findViewById(R.id.detailLostPhoneContact);
-        txtObservations = view.findViewById(R.id.detailLostObservations);
-        imgPet1 = view.findViewById(R.id.imgDetailLost1);
-        imgPet2 = view.findViewById(R.id.imgDetailLost2);
-        imgPet3 = view.findViewById(R.id.imgDetailLost3);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Asociamos el fragment que contendra el mapa en el detalle
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapView);
+        // Initialize variables
+        setupViews(view);
+
         mapFragment.getMapAsync(this);
 
         Bundle objectLost=getArguments();
@@ -106,6 +103,7 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
             lost_vo = (Lost_Vo) objectLost.getSerializable("objeto");
 
             //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas perdidas
+            txtDate.setText(lost_vo.getDate());
             txtName.setText(lost_vo.getName());
             txtType.setText(lost_vo.getType());
             txtLocation.setText(lost_vo.getLocation());
@@ -129,39 +127,56 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
                     .into(imgPet3);
             lat = lost_vo.getLatitude();
             lng = lost_vo.getLongitude();
-            //Toast.makeText(getContext(), String.valueOf(lng), Toast.LENGTH_LONG).show();
             namePet = lost_vo.getName();
         }
 
         imgPet1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
         imgPet2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
         imgPet3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar el string de la url de la imagen
-                bundle.putString("objeto", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_viewImageFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
+                bundle.putString("objeto1", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
+                bundle.putString("objeto3", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
             }
         });
+    }
 
-        return view;
+    private void setupViews(View view) {
+        txtDate= view.findViewById(R.id.detailLostDate);
+        txtName = view.findViewById(R.id.detailLostName);
+        txtType = view.findViewById(R.id.detailLostTypePet);
+        txtLocation = view.findViewById(R.id.detailLostLocation);
+        txtEmail = view.findViewById(R.id.detailLostEmailContact);
+        txtPhone = view.findViewById(R.id.detailLostPhoneContact);
+        txtObservations = view.findViewById(R.id.detailLostObservations);
+        imgPet1 = view.findViewById(R.id.imgDetailLost1);
+        imgPet2 = view.findViewById(R.id.imgDetailLost2);
+        imgPet3 = view.findViewById(R.id.imgDetailLost3);
+
+        // Asociamos el fragment que contendra el mapa en el detalle
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapView);
     }
 
     // Create map
