@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinderPet</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">FinderPet</string>
+    <string name="nav_header_subtitle">finderpetapp@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_map">Maps</string>
+    <string name="menu_setting">Settings</string>
+    <string name="menu_advert">Advertisements</string>
+    <string name="menu_donate">Donate</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_account">My account</string>
+    <string name="menu_info">Information</string>
+    <string name="menu_help">Help</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="load_image">Select image</string>
+    <string name="description">Description</string>
+    <string name="menu">Menu</string>
+    <string name="agregar">Add</string>
+    <string name="detail_pet">Pet detail</string>
+    <string name="name_pet">Pet name</string>
+    <string name="editar_perfil">Edit Profail</string>
+    <string name="hint_search">search</string>
+
+    <string name="not_log_in">Cannot start session</string>
+    <string name="log_out">SignOut</string>
+    <string name="revoke">Delete account</string>
+    <string name="not_close_session">Cannot close the session</string>
+    <string name="not_revoke">Access cannot be revoked</string>
+    <string name="not_firebase_auth">Cannot authenticate with Firebase</string>
+    <string name="login_google">"Continue with Google       "</string>
+    <string name="login">Login</string>
+    <string name="next_main">Continue</string>
+    <string name="welcome">Welcome</string>
+
+    <string-array name="especie">
+        <item></item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Nombres de las pestañas del view pager -->
+    <string name="tab_found">FOUND</string>
+    <string name="tab_lost">LOST</string>
+    <string name="tab_adopted">ADOPTIONS</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="save_register">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="register_new_user">Register new user</string>
+    <string name="pet_type">Pet type</string>
+    <string name="location">Direction / Location:</string>
+    <string name="email_contact">Contact email:</string>
+    <string name="phone">Phone:</string>
+    <string name="observations">Observations:</string>
+    <string name="load">Loading...</string>
+    <string name="report_new_pet_found">REPORT A FOUND PET</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="dog">Dog</string>
+    <string name="cat">Cat</string>
+    <string name="other">Other</string>
+    <string name="description_observations">Description / Observations</string>
+    <string name="new_pet_found">New pet found</string>
+    <string name="add_img_pet">You can add up to 3 images of the pet</string>
+    <string name="new_pet_lost">New pet lost</string>
+    <string name="new_pet_adoption">New pet for adoption</string>
+    <string name="register_user">REGISTER</string>
+    <string name="no_account">You do not have an account?</string>
+    <string name="or_login_with">Or start with...</string>
+    <string name="recover_password">I forgot my password</string>
+    <string name="title_init_session">Sign in with your account</string>
+    <string name="create_new_record">Creating new record...</string>
+    <string name="registry_new_user">Register new user</string>
+    <string name="oops">Oops!</string>
+    <string name="no_connection_alert">There is no Internet conection. To continue check if your mobile data is on or if you are connected to a Wi-Fi network</string>
+    <string name="exit">Exit</string>
+    <string name="let_continue">Continue</string>
+    <string name="select_type_pet">Choose the type of pet:</string>
+    <string name="email">Email</string>
+    <string name="account_information">My account information</string>
+    <string name="communicate">Communicate</string>
+    <string name="detail_info_pet">Pet information</string>
+    <string name="map_location_pet">Pet location</string>
+    <string name="banner_inferior_ad_unit_id">Ads by Google</string>
+    <string name="confirm_location">Confirm location or area</string>
+    <string name="location_not_found">Address or zone not found</string>
+    <string name="msg_close_app">Closing application...</string>
+    <string name="msg_come_back_soon">¡Come back soon!</string>
+    <string name="select_category">Select a category</string>
+    <string name="report_new_pet_lost">REPORT A LOST PET</string>
+    <string name="report_new_pet_adopted">ADD A PET TO ADOPT</string>
+    <string name="field_without_info">No information</string>
+    <string name="age">Age</string>
+    <string name="breed">Breed</string>
+    <string name="sterilized">Sterilized</string>
+    <string name="vaccines">Vaccines</string>
+    <string name="time_post">Publishing time</string>
+    <string name="pet_age">Age</string>
+    <string name="date">Date</string>
+    <string name="user_manual">User manual</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="video_tutorial">See video tutorial</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="label_data_policy">Data policy</string>
+    <string name="terms_use">Terms of use</string>
+    <string name="about_app">About the application</string>
+    <string name="developer_info">Developer information</string>
+    <string name="title_advert">Ad title</string>
+    <string name="description_advert">Ad description</string>
+    <string name="phone_advert">Ad phone</string>
+    <string name="url_advert">Ad page</string>
+    <string name="call_advert">Call the advertiser</string>
+    <string name="msg_conf_initial">Before starting, you must choose the country, city and language of your preference. These settings can be changed at any time by entering the Settings section.</string>
+    <string name="initial_config">Initial setup</string>
+    <string name="accept">Accept</string>
+    <string name="more">More...</string>
+    <string name="donate_for_help">With your contribution, you help us keep our application operational and thus be able to benefit thousands of people looking for your pet..</string>
+    <string name="donate">Donate</string>
+    <string name="method_to_donate">Methods to donate</string>
+    <string name="title_activity_container_tutorial">ContainerTutorialActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="about_finder_pet">FinderPet is an application that seeks to form a community of people in love with animals and who want to collaborate in a selfless way to help find lost pets and help adopt pets looking for a home.</string>
+    <string name="tutorial_settings">When you start the application for the first time, you must make the initial configuration of your country, your city and your preferred language to give you a better experience with our services.</string>
+    <string name="finish">Finalize</string>
+
+    <!-- Sección de preguntas frecuentes -->
+    <string name="frequents_questions">Frequent questions</string>
+    <string name="question_1">How to make a new publication of a pet found, lost or for adoption?</string>
+    <string name="question_2">How can I change the Country or city settings?</string>
+    <string name="question_3">How can I delete a post I made?</string>
+    <string name="answer_1">You must go to the home screen, then you must choose between the 3 options we have to publish: located pet, lost or adopted pet, the list of pets with your choice will appear and at the bottom you will find a button that allows you to add a new one. post, a form appears that you need to fill out and then click save.</string>
+    <string name="answer_2">You must go to the Configuration section of the drop-down menu, then, in the LOCATION section, select "Country" or "State or city", depending on what you want to change, a list will appear where you can select the Country or City of your preference.</string>
+    <string name="answer_3">If you want to delete a publication because you have an error in the entered data, you can send an email to our support area (finderpetapp@gmail.com) so that your publication is corrected, you must report in which field the error occurred and the information correct to be entered. In case you no longer want your publication to appear in our application, please send the email with the subject Delete the publication permanently.</string>
+    <string name="send">Send</string>
+    <string name="problem_description">Description of the problem</string>
+    <string name="problem_title">Title of the problem</string>
+    <string name="mail_problem">Email for contact (Optional)</string>
+    <string name="add_problem_image">You can take a screenshot of the error that is occurring and submit it to better demonstrate the problem (Optional).</string>
+    <string name="delete_account">Delete account</string>
+
+    <string name="create_new_account">Create an account</string>
+    <string name="link_data_policy">&lt;u>Data Policy&lt;/u></string>
+    <string name="link_terms_use">&lt;u>Terms of use&lt;/u></string>
+    <string name="news_and_events"><![CDATA[News & Events]]></string>
+    <string name="save">Save</string>
+    <string name="and">" and "</string>
+    <string name="label_policy_terms">By accessing, you accept our:</string>
+    <string name="content_description_media">Image or multimedia</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="version_app">Version 1.0.0</string>
+    <string name="add_found">Add found</string>
+    <string name="add_lost">Add lost</string>
+    <string name="add_adoption">Add adoption</string>
+    <string name="see_details">See details</string>
+    <string name="see_photos">See photos</string>
+    <string name="found">Found</string>
+    <string name="lost">Lost</string>
+    <string name="adoptions">Adoptions</string>
+    <string name="services">Services</string>
+    <string name="products">Productos</string>
+    <string name="veterinary_centers">Veterinary centers</string>
+    <string name="pet_found">Pets Found</string>
+    <string name="pet_lost">Pets Lost</string>
+    <string name="pet_adoption">Pets for Adoption</string>
+    <string name="find_pet_for_you">Find the ideal pet for you</string>
+    <string name="report_lost_stolen_pet">Report lost or stolen pets here</string>
+    <string name="report_pet_you_find_seem_lost">Report here pets that you find or that seem lost</string>
+</resources>

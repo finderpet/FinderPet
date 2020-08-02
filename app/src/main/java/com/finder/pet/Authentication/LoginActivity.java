@@ -234,8 +234,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     /**
-     * Metodo para recibir el token que envía la api de facebook
-     * @param accessToken
+     * Method to receive the token sent by the facebook api
+     * @param accessToken Receive the access token with the facebook account
      */
     private void handleFacebookAccessToken(AccessToken accessToken) {
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());

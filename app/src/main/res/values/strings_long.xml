@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Politicas y condiciones de uso -->
-    <string name="data_policy">
+    <string name="data_policy" translatable="false">
         &lt;div>
             &lt;b>Política de datos de FinderPet&lt;/b>
             &lt;br>&lt;/br>
@@ -133,7 +133,7 @@
         </string>
 
 
-    <string name="about_developers">
+    <string name="about_developers" translatable="false">
         &lt;div>
             Esta aplicación fue desarrollada por dos entusiasmados programadores que encontraron una necesidad a través de una problemática muy común en nuestro entorno.
         &lt;/div>

@@ -25,11 +25,7 @@
         android:id="@+id/nav_map"
         android:name="com.finder.pet.ui.maps.MapsFragment"
         android:label="@string/menu_map"
-        tools:layout="@layout/fragment_maps" >
-        <action
-            android:id="@+id/action_nav_gallery_to_mapsActivity"
-            app:destination="@id/mapsActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_maps" />
 
     <fragment
         android:id="@+id/nav_setting"
@@ -46,9 +42,6 @@
         android:name="com.finder.pet.ui.adverts.AdvertsFragment"
         android:label="@string/menu_advert"
         tools:layout="@layout/fragment_adverts" >
-        <action
-            android:id="@+id/action_nav_advert_to_productsFragment"
-            app:destination="@id/productsFragment" />
         <action
             android:id="@+id/action_nav_advert_to_listServicesFragment"
             app:destination="@id/listServicesFragment" />
@@ -79,12 +72,12 @@
     <fragment
         android:id="@+id/nav_pqr"
         android:name="com.finder.pet.Fragments.frequentQuestionsFragment"
-        android:label="Preguntas Frecuentes"
+        android:label="@string/frequents_questions"
         tools:layout="@layout/fragment_frequent_questions" />
     <fragment
         android:id="@+id/foundFragment"
         android:name="com.finder.pet.Fragments.FoundFragment"
-        android:label="Encontrados"
+        android:label="@string/found"
         tools:layout="@layout/fragment_found" >
         <action
             android:id="@+id/action_foundFragment_to_formFoundFragment"
@@ -96,7 +89,7 @@
     <fragment
         android:id="@+id/lostFragment"
         android:name="com.finder.pet.Fragments.LostFragment"
-        android:label="Perdidos"
+        android:label="@string/lost"
         tools:layout="@layout/fragment_lost" >
         <action
             android:id="@+id/action_lostFragment_to_formLostFragment"
@@ -108,7 +101,7 @@
     <fragment
         android:id="@+id/adoptedFragment"
         android:name="com.finder.pet.Fragments.AdoptedFragment"
-        android:label="Adopciones"
+        android:label="@string/adoptions"
         tools:layout="@layout/fragment_adopted" >
         <action
             android:id="@+id/action_adoptedFragment_to_formAdoptedFragment"
@@ -117,44 +110,20 @@
             android:id="@+id/action_adoptedFragment_to_detailAdoptedFragment"
             app:destination="@id/detailAdoptedFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mapsActivity"
-        android:name="com.finder.pet.Main.MapsActivity"
-        android:label="activity_maps"
-        tools:layout="@layout/activity_maps" />
-    <fragment
-        android:id="@+id/servicesFragment"
-        android:name="com.finder.pet.Fragments.servicesFragment"
-        android:label="Servicios"
-        tools:layout="@layout/fragment_services" />
-    <fragment
-        android:id="@+id/productsFragment"
-        android:name="com.finder.pet.Fragments.productsFragment"
-        android:label="Productos"
-        tools:layout="@layout/fragment_products" >
-        <action
-            android:id="@+id/action_productsFragment_to_listProductsFragment"
-            app:destination="@id/listProductsFragment" />
-    </fragment>
     <fragment
         android:id="@+id/listServicesFragment"
         android:name="com.finder.pet.Fragments.listServicesFragment"
-        android:label="Tiendas y Veterinarias"
+        android:label="@string/veterinary_centers"
         tools:layout="@layout/fragment_list_services" />
     <fragment
-        android:id="@+id/listProductsFragment"
-        android:name="com.finder.pet.Fragments.listProductsFragment"
-        android:label="fragment_list_products"
-        tools:layout="@layout/fragment_list_products" />
-    <fragment
-        android:id="@+id/dataPolicyFragment"
+        android:id="@+id/infoPolicyTerms"
         android:name="com.finder.pet.Fragments.informationShowFragment"
         android:label="@string/label_data_policy"
         tools:layout="@layout/fragment_information_show" />
     <fragment
         android:id="@+id/detailsProductsFragment"
         android:name="com.finder.pet.Fragments.methodDonateFragment"
-        android:label="Métodos de Donación"
+        android:label="@string/method_to_donate"
         tools:layout="@layout/fragment_method_donate" />
     <activity
         android:id="@+id/loginActivity"
@@ -164,22 +133,22 @@
     <fragment
         android:id="@+id/formFoundFragment"
         android:name="com.finder.pet.Fragments.formFoundFragment"
-        android:label="Agregar encontrado"
+        android:label="@string/add_found"
         tools:layout="@layout/fragment_form_found" />
     <fragment
         android:id="@+id/formLostFragment"
         android:name="com.finder.pet.Fragments.formLostFragment"
-        android:label="Agregar Perdida"
+        android:label="@string/add_lost"
         tools:layout="@layout/fragment_form_lost" />
     <fragment
         android:id="@+id/formAdoptedFragment"
         android:name="com.finder.pet.Fragments.formAdoptedFragment"
-        android:label="Agregar Adopción"
+        android:label="@string/add_adoption"
         tools:layout="@layout/fragment_form_adopted" />
     <fragment
         android:id="@+id/detailFoundFragment"
         android:name="com.finder.pet.Fragments.detailFoundFragment"
-        android:label="Ver Detalle"
+        android:label="@string/see_details"
         tools:layout="@layout/fragment_detail_found" >
         <action
             android:id="@+id/action_detailFoundFragment_to_pagerPhotoFragment"
@@ -188,7 +157,7 @@
     <fragment
         android:id="@+id/detailLostFragment"
         android:name="com.finder.pet.Fragments.detailLostFragment"
-        android:label="Ver el detalle"
+        android:label="@string/see_details"
         tools:layout="@layout/fragment_detail_lost" >
         <action
             android:id="@+id/action_detailLostFragment_to_pagerPhotoFragment"
@@ -197,7 +166,7 @@
     <fragment
         android:id="@+id/detailAdoptedFragment"
         android:name="com.finder.pet.Fragments.detailAdoptedFragment"
-        android:label="Ver el detalle"
+        android:label="@string/see_details"
         tools:layout="@layout/fragment_detail_adopted" >
         <action
             android:id="@+id/action_detailAdoptedFragment_to_pagerPhotoFragment"
@@ -210,7 +179,7 @@
         tools:layout="@layout/fragment_information" >
         <action
             android:id="@+id/action_nav_info_to_dataPolicyFragment"
-            app:destination="@id/dataPolicyFragment" />
+            app:destination="@id/infoPolicyTerms" />
     </fragment>
     <fragment
         android:id="@+id/nav_help"
@@ -227,12 +196,12 @@
     <fragment
         android:id="@+id/pagerPhotoFragment"
         android:name="com.finder.pet.Fragments.PagerPhotoFragment"
-        android:label="fragment_pager_photo"
+        android:label="@string/see_photos"
         tools:layout="@layout/fragment_pager_photo" />
     <fragment
         android:id="@+id/reportProblemFragment"
         android:name="com.finder.pet.Fragments.reportProblemFragment"
-        android:label="Informar un problema"
+        android:label="@string/report_problem"
         tools:layout="@layout/fragment_report_problem" />
     <fragment
         android:id="@+id/adsInterstitialFragment"
@@ -245,12 +214,5 @@
         android:label="fragment_pruebas"
         tools:layout="@layout/fragment_pruebas" />
 
-    <!--
-    <activity
-        android:id="@+id/closeApp"
-        android:name="com.finder.pet.Main.CloseActivity"
-        android:label="activity_close"
-        tools:layout="@layout/activity_close" />
-        -->
 
 </navigation>
