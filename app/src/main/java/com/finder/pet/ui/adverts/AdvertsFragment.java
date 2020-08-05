@@ -17,13 +17,10 @@ import static androidx.navigation.Navigation.findNavController;
 
 public class AdvertsFragment extends Fragment {
 
-    private CardView cardServices, cardProducts, cardDelivery, cardEvents;
-    private AdvertsViewModel advertsViewModel;
+    CardView cardServices, cardProducts, cardDelivery, cardEvents;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        advertsViewModel =
-                ViewModelProviders.of(this).get(AdvertsViewModel.class);
 
         return inflater.inflate(R.layout.fragment_adverts, container, false);
     }
@@ -32,33 +29,41 @@ public class AdvertsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cardServices = view.findViewById(R.id.cardViewProducts);
-        cardProducts = view.findViewById(R.id.cardViewServices);
+        cardServices = view.findViewById(R.id.cardViewServices);
+        cardProducts = view.findViewById(R.id.cardViewProducts);
         cardDelivery = view.findViewById(R.id.cardViewDelivery);
         cardEvents = view.findViewById(R.id.cardViewEvents);
 
         cardServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_advert_to_pruebasFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("Object", "Services");
+                findNavController(view).navigate(R.id.action_nav_advert_to_listServicesFragment, bundle);
             }
         });
         cardProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_advert_to_listServicesFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("Object", "Products");
+                findNavController(view).navigate(R.id.action_nav_advert_to_listServicesFragment, bundle);
             }
         });
         cardDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_advert_to_pruebasFragment2);
+                Bundle bundle = new Bundle();
+                bundle.putString("Object", "Delivery");
+                findNavController(view).navigate(R.id.action_nav_advert_to_listServicesFragment, bundle);
             }
         });
         cardEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findNavController(view).navigate(R.id.action_nav_advert_to_pruebasFragment2);
+                Bundle bundle = new Bundle();
+                bundle.putString("Object", "Events");
+                findNavController(view).navigate(R.id.action_nav_advert_to_listServicesFragment, bundle);
             }
         });
 

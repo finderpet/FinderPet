@@ -24,7 +24,7 @@
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/bg_profile"
                 android:scaleType="fitXY"
-                android:contentDescription="Fondo de nav header"
+                android:contentDescription="@string/content_description_media"
                 />
 
             <LinearLayout

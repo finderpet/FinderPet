@@ -67,14 +67,14 @@ public class informationShowFragment extends Fragment {
             String text = getString(R.string.about_finder_pet);
             Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
             tvShow.setText(styledText);
-            getActionBar().setTitle("Acerca de aplicación");
+            getActionBar().setTitle(R.string.about_app);
         }
         if (textToShow.equals("Developers")){
             // Damos formato HTML al texto de políticas de datos, solo funciona de api 24 hacia adelante
             String text = getString(R.string.about_developers);
             Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
             tvShow.setText(styledText);
-            getActionBar().setTitle("Desarrolladores");
+            getActionBar().setTitle(R.string.developers);
         }
 
 

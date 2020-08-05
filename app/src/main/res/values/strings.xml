@@ -46,7 +46,6 @@
 
     <string name="not_log_in">No se pudo iniciar sesión</string>
     <string name="log_out">Cerrar Sesión</string>
-    <string name="revoke">Eliminar Cuenta</string>
     <string name="not_close_session">No se pudo cerrar sesión</string>
     <string name="not_revoke">No se pudo revocar el acceso</string>
     <string name="not_firebase_auth">No se pudo autenticar con Firebase</string>
@@ -66,9 +65,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Nombres de las pestañas del view pager -->
-    <string name="tab_found">ENCONTRADOS</string>
-    <string name="tab_lost">PERDIDOS</string>
-    <string name="tab_adopted">ADOPCIONES</string>
     <string name="confirm_password">Confirme contraseña</string>
     <string name="save_register">Registrar</string>
     <string name="cancel">Cancelar</string>
@@ -79,7 +75,7 @@
     <string name="phone">Teléfono:</string>
     <string name="observations">Observaciones:</string>
     <string name="load">Cargando...</string>
-    <string name="report_new_pet_found">REPORTAR UNA MASCOTA ENCONTRADA</string>
+    <string name="report_new_pet_found">REPORTAR MASCOTA ENCONTRADA</string>
     <string name="login_facebook">Iniciar Sesión con Facebook</string>
     <string name="dog">Perro</string>
     <string name="cat">Gato</string>
@@ -92,7 +88,7 @@
     <string name="create_new_account">Crear una cuenta</string>
     <string name="no_account">¿No tienes una cuenta?</string>
     <string name="or_login_with">o inicia con...</string>
-    <string name="recover_password">Olvidé mi contraseña</string>
+    <string name="forgot_password">Olvidé mi contraseña</string>
     <string name="title_init_session">Inicia sesión con tu cuenta</string>
     <string name="create_new_record">Creando nuevo registro...</string>
     <string name="registry_new_user">Registrar nuevo usuario</string>
@@ -112,8 +108,8 @@
     <string name="msg_close_app">Cerrando aplicación...</string>
     <string name="msg_come_back_soon">¡Vuelve pronto!</string>
     <string name="select_category">Selecciona una categoría</string>
-    <string name="report_new_pet_lost">REPORTAR UNA MASCOTA PERDIDA</string>
-    <string name="report_new_pet_adopted">AGREGA UNA MASCOTA PARA ADOPTAR</string>
+    <string name="report_new_pet_lost">REPORTAR MASCOTA PERDIDA</string>
+    <string name="report_new_pet_adopted">AGREGA MASCOTA PARA ADOPTAR</string>
     <string name="field_without_info">Sin Información</string>
     <string name="age">Edad</string>
     <string name="breed">Raza</string>
@@ -145,8 +141,6 @@
     <string name="donate">donar</string>
     <string name="method_to_donate">Métodos para donar</string>
     <string name="title_activity_container_tutorial">ContainerTutorialActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="about_finder_pet">FinderPet es una aplicación que busca formar una comunidad de personas enamorados de los animales y que quieren colaborar de manera desinteresada para ayudar a encontrar mascotas perdidas, ayudar a adoptar mascotas que buscan hogar y publicar las mascotas que se han estraviado.</string>
     <string name="tutorial_settings">Cuando inicias la aplicación por primera vez, debes hacer la configuración inicial de tu país, tu ciudad y tu idioma de preferencia para brindarte una mejor experiencia con nuestros servicios.</string>
     <string name="finish">Finalizar</string>
@@ -200,5 +194,86 @@
     <string name="find_pet_for_you">Encuentra la mascota ideal para tí</string>
     <string name="report_lost_stolen_pet">Reporta aquí mascotas extraviadas o robadas</string>
     <string name="report_pet_you_find_seem_lost">Reporta aquí mascotas que encuentres o que parezcan extraviadas</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="delivery">Domicilios</string>
+    <string name="events">Eventos</string>
+    <string name="ads_with_us">¿Quieres anunciar con nosotros?</string>
+    <string name="type">Tipo</string>
+    <string name="all">Todos</string>
+    <string name="donation_bancolombia">Donación Bancolombia</string>
+    <string name="scan_cod_bancolombia">Escanea éste código QR para realizar una donación a través de Bancolombia</string>
+    <string name="account_donate_baloto">Puedes realizar una donación a través de baloto con este número de cuenta:</string>
+    <string name="donation_baloto">Donación Baloto</string>
+    <string name="number_account_baloto" translatable="false">90150001648221</string>
+    <string name="report_format">Formato de Reporte</string>
+    <string name="donations">Donaciones</string>
+    <string name="main_menu">Menú Principal</string>
+    <string name="nav_drawer">Panel de Navegación</string>
+    <string name="country">País</string>
+    <string name="choose_country">Elige el país donde vives</string>
+    <string name="city_state">Ciudad o Estado</string>
+    <string name="choose_city_state">Elige una ciudad o un estado</string>
+    <string name="application_language">Idioma de la aplicación</string>
+    <string name="choose_language">Elige el idioma de tu preferencia</string>
+    <string name="configure_ads">Configurar anuncios</string>
+    <string name="activate_ads_main">Activa o desactiva los anuncios del menú pricipal.</string>
+    <string name="push_notifications">Notificaciones Push</string>
+    <string name="pause_notificacions">Pausar todas las notificaciones.</string>
+    <string name="account_settings">Configuración de la cuenta</string>
+    <string name="update_data_delete_account">Actualiza tus datos o elimina tu cuenta</string>
+    <string name="update_app">Actualizar la Aplicación</string>
+    <string name="automatically_update_wifi">Actualizar automáticamente si está conectado a una red wifi</string>
+    <string name="pref_location">UBICACIÓN</string>
+    <string name="pref_ads">ANUNCIOS</string>
+    <string name="pref_language">IDIOMA</string>
+    <string name="pref_notifications">NOTIFICACIONES</string>
+    <string name="pref_account">CUENTA</string>
+    <string name="pref_updates">ACTUALIZACIONES</string>
+    <string name="developers">Desarrolladores</string>
+    <string name="post_name">"Nombre: "</string>
+    <string name="post_age">"Edad: "</string>
+    <string name="post_posted">"Publicado "</string>
+    <string name="post_phone">"Teléfono: "</string>
+    <string name="time_ago">Hace</string>
+    <string name="time_ago_one_month">Hace 1 mes</string>
+    <string name="time_days">" días"</string>
+    <string name="time_months">" meses"</string>
+    <string name="time_date">Sin fecha</string>
+    <string name="post_type">"Tipo de mascota: "</string>
+    <string name="post_location_found">"Encontrado en: "</string>
+    <string name="post_location_lost">"Perdido en: "</string>
+    <string name="recover_password">Recuperar contraseña</string>
+    <string name="email_create_account">Ingrese el correo electrónico con el que creó su cuenta.</string>
+    <string name="dialog_delete_account_title">¿Desea eliminar su cuenta por completo?</string>
+    <string name="dialog_delete_account_message">Se eliminarán todos sus datos de nuestra base de datos.</string>
+    <string name="btn_delete">&lt;font color="red">ELIMINAR&lt;/font></string>
+    <string name="btn_cancel">CANCELAR</string>
+    <string name="required_field">Campo obligatorio</string>
+    <string name="check_email_inbox">Revisa la bandeja de entrada de tu email</string>
+    <string name="account_welcome">¡Bienvenido!</string>
+    <string name="account_successfully_created">asdfasdSu cuenta fue creada satisfactoriamente.</string>
+    <string name="account_input_email_password">Ingrese el correo y la contraseña que acaba de crear para iniciar sesión en FinderPet.</string>
+    <string name="recover_input_email">Ingrese un correo para continuar.</string>
+    <string name="create_account_failed">La creación de la cuenta falló</string>
+    <string name="passwords_not_match">Las contraseñas no coinciden</string>
+    <string name="error_login_facebook">Error autenticando al usuario con Facebook</string>
+    <string name="dialog_logout_title">¿Desea cerrar la sesión y salir de la aplicación?</string>
+    <string name="dialog_logout_message">Si tienes publicaciones en progreso se perderán</string>
+    <string name="dialog_close_app">¿Desea salir de la aplicación?</string>
+    <string name="ads_contact">"Contacto: "</string>
+    <string name="dialog_permission_call_manually_title">¿Desea configurar los permisos para llamar de forma manual?</string>
+    <string name="dialog_permission_call_manually_message">Debe otorgar este permiso para realizar llamadas desde la aplicación</string>
+    <string name="btn_yes">Si</string>
+    <string name="btn_no">No</string>
+    <string name="permission_not_accepted">Los permisos no fueron aceptados</string>
+    <string name="dialog_recommendation_permission_call_title">Permisos no otorgados</string>
+    <string name="could_not_get_information">No se pudo obtener información</string>
+    <string name="pet_shops">Tiendas de mascotas</string>
+    <string name="no_number_to_call">No hay número de contacto para llamar</string>
+    <string name="report_not_send">No se pudo enviar el reporte</string>
+    <string name="sending_report">Enviando reporte</string>
+    <string name="dialog_report_sent_correctly_title">Informe enviado correctamente</string>
+    <string name="dialog_report_sent_correctly_message">Trataremos de solucionar el problema lo más pronto posible y te enviaremos información al correo de como puedes resolverlo.</string>
+    <string name="image_not_loaded">No se pudo cargar la imagen</string>
 
 </resources>

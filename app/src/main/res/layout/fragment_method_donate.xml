@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
-            android:text="Donación Bancolombia"
+            android:text="@string/donation_bancolombia"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textAllCaps="true"/>
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
-            android:text="Escanea éste código QR para realizar una donación a través de Bancolombia"/>
+            android:text="@string/scan_cod_bancolombia"/>
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
-            android:text="Donación Baloto"
+            android:text="@string/donation_baloto"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textAllCaps="true"/>
@@ -48,14 +48,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
-            android:text="Puedes realizar una donación a través de baloto con este número de cuenta:"/>
+            android:text="@string/account_donate_baloto"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="90150001648221"/>
+            android:text="@string/number_account_baloto"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

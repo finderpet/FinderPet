@@ -23,7 +23,8 @@
                 android:layout_height="194dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media" />
             <View
                 android:id="@+id/divider2"
                 android:layout_width="1dp"
@@ -36,7 +37,8 @@
                 android:layout_height="194dp"
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media"/>
             <View
                 android:id="@+id/divider3"
                 android:layout_width="1dp"
@@ -49,7 +51,8 @@
                 android:layout_height="194dp"
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media"/>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -120,12 +123,12 @@
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/primary_text"
-                                android:text="Nombre"/>
+                                android:text="@string/name"/>
                             <TextView
                                 android:id="@+id/detailAdoptedName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="nombre"/>
+                                android:text="@string/name"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -144,12 +147,12 @@
                                 android:textStyle="bold"
                                 android:textSize="12sp"
                                 android:textColor="@color/primary_text"
-                                android:text="Tipo"/>
+                                android:text="@string/type"/>
                             <TextView
                                 android:id="@+id/detailAdoptedTypePet"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="tipo"/>
+                                android:text="@string/type"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -168,12 +171,12 @@
                                 android:textStyle="bold"
                                 android:textSize="12sp"
                                 android:textColor="@color/primary_text"
-                                android:text="Edad"/>
+                                android:text="@string/age"/>
                             <TextView
                                 android:id="@+id/detailAdoptedAgePet"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Edad"/>
+                                android:text="@string/age"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -227,7 +230,7 @@
                                 android:id="@+id/detailAdoptedSterilized"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No"/>
+                                android:text="@string/sterilized"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -252,12 +255,12 @@
                                 android:textStyle="bold"
                                 android:textSize="12sp"
                                 android:textColor="@color/primary_text"
-                                android:text="Correo de contacto"/>
+                                android:text="@string/email_contact"/>
                             <TextView
                                 android:id="@+id/detailAdoptedEmailContact"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="correo"/>
+                                android:text="@string/email_contact"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -339,7 +342,7 @@
                         android:id="@+id/detailAdoptedObservations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/description_observations"/>
+                        android:text="@string/observations"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"

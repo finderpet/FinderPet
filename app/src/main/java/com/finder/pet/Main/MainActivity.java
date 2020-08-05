@@ -4,13 +4,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.Authentication.LoginActivity;
@@ -19,7 +17,6 @@ import com.finder.pet.R;
 import com.finder.pet.Utilities.PreferencesApp;
 import com.finder.pet.Utilities.commonMethods;
 import com.finder.pet.ui.help.HelpFragment;
-import com.finder.pet.ui.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +28,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
@@ -46,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private CircleImageView circleImageView;
     private TextView txtName, txtEmail;
-    private FragmentTransaction transaction;
-    private Fragment fragHelp, fragQuestions, fragHome;
     private ProgressDialog progressDialogQuestions;
 
     @Override
@@ -95,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        fragHelp = new HelpFragment();
-        fragQuestions = new frequentQuestionsFragment();
-        fragHome = new HomeFragment();
 
         progressDialogQuestions = new ProgressDialog(this);
 
@@ -150,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+
     }
 
     @Override
@@ -161,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
     // With this method we capture the event of an item in the options menu
     public void onclickItem(MenuItem item) {
-        transaction = getSupportFragmentManager().beginTransaction();
+        //transaction = getSupportFragmentManager().beginTransaction();
         int id = item.getItemId();
         if (id == R.id.closeApp) {
             closeApp();
@@ -169,12 +161,24 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.shareApp) {
             shareApp();
         }
-        if (id == R.id.action_help) {
-            createSimpleDialog();
+        if (id == R.id.nav_problem) {
+            //El item debe tener el mismo id que tiene el fragment en el mobile_navigation
+            NavigationUI.onNavDestinationSelected(item,findNavController(this, R.id.nav_host_fragment));
         }
         if (id == R.id.action_pqr) {
-            createSimpleDialog();
+            dialogFrequentQuestions();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+
+//        if (NavigationUI.onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))) {
+//            return true;
+//        }else {
+//            return super.onOptionsItemSelected(item);
+//        }
     }
 
 
@@ -208,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return La instancia del diálogo
      */
-    public void createSimpleDialog() {
+    public void dialogFrequentQuestions() {
         final CharSequence[] opciones=new CharSequence[3];
         final String Q1,Q2,Q3;
         Q1=getResources().getString(R.string.question_1);

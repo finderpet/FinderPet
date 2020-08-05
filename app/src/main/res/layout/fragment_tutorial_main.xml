@@ -17,14 +17,15 @@
         android:textStyle="bold"
         android:textSize="24sp"
         android:textColor="@color/colorWhite"
-        android:text="Pantalla Principal" />
+        android:text="@string/main_menu" />
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:tint="@color/colorBlack"
-        android:src="@drawable/ic_home_screen_128" />
+        android:src="@drawable/ic_home_screen_128"
+        android:contentDescription="@string/content_description_media" />
 
     <TextView
         android:layout_width="wrap_content"

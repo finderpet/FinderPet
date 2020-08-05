@@ -3,28 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="UBICACIÓN">
+    <PreferenceCategory android:title="@string/pref_location">
         <ListPreference
             android:key="country"
-            android:title="País"
-            android:summary="Elige el país donde vives"
+            android:title="@string/country"
+            android:summary="@string/choose_country"
             android:entries="@array/country"
             android:entryValues="@array/country"
             android:icon="@drawable/ic_outline_location_32" />
         <ListPreference
             android:key="city_state"
-            android:title="Estado o Ciudad"
-            android:summary="Elige una Ciudad o un Estado"
+            android:title="@string/city_state"
+            android:summary="@string/choose_city_state"
             android:entries="@array/city_colombia"
             android:entryValues="@array/city_colombia"
             android:icon="@drawable/ic_my_location_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="IDIOMA">
+    <PreferenceCategory android:title="@string/pref_language">
         <ListPreference
             android:key="language"
-            android:title="Idioma de la aplicación"
-            android:summary="Elige el idioma de tu preferencia"
+            android:title="@string/application_language"
+            android:summary="@string/choose_language"
             android:entries="@array/language"
             android:entryValues="@array/language"
             android:icon="@drawable/ic_language_32"/>

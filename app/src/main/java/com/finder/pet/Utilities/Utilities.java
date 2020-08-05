@@ -10,5 +10,8 @@ public class Utilities {
     public static int rotation = 0;
     public static boolean validaPantalla = true;
 
+    /**variable to control call permission**/
+    public static boolean PERMISSION_CALL = false;
+
 
 }

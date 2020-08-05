@@ -114,7 +114,13 @@ public class detailAdoptedFragment extends Fragment implements OnMapReadyCallbac
             txtDate.setText(adopted_vo.getDate());
             txtName.setText(adopted_vo.getName());
             txtEmail.setText(adopted_vo.getEmail());
-            txtType.setText(adopted_vo.getType());
+            if (adopted_vo.getType().equals("dog")){
+                txtType.setText(R.string.dog);
+            }else if (adopted_vo.getType().equals("cat")){
+                txtType.setText(R.string.cat);
+            }else {
+                txtType.setText(R.string.other);
+            }
             txtAge.setText(adopted_vo.getAge());
             txtBreed.setText(adopted_vo.getBreed());
             txtSterilized.setText(adopted_vo.getSterilized());

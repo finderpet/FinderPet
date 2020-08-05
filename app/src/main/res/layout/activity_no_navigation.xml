@@ -19,7 +19,8 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:src="@mipmap/ic_splash_new2" />
+            android:src="@mipmap/ic_splash_new2"
+            android:contentDescription="@string/content_description_media" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +41,8 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/amazed_cat"/>
+                android:src="@drawable/amazed_cat"
+                android:contentDescription="@string/content_description_media" />
         </LinearLayout>
 
         <TextView
@@ -56,7 +58,8 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:src="@drawable/poor_signal"/>
+            android:src="@drawable/poor_signal"
+            android:contentDescription="@string/content_description_media" />
 
         <LinearLayout
             android:layout_width="match_parent"

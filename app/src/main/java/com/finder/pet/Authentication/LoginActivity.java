@@ -23,7 +23,6 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.finder.pet.Main.MainActivity;
-import com.finder.pet.Main.RegisterActivity;
 import com.finder.pet.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -107,7 +106,7 @@ public class LoginActivity extends BaseActivity {
             }
             @Override
             public void onError(FacebookException error) {
-                showAlertLogin();
+                Toast.makeText(LoginActivity.this, getString(R.string.error_login_facebook),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -179,7 +178,6 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "Iniciar Sesión con Facebook", Toast.LENGTH_SHORT).show();
-                showAlertLogin();
             }
         });
         btnRecoverPass.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +215,6 @@ public class LoginActivity extends BaseActivity {
         btnGoogle = findViewById(R.id.googleSingInButton);
         btnFacebook = findViewById(R.id.facebookSignInButton);
         btnLoginFacebook = findViewById(R.id.btnLoginFacebook);
-        btnLoginFacebook.setText("Iniciar Sesión con Facebook");
         btnRecoverPass = findViewById(R.id.btnRecoverPassword);
 
         // [Iniciamos los textos con vinculos]
@@ -441,7 +438,7 @@ public class LoginActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d("LoginActivity", "Email sent.");
-                            Toast.makeText(getApplicationContext(), "Revisa la bandeja de entrada de tu email", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.check_email_inbox, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -454,8 +451,8 @@ public class LoginActivity extends BaseActivity {
     public AlertDialog dialogCreateAccountSuccessful(){
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
-        builder.setTitle("¡Bienvenido!")
-                .setMessage("Su cuenta fue creada satisfactoriamente. \n\n"+"Ingrese el correo y la contraseña que acaba de crear para iniciar sesión en FinderPet.")
+        builder.setTitle(R.string.account_welcome)
+                .setMessage(getString(R.string.account_successfully_created) +"\n\n"+getString(R.string.account_input_email_password))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -486,20 +483,14 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 String emailUser = emailRecover.getText().toString();
-//                if (!emailUser.equals("")){
-//                    sendPasswordReset(emailUser);
-//                }else {
-//                    Toast.makeText(getApplicationContext(), "Ingrese un correo para continuar.", Toast.LENGTH_SHORT).show();
-//                }
                 if (TextUtils.isEmpty(emailUser)) {
-                    emailRecover.setError("Obligatorio");
-                    Toast.makeText(getApplicationContext(), "Ingrese un correo para continuar.", Toast.LENGTH_SHORT).show();
+                    emailRecover.setError(getString(R.string.required_field));
+                    Toast.makeText(getApplicationContext(), R.string.recover_input_email, Toast.LENGTH_SHORT).show();
                 } else {
                     emailRecover.setError(null);
                     sendPasswordReset(emailUser);
                     LoginActivity.this.newDialog.dismiss();
                 }
-
 
             }
         });
@@ -582,7 +573,7 @@ public class LoginActivity extends BaseActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Create account failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, R.string.create_account_failed, Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
 
@@ -599,21 +590,21 @@ public class LoginActivity extends BaseActivity {
 
         String email = mEmailRegister.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailTextInput.setError("Obligatorio");
+            mEmailTextInput.setError(getString(R.string.required_field));
             valid = false;
         } else {
             mEmailTextInput.setError(null);
         }
         String password1 = mPasswordRegister1.getText().toString();
         if (TextUtils.isEmpty(password1)) {
-            mPasswordTextInput1.setError("Obligatorio");
+            mPasswordTextInput1.setError(getString(R.string.required_field));
             valid = false;
         } else {
             mPasswordTextInput1.setError(null);
         }
         String password2 = mPasswordRegister2.getText().toString();
         if (TextUtils.isEmpty(password2)) {
-            mPasswordTextInput2.setError("Obligatorio");
+            mPasswordTextInput2.setError(getString(R.string.required_field));
             valid = false;
         } else {
             mPasswordTextInput2.setError(null);
@@ -621,7 +612,7 @@ public class LoginActivity extends BaseActivity {
         password1 = mPasswordRegister1.getText().toString();
         password2 = mPasswordRegister2.getText().toString();
         if (!password1.equals(password2)){
-            mPasswordTextInput2.setError("Las contraseñas no concuerdan");
+            mPasswordTextInput2.setError(getString(R.string.passwords_not_match));
             valid = false;
         } else {
             mPasswordTextInput2.setError(null);
@@ -639,7 +630,7 @@ public class LoginActivity extends BaseActivity {
 
         String email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailField.setError("Obligatorio");
+            mEmailField.setError(getString(R.string.required_field));
             valid = false;
         } else {
             mEmailField.setError(null);
@@ -647,7 +638,7 @@ public class LoginActivity extends BaseActivity {
 
         String password = mPasswordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPasswordField.setError("Obligatorio");
+            mPasswordField.setError(getString(R.string.required_field));
             valid = false;
         } else {
             mPasswordField.setError(null);
@@ -680,22 +671,6 @@ public class LoginActivity extends BaseActivity {
         activity.startActivity(intent);
         //finalizamos la actividad actual
         activity.finish();
-    }
-
-    private void showAlertLogin(){
-
-        final CharSequence[] opciones={"Aceptar"};
-        final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(this);
-        alertOpciones.setTitle("Error autenticando al usuario");
-        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (opciones[i].equals("Aceptar")){
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-        alertOpciones.show();
     }
 
     /**

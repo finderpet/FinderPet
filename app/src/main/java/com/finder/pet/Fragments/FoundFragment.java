@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -100,9 +101,9 @@ public class FoundFragment extends Fragment{
                     foundVo=new Found_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
                         foundVo.setDate(timeDays);
-                    }else { foundVo.setDate("Sin fecha"); }
+                    }else { foundVo.setDate(getString(R.string.time_date)); }
 
                     foundVo.setEmail(postSnapshot.child("email").getValue().toString());
                     foundVo.setImage1(postSnapshot.child("image1").getValue().toString());
@@ -119,6 +120,7 @@ public class FoundFragment extends Fragment{
                     ListFound.add(foundVo);
                 }
 
+                Collections.reverse(ListFound);
                 FoundAdapter adapter =  new FoundAdapter(ListFound);
                 recyclerListFound.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);

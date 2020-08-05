@@ -24,7 +24,8 @@
                 android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:layout_margin="4dp"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media" />
 
             <LinearLayout
                 android:id="@+id/layout_descrip"
@@ -75,7 +76,8 @@
                 android:layout_height="24dp"
                 android:src="@mipmap/ic_adopted"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:contentDescription="@string/content_description_media" />
 
 
         </LinearLayout>

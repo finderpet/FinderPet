@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_help"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_help_outline_128"
-        android:title="@string/menu_help"
-        android:onClick="onclickItem"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_pqr"
         android:orderInCategory="100"
         android:icon="@drawable/ic_outline_event_32"
-        android:title="Preguntas frecuentes"
+        android:title="@string/frequents_questions"
         android:onClick="onclickItem"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/nav_problem"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_help_outline_128"
+        android:title="@string/report_problem"
+        android:onClick="onclickItem"
+        app:showAsAction="never"/>
 </menu>

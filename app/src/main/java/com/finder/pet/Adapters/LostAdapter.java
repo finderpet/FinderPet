@@ -42,10 +42,15 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull LostViewHolder holder, int position) {
-        holder.txtName.setText("Nombre: "+listLost.get(position).getName()); //para traer un entero colocar .toString
-        holder.txtLocation.setText(listLost.get(position).getLocation());
-        holder.txtPhone.setText("Teléfono: "+listLost.get(position).getPhone());
-        holder.txtTimePost.setText("Publicado "+listLost.get(position).getDate());
+
+        String name = mContext.getString(R.string.post_name).concat(listLost.get(position).getName());
+        holder.txtName.setText(name);
+        String location = mContext.getString(R.string.post_location_lost).concat(listLost.get(position).getLocation());
+        holder.txtLocation.setText(location);
+        String phone = mContext.getString(R.string.post_phone).concat(listLost.get(position).getPhone());
+        holder.txtPhone.setText(phone);
+        String posted = mContext.getString(R.string.post_posted).concat(listLost.get(position).getDate());
+        holder.txtTimePost.setText(posted);
         String url = listLost.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
@@ -53,10 +58,10 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
                 .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
                 .into(holder.mPhoto);
 
-        if (listLost.get(position).getType().equals("Perro")){
+        if (listLost.get(position).getType().equals("dog")){
             holder.markType.setImageResource(R.mipmap.ic_dog);
         }
-        if (listLost.get(position).getType().equals("Gato")){
+        if (listLost.get(position).getType().equals("cat")){
             holder.markType.setImageResource(R.mipmap.ic_cat);
         }
 

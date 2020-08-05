@@ -22,7 +22,8 @@
                 android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media"/>
             <View
                 android:id="@+id/divider2"
                 android:layout_width="1dp"
@@ -35,7 +36,8 @@
                 android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media"/>
             <View
                 android:id="@+id/divider3"
                 android:layout_width="1dp"
@@ -48,7 +50,8 @@
                 android:layout_height="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/sin_imagen" />
+                android:src="@drawable/sin_imagen"
+                android:contentDescription="@string/content_description_media"/>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -106,12 +109,12 @@
                         android:textSize="12sp"
                         android:textStyle="bold"
                         android:textColor="@color/primary_text"
-                        android:text="Nombre de la mascota"/>
+                        android:text="@string/name_pet"/>
                     <TextView
                         android:id="@+id/detailLostName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="nombre mascota"/>
+                        android:text="@string/name_pet"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -124,12 +127,12 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textColor="@color/primary_text"
-                        android:text="Tipo de mascota"/>
+                        android:text="@string/pet_type"/>
                     <TextView
                         android:id="@+id/detailLostTypePet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="tipo mascota"/>
+                        android:text="@string/pet_type"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -142,12 +145,12 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textColor="@color/primary_text"
-                        android:text="Localización / Ubicación"/>
+                        android:text="@string/location"/>
                     <TextView
                         android:id="@+id/detailLostLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ubicación"/>
+                        android:text="@string/location"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -160,12 +163,12 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textColor="@color/primary_text"
-                        android:text="Correo de contacto"/>
+                        android:text="@string/email_contact"/>
                     <TextView
                         android:id="@+id/detailLostEmailContact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="correo"/>
+                        android:text="@string/email_contact"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -178,12 +181,12 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textColor="@color/primary_text"
-                        android:text="Teléfono de contacto"/>
+                        android:text="@string/phone"/>
                     <TextView
                         android:id="@+id/detailLostPhoneContact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="teléfono"/>
+                        android:text="@string/phone"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -196,12 +199,12 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textColor="@color/primary_text"
-                        android:text="Observaciones"/>
+                        android:text="@string/observations"/>
                     <TextView
                         android:id="@+id/detailLostObservations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="observaciones"/>
+                        android:text="@string/observations"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"

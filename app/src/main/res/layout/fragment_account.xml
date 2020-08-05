@@ -42,7 +42,7 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textColor="@color/primary_text"
-                    android:text="Nombre de usuario"/>
+                    android:text="@string/user_name"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -53,12 +53,12 @@
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
                     android:textStyle="bold"
-                    android:hint="Correo Electrónico"/>
+                    android:hint="@string/email"/>
                 <TextView
                     android:id="@+id/accountEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Correo Electrónico"/>
+                    android:text="@string/email"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -70,12 +70,12 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="10sp"
-                    android:hint="Teléfono"/>
+                    android:hint="@string/phone"/>
                 <TextView
                     android:id="@+id/accountPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3008460707"/>
+                    android:text="@string/phone"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

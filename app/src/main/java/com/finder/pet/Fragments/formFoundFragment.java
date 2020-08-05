@@ -360,9 +360,9 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
                 String location = "null";
 
                 //getting the values to save
-                if (rbDog.isChecked()) rbPet = "Perro";
-                if (rbCat.isChecked()) rbPet = "Gato";
-                if (rbOther.isChecked()) rbPet = "Otro";
+                if (rbDog.isChecked()) rbPet = "dog";
+                if (rbCat.isChecked()) rbPet = "cat";
+                if (rbOther.isChecked()) rbPet = "other";
                 date = commonMethods.getDateTime();
                 email = fieldEmail.getText().toString().trim();
                 type = rbPet;

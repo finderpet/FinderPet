@@ -14,12 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center">
-        <!--
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_login"/>
-        -->
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -61,7 +55,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="@string/title_init_session"
                 android:layout_marginBottom="6dp"
                 android:gravity="center"

@@ -2,64 +2,64 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="UBICACIÓN">
+    <PreferenceCategory android:title="@string/pref_location">
         <ListPreference
             android:key="country"
-            android:title="País"
-            android:summary="Elige el país donde vives"
+            android:title="@string/country"
+            android:summary="@string/choose_country"
             android:entries="@array/country"
             android:entryValues="@array/country"
             android:icon="@drawable/ic_outline_location_32" />
         <ListPreference
             android:key="city_state"
-            android:title="Estado o Ciudad"
-            android:summary="Elige una Ciudad o un Estado"
+            android:title="@string/city_state"
+            android:summary="@string/choose_city_state"
             android:entries="@array/city_colombia"
             android:entryValues="@array/city_colombia"
             android:icon="@drawable/ic_my_location_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="IDIOMA">
+    <PreferenceCategory android:title="@string/pref_language">
         <ListPreference
             android:key="language"
-            android:title="Idioma de la aplicación"
-            android:summary="Elige el idioma de tu preferencia"
+            android:title="@string/application_language"
+            android:summary="@string/choose_language"
             android:entries="@array/language"
             android:entryValues="@array/language"
             android:icon="@drawable/ic_language_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="ANUNCIOS">
+    <PreferenceCategory android:title="@string/pref_ads">
         <SwitchPreferenceCompat
             android:key="adverts"
-            android:title="Preferencias de anuncios"
-            android:summary="Activa o desactiva los anuncios del menú pricipal."
+            android:title="@string/configure_ads"
+            android:summary="@string/activate_ads_main"
             android:icon="@drawable/ic_outline_event_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="NOTIFICACIONES">
+    <PreferenceCategory app:title="@string/pref_notifications">
         <SwitchPreferenceCompat
             app:key="notifications"
-            app:title="Notificaciones Push"
-            android:summary="Pausar todas las notificaciones."
+            app:title="@string/push_notifications"
+            android:summary="@string/pause_notificacions"
             android:icon="@drawable/ic_outline_notifications_active_32"/>
 
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="CUENTA">
+    <PreferenceCategory android:title="@string/pref_account">
         <Preference
             android:key="account"
-            android:title="Configuración de la cuenta"
-            android:summary="Actualiza tus datos o elimina tu cuenta"
+            android:title="@string/account_settings"
+            android:summary="@string/update_data_delete_account"
             android:icon="@drawable/ic_outline_account_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="ACTUALIZACIONES">
+    <PreferenceCategory android:title="@string/pref_updates">
         <SwitchPreferenceCompat
             android:key="update"
-            android:title="Actualizar la Aplicación"
-            android:summary="Actualizar automáticamente si está conectado a una red wifi"
+            android:title="@string/update_app"
+            android:summary="@string/automatically_update_wifi"
             android:icon="@drawable/ic_update_32"/>
     </PreferenceCategory>
 

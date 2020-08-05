@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -101,9 +102,9 @@ public class LostFragment extends Fragment {
                     lostVo=new Lost_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
                         lostVo.setDate(timeDays);
-                    }else { lostVo.setDate("Sin fecha"); }
+                    }else { lostVo.setDate(getString(R.string.time_date)); }
 
                     lostVo.setName(postSnapshot.child("name").getValue().toString());
                     lostVo.setEmail(postSnapshot.child("email").getValue().toString());
@@ -121,6 +122,7 @@ public class LostFragment extends Fragment {
                     ListLost.add(lostVo);
                 }
 
+                Collections.reverse(ListLost);
                 LostAdapter adapter =  new LostAdapter(ListLost);
                 recyclerListLost.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);

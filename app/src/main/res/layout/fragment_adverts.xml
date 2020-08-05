@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/title_Category"
@@ -70,7 +71,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@+id/img_services"
                         android:gravity="center"
-                        android:text="Servicios"
+                        android:text="@string/services"
                         android:textSize="18sp" />
 
                 </RelativeLayout>
@@ -103,7 +104,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/img_products"
                         android:gravity="center"
-                        android:text="Productos"
+                        android:text="@string/products"
                         android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -148,7 +149,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/img_delivery"
                         android:gravity="center"
-                        android:text="Domicilios"
+                        android:text="@string/delivery"
                         android:textSize="18sp"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -180,7 +181,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/img_events"
                         android:gravity="center"
-                        android:text="Eventos"
+                        android:text="@string/events"
                         android:textSize="18sp" />
 
                 </RelativeLayout>
@@ -211,7 +212,7 @@
                     android:layout_marginBottom="12dp"
                     android:textColor="@color/primary_text"
                     android:textStyle="bold"
-                    android:text="¿Quieres anunciar con nosotros?"
+                    android:text="@string/ads_with_us"
                     android:textSize="14sp"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnContactUs"

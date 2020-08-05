@@ -33,7 +33,7 @@ public class commonMethods {
      * @param datePost
      * @return
      */
-    public static String getDaysDate(String datePost){
+    public static String getDaysDate(String datePost, Context context){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         String dateNow = getDateTime();
@@ -49,11 +49,11 @@ public class commonMethods {
 
         int days =(int) ((finalDate.getTime()-initialDate.getTime())/86400000);
         String txtDays=null;
-        if (days<30){ txtDays = "Hace "+days+ " días"; }
-        if (days>=30 && days<60){ txtDays = "Hace 1 mes"; }
+        if (days<30){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_days); }
+        if (days>=30 && days<60){ txtDays = context.getString(R.string.time_ago_one_month); }
         if (days>=50){
             int months = days/30;
-            txtDays = "Hace "+months+ " meses";
+            txtDays = context.getString(R.string.time_ago)+months+context.getString(R.string.time_months);
         }
         return txtDays;
     }
@@ -69,25 +69,6 @@ public class commonMethods {
     }
 
     /**
-     * Method to display the successfully created account dialog
-     * @return Window dialog
-     */
-    public static AlertDialog dialogCreateAccountSuccessful(Context context){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-        builder.setTitle("¡Bienvenido!")
-                .setMessage("Su cuenta fue creada satisfactoriamente. \n\n"+"Ingrese el correo y la contraseña que acaba de crear para iniciar sesión en FinderPet.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        return builder.create();
-    }
-
-    /**
      * Method to display delete account dialog
      * @param context
      * @return Window dialog
@@ -95,9 +76,9 @@ public class commonMethods {
     public static AlertDialog dialogDeleteAccount(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setTitle("¿Desea eliminar su cuenta por completo?")
-                .setMessage("Se eliminarán todos sus datos de nuestra base de datos.")
-                .setPositiveButton(Html.fromHtml("<font color='red'>ELIMINAR</font>"), new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.dialog_delete_account_title)
+                .setMessage(R.string.dialog_delete_account_message)
+                .setPositiveButton(Html.fromHtml(context.getString(R.string.btn_delete)), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -120,7 +101,7 @@ public class commonMethods {
                         context.startActivity(intent);
                     }
                 })
-                .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -147,9 +128,9 @@ public class commonMethods {
         // [END config_signin]
         final GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(context, gso);  // we received the google client
 
-        builder.setTitle("¿Desea cerrar la sesión y salir de la aplicación?")
-                .setMessage("Si tienes publicaciones en progreso se perderán")
-                .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.dialog_logout_title)
+                .setMessage(R.string.dialog_logout_message)
+                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         firebaseAuth.signOut(); //Cerramos sesión de firebase
@@ -163,7 +144,7 @@ public class commonMethods {
                         context.startActivity(intent);
                     }
                 })
-                .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -181,9 +162,9 @@ public class commonMethods {
     public static AlertDialog dialogCloseApp(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setTitle("¿Desea salir de la aplicación?")
-                .setMessage("Si tienes publicaciones en progreso se perderán")
-                .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.dialog_close_app)
+                .setMessage(R.string.dialog_logout_message)
+                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(context, CloseActivity.class);
@@ -195,7 +176,7 @@ public class commonMethods {
                         context.startActivity(intent);
                     }
                 })
-                .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

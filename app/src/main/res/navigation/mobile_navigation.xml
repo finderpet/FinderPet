@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_nav_home_to_adoptedFragment"
             app:destination="@id/adoptedFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_reportProblemFragment"
+            app:destination="@id/nav_problem" />
     </fragment>
 
     <fragment
@@ -191,7 +194,7 @@
             app:destination="@id/nav_pqr" />
         <action
             android:id="@+id/action_nav_help_to_reportProblemFragment"
-            app:destination="@id/reportProblemFragment" />
+            app:destination="@id/nav_problem" />
     </fragment>
     <fragment
         android:id="@+id/pagerPhotoFragment"
@@ -199,7 +202,7 @@
         android:label="@string/see_photos"
         tools:layout="@layout/fragment_pager_photo" />
     <fragment
-        android:id="@+id/reportProblemFragment"
+        android:id="@+id/nav_problem"
         android:name="com.finder.pet.Fragments.reportProblemFragment"
         android:label="@string/report_problem"
         tools:layout="@layout/fragment_report_problem" />

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="FinderPet"/>
+            app:title="@string/app_name"/>
         <!-- style="@style/Widget.Finder.Toolbar" -->
         <!-- Con este estilo podemos cambiar el color del texto y los iconos del action bar-->
 

@@ -14,6 +14,7 @@ import com.finder.pet.R;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.core.text.BidiFormatter;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedViewHolder> implements View.OnClickListener {
@@ -34,7 +35,9 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layParams);
 
-        mContext= parent.getContext();//Traer el contexto del fragment al adapter para trabajar con Glide
+        mContext= parent.getContext();//Traer el contexto del fragment al adapter para trabajar con Glide y con getString
+
+
 
         view.setOnClickListener((View.OnClickListener) this);
         return new AdoptedViewHolder(view);
@@ -42,10 +45,15 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
 
     @Override
     public void onBindViewHolder(@NonNull AdoptedViewHolder holder, int position) {
-        holder.txtName.setText("Nombre: "+listAdopted.get(position).getName());
-        holder.txtAge.setText("Edad: "+listAdopted.get(position).getAge());
-        holder.txtTimePost.setText("Publicado "+listAdopted.get(position).getDate());
-        holder.txtPhone.setText("Teléfono: "+listAdopted.get(position).getPhone());
+
+        String name = mContext.getString(R.string.post_name).concat(listAdopted.get(position).getName());
+        holder.txtName.setText(name);
+        String age = mContext.getString(R.string.post_age).concat(listAdopted.get(position).getAge());
+        holder.txtAge.setText(age);
+        String posted = mContext.getString(R.string.post_posted).concat(listAdopted.get(position).getDate());
+        holder.txtTimePost.setText(posted);
+        String phone = mContext.getString(R.string.post_phone).concat(listAdopted.get(position).getPhone());
+        holder.txtPhone.setText(phone);
         String url = listAdopted.get(position).getImage1();
         Glide.with(mContext)
                 .load(url)
@@ -53,10 +61,10 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
                 .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
                 .into(holder.mPhoto);
 
-        if (listAdopted.get(position).getType().equals("Perro")){
+        if (listAdopted.get(position).getType().equals("dog")){
             holder.markType.setImageResource(R.mipmap.ic_dog);
         }
-        if (listAdopted.get(position).getType().equals("Gato")){
+        if (listAdopted.get(position).getType().equals("cat")){
             holder.markType.setImageResource(R.mipmap.ic_cat);
         }
     }

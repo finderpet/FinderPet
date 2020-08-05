@@ -18,7 +18,7 @@
             android:id="@+id/id_recycler_adverts"
             android:layout_weight="100"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
 
     </LinearLayout>
 

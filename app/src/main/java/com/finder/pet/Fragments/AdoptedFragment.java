@@ -35,6 +35,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import static androidx.navigation.Navigation.findNavController;
@@ -105,42 +106,42 @@ public class AdoptedFragment extends Fragment {
                     adoptedVo=new Adopted_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString());
+                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
                         adoptedVo.setDate(timeDays);
-                    }else { adoptedVo.setDate("Sin fecha"); }
+                    }else { adoptedVo.setDate(getString(R.string.time_date)); }
                     if (postSnapshot.child("name").exists()){
                         adoptedVo.setName(postSnapshot.child("name").getValue().toString());
-                    }else { adoptedVo.setName("No se encontró nombre"); }
+                    }else { adoptedVo.setName(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("name").exists()){
                         adoptedVo.setEmail(postSnapshot.child("email").getValue().toString());
-                    }else { adoptedVo.setName("No se encontró nombre"); }
+                    }else { adoptedVo.setName(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("age").exists()){
                         adoptedVo.setAge(postSnapshot.child("age").getValue().toString());
-                    }else { adoptedVo.setAge("Sin edad"); }
+                    }else { adoptedVo.setAge(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("breed").exists()){
                         adoptedVo.setBreed(postSnapshot.child("breed").getValue().toString());
-                    }else { adoptedVo.setBreed("Sin Raza"); }
+                    }else { adoptedVo.setBreed(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("sterilized").exists()){
                         adoptedVo.setSterilized(postSnapshot.child("sterilized").getValue().toString());
-                    }else { adoptedVo.setSterilized("Sin información"); }
+                    }else { adoptedVo.setSterilized(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("vaccines").exists()){
                         adoptedVo.setVaccines(postSnapshot.child("vaccines").getValue().toString());
-                    }else { adoptedVo.setVaccines("Sin información de vacunas"); }
+                    }else { adoptedVo.setVaccines(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("location").exists()){
                         adoptedVo.setLocation(postSnapshot.child("location").getValue().toString());
-                    }else { adoptedVo.setVaccines("Sin ubicación"); }
+                    }else { adoptedVo.setVaccines(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("observations").exists()){
                         adoptedVo.setObservations(postSnapshot.child("observations").getValue().toString());
-                    }else { adoptedVo.setVaccines("Sin observaciones"); }
+                    }else { adoptedVo.setVaccines(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("phone").exists()){
                         adoptedVo.setPhone(postSnapshot.child("phone").getValue().toString());
-                    }else { adoptedVo.setVaccines("Sin teléfono"); }
+                    }else { adoptedVo.setVaccines(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("type").exists()){
                         adoptedVo.setType(postSnapshot.child("type").getValue().toString());
-                    }else { adoptedVo.setVaccines("Sin tipo"); }
+                    }else { adoptedVo.setVaccines(getString(R.string.field_without_info)); }
                     adoptedVo.setLatitude(Double.parseDouble((postSnapshot.child("latitude").getValue().toString())));
                     adoptedVo.setLongitude(Double.parseDouble((postSnapshot.child("longitude").getValue().toString())));
-                    adoptedVo.setImage1(postSnapshot.child("image1").getValue().toString()); //Acá traigo la dirección de la imagen, debo crear las otras en firebase
+                    adoptedVo.setImage1(postSnapshot.child("image1").getValue().toString());
                     adoptedVo.setImage2(postSnapshot.child("image2").getValue().toString());
                     adoptedVo.setImage3(postSnapshot.child("image3").getValue().toString());
 
@@ -148,6 +149,7 @@ public class AdoptedFragment extends Fragment {
                     ListAdopted.add(adoptedVo);
                 }
 
+                Collections.reverse(ListAdopted);
                 AdoptedAdapter adapter =  new AdoptedAdapter(ListAdopted);
                 recyclerListAdopted.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
@@ -165,7 +167,7 @@ public class AdoptedFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }

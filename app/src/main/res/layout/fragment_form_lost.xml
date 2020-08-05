@@ -11,7 +11,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground"/>
+        android:background="@color/colorBackground"
+        android:contentDescription="@string/content_description_media" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -231,9 +232,12 @@
                         android:textColor="@color/primary_text"/>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -242,15 +246,21 @@
                             android:layout_height="90dp"
                             android:layout_margin="4dp"
                             android:layout_weight="1"
-                            android:src="@drawable/img_upload_1" />
+                            android:padding="2dp"
+                            android:background="@drawable/background_dot_line"
+                            android:src="@drawable/img_upload_1"/>
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/imageLost_2"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:layout_margin="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="8dp"
                             android:layout_weight="1"
-                            android:src="@drawable/img_upload_2" />
+                            android:padding="2dp"
+                            android:background="@drawable/background_dot_line"
+                            android:src="@drawable/img_upload_2"/>
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/imageLost_3"
@@ -258,6 +268,8 @@
                             android:layout_height="90dp"
                             android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:padding="2dp"
+                            android:background="@drawable/background_dot_line"
                             android:src="@drawable/img_upload_3"/>
 
                     </LinearLayout>
@@ -272,7 +284,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/save"
                 app:cornerRadius="6dp"
                 app:icon="@drawable/ic_outline_save_24"/>
