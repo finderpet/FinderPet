@@ -127,6 +127,12 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
 
         // Initialize variables
         setupViews(view);
+        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
+
+        linearLayout = view.findViewById(R.id.layoutSearchLost);
+        search_view = view.findViewById(R.id.svMapsLost);
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapSearchLost);
 
         // Capturamos el evento de la busqueda de dirección o zona
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -272,12 +278,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         latitude = 6.2443382;
         longitude = -75.573553;
 
-        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
 
-        linearLayout = view.findViewById(R.id.layoutSearchLost);
-        search_view = view.findViewById(R.id.svMapsLost);
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapSearchLost);
     }
 
     private void getSearchLocation(){
@@ -417,30 +418,30 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         boolean valid = true;
 
         if (!rbDog.isChecked() && !rbCat.isChecked() && !rbOther.isChecked()){
-            Toast.makeText(getContext(), "Debes seleccionar un tipo de mascota", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.select_pet_type, Toast.LENGTH_LONG).show();
             valid = false;
         }
         if (pathLocal1 == null){
-            Toast.makeText(getContext(), "Debe agregar por lo menos la imagen 1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.add_least_image1, Toast.LENGTH_LONG).show();
             valid = false;
         }
         String location = fieldLocation.getText().toString();
         if (TextUtils.isEmpty(location)) {
-            textInputLocation.setError("La dirección o ubicación es obligatoria");
+            textInputLocation.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputLocation.setError(null);
         }
         String name = fieldNamePet.getText().toString();
         if (TextUtils.isEmpty(name)) {
-            textInputName.setError("Nombre de mascota obligatorio");
+            textInputName.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputName.setError(null);
         }
         String phone = fieldPhone.getText().toString();
         if (TextUtils.isEmpty(phone)) {
-            textInputPhone.setError("El teléfono es Obligatorio");
+            textInputPhone.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputPhone.setError(null);

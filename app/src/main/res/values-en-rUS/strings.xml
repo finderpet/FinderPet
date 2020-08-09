@@ -253,7 +253,7 @@
     <string name="btn_yes">Yes</string>
     <string name="btn_no">No</string>
     <string name="permission_not_accepted">Permits were not accepted</string>
-    <string name="dialog_recommendation_permission_call_title">Permission not granted</string>
+    <string name="dialog_recommendation_permission_call_title">Permission was not granted</string>
     <string name="could_not_get_information">Could not get information</string>
     <string name="pet_shops">Pet Shops</string>
     <string name="no_number_to_call">There is no contact number to call</string>
@@ -262,4 +262,19 @@
     <string name="dialog_report_sent_correctly_title">Report sent correctly</string>
     <string name="dialog_report_sent_correctly_message">We will try to solve the problem as soon as possible and we will send you information by email on how you can solve it.</string>
     <string name="image_not_loaded">Image could not be loaded</string>
+    <string name="post_successful">Your post was successful!</string>
+    <string name="select_pet_type">You must select a pet type</string>
+    <string name="add_least_image1">You must add at least image 1</string>
+    <string name="accept_permissions_functioning_app">You must accept the permissions for the proper functioning of the App</string>
+    <string name="upload_from_gallery">Upload from Gallery</string>
+    <string name="take_photo">Take a photo</string>
+    <string name="select_an_option">Select an option</string>
+    <string name="select_an_application">Select an application</string>
+    <string name="current_location">Current location</string>
+    <string name="manual_location">Manual location</string>
+    <string name="enter_pet_location">Enter the pet\'s location:</string>
+    <string name="service_not_available">Service not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude longitude used</string>
+    <string name="location_found">Address or zone found</string>
+    <string name="no_geocoder_available">No geocoder available</string>
 </resources>

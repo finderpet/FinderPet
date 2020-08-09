@@ -275,5 +275,20 @@
     <string name="dialog_report_sent_correctly_title">Informe enviado correctamente</string>
     <string name="dialog_report_sent_correctly_message">Trataremos de solucionar el problema lo más pronto posible y te enviaremos información al correo de como puedes resolverlo.</string>
     <string name="image_not_loaded">No se pudo cargar la imagen</string>
+    <string name="post_successful">¡Tu publicación se realizó correctamente!</string>
+    <string name="select_pet_type">Debes seleccionar un tipo de mascota</string>
+    <string name="add_least_image1">Debe agregar por lo menos la imagen 1</string>
+    <string name="accept_permissions_functioning_app">Debe aceptar los permisos para el correcto funcionamiento de la App</string>
+    <string name="upload_from_gallery">Cargar desde galería</string>
+    <string name="take_photo">Tomar una foto</string>
+    <string name="select_an_option">Seleccione una opción</string>
+    <string name="select_an_application">Seleccione una aplicación</string>
+    <string name="current_location">Ubicación actual</string>
+    <string name="manual_location">Ubicación manual</string>
+    <string name="enter_pet_location">Ingrese la ubicación de la mascota:</string>
+    <string name="service_not_available">Servicio no disponible</string>
+    <string name="invalid_lat_long_used">Latitud o longitud usada no es vàlida</string>
+    <string name="location_found">Dirección o zona encontrada</string>
+    <string name="no_geocoder_available">No hay geocodificador disponible</string>
 
 </resources>

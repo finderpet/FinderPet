@@ -40,7 +40,6 @@ public class informationShowFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_information_show, container, false);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -49,31 +48,19 @@ public class informationShowFragment extends Fragment {
         String textToShow = getArguments().getString("Object");
 
         if (textToShow.equals("Policy")){
-            // Damos formato HTML al texto de políticas de datos, solo funciona de api 24 hacia adelante
-            String text = getString(R.string.data_policy);
-            Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
-            tvShow.setText(styledText);
+            tvShow.setText(Html.fromHtml(getResources().getString(R.string.data_policy)));
             getActionBar().setTitle(R.string.label_data_policy);
         }
         if (textToShow.equals("Terms")){
-            // Damos formato HTML al texto de políticas de datos, solo funciona de api 24 hacia adelante
-            String text = getString(R.string.data_policy);
-            Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
-            tvShow.setText(styledText);
+            tvShow.setText(Html.fromHtml(getResources().getString(R.string.data_policy)));
             getActionBar().setTitle(R.string.terms_use);
         }
         if (textToShow.equals("About")){
-            // Damos formato HTML al texto de políticas de datos, solo funciona de api 24 hacia adelante
-            String text = getString(R.string.about_finder_pet);
-            Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
-            tvShow.setText(styledText);
+            tvShow.setText(Html.fromHtml(getResources().getString(R.string.about_finder_pet)));
             getActionBar().setTitle(R.string.about_app);
         }
         if (textToShow.equals("Developers")){
-            // Damos formato HTML al texto de políticas de datos, solo funciona de api 24 hacia adelante
-            String text = getString(R.string.about_developers);
-            Spanned styledText = Html.fromHtml(text, FROM_HTML_MODE_LEGACY);
-            tvShow.setText(styledText);
+            tvShow.setText(Html.fromHtml(getResources().getString(R.string.about_developers)));
             getActionBar().setTitle(R.string.developers);
         }
 

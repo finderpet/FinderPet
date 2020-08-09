@@ -1,5 +1,6 @@
 package com.finder.pet.Fragments;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,9 +28,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.finder.pet.Entities.Adopted_Vo;
@@ -42,7 +41,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -56,18 +54,17 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -97,6 +94,8 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     private FusedLocationProviderClient fusedLocationClient; // Get the last know location
     private LinearLayout linearLayout; // LinearLayout para mostrar buscador de dirección y mapa
 
+    //Location
+    protected Location lastLocation;
     private GoogleMap map;
     private SupportMapFragment mapFragment;
     private androidx.appcompat.widget.SearchView search_view;
@@ -110,10 +109,11 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     private static final int REQUEST_IMAGE = 100;
     private static final int REQUEST_IMAGE_CAMERA = 103;
     private static final int REQUEST_PERMISSIONS = 104;
+    private static final int REQUEST_PERMISSIONS_LOCATION = 105;
 
     // Constants
-    private final String ROOT_FOLDER="FinderPet/";
-    private final String ROUTE_IMAGE=ROOT_FOLDER+"myPhotos";
+    private final String ROOT_FOLDER = "FinderPet/";
+    private final String ROUTE_IMAGE = ROOT_FOLDER + "myPhotos";
 
 
     public formAdoptedFragment() {
@@ -121,58 +121,21 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_form_adopted, container, false);
+        return inflater.inflate(R.layout.fragment_form_adopted, container, false);
 
-        // Initialize variables
-        rbDog = view.findViewById(R.id.rbDogAdopted);
-        rbCat = view.findViewById(R.id.rbCatAdopted);
-        rbOther = view.findViewById(R.id.rbOtherAdopted);
-        textInputLocation = view.findViewById(R.id.textInputAddAdoptedLocation);
-        textInputName = view.findViewById(R.id.textInputAddAdoptedName);
-        textInputEmail = view.findViewById(R.id.textInputAddAdoptedEmail);
-        textInputPhone = view.findViewById(R.id.textInputAddAdoptedPhone);
-        textInputAge = view.findViewById(R.id.textInputAddAdoptedAge);
-        textInputBreed = view.findViewById(R.id.textInputAddAdoptedBreed);
-        textInputSterilized = view.findViewById(R.id.textInputAddAdoptedSterilized);
-        textInputVaccines = view.findViewById(R.id.textInputAddAdoptedVaccines);
-        textInputDescription = view.findViewById(R.id.textInputAddAdoptedDescription);
-        fieldLocation = view.findViewById(R.id.fieldAddAdoptedLocation);
-        fieldNamePet = view.findViewById(R.id.fieldAddAdoptedName);
-        fieldEmail = view.findViewById(R.id.fieldAddAdoptedEmail);
-        fieldPhone = view.findViewById(R.id.fieldAddAdoptedPhone);
-        fieldAge = view.findViewById(R.id.fieldAddAdoptedAge);
-        fieldBreed = view.findViewById(R.id.fieldAddAdoptedBreed);
-        fieldSterilized = view.findViewById(R.id.fieldAddAdoptedSterilized);
-        fieldVaccines = view.findViewById(R.id.fieldAddAdoptedVaccines);
-        fieldDescription = view.findViewById(R.id.fieldAddAdoptedDescription);
-        img1 = view.findViewById(R.id.imageAdopted_1);
-        img2 = view.findViewById(R.id.imageAdopted_2);
-        img3 = view.findViewById(R.id.imageAdopted_3);
-        btnSave = view.findViewById(R.id.btnAddNewAdopted);
-        pathLocal1=null;
-        pathLocal2=null;
-        pathLocal3=null;
-        path_uri_1="null";
-        path_uri_2="null";
-        path_uri_3="null";
-        latitude = 6.2443382;
-        longitude = -75.573553;
+    }// [End onCreateView]
 
-        // Creamos el adapter con los items para el textfield de Esterilizado
-        String[] Types = new String[] {"Sí", "No"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.list_type_item, Types);
-        fieldSterilized.setAdapter(adapter);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocAdopted);
+        setupViews(view);
 
-        linearLayout = view.findViewById(R.id.layoutSearchAdopted);
-        search_view = view.findViewById(R.id.svMapsAdopted);
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapSearchAdopted);
 
         // Capturamos el evento de la busqueda de dirección o zona
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -180,22 +143,23 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
             public boolean onQueryTextSubmit(String query) {
                 String location = search_view.getQuery().toString();
                 searchLoc = location;
-                List<Address> addressList = null;
-                if (location != null){
+                //List<Address> addressList = null;
+                if (location != null) {
+                    List<Address> addressList = null;
                     Geocoder geocoder = new Geocoder(getContext());
                     try {
-                        addressList = geocoder.getFromLocationName(location,1);
+                        addressList = geocoder.getFromLocationName(location, 1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if (addressList.size() != 0){
+                    if (!addressList.isEmpty()) {
                         Address address = addressList.get(0);
                         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                         latitude = address.getLatitude();
                         longitude = address.getLongitude();
                         map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
                         map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-                    }else {
+                    } else {
                         searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
                         Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
                     }
@@ -220,11 +184,11 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         storageRef = FirebaseStorage.getInstance().getReference();
 
         // Validate camera permissions and external write
-        if(validatePermissions()){
+        if (validatePermissions()) {
             img1.setEnabled(true);
             img2.setEnabled(true);
             img3.setEnabled(true);
-        }else{
+        } else {
             img1.setEnabled(false);
             img2.setEnabled(false);
             img3.setEnabled(false);
@@ -262,21 +226,25 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         textInputLocation.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final CharSequence[] opciones={"Ubicación actual","Ubicación manual"};
-                final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getContext());
-                alertOpciones.setTitle("Ingrese la ubicación de la mascota:");
-                alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (opciones[i].equals("Ubicación actual")){
-                            getCurrentLocation();
-                        }else{
-                            //dialogInterface.dismiss();
-                            linearLayout.setVisibility(View.VISIBLE);
+                if (validatePermissionsLocation()){
+                    final CharSequence[] opciones = {getString(R.string.current_location), getString(R.string.manual_location)};
+                    final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(getContext());
+                    alertOpciones.setTitle(R.string.enter_pet_location);
+                    alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (opciones[i].equals(getString(R.string.current_location))) {
+                                getCurrentLocation();
+                            } else {
+                                //dialogInterface.dismiss();
+                                linearLayout.setVisibility(View.VISIBLE);
+                            }
                         }
-                    }
-                });
-                alertOpciones.show();
+                    });
+                    alertOpciones.show();
+                }else {
+                    requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
+                }
             }
         });
 
@@ -287,46 +255,205 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 getSearchLocation();
             }
         });
-        return view;
+    }// [End onViewCreated]
+
+    private void setupViews(View view) {
+
+        // Initialize variables
+        rbDog = view.findViewById(R.id.rbDogAdopted);
+        rbCat = view.findViewById(R.id.rbCatAdopted);
+        rbOther = view.findViewById(R.id.rbOtherAdopted);
+        textInputLocation = view.findViewById(R.id.textInputAddAdoptedLocation);
+        textInputName = view.findViewById(R.id.textInputAddAdoptedName);
+        textInputEmail = view.findViewById(R.id.textInputAddAdoptedEmail);
+        textInputPhone = view.findViewById(R.id.textInputAddAdoptedPhone);
+        textInputAge = view.findViewById(R.id.textInputAddAdoptedAge);
+        textInputBreed = view.findViewById(R.id.textInputAddAdoptedBreed);
+        textInputSterilized = view.findViewById(R.id.textInputAddAdoptedSterilized);
+        textInputVaccines = view.findViewById(R.id.textInputAddAdoptedVaccines);
+        textInputDescription = view.findViewById(R.id.textInputAddAdoptedDescription);
+        fieldLocation = view.findViewById(R.id.fieldAddAdoptedLocation);
+        fieldNamePet = view.findViewById(R.id.fieldAddAdoptedName);
+        fieldEmail = view.findViewById(R.id.fieldAddAdoptedEmail);
+        fieldPhone = view.findViewById(R.id.fieldAddAdoptedPhone);
+        fieldAge = view.findViewById(R.id.fieldAddAdoptedAge);
+        fieldBreed = view.findViewById(R.id.fieldAddAdoptedBreed);
+        fieldSterilized = view.findViewById(R.id.fieldAddAdoptedSterilized);
+        fieldVaccines = view.findViewById(R.id.fieldAddAdoptedVaccines);
+        fieldDescription = view.findViewById(R.id.fieldAddAdoptedDescription);
+        img1 = view.findViewById(R.id.imageAdopted_1);
+        img2 = view.findViewById(R.id.imageAdopted_2);
+        img3 = view.findViewById(R.id.imageAdopted_3);
+        btnSave = view.findViewById(R.id.btnAddNewAdopted);
+        pathLocal1 = null;
+        pathLocal2 = null;
+        pathLocal3 = null;
+        path_uri_1 = "null";
+        path_uri_2 = "null";
+        path_uri_3 = "null";
+        latitude = 6.2443382;
+        longitude = -75.573553;
+
+        // Creamos el adapter con los items para el textfield de Esterilizado
+        String[] Types = new String[]{"Sí", "No"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.list_type_item, Types);
+        fieldSterilized.setAdapter(adapter);
+        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocAdopted);
+        linearLayout = view.findViewById(R.id.layoutSearchAdopted);
+        search_view = view.findViewById(R.id.svMapsAdopted);
+        mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.mapSearchAdopted);
     }
 
-    private void getSearchLocation(){
+
+    private void getSearchLocation() {
         fieldLocation.setText(searchLoc);
         linearLayout.setVisibility(View.GONE);
     }
 
-    private void getCurrentLocation(){
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            Log.e("Location ","Lat: "+location.getLatitude()+" Lng: "+location.getLongitude());
-                            List<Address> addresses = null;
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
-                            String errorMessage = "";
+
+    /**
+     * Method to get user current location
+     */
+    private void getCurrentLocation() {
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if((getContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)
+                    && (getContext().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+                //Get last location
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                lastLocation = location;
+                                //Toast.makeText(getContext(), "onSuccess: "+location.getLatitude(), Toast.LENGTH_LONG).show();
+
+                                // In some rare cases the location returned can be null
+                                if (lastLocation == null) {
+                                    Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                if (!Geocoder.isPresent()) {
+                                    Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                                String errorMessage = "";
+
+                                List<Address> addresses = null;
+
+                                try {
+                                    // Get address of our location
+                                    addresses = geocoder.getFromLocation(
+                                            lastLocation.getLatitude(),
+                                            lastLocation.getLongitude(),
+                                            // In this sample, get just a single address.
+                                            1);
+                                } catch (IOException ioException) {
+                                    // Catch network or other I/O problems.
+                                    errorMessage = getString(R.string.service_not_available);
+                                    Log.e("LastLocationAPI22", errorMessage, ioException);
+                                } catch (IllegalArgumentException illegalArgumentException) {
+                                    // Catch invalid latitude or longitude values.
+                                    errorMessage = getString(R.string.invalid_lat_long_used);
+                                    Log.e("LastLocationAPI22", errorMessage + ". " +
+                                            "Latitude = " + lastLocation.getLatitude() +
+                                            ", Longitude = " +
+                                            lastLocation.getLongitude(), illegalArgumentException);
+                                }
+
+                                // Handle case where no address was found.
+                                if (addresses == null || addresses.size()  == 0) {
+                                    if (errorMessage.isEmpty()) {
+                                        errorMessage = getString(R.string.location_not_found);
+                                        Log.e("LastLocationAPI22", errorMessage);
+                                        Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Address address = addresses.get(0);
+                                    String myAddress = address.getAddressLine(0);
+                                    //Toast.makeText(getContext(), myAddress, Toast.LENGTH_LONG).show();
+                                    fieldLocation.setText(myAddress);
+                                    Log.i("LastLocationAPI22", getString(R.string.location_found));
+                                }
+
+                            }
+                        });
+            }else {
+                if (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION) || shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)){
+                    dialogRecommendationToGrantPermission();
+                }
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
+            }
+        }else {
+            //Get last location
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            lastLocation = location;
+                            //Toast.makeText(getContext(), "onSuccess: "+location.getLatitude(), Toast.LENGTH_LONG).show();
+
+                            // In some rare cases the location returned can be null
+                            if (lastLocation == null) {
+                                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
+                            if (!Geocoder.isPresent()) {
+                                Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
                             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                            String errorMessage = "";
+
+                            List<Address> addresses = null;
+
                             try {
+                                // Get address of our location
                                 addresses = geocoder.getFromLocation(
-                                        location.getLatitude(),
-                                        location.getLongitude(),
+                                        lastLocation.getLatitude(),
+                                        lastLocation.getLongitude(),
                                         // In this sample, get just a single address.
                                         1);
-                                if (!addresses.isEmpty()) {
-                                    Address streetAddress = addresses.get(0);
-                                    fieldLocation.setText(streetAddress.getAddressLine(0));
-                                }else{
-                                    Toast.makeText(getContext(), "No se encontró la dirección actual", Toast.LENGTH_LONG).show();
-                                }
-                            }  catch (IOException e) {
-                                e.printStackTrace();
+                            } catch (IOException ioException) {
+                                // Catch network or other I/O problems.
+                                errorMessage = getString(R.string.service_not_available);
+                                Log.e("LastLocationAPI22", errorMessage, ioException);
+                            } catch (IllegalArgumentException illegalArgumentException) {
+                                // Catch invalid latitude or longitude values.
+                                errorMessage = getString(R.string.invalid_lat_long_used);
+                                Log.e("LastLocationAPI22", errorMessage + ". " +
+                                        "Latitude = " + lastLocation.getLatitude() +
+                                        ", Longitude = " +
+                                        lastLocation.getLongitude(), illegalArgumentException);
                             }
+
+                            // Handle case where no address was found.
+                            if (addresses == null || addresses.size()  == 0) {
+                                if (errorMessage.isEmpty()) {
+                                    errorMessage = getString(R.string.location_not_found);
+                                    Log.e("LastLocationAPI22", errorMessage);
+                                    Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Address address = addresses.get(0);
+                                String myAddress = address.getAddressLine(0);
+                                //Toast.makeText(getContext(), myAddress, Toast.LENGTH_LONG).show();
+                                fieldLocation.setText(myAddress);
+                                Log.i("LastLocationAPI22", getString(R.string.location_found));
+                            }
+
                         }
-                    }
-                });
-    }
+                    });
+
+        }
+
+    }// [End getCurrentLocation]
+
 
     private void showProgressDialog(){
         progressDialog.setCancelable(false);
@@ -345,146 +472,136 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Create variables to the object
-                String rbPet="null";
-                String date = "null";
-                String name = "null";
-                String email = "null";
-                String type = "null";
-                String age = "null";
-                String breed = "null";
-                String sterilized = "null";
-                String vaccines = "null";
-                String description = "null";
-                String phone = "null";
-                String img_1 = "null";
-                String img_2 = "null";
-                String img_3 = "null";
-                String location = "null";
 
                 //getting the values to save
+                String rbPet="null";
                 if (rbDog.isChecked()) rbPet = "dog";
                 if (rbCat.isChecked()) rbPet = "cat";
                 if (rbOther.isChecked()) rbPet = "other";
-                date = commonMethods.getDateTime();
-                name = fieldNamePet.getText().toString().trim();
-                email = fieldEmail.getText().toString().trim();
-                type = rbPet;
-                age = fieldAge.getText().toString().trim();
-                breed = fieldBreed.getText().toString().trim();
-                sterilized = fieldSterilized.getText().toString().trim();
-                vaccines = fieldVaccines.getText().toString().trim();
-                description = fieldDescription.getText().toString().trim();
-                phone = fieldPhone.getText().toString().trim();
-                img_1 = path_uri_1;
-                img_2 = path_uri_2;
-                img_3 = path_uri_3;
-                location = fieldLocation.getText().toString().trim();
+                String date = commonMethods.getDateTime();
+                String name = fieldNamePet.getText().toString().trim();
+                String email = fieldEmail.getText().toString().trim();
+                String type = rbPet;
+                String age = fieldAge.getText().toString().trim();
+                String breed = fieldBreed.getText().toString().trim();
+                String sterilized = fieldSterilized.getText().toString().trim();
+                String vaccines = fieldVaccines.getText().toString().trim();
+                String description = fieldDescription.getText().toString().trim();
+                String phone = fieldPhone.getText().toString().trim();
+                String img_1 = path_uri_1;
+                String img_2 = path_uri_2;
+                String img_3 = path_uri_3;
+                String location = fieldLocation.getText().toString().trim();
 
                 //getting a unique id using push().getKey() method
                 //it will create a unique id and we will use it as the Primary Key for our user
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Adopted_Vo adopted_vo = new Adopted_Vo(date, name, email, type, age, breed, sterilized, vaccines, description, phone, img_1, img_2, img_3, location, latitude, longitude);
+                Adopted_Vo adopted_vo = new Adopted_Vo(date, name, email, type, age, breed, sterilized,
+                        vaccines, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet
                 databaseRef.child(id).setValue(adopted_vo);
 
-                //setting edittext to blank again
-                fieldNamePet.setText("");
-                fieldLocation.setText("");
-                fieldPhone.setText("");
-                fieldEmail.setText("");
-                fieldAge.setText("");
-                fieldBreed.setText("");
-                fieldSterilized.setText("");
-                fieldVaccines.setText("");
-                fieldDescription.setText("");
-                img1.setImageResource(R.drawable.img_upload_1);
-                img2.setImageResource(R.drawable.img_upload_2);
-                img3.setImageResource(R.drawable.img_upload_3);
-                latitude = 6.2443382;
-                longitude = -75.573553;
+                //setting editText to blank again
+                clearFields();
 
                 progressDialog.dismiss();
                 //displaying a success toast
-                Toast.makeText(getContext(), "¡Registro realizado correctamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.post_successful, Toast.LENGTH_LONG).show();
             }
         },15000);
 
+    }
+
+    private void clearFields() {
+        fieldNamePet.setText("");
+        fieldLocation.setText("");
+        fieldPhone.setText("");
+        fieldEmail.setText("");
+        fieldAge.setText("");
+        fieldBreed.setText("");
+        fieldSterilized.setText("");
+        fieldVaccines.setText("");
+        fieldDescription.setText("");
+        img1.setImageResource(R.drawable.img_upload_1);
+        img2.setImageResource(R.drawable.img_upload_2);
+        img3.setImageResource(R.drawable.img_upload_3);
+        latitude = 6.2443382;
+        longitude = -75.573553;
     }
 
     private boolean validateForm() {
         boolean valid = true;
 
         if (!rbDog.isChecked() && !rbCat.isChecked() && !rbOther.isChecked()){
-            Toast.makeText(getContext(), "Debes seleccionar un tipo de mascota", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.select_pet_type, Toast.LENGTH_LONG).show();
             valid = false;
         }
         if (pathLocal1 == null){
-            Toast.makeText(getContext(), "Debe agregar por lo menos la imagen 1", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.add_least_image1, Toast.LENGTH_LONG).show();
             valid = false;
         }
         String location = fieldLocation.getText().toString();
         if (TextUtils.isEmpty(location)) {
-            textInputLocation.setError("La dirección es olbigatoria");
+            textInputLocation.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputLocation.setError(null);
         }
         String name = fieldNamePet.getText().toString();
         if (TextUtils.isEmpty(name)) {
-            textInputName.setError("Nombre de mascota obligatorio");
+            textInputName.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputName.setError(null);
         }
         String email = fieldEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            textInputEmail.setError("Correo Obligatorio");
+            textInputEmail.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputEmail.setError(null);
         }
         String phone = fieldPhone.getText().toString();
         if (TextUtils.isEmpty(phone)) {
-            textInputPhone.setError("El teléfono es Obligatorio");
+            textInputPhone.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputPhone.setError(null);
         }
         String description = fieldDescription.getText().toString();
         if (TextUtils.isEmpty(description)) {
-            textInputDescription.setError("La descripción es Obligatoria");
+            textInputDescription.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputDescription.setError(null);
         }
         String age = fieldAge.getText().toString();
         if (TextUtils.isEmpty(age)) {
-            textInputAge.setError("Edad Obligatoria");
+            textInputAge.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputAge.setError(null);
         }
         String breed = fieldBreed.getText().toString();
         if (TextUtils.isEmpty(breed)) {
-            textInputBreed.setError("Raza Obligatoria");
+            textInputBreed.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputBreed.setError(null);
         }
         String sterilized = fieldSterilized.getText().toString();
         if (TextUtils.isEmpty(sterilized)) {
-            textInputSterilized.setError("Campo obligatorio");
+            textInputSterilized.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputSterilized.setError(null);
         }
         String vaccines = fieldVaccines.getText().toString();
         if (TextUtils.isEmpty(vaccines)) {
-            textInputVaccines.setError("La descripción es Obligatoria");
+            textInputVaccines.setError(getString(R.string.required_field));
             valid = false;
         } else {
             textInputVaccines.setError(null);
@@ -502,17 +619,38 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         }
 
         if((getContext().checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)
-                && (getContext().checkSelfPermission(WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)
-                && (getContext().checkSelfPermission(ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+                && (getContext().checkSelfPermission(WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)){
             return true;
         }
 
         if((shouldShowRequestPermissionRationale(CAMERA))
-                || (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))
-                || (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION))){
-            loadDialogRecomendation();
+                || (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))){
+            dialogRecommendationToGrantPermission();
         }else{
-            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION},104);
+            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},104);
+        }
+        return false;
+    }
+
+    /**
+     * Method to validate camera and external write permissions
+     * @return boolean
+     */
+    private boolean validatePermissionsLocation() {
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
+            return true;
+        }
+
+        if((getContext().checkSelfPermission(ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+                && (getContext().checkSelfPermission(ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+            return true;
+        }
+
+        if((shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION))
+                || (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))){
+            dialogRecommendationToGrantPermission();
+        }else{
+            requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
         }
         return false;
     }
@@ -520,15 +658,15 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     /**
      * Method to display permission recommendation dialog
      */
-    private void loadDialogRecomendation() {
+    private void dialogRecommendationToGrantPermission() {
         AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
-        dialogo.setTitle("Permisos Desactivados");
-        dialogo.setMessage("Debe aceptar los permisos para el correcto funcionamiento de la App");
+        dialogo.setTitle(R.string.dialog_recommendation_permission_call_title);
+        dialogo.setMessage(R.string.accept_permissions_functioning_app);
 
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION},104);
+                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},104);
             }
         });
         dialogo.show();
@@ -539,40 +677,54 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode==REQUEST_PERMISSIONS){
-            if(grantResults.length==3 && grantResults[0]==PackageManager.PERMISSION_GRANTED
-                    && grantResults[1]==PackageManager.PERMISSION_GRANTED && grantResults[2]==PackageManager.PERMISSION_GRANTED){
+            if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
+                    && grantResults[1]==PackageManager.PERMISSION_GRANTED){
                 img1.setEnabled(true);
                 img2.setEnabled(true);
                 img3.setEnabled(true);
             }else{
-                solicitarPermisosManual();
+                manualPermitRequestCall().show();
             }
+        }
+        if(requestCode== REQUEST_PERMISSIONS_LOCATION){
+            if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
+                    && grantResults[1]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getContext(), "Ya puede traer su ubicaión actual automaticamente",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
     /**
      * Method to display permission authorization dialog manually
      */
-    private void solicitarPermisosManual() {
-        final CharSequence[] opciones={"si","no"};
-        final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getActivity());
-        alertOpciones.setTitle("¿Desea configurar los permisos de forma manual?");
-        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (opciones[i].equals("si")){
-                    Intent intent=new Intent();
-                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    Uri uri=Uri.fromParts("package",getActivity().getPackageName(),null);
-                    intent.setData(uri);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getContext(),"Los permisos no fueron aceptados",Toast.LENGTH_SHORT).show();
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-        alertOpciones.show();
+    private AlertDialog manualPermitRequestCall() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle(R.string.dialog_permission_call_manually_title)
+                .setMessage(R.string.dialog_permission_call_manually_message)
+                .setPositiveButton(R.string.btn_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent=new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri=Uri.fromParts("package",getActivity().getPackageName(),null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(R.string.btn_no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(),R.string.permission_not_accepted,Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+        return builder.create();
     }
 
     /**
@@ -582,19 +734,20 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     private void loadImage(ImageView imgNew, int imgNum) {
         imgNumber = imgNum; // Asigno el número que identifica la ruta de la imagen que estamos subiendo
         imgUpdate = imgNew; // Asigno a imgUpdate el ImageView que solicitó cargar la imagen
-        final CharSequence[] options = {"Cargar desde Galería", "Tomar Foto", "Cancelar"};
+        final CharSequence[] options = {getString(R.string.upload_from_gallery),
+                getString(R.string.take_photo), getString(R.string.cancel)};
         final AlertDialog.Builder alertOptions = new AlertDialog.Builder(getActivity());
-        alertOptions.setTitle("Seleccione una opción");
+        alertOptions.setTitle(R.string.select_an_option);
         alertOptions.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(options[i].equals("Tomar Foto")){
+                if(options[i].equals(getString(R.string.take_photo))){
                     makePhoto();
                 }else {
-                    if(options[i].equals("Cargar desde Galería")){
+                    if(options[i].equals(getString(R.string.upload_from_gallery))){
                         Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         intent.setType("image/");//si hay problemas para cargar algunas imagenes colocar "image/*"
-                        startActivityForResult(intent.createChooser(intent, "Seleccione una aplicación"), 100);
+                        startActivityForResult(intent.createChooser(intent, getString(R.string.select_an_application)), 100);
                     }else {
                         dialogInterface.dismiss();
                     }
@@ -716,7 +869,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_1 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img1", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getContext(),"Load Img1", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -729,7 +882,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_2 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img2", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getContext(),"Load Img2", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -742,7 +895,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_3 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img3", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getContext(),"Load Img3", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -752,7 +905,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                     break;
             }
         }else {
-            Toast.makeText(getContext(),"No se cargó la imagen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),R.string.image_not_loaded, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -769,5 +922,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 //            }
 //        });
     }
+
+
 
 }
