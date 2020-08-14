@@ -34,7 +34,7 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layParams);
 
-        mContext= parent.getContext();//Traer el contexto del fragment al adapter para trabajar con Glide
+        mContext= parent.getContext();// Get the context of the fragment to the adapter
 
         view.setOnClickListener((View.OnClickListener) this);
         return new LostViewHolder(view);
@@ -55,7 +55,7 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
+                .centerCrop()// center the image and take up the entire imageView space
                 .into(holder.mPhoto);
 
         if (listLost.get(position).getType().equals("dog")){

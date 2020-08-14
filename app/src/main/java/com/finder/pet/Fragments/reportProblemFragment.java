@@ -127,16 +127,17 @@ public class reportProblemFragment extends Fragment {
                 if (loadImg){
                     sendReportWithImage();
                 }else {
-
                     sendReportWithoutImage();
                 }
             }
         });
-    }
+    } // [End onViewCreated]
 
-
+    /**
+     * Method to initialize the views
+     * @param view View fragment
+     */
     private void setupViews(View view) {
-
         imgError = view.findViewById(R.id.imgError);
         inputTitle = view.findViewById(R.id.textInputProblemTitle);
         inputEmail = view.findViewById(R.id.textInputProblemMail);
@@ -149,11 +150,17 @@ public class reportProblemFragment extends Fragment {
     }
 
 
+    /**
+     * Method to send report without image
+     */
     private void sendReportWithoutImage() {
         urlImageError = "No image";
         uploadReportToDataBase();
     }
 
+    /**
+     * Method to send report with image
+     */
     private void sendReportWithImage() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
@@ -183,8 +190,9 @@ public class reportProblemFragment extends Fragment {
         });
     }
 
-
-
+    /**
+     * Method to load a image
+     */
     private void loadImage(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
@@ -205,6 +213,9 @@ public class reportProblemFragment extends Fragment {
         }
     }
 
+    /**
+     * Method to upload report to database
+     */
     private void uploadReportToDataBase(){
 
         String title = fieldTitle.getText().toString().trim();
@@ -228,6 +239,10 @@ public class reportProblemFragment extends Fragment {
         dialogReportSentCorrectly().show();
     }
 
+    /**
+     * Method to validate the form information
+     * @return Boolean with true if correct or false if there are errors
+     */
     private boolean formValidate() {
         boolean valid = true;
 
@@ -255,6 +270,9 @@ public class reportProblemFragment extends Fragment {
         return !valid;
     }
 
+    /**
+     * Method to clear form fields
+     */
     private void clearFields(){
         fieldTitle.setText("");
         fieldEmail.setText("");
@@ -264,6 +282,9 @@ public class reportProblemFragment extends Fragment {
 
     }
 
+    /**
+     * Method to display the new report progress dialog
+     */
     private void showProgressDialog(){
         progressDialog.setCancelable(false);
         //progressDialog.setTitle("Guardando nuevo registro..."); // usamos esta linea cuando no utilizamos el setContenView

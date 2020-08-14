@@ -4,12 +4,6 @@ package com.finder.pet.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.finder.pet.Adapters.LostAdapter;
 import com.finder.pet.Entities.Lost_Vo;
 import com.finder.pet.R;
-import com.finder.pet.Utilities.Utilities;
 import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -130,18 +128,17 @@ public class LostFragment extends Fragment {
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                        Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
-                        bundle.putSerializable("objeto", ListLost.get(recyclerListLost.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico
-                        findNavController(view).navigate(R.id.action_lostFragment_to_detailLostFragment, bundle); //Ejecutamos el action junto con el bundle
+                        // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
+                        Bundle bundle = new Bundle(); // Create the bundle to transport the object
+                        bundle.putSerializable("objeto", ListLost.get(recyclerListLost.getChildAdapterPosition(view)));
+                        findNavController(view).navigate(R.id.action_lostFragment_to_detailLostFragment, bundle);
                     }
                 });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }

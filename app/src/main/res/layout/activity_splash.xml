@@ -19,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="-50dp"
-            android:src="@mipmap/ic_splash_new2"/>
+            android:src="@mipmap/ic_splash_new2"
+            android:contentDescription="@string/content_description_media" />
 
         <TextView
             android:layout_width="wrap_content"

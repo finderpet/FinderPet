@@ -34,7 +34,7 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layParams);
 
-        mContext= parent.getContext();//Traer el contexto del fragment al adapter para trabajar con Glide
+        mContext= parent.getContext();// Get the context of the fragment to the adapter
 
         view.setOnClickListener((View.OnClickListener) this);
         return new FoundViewHolder(view);
@@ -43,7 +43,14 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
     @Override
     public void onBindViewHolder(@NonNull FoundViewHolder holder, int position) {
 
-        String type = mContext.getString(R.string.post_type).concat(listFound.get(position).getType());
+        String type;
+        if (listFound.get(position).getType().equals("dog")){
+            type = mContext.getString(R.string.post_type).concat(mContext.getString(R.string.dog));
+        }else if (listFound.get(position).getType().equals("cat")){
+            type = mContext.getString(R.string.post_type).concat(mContext.getString(R.string.cat));
+        }else {
+            type = mContext.getString(R.string.post_type).concat(mContext.getString(R.string.other));
+        }
         holder.txtType.setText(type);
         String location = mContext.getString(R.string.post_location_found).concat(listFound.get(position).getLocation());
         holder.txtLocation.setText(location);
@@ -55,7 +62,7 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
+                .centerCrop()// center the image and take up the entire imageView space
                 .into(holder.mPhoto);
 
         if (listFound.get(position).getType().equals("dog")){

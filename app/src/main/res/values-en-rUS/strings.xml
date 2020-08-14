@@ -84,7 +84,7 @@
     <string name="new_pet_adoption">New pet for adoption</string>
     <string name="register_user">REGISTER</string>
     <string name="no_account">You do not have an account?</string>
-    <string name="or_login_with">Or start with...</string>
+    <string name="or_login_with">Or login with...</string>
     <string name="forgot_password">I forgot my password</string>
     <string name="title_init_session">Sign in with your account</string>
     <string name="create_new_record">Creating new record...</string>
@@ -185,7 +185,7 @@
     <string name="user_name">User Name</string>
     <string name="delivery">Delivery</string>
     <string name="events">Events</string>
-    <string name="ads_with_us">Do you want to advertise with us?</string>
+    <string name="ads_with_us">Show your business in our App</string>
     <string name="type">Type</string>
     <string name="all">All</string>
     <string name="donation_bancolombia">Donation Bancolombia</string>
@@ -277,4 +277,13 @@
     <string name="invalid_lat_long_used">Invalid latitude longitude used</string>
     <string name="location_found">Address or zone found</string>
     <string name="no_geocoder_available">No geocoder available</string>
+    <string name="dialog_permission_location_title">You must grant location permissions</string>
+    <string name="dialog_permission_location_message">To enter the pet\'s location, you must grant the location permission</string>
+    <string name="dialog_permissions_manually">You want to grant the permissions manually</string>
+    <string name="get_current_location_automatically">You can now get your current location automatically</string>
+    <string name="location_permissions_not_granted">Location permissions not granted</string>
+    <string name="camera_video_permissions_not_granted">Camera and video permissions not granted</string>
+    <string name="today">Today</string>
+    <string name="select_a_question">Select a question</string>
+    <string name="time_day">" Day"</string>
 </resources>

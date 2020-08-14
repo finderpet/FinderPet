@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_nav_home_to_reportProblemFragment"
             app:destination="@id/nav_problem" />
+        <action
+            android:id="@+id/action_nav_home_to_listServicesFragment"
+            app:destination="@id/listServicesFragment" />
     </fragment>
 
     <fragment
@@ -51,9 +54,6 @@
         <action
             android:id="@+id/action_nav_advert_to_pruebasFragment"
             app:destination="@id/adsInterstitialFragment" />
-        <action
-            android:id="@+id/action_nav_advert_to_pruebasFragment2"
-            app:destination="@id/pruebasFragment" />
     </fragment>
 
     <fragment

@@ -51,20 +51,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-//        //Verificamos si el acceso de facebook está activo
-//        if (AccessToken.getCurrentAccessToken() == null){
-//            goLoginScreen();
-//        }
-
-        // Almacenar parametros de preferencias
+        // Store preference parameters
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-        //Actualizamos las preferencias de usuario
+        // Update user preferences
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         PreferencesApp.getPreferences(preferences, this);
-        //Validamos si es la primer vez que se abre la aplicación para solicitar País, Ciudad e Idioma
+        // Validate if it is the first time the application is opened to request Country, City and Language
         SharedPreferences.Editor editor = preferences.edit();
         int flag = Integer.parseInt(preferences.getString("flag", "0"));
         if (flag==0){
@@ -89,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
         progressDialogQuestions = new ProgressDialog(this);
 
         // Setup objects of HeaderView
@@ -100,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }// [End onCreate]
 
     /**
-     * Metodo para ir a la pantalla del login
+     * Method to go to the login screen
      */
     private void goLoginScreen() {
         Intent intent=new Intent(MainActivity.this, LoginActivity.class);
@@ -151,7 +143,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    // With this method we capture the event of an item in the options menu
+    /**
+     * Method to capture the event of an item in the options menu
+     * @param item Menu item
+     */
     public void onclickItem(MenuItem item) {
         //transaction = getSupportFragmentManager().beginTransaction();
         int id = item.getItemId();
@@ -208,9 +203,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Crea un Diálogo con una lista de selección simplead
-     *
-     * @return La instancia del diálogo
+     * Method to display frequent questions dialog
      */
     public void dialogFrequentQuestions() {
         final CharSequence[] opciones=new CharSequence[3];
@@ -222,8 +215,8 @@ public class MainActivity extends AppCompatActivity {
         opciones[1] = Q2;
         opciones[2] = Q3;
         AlertDialog.Builder alertOpciones=new AlertDialog.Builder(this);
-        alertOpciones.setTitle("Seleccione una pregunta")
-                .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+        alertOpciones.setTitle(R.string.select_a_question)
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -251,6 +244,5 @@ public class MainActivity extends AppCompatActivity {
         });
         alertOpciones.show();
     }
-
 
 }

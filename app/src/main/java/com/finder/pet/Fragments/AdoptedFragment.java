@@ -2,15 +2,8 @@ package com.finder.pet.Fragments;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.finder.pet.Adapters.AdoptedAdapter;
 import com.finder.pet.Entities.Adopted_Vo;
 import com.finder.pet.R;
-import com.finder.pet.Utilities.Utilities;
 import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,12 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -157,10 +149,10 @@ public class AdoptedFragment extends Fragment {
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // Evento para llamar al fragment DetailAdoptedFragment pasandole un objeto tipo bundle
-                        Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
-                        bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico
-                        findNavController(view).navigate(R.id.action_adoptedFragment_to_detailAdoptedFragment, bundle); //Ejecutamos el action junto con el bundle
+                        // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
+                        Bundle bundle = new Bundle(); // Create the bundle to transport the object
+                        bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view)));
+                        findNavController(view).navigate(R.id.action_adoptedFragment_to_detailAdoptedFragment, bundle);
                     }
                 });
             }

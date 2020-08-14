@@ -30,6 +30,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.firebase.auth.FirebaseAuth;
 
 import static androidx.navigation.Navigation.findNavController;
+import static androidx.navigation.Navigation.setViewNavController;
 
 public class HomeFragment extends Fragment{
 
@@ -53,7 +54,7 @@ public class HomeFragment extends Fragment{
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -111,11 +112,24 @@ public class HomeFragment extends Fragment{
         });
 
         //Código para mostrar el flipper de imagenes
-        String[] imagesUrl = {"https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner1.jpg?alt=media&token=3d202ddb-44b0-4680-a9bd-c86e036bad14", "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner2.jpg?alt=media&token=283d65db-c9e8-426a-b15a-93fb211480c8", "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner3.jpg?alt=media&token=284cc051-f8a9-4e15-88de-52b6b7d08600"};
+        String[] imagesUrl = {"https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner1.jpg?alt=media&token=3d202ddb-44b0-4680-a9bd-c86e036bad14",
+                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner2.jpg?alt=media&token=283d65db-c9e8-426a-b15a-93fb211480c8",
+                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner3.jpg?alt=media&token=284cc051-f8a9-4e15-88de-52b6b7d08600"};
         viewFlipper = view.findViewById(R.id.flipperAdverts);
         for (String image: imagesUrl){
             flipperImg(image);
         }
+
+        viewFlipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //findNavController(view).navigate(R.id.action_nav_home_to_listServicesFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("Object", "Events");
+                findNavController(v).navigate(R.id.action_nav_home_to_listServicesFragment, bundle);
+            }
+        });
+
     }// [End onViewCreated]
 
     /**
@@ -163,18 +177,20 @@ public class HomeFragment extends Fragment{
      */
     public void flipperImg(String imageUrl){
         ImageView imageView = new ImageView(getContext());
-        imageView.setCropToPadding(true);
+        //imageView.setCropToPadding(true);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         imageView.setBackgroundColor(Color.parseColor("#ffffff"));
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(imageUrl)
                 .placeholder(R.drawable.sin_imagen)
-                .centerCrop()
+                //.centerCrop()
                 .into(imageView);
         viewFlipper.addView(imageView);
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
-        viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
+        viewFlipper.startFlipping();
+        viewFlipper.setInAnimation(getContext(), android.R.anim.fade_in);
+        viewFlipper.setOutAnimation(getContext(), android.R.anim.fade_out);
     }
 
 

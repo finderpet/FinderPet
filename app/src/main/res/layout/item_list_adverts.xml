@@ -24,8 +24,7 @@
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/bg_profile"
                 android:scaleType="fitXY"
-                android:contentDescription="@string/content_description_media"
-                />
+                android:contentDescription="@string/content_description_media"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,8 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_advert"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    />
+                    android:textAppearance="?attr/textAppearanceHeadline6"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -54,18 +52,36 @@
                     android:text="@string/description_advert"
                     android:justificationMode="inter_word"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
+                    android:textColor="?android:attr/textColorSecondary"/>
 
-                <TextView
-                    android:id="@+id/phoneAdvert"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/phone_advert"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/phoneAdvert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/phone_advert"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"/>
+                    <ImageButton
+                        android:id="@+id/btnCall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone_32"
+                        android:background="@null"
+                        android:layout_gravity="end"
+                        android:contentDescription="@string/call_advert" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="?android:attr/listDivider" />
 
                 <!--
                 <TextView
@@ -88,17 +104,7 @@
                     android:padding="0dp"
                     android:textAllCaps="false"
                     app:rippleColor="@color/colorBackground"
-                    style="?attr/borderlessButtonStyle"
-                    />
-
-                <ImageButton
-                    android:id="@+id/btnCall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_phone_32"
-                    android:background="@null"
-                    android:layout_gravity="end"
-                    android:contentDescription="@string/call_advert" />
+                    style="?attr/borderlessButtonStyle"/>
 
             </LinearLayout>
 

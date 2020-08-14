@@ -29,9 +29,10 @@ import java.util.Date;
 public class commonMethods {
 
     /**
-     * Este método devuelve el numero de días que han transcurrido desde publicación
-     * @param datePost
-     * @return
+     * Method that returns the number of days that have elapsed since publication
+     * @param datePost Publication date
+     * @param context Activity context
+     * @return A string with the elapsed time since publication
      */
     public static String getDaysDate(String datePost, Context context){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,8 +49,10 @@ public class commonMethods {
         }
 
         int days =(int) ((finalDate.getTime()-initialDate.getTime())/86400000);
-        String txtDays=null;
-        if (days<30){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_days); }
+        String txtDays="";
+        if (days==0){txtDays = context.getString(R.string.today);}
+        if (days==1){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_day); }
+        if (days>1 && days<30){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_days); }
         if (days>=30 && days<60){ txtDays = context.getString(R.string.time_ago_one_month); }
         if (days>=50){
             int months = days/30;
@@ -59,8 +62,8 @@ public class commonMethods {
     }
 
     /**
-     * Este método retorna la fecha actual en un string
-     * @return un string con la fecha actual
+     * Method to return the current date
+     * @return A string with the current date
      */
     public static String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -70,7 +73,7 @@ public class commonMethods {
 
     /**
      * Method to display delete account dialog
-     * @param context
+     * @param context Activity context
      * @return Window dialog
      */
     public static AlertDialog dialogDeleteAccount(final Context context){
@@ -113,7 +116,7 @@ public class commonMethods {
 
     /**
      * Method to display singOut account dialog
-     * @param context
+     * @param context Activity context
      * @return Window dialog
      */
     public static AlertDialog dialogSignOutUser(final Context context){
@@ -156,7 +159,7 @@ public class commonMethods {
 
     /**
      * Method to display close app dialog
-     * @param context
+     * @param context Activity context
      * @return Window dialog
      */
     public static AlertDialog dialogCloseApp(final Context context){

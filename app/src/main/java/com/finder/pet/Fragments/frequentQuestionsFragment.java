@@ -84,6 +84,10 @@ public class frequentQuestionsFragment extends Fragment {
     }
 
 
+    /**
+     * Method to initialize the views
+     * @param view View fragment
+     */
     private void setupViews(View view) {
         btnQuestion1 = view.findViewById(R.id.question1);
         btnQuestion2 = view.findViewById(R.id.question2);

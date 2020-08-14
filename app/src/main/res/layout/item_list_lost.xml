@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/imgLost"
                 android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
                 android:src="@drawable/sin_imagen"
                 android:contentDescription="@string/content_description_media" />
@@ -48,6 +48,7 @@
                     android:id="@+id/locationLost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="2"
                     android:text="@string/location" />
 
                 <TextView

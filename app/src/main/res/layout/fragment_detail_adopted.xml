@@ -176,6 +176,7 @@
                                 android:id="@+id/detailAdoptedAgePet"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:maxLines="1"
                                 android:text="@string/age"/>
                             <View
                                 android:layout_width="match_parent"

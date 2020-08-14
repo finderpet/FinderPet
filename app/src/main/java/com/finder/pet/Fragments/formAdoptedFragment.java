@@ -100,7 +100,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     private SupportMapFragment mapFragment;
     private androidx.appcompat.widget.SearchView search_view;
 
-
+    // Initialization Firebase
     private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference databaseRef = ref.child("pet_adopted");
     private StorageReference storageRef;
@@ -115,12 +115,9 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     private final String ROOT_FOLDER = "FinderPet/";
     private final String ROUTE_IMAGE = ROOT_FOLDER + "myPhotos";
 
-
     public formAdoptedFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -134,36 +131,14 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initialize variables
         setupViews(view);
 
-
-        // Capturamos el evento de la busqueda de dirección o zona
+        // Capture the event of the address or zone search
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                String location = search_view.getQuery().toString();
-                searchLoc = location;
-                //List<Address> addressList = null;
-                if (location != null) {
-                    List<Address> addressList = null;
-                    Geocoder geocoder = new Geocoder(getContext());
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    if (!addressList.isEmpty()) {
-                        Address address = addressList.get(0);
-                        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                        latitude = address.getLatitude();
-                        longitude = address.getLongitude();
-                        map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
-                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-                    } else {
-                        searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
-                        Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
-                    }
-                }
+                manualSearchLocation();
                 return false;
             }
 
@@ -222,7 +197,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
             }
         });
 
-        // Con este evento traemos la dirección actual o manual  del usuario
+        // button to get user current address
         textInputLocation.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,27 +211,57 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                             if (opciones[i].equals(getString(R.string.current_location))) {
                                 getCurrentLocation();
                             } else {
-                                //dialogInterface.dismiss();
                                 linearLayout.setVisibility(View.VISIBLE);
                             }
                         }
                     });
                     alertOpciones.show();
-                }else {
-                    requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
                 }
             }
         });
 
-        // Con este evento confirmamos la dirección que buscamos manualmente
+        // Button to confirm manual address
         btnConfirmLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getSearchLocation();
             }
         });
+
     }// [End onViewCreated]
 
+    /**
+     * Method to find the location manually
+     */
+    private void manualSearchLocation() {
+        String location = search_view.getQuery().toString();
+        searchLoc = location;
+        List<Address> addressList = null;
+        if (location != null) {
+            Geocoder geocoder = new Geocoder(getContext());
+            try {
+                addressList = geocoder.getFromLocationName(location, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (!addressList.isEmpty()) {
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                latitude = address.getLatitude();
+                longitude = address.getLongitude();
+                map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+            } else {
+                searchLoc = ""; // Clear the variable with the address or area searched
+                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+            }
+        }
+    }// [End manualSearchLocation]
+
+    /**
+     * Method to initialize the views
+     * @param view View fragment
+     */
     private void setupViews(View view) {
 
         // Initialize variables
@@ -295,7 +300,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         longitude = -75.573553;
 
         // Creamos el adapter con los items para el textfield de Esterilizado
-        String[] Types = new String[]{"Sí", "No"};
+        String[] Types = new String[]{getString(R.string.btn_yes), getString(R.string.btn_no)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.list_type_item, Types);
         fieldSterilized.setAdapter(adapter);
         btnConfirmLoc = view.findViewById(R.id.btnConfirmLocAdopted);
@@ -305,12 +310,13 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 .findFragmentById(R.id.mapSearchAdopted);
     }
 
-
+    /**
+     * Method to open manual address search
+     */
     private void getSearchLocation() {
         fieldLocation.setText(searchLoc);
         linearLayout.setVisibility(View.GONE);
     }
-
 
     /**
      * Method to get user current location
@@ -326,7 +332,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                             @Override
                             public void onSuccess(Location location) {
                                 lastLocation = location;
-                                //Toast.makeText(getContext(), "onSuccess: "+location.getLatitude(), Toast.LENGTH_LONG).show();
 
                                 // In some rare cases the location returned can be null
                                 if (lastLocation == null) {
@@ -383,7 +388,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                         });
             }else {
                 if (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION) || shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)){
-                    dialogRecommendationToGrantPermission();
+                    dialogRecommendationToGrantPermissionLocation();
                 }
                 requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
             }
@@ -394,7 +399,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                         @Override
                         public void onSuccess(Location location) {
                             lastLocation = location;
-                            //Toast.makeText(getContext(), "onSuccess: "+location.getLatitude(), Toast.LENGTH_LONG).show();
 
                             // In some rare cases the location returned can be null
                             if (lastLocation == null) {
@@ -446,15 +450,15 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                 fieldLocation.setText(myAddress);
                                 Log.i("LastLocationAPI22", getString(R.string.location_found));
                             }
-
                         }
                     });
-
         }
-
     }// [End getCurrentLocation]
 
 
+    /**
+     * Method to display the new record progress dialog
+     */
     private void showProgressDialog(){
         progressDialog.setCancelable(false);
         //progressDialog.setTitle("Guardando nuevo registro..."); // usamos esta linea cuando no utilizamos el setContenView
@@ -462,6 +466,9 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         progressDialog.setContentView(R.layout.layout_pdialog); // No usamos esta linea cuando usamos setTitle
     };
 
+    /**
+     * Method to save the new record in the database
+     */
     private void saveNewAdopted() {
 
         // Validates that the form has all the required fields
@@ -511,10 +518,13 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 //displaying a success toast
                 Toast.makeText(getContext(), R.string.post_successful, Toast.LENGTH_LONG).show();
             }
-        },15000);
+        },12000);
 
     }
 
+    /**
+     * Method to clear form fields
+     */
     private void clearFields() {
         fieldNamePet.setText("");
         fieldLocation.setText("");
@@ -532,6 +542,10 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
         longitude = -75.573553;
     }
 
+    /**
+     * Method to validate the information in the form
+     * @return Boolean with true if correct or false if there are errors
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -611,7 +625,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
     /**
      * Method to validate camera and external write permissions
-     * @return boolean
+     * @return Boolean with true if granted permissions or false if not
      */
     private boolean validatePermissions() {
         if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
@@ -625,7 +639,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
         if((shouldShowRequestPermissionRationale(CAMERA))
                 || (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))){
-            dialogRecommendationToGrantPermission();
+            dialogRecommendationToGrantPermissionCameraStorage();
         }else{
             requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},104);
         }
@@ -634,7 +648,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
     /**
      * Method to validate camera and external write permissions
-     * @return boolean
+     * @return Boolean with true if granted permissions or false if not
      */
     private boolean validatePermissionsLocation() {
         if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
@@ -648,7 +662,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
         if((shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION))
                 || (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))){
-            dialogRecommendationToGrantPermission();
+            dialogRecommendationToGrantPermissionLocation();
         }else{
             requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
         }
@@ -656,17 +670,34 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     }
 
     /**
-     * Method to display permission recommendation dialog
+     * Method to display camera and storage permission recommendation dialog
      */
-    private void dialogRecommendationToGrantPermission() {
+    private void dialogRecommendationToGrantPermissionCameraStorage() {
         AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
-        dialogo.setTitle(R.string.dialog_recommendation_permission_call_title);
+        dialogo.setTitle(R.string.camera_video_permissions_not_granted);
         dialogo.setMessage(R.string.accept_permissions_functioning_app);
 
         dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},104);
+                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},104);
+            }
+        });
+        dialogo.show();
+    }
+
+    /**
+     * Method to display location permission recommendation dialog
+     */
+    private void dialogRecommendationToGrantPermissionLocation() {
+        AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
+        dialogo.setTitle(R.string.location_permissions_not_granted);
+        dialogo.setMessage(R.string.accept_permissions_functioning_app);
+
+        dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
             }
         });
         dialogo.show();
@@ -683,15 +714,17 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 img2.setEnabled(true);
                 img3.setEnabled(true);
             }else{
-                manualPermitRequestCall().show();
+                manualPermitRequest().show();
             }
         }
         if(requestCode== REQUEST_PERMISSIONS_LOCATION){
             if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
                     && grantResults[1]==PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(getContext(), "Ya puede traer su ubicaión actual automaticamente",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.get_current_location_automatically,Toast.LENGTH_SHORT).show();
+                getCurrentLocation();
             }else{
-                Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
+                manualPermitRequest().show();
             }
         }else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -701,11 +734,11 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
     /**
      * Method to display permission authorization dialog manually
      */
-    private AlertDialog manualPermitRequestCall() {
+    private AlertDialog manualPermitRequest() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setTitle(R.string.dialog_permission_call_manually_title)
-                .setMessage(R.string.dialog_permission_call_manually_message)
+        builder.setTitle(R.string.dialog_permissions_manually)
+                .setMessage(R.string.accept_permissions_functioning_app)
                 .setPositiveButton(R.string.btn_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -729,7 +762,8 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
 
     /**
      * Method to upload image or take photo of the pet
-     * @param imgNew
+     * @param imgNew ImageView to display the picture
+     * @param imgNum Image path identifier
      */
     private void loadImage(ImageView imgNew, int imgNum) {
         imgNumber = imgNum; // Asigno el número que identifica la ruta de la imagen que estamos subiendo
@@ -775,7 +809,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 File.separator+ROUTE_IMAGE+File.separator+nameImage;
 
         File newImage=new File(pathPhoto);
-
 
         Intent intent=null;
         intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -854,7 +887,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                 new MediaScannerConnection.OnScanCompletedListener() {
                                     @Override
                                     public void onScanCompleted(String path, Uri uri) {
-                                        Log.i("Ruta de almacenamiento","Path: "+path);
+                                        Log.i("Storage path","Path: "+path);
                                     }
                                 });
                         Bitmap bitmap= BitmapFactory.decodeFile(pathPhoto);
@@ -869,7 +902,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_1 = urlTask.getResult().toString();
-                                    //Toast.makeText(getContext(),"Load Img1", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -882,7 +914,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_2 = urlTask.getResult().toString();
-                                    //Toast.makeText(getContext(),"Load Img2", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -895,7 +926,6 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_3 = urlTask.getResult().toString();
-                                    //Toast.makeText(getContext(),"Load Img3", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

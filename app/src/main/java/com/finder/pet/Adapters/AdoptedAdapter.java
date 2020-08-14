@@ -35,7 +35,7 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layParams);
 
-        mContext= parent.getContext();//Traer el contexto del fragment al adapter para trabajar con Glide y con getString
+        mContext= parent.getContext();// Get the context of the fragment to the adapter
 
 
 
@@ -58,7 +58,7 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .centerCrop()// Para centrar la imagen y que ocupe el espacio completo de imageview
+                .centerCrop()// center the image and take up the entire imageView space
                 .into(holder.mPhoto);
 
         if (listAdopted.get(position).getType().equals("dog")){

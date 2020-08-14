@@ -12,10 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.finder.pet.Adapters.FoundAdapter;
 import com.finder.pet.Entities.Found_Vo;
 import com.finder.pet.R;
-import com.finder.pet.Utilities.Utilities;
 import com.finder.pet.Utilities.commonMethods;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,11 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -128,17 +127,16 @@ public class FoundFragment extends Fragment{
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        // Evento para llamar al fragment DetailFoundFragment pasandole un objeto tipo bundle
-                        Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
-                        bundle.putSerializable("objeto", ListFound.get(recyclerListFound.getChildAdapterPosition(view))); //Pasamos al bundle el objeto especifico
-                        findNavController(view).navigate(R.id.action_foundFragment_to_detailFoundFragment, bundle); //Ejecutamos el action junto con el bundle
+                        // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
+                        Bundle bundle = new Bundle(); // Create the bundle to transport the object
+                        bundle.putSerializable("objeto", ListFound.get(recyclerListFound.getChildAdapterPosition(view)));
+                        findNavController(view).navigate(R.id.action_foundFragment_to_detailFoundFragment, bundle);
                     }
                 });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }

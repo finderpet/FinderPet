@@ -102,10 +102,16 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
         if (objectLost != null){
             lost_vo = (Lost_Vo) objectLost.getSerializable("objeto");
 
-            //Llenamos los campos del detalle con la información del objeto traido desde la lista de mascotas perdidas
+            //Fill the detail fields with the information of the object brought from the list of pets
             txtDate.setText(lost_vo.getDate());
             txtName.setText(lost_vo.getName());
-            txtType.setText(lost_vo.getType());
+            if (lost_vo.getType().equals("dog")){
+                txtType.setText(R.string.dog);
+            }else if (lost_vo.getType().equals("cat")){
+                txtType.setText(R.string.cat);
+            }else {
+                txtType.setText(R.string.other);
+            }
             txtLocation.setText(lost_vo.getLocation());
             txtEmail.setText(lost_vo.getEmail());
             txtPhone.setText(lost_vo.getPhone());
@@ -133,35 +139,39 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
         imgPet1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
-                bundle.putString("objeto1", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto2", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle();
+                bundle.putString("objeto1", imgUrl_1);
+                bundle.putString("objeto2", imgUrl_2);
+                bundle.putString("objeto3", imgUrl_3);
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle);
             }
         });
         imgPet2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
-                bundle.putString("objeto1", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto3", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle();
+                bundle.putString("objeto1", imgUrl_2);
+                bundle.putString("objeto2", imgUrl_1);
+                bundle.putString("objeto3", imgUrl_3);
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle);
             }
         });
         imgPet3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar los string de las url de las imagenes
-                bundle.putString("objeto1", imgUrl_3); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto2", imgUrl_1); //Pasamos al bundle la url de la imagen seleccionada
-                bundle.putString("objeto3", imgUrl_2); //Pasamos al bundle la url de la imagen seleccionada
-                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle); //Ejecutamos el action junto con el bundle
+                Bundle bundle = new Bundle();
+                bundle.putString("objeto1", imgUrl_3);
+                bundle.putString("objeto2", imgUrl_1);
+                bundle.putString("objeto3", imgUrl_2);
+                findNavController(view).navigate(R.id.action_detailLostFragment_to_pagerPhotoFragment, bundle);
             }
         });
     }
 
+    /**
+     * Method to initialize the views
+     * @param view View fragment
+     */
     private void setupViews(View view) {
         txtDate= view.findViewById(R.id.detailLostDate);
         txtName = view.findViewById(R.id.detailLostName);
@@ -174,7 +184,7 @@ public class detailLostFragment extends Fragment implements OnMapReadyCallback {
         imgPet2 = view.findViewById(R.id.imgDetailLost2);
         imgPet3 = view.findViewById(R.id.imgDetailLost3);
 
-        // Asociamos el fragment que contendra el mapa en el detalle
+        // Associate the fragment that will contain the map in the detail
         mapFragment = (SupportMapFragment)getChildFragmentManager()
                 .findFragmentById(R.id.mapView);
     }

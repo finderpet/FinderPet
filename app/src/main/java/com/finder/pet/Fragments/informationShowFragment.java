@@ -1,26 +1,19 @@
 package com.finder.pet.Fragments;
 
-
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.fragment.app.Fragment;
-
 import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
+
 import com.finder.pet.Main.MainActivity;
 import com.finder.pet.R;
-
-import static android.text.Html.FROM_HTML_MODE_LEGACY;
 
 
 /**
@@ -31,7 +24,6 @@ public class informationShowFragment extends Fragment {
     public informationShowFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +55,6 @@ public class informationShowFragment extends Fragment {
             tvShow.setText(Html.fromHtml(getResources().getString(R.string.about_developers)));
             getActionBar().setTitle(R.string.developers);
         }
-
 
     }
 

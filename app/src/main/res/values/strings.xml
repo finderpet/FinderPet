@@ -197,7 +197,7 @@
     <string name="user_name">Nombre de usuario</string>
     <string name="delivery">Domicilios</string>
     <string name="events">Eventos</string>
-    <string name="ads_with_us">¿Quieres anunciar con nosotros?</string>
+    <string name="ads_with_us">Muestra tu negocio en nuestra App</string>
     <string name="type">Tipo</string>
     <string name="all">Todos</string>
     <string name="donation_bancolombia">Donación Bancolombia</string>
@@ -234,7 +234,7 @@
     <string name="post_age">"Edad: "</string>
     <string name="post_posted">"Publicado "</string>
     <string name="post_phone">"Teléfono: "</string>
-    <string name="time_ago">Hace</string>
+    <string name="time_ago">"Hace "</string>
     <string name="time_ago_one_month">Hace 1 mes</string>
     <string name="time_days">" días"</string>
     <string name="time_months">" meses"</string>
@@ -251,7 +251,7 @@
     <string name="required_field">Campo obligatorio</string>
     <string name="check_email_inbox">Revisa la bandeja de entrada de tu email</string>
     <string name="account_welcome">¡Bienvenido!</string>
-    <string name="account_successfully_created">asdfasdSu cuenta fue creada satisfactoriamente.</string>
+    <string name="account_successfully_created">Su cuenta fue creada satisfactoriamente.</string>
     <string name="account_input_email_password">Ingrese el correo y la contraseña que acaba de crear para iniciar sesión en FinderPet.</string>
     <string name="recover_input_email">Ingrese un correo para continuar.</string>
     <string name="create_account_failed">La creación de la cuenta falló</string>
@@ -290,5 +290,14 @@
     <string name="invalid_lat_long_used">Latitud o longitud usada no es vàlida</string>
     <string name="location_found">Dirección o zona encontrada</string>
     <string name="no_geocoder_available">No hay geocodificador disponible</string>
+    <string name="dialog_permission_location_title">Debe otorgar permisos de ubicación</string>
+    <string name="dialog_permission_location_message">Para ingresar la ubicación de la mascota, debes otorgar el permiso de ubicación</string>
+    <string name="dialog_permissions_manually">Desea otorgar los permisos de forma manual</string>
+    <string name="get_current_location_automatically">Ya puede obtener su ubicación actual automaticamente</string>
+    <string name="location_permissions_not_granted">Permisos de ubicación no otorgados</string>
+    <string name="camera_video_permissions_not_granted">Permisos de cámara y video no otorgados</string>
+    <string name="today">Hoy</string>
+    <string name="select_a_question">Selecciona una pregunta</string>
+    <string name="time_day">" Día"</string>
 
 </resources>

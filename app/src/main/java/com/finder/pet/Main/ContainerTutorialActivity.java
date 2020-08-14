@@ -30,6 +30,10 @@ public class ContainerTutorialActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method of adding the indicator points
+     * @param pos Position indicator
+     */
     private void addDotsIndicator(int pos) {
         dotsSlide = new TextView[7];
         linearDots.removeAllViews();
@@ -47,7 +51,7 @@ public class ContainerTutorialActivity extends AppCompatActivity {
         }
     }
 
-    //Para capturar el evento del movimiento de pantallas
+    // Capture the screen movement event
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

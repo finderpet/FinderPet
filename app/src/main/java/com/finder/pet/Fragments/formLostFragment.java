@@ -1,5 +1,6 @@
 package com.finder.pet.Fragments;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,9 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.finder.pet.Entities.Lost_Vo;
@@ -40,7 +39,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -64,6 +62,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -92,10 +91,13 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
     private FusedLocationProviderClient fusedLocationClient; // Get the last know location
     private LinearLayout linearLayout; // LinearLayout para mostrar buscador de dirección y mapa
 
+    //Location
+    protected Location lastLocation;
     private GoogleMap map;
     private SupportMapFragment mapFragment;
     private androidx.appcompat.widget.SearchView search_view;
 
+    // Initialization Firebase
     private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference databaseRef = ref.child("pet_lost");
     private StorageReference storageRef;
@@ -104,6 +106,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
     private static final int REQUEST_IMAGE = 100;
     private static final int REQUEST_IMAGE_CAMERA = 103;
     private static final int REQUEST_PERMISSIONS = 104;
+    private static final int REQUEST_PERMISSIONS_LOCATION = 105;
 
     // Constants
     private final String ROOT_FOLDER="FinderPet/";
@@ -118,7 +121,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_form_lost, container, false);
-
     }
 
     @Override
@@ -127,12 +129,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
 
         // Initialize variables
         setupViews(view);
-        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
-
-        linearLayout = view.findViewById(R.id.layoutSearchLost);
-        search_view = view.findViewById(R.id.svMapsLost);
-        mapFragment = (SupportMapFragment)getChildFragmentManager()
-                .findFragmentById(R.id.mapSearchLost);
 
         // Capturamos el evento de la busqueda de dirección o zona
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -141,7 +137,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 manualSearchLocation();
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
@@ -195,29 +190,30 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        // Con este evento traemos la dirección actual o manual  del usuario
+        // button to get user current address
         textInputLocation.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final CharSequence[] opciones={"Ubicación actual","Ubicación manual"};
-                final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getContext());
-                alertOpciones.setTitle("Ingrese la ubicación de la mascota:");
-                alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (opciones[i].equals("Ubicación actual")){
-                            getCurrentLocation();
-                        }else{
-                            //dialogInterface.dismiss();
-                            linearLayout.setVisibility(View.VISIBLE);
+                if (validatePermissionsLocation()){
+                    final CharSequence[] opciones = {getString(R.string.current_location), getString(R.string.manual_location)};
+                    final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(getContext());
+                    alertOpciones.setTitle(R.string.enter_pet_location);
+                    alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (opciones[i].equals(getString(R.string.current_location))) {
+                                getCurrentLocation();
+                            } else {
+                                linearLayout.setVisibility(View.VISIBLE);
+                            }
                         }
-                    }
-                });
-                alertOpciones.show();
+                    });
+                    alertOpciones.show();
+                }
             }
         });
 
-        // Con este evento confirmamos la dirección que buscamos manualmente
+        // Button to confirm manual address
         btnConfirmLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,32 +222,46 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    /**
+     * Method to find the location manually
+     */
     private void manualSearchLocation() {
         String location = search_view.getQuery().toString();
         searchLoc = location;
         List<Address> addressList = null;
-        if (location != null){
+        if (location != null) {
             Geocoder geocoder = new Geocoder(getContext());
             try {
-                addressList = geocoder.getFromLocationName(location,1);
+                addressList = geocoder.getFromLocationName(location, 1);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (addressList.size() != 0){
+            if (!addressList.isEmpty()) {
                 Address address = addressList.get(0);
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                 latitude = address.getLatitude();
                 longitude = address.getLongitude();
                 map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-            }else {
-                searchLoc = ""; // Limpiamos la variable con la dirección o zona buscada
+            } else {
+                searchLoc = ""; // Clear the variable with the address or area searched
                 Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
             }
         }
-    }
+    }// [End manualSearchLocation]
 
+    /**
+     * Method to initialize the views
+     * @param view View fragment
+     */
     private void setupViews(View view) {
+
+        btnConfirmLoc = view.findViewById(R.id.btnConfirmLocLost);
+        linearLayout = view.findViewById(R.id.layoutSearchLost);
+        search_view = view.findViewById(R.id.svMapsLost);
+        mapFragment = (SupportMapFragment)getChildFragmentManager()
+                .findFragmentById(R.id.mapSearchLost);
+
         rbDog = view.findViewById(R.id.rbDogFound);
         rbCat = view.findViewById(R.id.rbCatFound);
         rbOther = view.findViewById(R.id.rbOtherFound);
@@ -277,49 +287,159 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         path_uri_3="null";
         latitude = 6.2443382;
         longitude = -75.573553;
-
-
     }
 
+    /**
+     * Method to open manual address search
+     */
     private void getSearchLocation(){
         fieldLocation.setText(searchLoc);
         linearLayout.setVisibility(View.GONE);
     }
 
+    /**
+     * Method to get user current location
+     */
     private void getCurrentLocation() {
 
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            Log.e("Location ","Lat: "+location.getLatitude()+" Lng: "+location.getLongitude());
-                            List<Address> addresses = null;
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
-                            String errorMessage = "";
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if((getContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)
+                    && (getContext().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+                //Get last location
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                lastLocation = location;
+
+                                // In some rare cases the location returned can be null
+                                if (lastLocation == null) {
+                                    Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                if (!Geocoder.isPresent()) {
+                                    Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                                String errorMessage = "";
+
+                                List<Address> addresses = null;
+
+                                try {
+                                    // Get address of our location
+                                    addresses = geocoder.getFromLocation(
+                                            lastLocation.getLatitude(),
+                                            lastLocation.getLongitude(),
+                                            // In this sample, get just a single address.
+                                            1);
+                                } catch (IOException ioException) {
+                                    // Catch network or other I/O problems.
+                                    errorMessage = getString(R.string.service_not_available);
+                                    Log.e("LastLocationAPI22", errorMessage, ioException);
+                                } catch (IllegalArgumentException illegalArgumentException) {
+                                    // Catch invalid latitude or longitude values.
+                                    errorMessage = getString(R.string.invalid_lat_long_used);
+                                    Log.e("LastLocationAPI22", errorMessage + ". " +
+                                            "Latitude = " + lastLocation.getLatitude() +
+                                            ", Longitude = " +
+                                            lastLocation.getLongitude(), illegalArgumentException);
+                                }
+
+                                // Handle case where no address was found.
+                                if (addresses == null || addresses.size()  == 0) {
+                                    if (errorMessage.isEmpty()) {
+                                        errorMessage = getString(R.string.location_not_found);
+                                        Log.e("LastLocationAPI22", errorMessage);
+                                        Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Address address = addresses.get(0);
+                                    String myAddress = address.getAddressLine(0);
+                                    //Toast.makeText(getContext(), myAddress, Toast.LENGTH_LONG).show();
+                                    fieldLocation.setText(myAddress);
+                                    Log.i("LastLocationAPI22", getString(R.string.location_found));
+                                }
+
+                            }
+                        });
+            }else {
+                if (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION) || shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)){
+                    dialogRecommendationToGrantPermissionLocation();
+                }
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
+            }
+        }else {
+            //Get last location
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            lastLocation = location;
+
+                            // In some rare cases the location returned can be null
+                            if (lastLocation == null) {
+                                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
+                            if (!Geocoder.isPresent()) {
+                                Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
                             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                            String errorMessage = "";
+
+                            List<Address> addresses = null;
+
                             try {
+                                // Get address of our location
                                 addresses = geocoder.getFromLocation(
-                                        location.getLatitude(),
-                                        location.getLongitude(),
+                                        lastLocation.getLatitude(),
+                                        lastLocation.getLongitude(),
                                         // In this sample, get just a single address.
                                         1);
-                                if (!addresses.isEmpty()) {
-                                    Address streetAddress = addresses.get(0);
-                                    fieldLocation.setText(streetAddress.getAddressLine(0));
-                                }else{
-                                    Toast.makeText(getContext(), "No se encontró la dirección actual", Toast.LENGTH_LONG).show();
-                                }
-                            }  catch (IOException e) {
-                                e.printStackTrace();
+                            } catch (IOException ioException) {
+                                // Catch network or other I/O problems.
+                                errorMessage = getString(R.string.service_not_available);
+                                Log.e("LastLocationAPI22", errorMessage, ioException);
+                            } catch (IllegalArgumentException illegalArgumentException) {
+                                // Catch invalid latitude or longitude values.
+                                errorMessage = getString(R.string.invalid_lat_long_used);
+                                Log.e("LastLocationAPI22", errorMessage + ". " +
+                                        "Latitude = " + lastLocation.getLatitude() +
+                                        ", Longitude = " +
+                                        lastLocation.getLongitude(), illegalArgumentException);
                             }
-                        }
-                    }
-                });
-    }
 
+                            // Handle case where no address was found.
+                            if (addresses == null || addresses.size()  == 0) {
+                                if (errorMessage.isEmpty()) {
+                                    errorMessage = getString(R.string.location_not_found);
+                                    Log.e("LastLocationAPI22", errorMessage);
+                                    Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Address address = addresses.get(0);
+                                String myAddress = address.getAddressLine(0);
+                                //Toast.makeText(getContext(), myAddress, Toast.LENGTH_LONG).show();
+                                fieldLocation.setText(myAddress);
+                                Log.i("LastLocationAPI22", getString(R.string.location_found));
+                            }
+
+                        }
+                    });
+
+        }
+
+    }// [End getCurrentLocation]
+
+    /**
+     * Method to display the new record progress dialog
+     */
     private void showProgressDialog(){
         progressDialog.setCancelable(false);
         //progressDialog.setTitle("Guardando nuevo registro..."); // usamos esta linea cuando no utilizamos el setContenView
@@ -327,6 +447,9 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         progressDialog.setContentView(R.layout.layout_pdialog); // No usamos esta linea cuando usamos setTitle
     };
 
+    /**
+     * Method to save the new record in the database
+     */
     private void saveNewLost() {
 
         // Validates that the form has all the required fields
@@ -378,23 +501,14 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 databaseRef.child(id).setValue(lost_vo);
 
                 //setting edittext to blank again
-                fieldNamePet.setText("");
-                fieldLocation.setText("");
-                fieldPhone.setText("");
-                fieldEmail.setText("");
-                fieldDescription.setText("");
-                img1.setImageResource(R.drawable.img_upload_1);
-                img2.setImageResource(R.drawable.img_upload_2);
-                img3.setImageResource(R.drawable.img_upload_3);
-                latitude = 6.2443382;
-                longitude = -75.573553;
+                clearFields();
 
                 progressDialog.dismiss();
                 //displaying a success toast
-                Toast.makeText(getContext(), "¡Registro realizado correctamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.post_successful, Toast.LENGTH_LONG).show();
 
             }
-        },15000);
+        },12000);
 
     }
 
@@ -402,18 +516,38 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         String email = fieldEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
             //email = getResources().getString(R.string)
-            fieldEmail.setText("Sin información");
+            fieldEmail.setText("No info");
         } else {
             textInputEmail.setError(null);
         }
         String description = fieldDescription.getText().toString();
         if (TextUtils.isEmpty(description)) {
-            fieldDescription.setText("Sin información");
+            fieldDescription.setText("No info");
         } else {
             textInputDescription.setError(null);
         }
     }
 
+    /**
+     * Method to clear form fields
+     */
+    private void clearFields() {
+        fieldNamePet.setText("");
+        fieldLocation.setText("");
+        fieldPhone.setText("");
+        fieldEmail.setText("");
+        fieldDescription.setText("");
+        img1.setImageResource(R.drawable.img_upload_1);
+        img2.setImageResource(R.drawable.img_upload_2);
+        img3.setImageResource(R.drawable.img_upload_3);
+        latitude = 6.2443382;
+        longitude = -75.573553;
+    }
+
+    /**
+     * Method to validate the information in the form
+     * @return Boolean with true if correct or false if there are errors
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -465,7 +599,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
 
     /**
      * Method to validate camera and external write permissions
-     * @return boolean
+     * @return Boolean with true if granted permissions or false if not
      */
     private boolean validatePermissions() {
         if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
@@ -473,33 +607,71 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if((getContext().checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)
-                && (getContext().checkSelfPermission(WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)
-                && (getContext().checkSelfPermission(ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+                && (getContext().checkSelfPermission(WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)){
             return true;
         }
 
         if((shouldShowRequestPermissionRationale(CAMERA))
-                || (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))
-                || (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION))){
-            loadDialogRecomendation();
+                || (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))){
+            dialogRecommendationToGrantPermissionCameraStorage();
         }else{
-            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION},104);
+            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},104);
         }
         return false;
     }
 
     /**
-     * Method to display permission recommendation dialog
+     * Method to validate camera and external write permissions
+     * @return Boolean with true if granted permissions or false if not
      */
-    private void loadDialogRecomendation() {
-        AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
-        dialogo.setTitle("Permisos Desactivados");
-        dialogo.setMessage("Debe aceptar los permisos para el correcto funcionamiento de la App");
+    private boolean validatePermissionsLocation() {
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
+            return true;
+        }
 
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        if((getContext().checkSelfPermission(ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+                && (getContext().checkSelfPermission(ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+            return true;
+        }
+
+        if((shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION))
+                || (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))){
+            dialogRecommendationToGrantPermissionLocation();
+        }else{
+            requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
+        }
+        return false;
+    }
+
+    /**
+     * Method to display camera and storage permission recommendation dialog
+     */
+    private void dialogRecommendationToGrantPermissionCameraStorage() {
+        AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
+        dialogo.setTitle(R.string.camera_video_permissions_not_granted);
+        dialogo.setMessage(R.string.accept_permissions_functioning_app);
+
+        dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA,ACCESS_FINE_LOCATION},104);
+                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},104);
+            }
+        });
+        dialogo.show();
+    }
+
+    /**
+     * Method to display location permission recommendation dialog
+     */
+    private void dialogRecommendationToGrantPermissionLocation() {
+        AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
+        dialogo.setTitle(R.string.location_permissions_not_granted);
+        dialogo.setMessage(R.string.accept_permissions_functioning_app);
+
+        dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
             }
         });
         dialogo.show();
@@ -510,62 +682,80 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode==REQUEST_PERMISSIONS){
-            if(grantResults.length==3 && grantResults[0]==PackageManager.PERMISSION_GRANTED
-                    && grantResults[1]==PackageManager.PERMISSION_GRANTED && grantResults[2]==PackageManager.PERMISSION_GRANTED){
+            if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
+                    && grantResults[1]==PackageManager.PERMISSION_GRANTED){
                 img1.setEnabled(true);
                 img2.setEnabled(true);
                 img3.setEnabled(true);
             }else{
-                solicitarPermisosManual();
+                manualPermitRequest().show();
             }
+        }
+        if(requestCode== REQUEST_PERMISSIONS_LOCATION){
+            if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
+                    && grantResults[1]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getContext(), R.string.get_current_location_automatically,Toast.LENGTH_SHORT).show();
+                getCurrentLocation();
+            }else{
+                //Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
+                manualPermitRequest().show();
+            }
+        }else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
     /**
      * Method to display permission authorization dialog manually
      */
-    private void solicitarPermisosManual() {
-        final CharSequence[] opciones={"si","no"};
-        final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(getActivity());
-        alertOpciones.setTitle("¿Desea configurar los permisos de forma manual?");
-        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (opciones[i].equals("si")){
-                    Intent intent=new Intent();
-                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    Uri uri=Uri.fromParts("package",getActivity().getPackageName(),null);
-                    intent.setData(uri);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getContext(),"Los permisos no fueron aceptados",Toast.LENGTH_SHORT).show();
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-        alertOpciones.show();
+    private AlertDialog manualPermitRequest() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle(R.string.dialog_permissions_manually)
+                .setMessage(R.string.accept_permissions_functioning_app)
+                .setPositiveButton(R.string.btn_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent=new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri=Uri.fromParts("package",getActivity().getPackageName(),null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(R.string.btn_no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(),R.string.permission_not_accepted,Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+        return builder.create();
     }
 
     /**
      * Method to upload image or take photo of the pet
-     * @param imgNew
+     * @param imgNew ImageView to display the picture
+     * @param imgNum Image path identifier
      */
     private void loadImage(ImageView imgNew, int imgNum) {
         imgNumber = imgNum; // Asigno el número que identifica la ruta de la imagen que estamos subiendo
         imgUpdate = imgNew; // Asigno a imgUpdate el ImageView que solicitó cargar la imagen
-        final CharSequence[] options = {"Cargar desde Galería", "Tomar Foto", "Cancelar"};
+        final CharSequence[] options = {getString(R.string.upload_from_gallery),
+                getString(R.string.take_photo), getString(R.string.cancel)};
         final AlertDialog.Builder alertOptions = new AlertDialog.Builder(getActivity());
-        alertOptions.setTitle("Seleccione una opción");
+        alertOptions.setTitle(R.string.select_an_option);
         alertOptions.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(options[i].equals("Tomar Foto")){
+                if(options[i].equals(getString(R.string.take_photo))){
                     makePhoto();
                 }else {
-                    if(options[i].equals("Cargar desde Galería")){
+                    if(options[i].equals(getString(R.string.upload_from_gallery))){
                         Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         intent.setType("image/");//si hay problemas para cargar algunas imagenes colocar "image/*"
-                        startActivityForResult(intent.createChooser(intent, "Seleccione una aplicación"), 100);
+                        startActivityForResult(intent.createChooser(intent, getString(R.string.select_an_application)), 100);
                     }else {
                         dialogInterface.dismiss();
                     }
@@ -593,7 +783,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                 File.separator+ROUTE_IMAGE+File.separator+nameImage;
 
         File newImage=new File(pathPhoto);
-
 
         Intent intent=null;
         intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -672,7 +861,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                                 new MediaScannerConnection.OnScanCompletedListener() {
                                     @Override
                                     public void onScanCompleted(String path, Uri uri) {
-                                        Log.i("Ruta de almacenamiento","Path: "+path);
+                                        Log.i("Storage path","Path: "+path);
                                     }
                                 });
                         Bitmap bitmap= BitmapFactory.decodeFile(pathPhoto);
@@ -687,7 +876,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_1 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img1", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -700,7 +888,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_2 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img2", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -713,7 +900,6 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     path_uri_3 = urlTask.getResult().toString();
-                                    Toast.makeText(getContext(),"Load Img3", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -723,7 +909,7 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
                     break;
             }
         }else {
-            Toast.makeText(getContext(),"No se cargó la imagen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),R.string.image_not_loaded, Toast.LENGTH_SHORT).show();
         }
     }
 

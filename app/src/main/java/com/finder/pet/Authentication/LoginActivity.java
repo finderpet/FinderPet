@@ -585,6 +585,10 @@ public class LoginActivity extends BaseActivity {
         // [END create_user_with_email]
     }
 
+    /**
+     * Method to validate the information in the form
+     * @return Boolean with true if correct or false if there are errors
+     */
     private boolean validateFormRegister() {
         boolean valid = true;
 

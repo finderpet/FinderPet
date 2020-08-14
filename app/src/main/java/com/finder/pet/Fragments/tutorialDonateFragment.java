@@ -90,8 +90,8 @@ public class tutorialDonateFragment extends Fragment {
     }
 
     /**
-     * Method to Initialize views
-     * @param view
+     * Method to initialize the views
+     * @param view View fragment
      */
     private void setupViews(View view) {
         btnFinish = view.findViewById(R.id.btnFinishTutorial);

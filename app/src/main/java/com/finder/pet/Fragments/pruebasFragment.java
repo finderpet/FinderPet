@@ -63,4 +63,5 @@ public class pruebasFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pruebas, container, false);
     }
+
 }

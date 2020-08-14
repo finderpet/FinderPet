@@ -85,7 +85,7 @@ public class PagerPhotoFragment extends Fragment {
         viewPager.addOnPageChangeListener(viewListener);
     }
 
-    //Indicador de puntos para las imagenes
+    // Point indicator for images
     private void addPointsIndicator(int pos) {
         pointSlide = new TextView[3];
         layoutPoint.removeAllViews();

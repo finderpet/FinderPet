@@ -7,6 +7,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,16 +22,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.provider.Settings;
-import android.text.Html;
-import android.text.Spanned;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.finder.pet.Adapters.AdvertAdapter;
 import com.finder.pet.Entities.Advert;
@@ -41,8 +38,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static android.Manifest.permission.CALL_PHONE;
-import static android.text.Html.FROM_HTML_MODE_LEGACY;
-import static androidx.navigation.Navigation.findNavController;
 
 
 /**
@@ -63,11 +58,9 @@ public class listServicesFragment extends Fragment {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     DatabaseReference databaseRef;
 
-
     public listServicesFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +80,7 @@ public class listServicesFragment extends Fragment {
         progressBar =  view.findViewById(R.id.progressBarAdvert);
         txtLoad = view.findViewById(R.id.textLoadAdvert);
 
-        // Validate camera permissions and external write
+        // Validate call permissions
         if(validatePermissionsCall()){
             Utilities.PERMISSION_CALL = true;
         }
@@ -109,7 +102,6 @@ public class listServicesFragment extends Fragment {
             getActionBar().setTitle(R.string.events);
             consultListEvents();
         }
-
 
     }
 
@@ -322,7 +314,7 @@ public class listServicesFragment extends Fragment {
                     ListAdverts.add(advert);
                 }
 
-                Collections.shuffle(ListAdverts);
+                Collections.shuffle(ListAdverts); // Show random listing
                 AdvertAdapter adapter =  new AdvertAdapter(ListAdverts);
                 recyclerListAdverts.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
