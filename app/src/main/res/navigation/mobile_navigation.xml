@@ -31,7 +31,20 @@
         android:id="@+id/nav_map"
         android:name="com.finder.pet.ui.maps.MapsFragment"
         android:label="@string/menu_map"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_nav_map_to_pruebasFragment"
+            app:destination="@id/pruebasFragment" />
+        <action
+            android:id="@+id/action_nav_map_to_detailLostFragment"
+            app:destination="@id/detailLostFragment" />
+        <action
+            android:id="@+id/action_nav_map_to_detailAdoptedFragment"
+            app:destination="@id/detailAdoptedFragment" />
+        <action
+            android:id="@+id/action_nav_map_to_detailFoundFragment"
+            app:destination="@id/detailFoundFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_setting"
@@ -116,7 +129,7 @@
     <fragment
         android:id="@+id/listServicesFragment"
         android:name="com.finder.pet.Fragments.listServicesFragment"
-        android:label="@string/veterinary_centers"
+        android:label="@string/veterinary_services"
         tools:layout="@layout/fragment_list_services" />
     <fragment
         android:id="@+id/infoPolicyTerms"

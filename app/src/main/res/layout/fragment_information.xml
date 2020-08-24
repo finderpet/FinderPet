@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/primary_text"
         android:textAllCaps="false"
-        android:text="@string/terms_use" />
+        android:text="@string/label_terms_use" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

@@ -118,14 +118,14 @@
     <string name="time_post">Tiempo de publicación</string>
     <string name="pet_age">Edad</string>
     <string name="date">Fecha</string>
-    <string name="user_manual">Manual de uso</string>
-    <string name="tutorial">Tutorial</string>
+    <string name="user_manual">Descargar manual de uso</string>
+    <string name="tutorial">Tutorial rápido</string>
     <string name="video_tutorial">Ver video tutorial</string>
     <string name="report_problem">Informar de un problema</string>
     <string name="label_data_policy">Política de datos</string>
     <string name="link_data_policy">&lt;u>Política de datos&lt;/u></string>
     <string name="link_terms_use">&lt;u>Condiciones de uso&lt;/u></string>
-    <string name="terms_use">Condiciones de uso</string>
+    <string name="label_terms_use">Condiciones de uso</string>
     <string name="about_app">Acerca de la aplicación</string>
     <string name="developer_info">Información de los desarrolladores</string>
     <string name="title_advert">Título del anuncio</string>
@@ -187,7 +187,7 @@
     <string name="adoptions">Adopciones</string>
     <string name="services">Servicios</string>
     <string name="products">Productos</string>
-    <string name="veterinary_centers">Centros Veterinarios</string>
+    <string name="veterinary_services">Servicios</string>
     <string name="pet_found">Mascotas Encontradas</string>
     <string name="pet_lost">Mascotas Perdidas</string>
     <string name="pet_adoption">Mascotas en Adopción</string>
@@ -299,5 +299,20 @@
     <string name="today">Hoy</string>
     <string name="select_a_question">Selecciona una pregunta</string>
     <string name="time_day">" Día"</string>
+    <string name="password_length">La contraseña debe ser mínimo de 8 caracteres</string>
+    <string name="dialog_see_recovery_password_message">Si el correo no llega a tu bandeja de entrada revisa también el spam o correo no deseado. La nueva contraseña debe tener por lo menos 8 caracteres.</string>
+    <string name="dialog_recovery_mail_title">Correo inválido</string>
+    <string name="dialog_recovery_mail_message">"No hay una cuenta asociada a este correo, por favor ingréselo nuevamente.\n\nSi el problema persiste comuníquese con nuestra área de soporte finderpetapp@gmail.com"</string>
+    <string name="dialog_email_already_in_use_title">La dirección de correo electrónico ya está siendo utilizada.</string>
+    <string name="dialog_email_already_in_use_message">Este correo electrónico ya está registrado, por favor intenta con otro.\n\nSi tienes cuenta creada con este correo y olvidaste tu contraseña utiliza el servicio para recuperarla.\n\nSi no tienes cuenta creada con este correo y el problema persiste comunícate con nuestra área de soporte finderpetapp@gmail.com</string>
+    <string name="dialog_authentication_failed_title">Error de autenticación</string>
+    <string name="dialog_authentication_failed_message">El correo o la contraseña son incorrectos</string>
+    <string name="pet_state">Estado de la mascota</string>
+    <string name="lost_singular">Perdido</string>
+    <string name="found_singular">Encontrado</string>
+    <string name="adoption_singular">Adopción</string>
+    <string name="download_code_qr">Descargar código QR</string>
+    <string name="donation_paypal">Donación PayPal</string>
+    <string name="download_completed">Descarga completada. Su archivo está en la carpeta de descargas.</string>
 
 </resources>

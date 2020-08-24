@@ -40,7 +40,7 @@
                 android:visibility="gone"/>
         </LinearLayout>
 
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
+        <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/groupFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,48 +49,49 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            app:fab_labelStyle="@style/labelFab"
-            app:fab_addButtonColorNormal="@color/colorAccent"
-            app:fab_addButtonColorPressed="@color/colorPrimarySoft">
+            fab:menu_icon="@drawable/ic_filter_list_24"
+            app:menu_colorNormal="@color/colorAccent"
+            app:menu_colorPressed="@color/colorPrimarySoft"
+            fab:menu_labels_style="@style/labelFab">
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
+            <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/btnFabAdopted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@mipmap/ic_adopted"
-                app:fab_size="mini"
+                android:src="@drawable/ic_adopted_asset"
+                fab:fab_size="mini"
                 app:fab_colorNormal="@android:color/holo_green_light"
                 app:fab_colorPressed="#B1CC60"
-                app:fab_title="@string/adoptions"/>
-            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_label="@string/adoptions"/>
+            <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/btnFabFound"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@mipmap/ic_dog"
-                app:fab_size="mini"
+                android:src="@drawable/ic_dog_asset"
+                fab:fab_size="mini"
                 app:fab_colorNormal="@android:color/holo_orange_dark"
                 app:fab_colorPressed="@android:color/holo_orange_light"
-                app:fab_title="@string/found"/>
-            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_label="@string/found"/>
+            <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/btnFabLost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@mipmap/ic_cat"
-                app:fab_size="mini"
+                android:src="@drawable/ic_cat_asset"
+                fab:fab_size="mini"
                 app:fab_colorNormal="#9524CD"
                 app:fab_colorPressed="#A966CC"
-                app:fab_title="@string/lost"/>
-            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_label="@string/lost"/>
+            <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/btnFabAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@mipmap/ic_pets_black_48"
-                app:fab_size="mini"
+                android:src="@drawable/ic_pet_asset"
+                fab:fab_size="mini"
                 app:fab_colorNormal="@android:color/holo_blue_bright"
                 app:fab_colorPressed="#8DEDFB"
-                app:fab_title="@string/all"/>
+                fab:fab_label="@string/all"/>
 
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        </com.github.clans.fab.FloatingActionMenu>
 
     </FrameLayout>
 

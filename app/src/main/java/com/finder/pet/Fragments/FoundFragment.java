@@ -4,6 +4,7 @@ package com.finder.pet.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +101,12 @@ public class FoundFragment extends Fragment{
                     foundVo=new Found_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
-                        foundVo.setDate(timeDays);
+                        try {
+                            String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
+                            foundVo.setDate(timeDays);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }else { foundVo.setDate(getString(R.string.time_date)); }
 
                     foundVo.setEmail(postSnapshot.child("email").getValue().toString());
@@ -136,7 +141,7 @@ public class FoundFragment extends Fragment{
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
+                Log.e("List Found", getString(R.string.could_not_get_information));
             }
         });
     }

@@ -25,11 +25,9 @@ public class HelpFragment extends Fragment {
 
     MaterialButton btnUserManual, btnTutorial, btnPqr, btnVideoTutorial, btnInfoProblem;
 
-
     public HelpFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +42,15 @@ public class HelpFragment extends Fragment {
 
         setupViews(view);
 
-
+        btnUserManual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/documents%2FTutorial%20detalle%20marcador%20-%20JocarSF.pdf?alt=media&token=23158512-d334-4a97-9f9e-2a94436d72d7";
+                Uri uri = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +64,6 @@ public class HelpFragment extends Fragment {
                 findNavController(view).navigate(R.id.action_nav_help_to_nav_pqr);
             }
         });
-
         btnInfoProblem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

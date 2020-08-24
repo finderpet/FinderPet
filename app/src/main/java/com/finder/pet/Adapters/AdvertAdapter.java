@@ -62,7 +62,7 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AdvertView
         holder.txtPhone.setText(contactPhone);
         //holder.txtUrl.setText("Sitio web "+listAdvert.get(position).getUrlPage());
         holder.btnUrl.setText(listAdvert.get(position).getUrlPage());
-        String url = listAdvert.get(position).getImage();
+        final String url = listAdvert.get(position).getImage();
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
@@ -82,7 +82,14 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AdvertView
                 }else {
                     manualPermitRequestCall().show();
                 }
-
+            }
+        });
+        holder.btnUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://"+listAdvert.get(position).getUrlPage());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                mContext.startActivity(intent);
             }
         });
 

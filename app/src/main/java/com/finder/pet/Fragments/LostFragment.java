@@ -4,6 +4,7 @@ package com.finder.pet.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +101,13 @@ public class LostFragment extends Fragment {
                     lostVo=new Lost_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
-                        lostVo.setDate(timeDays);
+                        try {
+                            String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
+                            lostVo.setDate(timeDays);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                     }else { lostVo.setDate(getString(R.string.time_date)); }
 
                     lostVo.setName(postSnapshot.child("name").getValue().toString());
@@ -138,7 +144,7 @@ public class LostFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
+                Log.e("List Lost", getString(R.string.could_not_get_information));
             }
         });
     }

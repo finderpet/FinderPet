@@ -45,7 +45,7 @@ public class informationShowFragment extends Fragment {
         }
         if (textToShow.equals("Terms")){
             tvShow.setText(Html.fromHtml(getResources().getString(R.string.data_policy)));
-            getActionBar().setTitle(R.string.terms_use);
+            getActionBar().setTitle(R.string.label_terms_use);
         }
         if (textToShow.equals("About")){
             tvShow.setText(Html.fromHtml(getResources().getString(R.string.about_finder_pet)));

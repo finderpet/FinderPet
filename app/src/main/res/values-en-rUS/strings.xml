@@ -115,12 +115,12 @@
     <string name="time_post">Publishing time</string>
     <string name="pet_age">Age</string>
     <string name="date">Date</string>
-    <string name="user_manual">User manual</string>
-    <string name="tutorial">Tutorial</string>
+    <string name="user_manual">Download user manual</string>
+    <string name="tutorial">Quick tutorial</string>
     <string name="video_tutorial">See video tutorial</string>
     <string name="report_problem">Report a problem</string>
     <string name="label_data_policy">Data policy</string>
-    <string name="terms_use">Terms of use</string>
+    <string name="label_terms_use">Terms of use</string>
     <string name="about_app">About the application</string>
     <string name="developer_info">Developer information</string>
     <string name="title_advert">Ad title</string>
@@ -175,7 +175,7 @@
     <string name="adoptions">Adoptions</string>
     <string name="services">Services</string>
     <string name="products">Products</string>
-    <string name="veterinary_centers">Veterinary centers</string>
+    <string name="veterinary_services">Services</string>
     <string name="pet_found">Pets Found</string>
     <string name="pet_lost">Pets Lost</string>
     <string name="pet_adoption">Pets for Adoption</string>
@@ -188,10 +188,10 @@
     <string name="ads_with_us">Show your business in our App</string>
     <string name="type">Type</string>
     <string name="all">All</string>
-    <string name="donation_bancolombia">Donation Bancolombia</string>
+    <string name="donation_bancolombia">Bancolombia Donation</string>
     <string name="scan_cod_bancolombia">Scan this QR code to make a donation through Bancolombia</string>
     <string name="account_donate_baloto">You can make a donation through a ballot with this account number:</string>
-    <string name="donation_baloto">Donation Baloto</string>
+    <string name="donation_baloto">Baloto Donation</string>
     <string name="report_format">Report Format</string>
     <string name="donations">Donations</string>
     <string name="main_menu">Main Menu</string>
@@ -286,4 +286,19 @@
     <string name="today">Today</string>
     <string name="select_a_question">Select a question</string>
     <string name="time_day">" Day"</string>
+    <string name="password_length">The password must be a minimum of 8 characters</string>
+    <string name="dialog_see_recovery_password_message">If the email does not reach your inbox, also check for spam or unwanted mail. The new password must be at least 8 characters long.</string>
+    <string name="dialog_recovery_mail_title">Invalid email</string>
+    <string name="dialog_recovery_mail_message">"There is no account associated with this email, please enter it again.\n\nIf the problem persists, contact our support area finderpetapp@gmail.com"</string>
+    <string name="dialog_email_already_in_use_title">The email address is already in use.</string>
+    <string name="dialog_email_already_in_use_message">This email is already registered, please try another.\n\nIf you have an account created with this email and you forgot your password, use the service to recover it.\n\nIf you do not have an account created with this email and the problem persists, contact our support area finderpetapp@gmail.com</string>
+    <string name="dialog_authentication_failed_title">Authentication failed</string>
+    <string name="dialog_authentication_failed_message">The email or password is incorrect</string>
+    <string name="pet_state">Pet state</string>
+    <string name="lost_singular">Lost</string>
+    <string name="found_singular">Found</string>
+    <string name="adoption_singular">Adoption</string>
+    <string name="download_code_qr">Download code QR</string>
+    <string name="donation_paypal">Paypal Donation</string>
+    <string name="download_completed">Download completed. Your file is in the download folder.</string>
 </resources>

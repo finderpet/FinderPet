@@ -54,7 +54,9 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Floating action menu
-    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    //implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+    implementation 'com.github.clans:fab:1.6.4'
 
 
     // Firebase UI

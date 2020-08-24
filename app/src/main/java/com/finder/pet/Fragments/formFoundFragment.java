@@ -194,6 +194,28 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        fieldLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validatePermissionsLocation()){
+                    final CharSequence[] opciones = {getString(R.string.current_location), getString(R.string.manual_location)};
+                    final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(getContext());
+                    alertOpciones.setTitle(R.string.enter_pet_location);
+                    alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (opciones[i].equals(getString(R.string.current_location))) {
+                                getCurrentLocation();
+                            } else {
+                                linearLayout.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                    alertOpciones.show();
+                }
+            }
+        });
+
         // button to get user current address
         textInputLocation.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,6 +348,10 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
                                     return;
                                 }
 
+                                // coordinates for the location on the map
+                                latitude = lastLocation.getLatitude();
+                                longitude = lastLocation.getLongitude();
+
                                 Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                                 String errorMessage = "";
 
@@ -392,6 +418,10 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
                                 Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
                                 return;
                             }
+
+                            // coordinates for the location on the map
+                            latitude = lastLocation.getLatitude();
+                            longitude = lastLocation.getLongitude();
 
                             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                             String errorMessage = "";

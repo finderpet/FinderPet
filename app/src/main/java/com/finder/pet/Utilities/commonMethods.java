@@ -52,7 +52,7 @@ public class commonMethods {
         String txtDays="";
         if (days==0){txtDays = context.getString(R.string.today);}
         if (days==1){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_day); }
-        if (days>1 && days<30){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_days); }
+        if (days>1 && days<30){ txtDays = context.getString(R.string.time_ago)+days+context.getString(R.string.time_days); } // da error
         if (days>=30 && days<60){ txtDays = context.getString(R.string.time_ago_one_month); }
         if (days>=50){
             int months = days/30;

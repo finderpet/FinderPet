@@ -307,17 +307,10 @@ public class LoginActivity extends BaseActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG1, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null); //organizar todos los updateUI
+                            //Toast.makeText(LoginActivity.this, "Authentication falló.",Toast.LENGTH_SHORT).show();
+                            dialogAuthenticationFailed().show();
                         }
 
-                        // [START_EXCLUDE]
-                        if (!task.isSuccessful()) {
-                            //mStatusTextView.setText(R.string.auth_failed); //puedo mostrar que fue fallida con un textview
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
                         hideProgressBar();
                         // [END_EXCLUDE]
                     }
@@ -424,25 +417,7 @@ public class LoginActivity extends BaseActivity {
 //        // [END send_email_verification]
 //    }
 
-    /**
-     * Method to reset or recover password
-     * @param emailAddress Recibe el correo de la cuenta que se quiere recuperar la contraseña
-     */
-    public void sendPasswordReset(String emailAddress) {
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        auth.sendPasswordResetEmail(emailAddress)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("LoginActivity", "Email sent.");
-                            Toast.makeText(getApplicationContext(), R.string.check_email_inbox, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }// [END send_password_reset]
 
     /**
      * Method to display the create account dialog
@@ -462,47 +437,6 @@ public class LoginActivity extends BaseActivity {
 
         return builder.create();
     }
-
-    /**
-     * Method to display the password recovery dialog
-     * @return Window dialog
-     */
-    public AlertDialog dialogResetPassword(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-
-        LayoutInflater inflater = this.getLayoutInflater();
-        View view = inflater.inflate(R.layout.recover_password, null);
-        builder.setView(view);
-
-        MaterialButton send = view.findViewById(R.id.btnSendRecover);
-        MaterialButton cancel = view.findViewById(R.id.btnCancelRecover);
-        final EditText emailRecover = view.findViewById(R.id.emailRecover);
-
-
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailUser = emailRecover.getText().toString();
-                if (TextUtils.isEmpty(emailUser)) {
-                    emailRecover.setError(getString(R.string.required_field));
-                    Toast.makeText(getApplicationContext(), R.string.recover_input_email, Toast.LENGTH_SHORT).show();
-                } else {
-                    emailRecover.setError(null);
-                    sendPasswordReset(emailUser);
-                    LoginActivity.this.newDialog.dismiss();
-                }
-
-            }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginActivity.this.newDialog.dismiss();
-            }
-        });
-
-        return newDialog = builder.create();
-    }// [End dialogResetPassword]
 
     /**
      * Method to display the create account dialog
@@ -573,8 +507,10 @@ public class LoginActivity extends BaseActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.create_account_failed, Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            //String msg = task.getException().getMessage();
+                            //Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            dialogEmailAlreadyInUse().show();
+                            LoginActivity.this.newDialog.dismiss();//Close the dialog create account
                         }
 
                         // [START_EXCLUDE]
@@ -583,6 +519,144 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
         // [END create_user_with_email]
+    }
+
+    /**
+     * Method to display Email already in use dialog
+     * @return Window dialog
+     */
+    public AlertDialog dialogEmailAlreadyInUse(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+
+        builder.setTitle(getResources().getString(R.string.dialog_email_already_in_use_title))
+                .setMessage(getResources().getString(R.string.dialog_email_already_in_use_message))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        dialogCreateAccount().show();
+                    }
+                });
+        return builder.create();
+    }
+
+    /**
+     * Method to display Authentication failed dialog
+     * @return Window dialog
+     */
+    public AlertDialog dialogAuthenticationFailed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+
+        builder.setTitle(getResources().getString(R.string.dialog_authentication_failed_title))
+                .setMessage(getResources().getString(R.string.dialog_authentication_failed_message))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        return builder.create();
+    }
+
+    /**
+     * Method to display the password recovery dialog
+     * @return Window dialog
+     */
+    public AlertDialog dialogResetPassword(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.recover_password, null);
+        builder.setView(view);
+
+        MaterialButton send = view.findViewById(R.id.btnSendRecover);
+        MaterialButton cancel = view.findViewById(R.id.btnCancelRecover);
+        final EditText emailRecover = view.findViewById(R.id.emailRecover);
+
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailUser = emailRecover.getText().toString();
+                if (TextUtils.isEmpty(emailUser)) {
+                    emailRecover.setError(getString(R.string.required_field));
+                    Toast.makeText(getApplicationContext(), R.string.recover_input_email, Toast.LENGTH_SHORT).show();
+                } else {
+                    emailRecover.setError(null);
+                    sendPasswordReset(emailUser);
+                    LoginActivity.this.newDialog.dismiss();
+                }
+
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.this.newDialog.dismiss();
+            }
+        });
+
+        return newDialog = builder.create();
+    }// [End dialogResetPassword]
+
+    /**
+     * Method to reset or recover password
+     * @param emailAddress Email of the account that you want to recover the password
+     */
+    public void sendPasswordReset(String emailAddress) {
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        auth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("LoginActivity", "Email sent.");
+                            dialogSeePasswordRecoveryMail().show();
+                        }else {
+                            dialogRecoveryMailNotExist().show();
+                        }
+                    }
+                });
+    }// [END send_password_reset]
+
+    /**
+     * Method to display see password recovery email dialog
+     * @return Window dialog
+     */
+    public AlertDialog dialogSeePasswordRecoveryMail(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+
+        builder.setTitle(getResources().getString(R.string.check_email_inbox))
+                .setMessage(getResources().getString(R.string.dialog_see_recovery_password_message))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        return builder.create();
+    }
+
+    /**
+     * Method to display recovery mail does not exist dialog
+     * @return Window dialog
+     */
+    public AlertDialog dialogRecoveryMailNotExist(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+
+        builder.setTitle(getResources().getString(R.string.dialog_recovery_mail_title))
+                .setIcon(R.drawable.ic_outline_info_32)
+                .setMessage(getResources().getString(R.string.dialog_recovery_mail_message))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        dialogResetPassword().show();
+                    }
+                });
+        return builder.create();
     }
 
     /**
@@ -603,7 +677,10 @@ public class LoginActivity extends BaseActivity {
         if (TextUtils.isEmpty(password1)) {
             mPasswordTextInput1.setError(getString(R.string.required_field));
             valid = false;
-        } else {
+        }else if (!TextUtils.isEmpty(password1) && password1.length()<8) {
+            mPasswordTextInput1.setError(getString(R.string.password_length));
+            valid = false;
+        }  else {
             mPasswordTextInput1.setError(null);
         }
         String password2 = mPasswordRegister2.getText().toString();
@@ -622,7 +699,6 @@ public class LoginActivity extends BaseActivity {
             mPasswordTextInput2.setError(null);
         }
         return valid;
-
     }
 
     /**
@@ -702,7 +778,7 @@ public class LoginActivity extends BaseActivity {
     public AlertDialog dialogUseTerms(){
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
-        builder.setTitle(getResources().getString(R.string.terms_use))
+        builder.setTitle(getResources().getString(R.string.label_terms_use))
                 .setMessage(Html.fromHtml(getResources().getString(R.string.data_policy)))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override

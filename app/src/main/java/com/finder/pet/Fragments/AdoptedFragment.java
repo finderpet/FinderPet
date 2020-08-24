@@ -4,6 +4,7 @@ package com.finder.pet.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,8 +99,12 @@ public class AdoptedFragment extends Fragment {
                     adoptedVo=new Adopted_Vo();
 
                     if (postSnapshot.child("date").exists()){
-                        String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
-                        adoptedVo.setDate(timeDays);
+                        try {
+                            String timeDays = commonMethods.getDaysDate(postSnapshot.child("date").getValue().toString(), getContext());
+                            adoptedVo.setDate(timeDays);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }else { adoptedVo.setDate(getString(R.string.time_date)); }
                     if (postSnapshot.child("name").exists()){
                         adoptedVo.setName(postSnapshot.child("name").getValue().toString());
@@ -159,7 +164,7 @@ public class AdoptedFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
+                Log.e("List Adopted", getString(R.string.could_not_get_information));
             }
         });
     }

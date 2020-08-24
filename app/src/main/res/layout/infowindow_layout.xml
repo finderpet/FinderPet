@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <ImageView
+        android:id="@+id/info_window_image"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_dog_asset" />
+
+    <TextView
+        android:id="@+id/info_window_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_toRightOf="@id/info_window_image"
+        android:paddingLeft="5dp"
+        android:text="@string/name_pet" />
+
+    <TextView
+        android:id="@+id/info_window_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_window_name"
+        android:layout_toRightOf="@id/info_window_image"
+        android:paddingLeft="5dp"
+        android:text="@string/pet_type" />
+
+    <TextView
+        android:id="@+id/info_window_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_window_type"
+        android:layout_toRightOf="@id/info_window_image"
+        android:paddingLeft="5dp"
+        android:text="@string/pet_state" />
+
+    <TextView
+        android:id="@+id/info_window_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_window_state"
+        android:layout_toRightOf="@id/info_window_image"
+        android:paddingLeft="5dp"
+        android:text="@string/phone" />
+
+    <TextView
+        android:id="@+id/info_window_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_window_phone"
+        android:layout_toRightOf="@id/info_window_image"
+        android:paddingLeft="5dp"
+        android:text="@string/email" />
+
+
+
+</RelativeLayout>

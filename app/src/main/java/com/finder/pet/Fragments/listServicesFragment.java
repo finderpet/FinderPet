@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,11 +88,11 @@ public class listServicesFragment extends Fragment {
 
         String typeAds = getArguments().getString("Object");
         if (typeAds.equals("Services")){
-            getActionBar().setTitle(R.string.veterinary_centers);
+            getActionBar().setTitle(R.string.services);
             consultListVeterinaryCenters();
         }
         if (typeAds.equals("Products")){
-            getActionBar().setTitle(R.string.pet_shops);
+            getActionBar().setTitle(R.string.products);
             consultListPetShops();
         }
         if (typeAds.equals("Delivery")){
@@ -322,7 +323,7 @@ public class listServicesFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
+                Log.e("List Services", getString(R.string.could_not_get_information));
             }
         });
     }// [consultListEvents]
