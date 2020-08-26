@@ -779,7 +779,7 @@ public class LoginActivity extends BaseActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
         builder.setTitle(getResources().getString(R.string.label_terms_use))
-                .setMessage(Html.fromHtml(getResources().getString(R.string.data_policy)))
+                .setMessage(Html.fromHtml(getResources().getString(R.string.terms_of_use)))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -146,7 +146,7 @@ public class AdoptedFragment extends Fragment {
                     ListAdopted.add(adoptedVo);
                 }
 
-                Collections.reverse(ListAdopted);
+                Collections.reverse(ListAdopted);// reverse the order of the list
                 AdoptedAdapter adapter =  new AdoptedAdapter(ListAdopted);
                 recyclerListAdopted.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);

@@ -15,8 +15,8 @@
             android:key="city_state"
             android:title="@string/city_state"
             android:summary="@string/choose_city_state"
-            android:entries="@array/city_colombia"
-            android:entryValues="@array/city_colombia"
+            android:entries="@array/Colombia"
+            android:entryValues="@array/Colombia"
             android:icon="@drawable/ic_my_location_32"/>
     </PreferenceCategory>
 

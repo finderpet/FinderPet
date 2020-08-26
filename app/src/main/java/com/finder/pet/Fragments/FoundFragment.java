@@ -72,9 +72,7 @@ public class FoundFragment extends Fragment{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 findNavController(view).navigate(R.id.action_foundFragment_to_formFoundFragment);
-
             }
         });
         return view;
@@ -124,7 +122,7 @@ public class FoundFragment extends Fragment{
                     ListFound.add(foundVo);
                 }
 
-                Collections.reverse(ListFound);
+                Collections.reverse(ListFound);// reverse the order of the list
                 FoundAdapter adapter =  new FoundAdapter(ListFound);
                 recyclerListFound.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);

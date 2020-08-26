@@ -126,7 +126,7 @@ public class LostFragment extends Fragment {
                     ListLost.add(lostVo);
                 }
 
-                Collections.reverse(ListLost);
+                Collections.reverse(ListLost);// reverse the order of the list
                 LostAdapter adapter =  new LostAdapter(ListLost);
                 recyclerListLost.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);

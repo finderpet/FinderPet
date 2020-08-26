@@ -1,7 +1,18 @@
 package com.finder.pet.ui.maps;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
@@ -26,6 +38,8 @@ import com.finder.pet.Utilities.PreferencesApp;
 import com.finder.pet.Utilities.commonMethods;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -34,14 +48,20 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static androidx.navigation.Navigation.findNavController;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
@@ -56,8 +76,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     ArrayList<PetMarker> ListFound;
     ArrayList<PetMarker> ListLost;
     private GoogleMap map;
+    private FusedLocationProviderClient fusedLocationClient; // Get the last know location
     private SupportMapFragment mapFragment;
-    private double latitude, longitude;
+    private double latitude, longitude, latDefault, lngDefault;
+    protected Location lastLocation;
+    private static final int REQUEST_PERMISSIONS_LOCATION = 105;
     private LatLng latLngCity;
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -91,11 +114,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         ListLost=new ArrayList<>();
         latitude = 6.2443382;
         longitude = -75.573553;
+        latDefault = 6.2443382;
+        lngDefault = -75.573553;
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        //getLocation();
+
         latLngCity = new LatLng(latitude, longitude);
         mapFragment = (SupportMapFragment)getChildFragmentManager()
                 .findFragmentById(R.id.mapFrag);
 
         mapFragment.getMapAsync(this);
+
+        getCurrentLocation();
 
         addMarkersAdopted();
         addMarkersFound();
@@ -140,6 +171,136 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     }
 
     /**
+     * Method to get user current location
+     */
+    private void getCurrentLocation() {
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if((getContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+                    && (getContext().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)){
+                //Get last location
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                lastLocation = location;
+
+                                // In some rare cases the location returned can be null
+                                if (lastLocation == null) {
+                                    Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+                                if (!Geocoder.isPresent()) {
+                                    Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+                                // coordinates for the location on the map
+                                latDefault = lastLocation.getLatitude();
+                                lngDefault = lastLocation.getLongitude();
+                                mapFragment.getMapAsync(MapsFragment.this); // sincronizamos el mapa con los nuevos parametros
+
+                            }
+                        });
+            }else {
+                if (shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION) || shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)){
+                    dialogRecommendationToGrantPermissionLocation();
+                }
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION}, REQUEST_PERMISSIONS_LOCATION);
+            }
+        }else {
+            //Get last location
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            lastLocation = location;
+
+                            // In some rare cases the location returned can be null
+                            if (lastLocation == null) {
+                                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            if (!Geocoder.isPresent()) {
+                                Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            // coordinates for the location on the map
+                            latDefault = lastLocation.getLatitude();
+                            lngDefault = lastLocation.getLongitude();
+                            mapFragment.getMapAsync(MapsFragment.this); // sincronizamos el mapa con los nuevos parametros
+
+                        }
+                    });
+
+        }
+
+    }// [End getCurrentLocation]
+
+    /**
+     * Method to display location permission recommendation dialog
+     */
+    private void dialogRecommendationToGrantPermissionLocation() {
+        AlertDialog.Builder dialogo=new AlertDialog.Builder(getActivity());
+        dialogo.setTitle(R.string.location_permissions_not_granted);
+        dialogo.setMessage(R.string.accept_permissions_functioning_app);
+
+        dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
+            }
+        });
+        dialogo.show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode== REQUEST_PERMISSIONS_LOCATION){
+            if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
+                    && grantResults[1]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getContext(), R.string.get_current_location_automatically,Toast.LENGTH_SHORT).show();
+                getCurrentLocation();
+            }else{
+                //Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
+                manualPermitRequest().show();
+            }
+        }else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    /**
+     * Method to display permission authorization dialog manually
+     */
+    private AlertDialog manualPermitRequest() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle(R.string.dialog_permissions_manually)
+                .setMessage(R.string.accept_permissions_functioning_app)
+                .setPositiveButton(R.string.btn_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent=new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri=Uri.fromParts("package",getActivity().getPackageName(),null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(R.string.btn_no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(),R.string.permission_not_accepted,Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+        return builder.create();
+    }
+
+    /**
      * Method for querying database items in Firebase
      */
     private void addMarkersAdopted() {
@@ -154,23 +315,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
-                    String id = postSnapshot.getKey();
-                    String image = postSnapshot.child("image1").getValue().toString();
-                    String name = postSnapshot.child("name").getValue().toString();
-                    String type = postSnapshot.child("type").getValue().toString();
-                    if (type.equals("cat")){type=getString(R.string.cat);}
-                    else if(type.equals("dog")){type=getString(R.string.dog);}
-                    else {type=getString(R.string.other);};
-                    String state = getString(R.string.adoption_singular);
-                    String phone = postSnapshot.child("phone").getValue().toString();
-                    String email = postSnapshot.child("email").getValue().toString();
-                    String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
-                    latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
-                    longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).showInfoWindow();
-
+                    try {
+                        String id = postSnapshot.getKey();
+                        String image = postSnapshot.child("image1").getValue().toString();
+                        String name = postSnapshot.child("name").getValue().toString();
+                        String type = postSnapshot.child("type").getValue().toString();
+                        if (type.equals("cat")){type=getString(R.string.cat);}
+                        else if(type.equals("dog")){type=getString(R.string.dog);}
+                        else {type=getString(R.string.other);};
+                        String state = getString(R.string.adoption_singular);
+                        String phone = postSnapshot.child("phone").getValue().toString();
+                        String email = postSnapshot.child("email").getValue().toString();
+                        String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
+                        latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
+                        longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).showInfoWindow();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
                 txtLoad.setVisibility(View.GONE);
@@ -178,7 +342,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -198,23 +362,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
-                    String id = postSnapshot.getKey();
-                    String image = postSnapshot.child("image1").getValue().toString();
-                    String name = getString(R.string.field_without_info);
-                    String type = postSnapshot.child("type").getValue().toString();
-                    if (type.equals("cat")){type=getString(R.string.cat);}
-                    else if(type.equals("dog")){type=getString(R.string.dog);}
-                    else {type=getString(R.string.other);};
-                    String state = getString(R.string.found_singular);
-                    String phone = postSnapshot.child("phone").getValue().toString();
-                    String email = postSnapshot.child("email").getValue().toString();
-                    String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
-                    latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
-                    longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))).showInfoWindow();
-
+                    try {
+                        String id = postSnapshot.getKey();
+                        String image = postSnapshot.child("image1").getValue().toString();
+                        String name = getString(R.string.field_without_info);
+                        String type = postSnapshot.child("type").getValue().toString();
+                        if (type.equals("cat")){type=getString(R.string.cat);}
+                        else if(type.equals("dog")){type=getString(R.string.dog);}
+                        else {type=getString(R.string.other);};
+                        String state = getString(R.string.found_singular);
+                        String phone = postSnapshot.child("phone").getValue().toString();
+                        String email = postSnapshot.child("email").getValue().toString();
+                        String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
+                        latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
+                        longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))).showInfoWindow();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
                 txtLoad.setVisibility(View.GONE);
@@ -222,7 +389,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -242,23 +409,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
-                    String id = postSnapshot.getKey();
-                    String image = postSnapshot.child("image1").getValue().toString();
-                    String name = postSnapshot.child("name").getValue().toString();
-                    String type = postSnapshot.child("type").getValue().toString();
-                    if (type.equals("cat")){type=getString(R.string.cat);}
-                    else if(type.equals("dog")){type=getString(R.string.dog);}
-                    else {type=getString(R.string.other);};
-                    String state = getString(R.string.lost_singular);
-                    String phone = postSnapshot.child("phone").getValue().toString();
-                    String email = postSnapshot.child("email").getValue().toString();
-                    String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
-                    latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
-                    longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))).showInfoWindow();
-
+                    try {
+                        String id = postSnapshot.getKey();
+                        String image = postSnapshot.child("image1").getValue().toString();
+                        String name = postSnapshot.child("name").getValue().toString();
+                        String type = postSnapshot.child("type").getValue().toString();
+                        if (type.equals("cat")){type=getString(R.string.cat);}
+                        else if(type.equals("dog")){type=getString(R.string.dog);}
+                        else {type=getString(R.string.other);};
+                        String state = getString(R.string.lost_singular);
+                        String phone = postSnapshot.child("phone").getValue().toString();
+                        String email = postSnapshot.child("email").getValue().toString();
+                        String info = name+"&"+type+"&"+state+"&"+phone+"&"+email+"&"+id;
+                        latitude = Double.parseDouble((postSnapshot.child("latitude").getValue().toString()));
+                        longitude = Double.parseDouble((postSnapshot.child("longitude").getValue().toString()));
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        map.addMarker(new MarkerOptions().position(latLng).title(info).snippet(image)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))).showInfoWindow();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
                 txtLoad.setVisibility(View.GONE);
@@ -266,7 +436,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "No se pudo obtener información ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
             }
         });
     }// [End addMarkerLost]
@@ -279,8 +449,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         map = googleMap;
         map.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity())));
         double lat, lng;
-        lat = PreferencesApp.lanDefault;
-        lng = PreferencesApp.lngDefault;
+//        lat = PreferencesApp.lanDefault;
+//        lng = PreferencesApp.lngDefault;
+        lat = latDefault;
+        lng = lngDefault;
         final LatLng medellin = new LatLng(lat, lng);
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(medellin, 12));

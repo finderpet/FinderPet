@@ -257,7 +257,7 @@
         <item>Zimbabue</item>
     </array>
 
-    <array name="city_colombia">
+    <array name="Colombia">
         <item>Arauca</item>
         <item>Armenia</item>
         <item>Barranquilla</item>
@@ -292,7 +292,7 @@
         <item>Yopal</item>
     </array>
 
-    <array name="state_mexico">
+    <array name="Mexico">
         <item>Aguascalientes</item>
         <item>Baja California</item>
         <item>Baja California Sur</item>

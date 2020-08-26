@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         int flag = Integer.parseInt(preferences.getString("flag", "0"));
         if (flag==0){
             editor.putString("flag", "1");
+            editor.apply();
             editor.commit();
             Intent intent=new Intent(MainActivity.this, PreferencesInitialActivity.class);
             startActivity(intent);

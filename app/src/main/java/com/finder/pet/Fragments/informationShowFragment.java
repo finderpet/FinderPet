@@ -44,7 +44,7 @@ public class informationShowFragment extends Fragment {
             getActionBar().setTitle(R.string.label_data_policy);
         }
         if (textToShow.equals("Terms")){
-            tvShow.setText(Html.fromHtml(getResources().getString(R.string.data_policy)));
+            tvShow.setText(Html.fromHtml(getResources().getString(R.string.terms_of_use)));
             getActionBar().setTitle(R.string.label_terms_use);
         }
         if (textToShow.equals("About")){
