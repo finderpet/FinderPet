@@ -1,32 +1,36 @@
 package com.finder.pet.ui.account;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import com.bumptech.glide.Glide;
-import com.facebook.login.LoginManager;
 import com.finder.pet.Authentication.LoginActivity;
-import com.finder.pet.Main.CloseActivity;
 import com.finder.pet.R;
 import com.finder.pet.Utilities.commonMethods;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class AccountFragment extends Fragment {
 
@@ -38,20 +42,30 @@ public class AccountFragment extends Fragment {
     // [END declare_auth]
     private GoogleSignInClient mGoogleSignInClient;
 
-    private Button btnSgnOut, btnDeleteAccount;
-    private TextView txtName, txtEmail, txtPhone;
+    Button btnSgnOut, btnDeleteAccount, btnUpdateUser;
+    ImageButton btnUpdateProfile;
+    private TextInputEditText txtName,txtEmail, txtPhone;
     private CircleImageView imgPhoto;
+    private static final String TAG = "Update user";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel =
                 ViewModelProviders.of(this).get(AccountViewModel.class);
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        return inflater.inflate(R.layout.fragment_account, container, false);
 
-        txtName = view.findViewById(R.id.accountName);
-        txtEmail = view.findViewById(R.id.accountEmail);
-        txtPhone = view.findViewById(R.id.accountPhone);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        txtName = view.findViewById(R.id.txtProfileName);
+        txtEmail = view.findViewById(R.id.txtProfileEmail);
+        txtPhone = view.findViewById(R.id.txtProfilePhone);
         imgPhoto = view.findViewById(R.id.imgAccount);
+        btnUpdateProfile = view.findViewById(R.id.btnUpdateProfile);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -67,6 +81,7 @@ public class AccountFragment extends Fragment {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
         setUserData(user);
+
 
         btnSgnOut = view.findViewById(R.id.btnSignOut);
         btnSgnOut.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +99,25 @@ public class AccountFragment extends Fragment {
                 commonMethods.dialogDeleteAccount(getContext()).show();
             }
         });
+        btnUpdateUser = view.findViewById(R.id.btnUpdateUser);
+        btnUpdateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateProfile();
 
-        return view;
+            }
+        });
+        btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtName.setEnabled(true);
+                txtPhone.setEnabled(true);
+                txtName.setTextColor(getResources().getColor(R.color.colorBlack));
+                txtPhone.setTextColor(getResources().getColor(R.color.colorBlack));
+                btnUpdateUser.setVisibility(View.VISIBLE);
+            }
+        });
     }
-
 
     private void setUserData(FirebaseUser user) {
         txtName.setText(user.getDisplayName());
@@ -97,6 +127,34 @@ public class AccountFragment extends Fragment {
                 .load(user.getPhotoUrl())
                 .placeholder(R.drawable.img_profile)
                 .into(imgPhoto);
+    }
+
+    public void updateProfile() {
+        // [START update_profile]
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName("Johnnatan Velasquez")
+                .setPhotoUri(Uri.parse("https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/users%2Ffoto%20perfil.PNG?alt=media&token=682dbe24-5f5a-4d3b-a76c-8fc538cf5c58"))
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                            Toast.makeText(getContext(), R.string.updated_profile,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+        txtName.setEnabled(false);
+        txtPhone.setEnabled(false);
+        txtName.setTextColor(getResources().getColor(R.color.colorLetterHint));
+        txtPhone.setTextColor(getResources().getColor(R.color.colorLetterHint));
+        btnUpdateUser.setVisibility(View.VISIBLE);
+        btnUpdateUser.setVisibility(View.GONE);
+        // [END update_profile]
     }
 
     @Override

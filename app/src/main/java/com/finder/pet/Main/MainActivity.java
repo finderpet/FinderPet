@@ -55,18 +55,18 @@ public class MainActivity extends AppCompatActivity {
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         // Update user preferences
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        PreferencesApp.getPreferences(preferences, this);
-        // Validate if it is the first time the application is opened to request Country, City and Language
-        SharedPreferences.Editor editor = preferences.edit();
-        int flag = Integer.parseInt(preferences.getString("flag", "0"));
-        if (flag==0){
-            editor.putString("flag", "1");
-            editor.apply();
-            editor.commit();
-            Intent intent=new Intent(MainActivity.this, PreferencesInitialActivity.class);
-            startActivity(intent);
-        }
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        PreferencesApp.getPreferences(preferences, this);
+//        // Validate if it is the first time the application is opened to request Country, City and Language
+//        SharedPreferences.Editor editor = preferences.edit();
+//        int flag = Integer.parseInt(preferences.getString("flag", "0"));
+//        if (flag==0){
+//            editor.putString("flag", "1");
+//            editor.apply();
+//            editor.commit();
+//            Intent intent=new Intent(MainActivity.this, PreferencesInitialActivity.class);
+//            startActivity(intent);
+//        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);

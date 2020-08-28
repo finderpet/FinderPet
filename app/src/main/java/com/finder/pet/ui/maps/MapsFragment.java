@@ -77,10 +77,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     ArrayList<PetMarker> ListLost;
     private GoogleMap map;
     private FusedLocationProviderClient fusedLocationClient; // Get the last know location
-    private SupportMapFragment mapFragment;
-    private double latitude, longitude, latDefault, lngDefault;
     protected Location lastLocation;
     private static final int REQUEST_PERMISSIONS_LOCATION = 105;
+    //onSaveInstanceState
+    private static final String KEY_CAMERA_POSITION = "camera_position";
+    private static final String KEY_LOCATION = "location";
+
+    private SupportMapFragment mapFragment;
+    private double latitude, longitude, latDefault, lngDefault;
     private LatLng latLngCity;
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -96,6 +100,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //get state map
+//        if (savedInstanceState != null) {
+//            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+//            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+//        }
 
         progressBar =  view.findViewById(R.id.progressBarMaps);
         txtLoad = view.findViewById(R.id.textLoadMaps);
@@ -440,6 +450,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
         });
     }// [End addMarkerLost]
+
+//    // save map state
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        if (map != null) {
+//            outState.putParcelable(KEY_CAMERA_POSITION, map.getCameraPosition());
+//            outState.putParcelable(KEY_LOCATION, lastLocation);
+//            super.onSaveInstanceState(outState);
+//        }
+//    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

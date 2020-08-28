@@ -301,4 +301,8 @@
     <string name="download_code_qr">Download code QR</string>
     <string name="donation_paypal">Paypal Donation</string>
     <string name="download_completed">Download completed. Your file is in the download folder.</string>
+    <string name="search_radius">Search radius</string>
+    <string name="choose_search_radius">Choose a value for the search radius</string>
+    <string name="update_profile">Update profile</string>
+    <string name="updated_profile">Updated profile</string>
 </resources>

@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -20,11 +21,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="2dp">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_update_24" />
+            </FrameLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
+
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgAccount"
@@ -35,30 +49,7 @@
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/primary_text"
                     android:layout_marginBottom="8dp"/>
-                <TextView
-                    android:id="@+id/accountName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:textColor="@color/primary_text"
-                    android:text="@string/user_name"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="?android:attr/listDivider" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:hint="@string/email"/>
-                <TextView
-                    android:id="@+id/accountEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email"/>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -68,18 +59,94 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:textSize="10sp"
-                    android:hint="@string/phone"/>
+                    android:textStyle="bold"
+                    android:hint="@string/user_name"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextFieldName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtProfileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_name"
+                        android:drawableRight="@drawable/ic_edit_24"
+                        android:drawableTint="@color/colorBlack"
+                        android:textColor="@color/colorLetterHint"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <TextView
-                    android:id="@+id/accountPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/phone"/>
-                <View
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/email"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextFieldEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?android:attr/listDivider" />
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtProfileEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        android:drawableRight="@drawable/ic_edit_24"
+                        android:textColor="@color/colorLetterHint"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/phone"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextFieldPhone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtProfilePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        android:textColor="@color/colorLetterHint"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnUpdateUser"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@color/colorPrimary"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="@string/update_profile"/>
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.FinderPet.Button"

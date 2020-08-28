@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <array name="search_radius">
+        <item>1 Km</item>
+        <item>2 Km</item>
+        <item>3 Km</item>
+        <item>4 Km</item>
+        <item>5 Km</item>
+        <item>10 Km</item>
+        <item>20 Km</item>
+        <item>30 Km</item>
+        <item>40 Km</item>
+        <item>50 Km</item>
+        <item>100 Km</item>
+        <item>200 Km</item>
+        <item>300 Km</item>
+        <item>400 Km</item>
+        <item>500 Km</item>
+        <item>1000 Km</item>
+    </array>
+
     <array name="country">
         <item>Afganistán</item>
         <item>Albania</item>

@@ -314,5 +314,9 @@
     <string name="download_code_qr">Descargar código QR</string>
     <string name="donation_paypal">Donación PayPal</string>
     <string name="download_completed">Descarga completada. Su archivo está en la carpeta de descargas.</string>
+    <string name="search_radius">Radio de búsqueda</string>
+    <string name="choose_search_radius">Elige un valor para el radio de búsqueda</string>
+    <string name="update_profile">Actualizar perfil</string>
+    <string name="updated_profile">Perfil actualizado</string>
 
 </resources>

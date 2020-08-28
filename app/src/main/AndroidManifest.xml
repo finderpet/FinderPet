@@ -44,7 +44,6 @@
             android:name=".Main.ContainerTutorialActivity"
             android:label="@string/title_activity_container_tutorial"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Main.PreferencesInitialActivity" />
         <activity
             android:name=".Main.CloseActivity"
             android:theme="@style/AppTheme.NoActionBar" />

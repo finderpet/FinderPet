@@ -112,9 +112,9 @@ public class HomeFragment extends Fragment{
         });
 
         //Código para mostrar el flipper de imagenes
-        String[] imagesUrl = {"https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner1.jpg?alt=media&token=3d202ddb-44b0-4680-a9bd-c86e036bad14",
-                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner2.jpg?alt=media&token=283d65db-c9e8-426a-b15a-93fb211480c8",
-                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2Fbanner3.jpg?alt=media&token=284cc051-f8a9-4e15-88de-52b6b7d08600"};
+        String[] imagesUrl = {"https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FJuanPabloG.jpeg?alt=media&token=ce927f99-89ca-4c75-8e8a-48f05c027cc0",
+                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FRonroneos.png?alt=media&token=47a9f2ac-e821-4768-a1e2-0b4ece2ecd7c",
+                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FPetService1.jpeg?alt=media&token=701c0d05-20e7-462c-ac80-e2a5d67cc8d2"};
         viewFlipper = view.findViewById(R.id.flipperAdverts);
         for (String image: imagesUrl){
             flipperImg(image);
@@ -123,7 +123,6 @@ public class HomeFragment extends Fragment{
         viewFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //findNavController(view).navigate(R.id.action_nav_home_to_listServicesFragment);
                 Bundle bundle = new Bundle();
                 bundle.putString("Object", "Events");
                 findNavController(v).navigate(R.id.action_nav_home_to_listServicesFragment, bundle);
@@ -169,7 +168,6 @@ public class HomeFragment extends Fragment{
         // Step 3 - Get adaptive ad size and return for setting on the ad view.
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(getContext(), adWidth);
     }
-
 
     /**
      * Metodo para mostrar el flipper de imagenes de promociones
