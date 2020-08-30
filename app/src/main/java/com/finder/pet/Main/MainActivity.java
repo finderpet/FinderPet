@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,20 +55,6 @@ public class MainActivity extends AppCompatActivity {
         // Store preference parameters
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-        // Update user preferences
-//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        PreferencesApp.getPreferences(preferences, this);
-//        // Validate if it is the first time the application is opened to request Country, City and Language
-//        SharedPreferences.Editor editor = preferences.edit();
-//        int flag = Integer.parseInt(preferences.getString("flag", "0"));
-//        if (flag==0){
-//            editor.putString("flag", "1");
-//            editor.apply();
-//            editor.commit();
-//            Intent intent=new Intent(MainActivity.this, PreferencesInitialActivity.class);
-//            startActivity(intent);
-//        }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         //navigationView.setBackgroundColor(getResources().getColor(R.color.colorAccent)); //Cambia color de fondo del navigation view
@@ -88,53 +75,36 @@ public class MainActivity extends AppCompatActivity {
         // Setup objects of HeaderView
         setupHeaderView();
 
-        // Setup information current user Firebase
-        setupAuthFirebase();
     }// [End onCreate]
 
     /**
-     * Method to go to the login screen
+     * Method to update user information at the nav view
      */
-    private void goLoginScreen() {
-        Intent intent=new Intent(MainActivity.this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
-    private void setupAuthFirebase() {
-        // [START declare_auth ]
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        setUserProfile(user);
-    }
-
-    private void setupHeaderView() {
+    public void setupHeaderView() {
         // Creamos la instancia del nav_header para manejar sus objetos
         View mView = navigationView.getHeaderView(0);
+
         circleImageView = mView.findViewById(R.id.profileImage);
         txtName = mView.findViewById(R.id.profileName);
         txtEmail = mView.findViewById(R.id.profileEmail);
-    }
-
-    /**
-     * Method to update logged in user information
-     * @param user FirebaseUser containing current user information
-     */
-    private void setUserProfile(FirebaseUser user) {
-        txtName.setText(user.getDisplayName());
-        txtEmail.setText(user.getEmail());
-        Glide.with(this)
-                .load(user.getPhotoUrl())
-                .placeholder(R.drawable.img_profile)
-                .into(circleImageView);
-    }
+        //get firebase user
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user!=null){
+            txtName.setText(user.getDisplayName());
+            txtEmail.setText(user.getEmail());
+            Glide.with(this)
+                    .load(user.getPhotoUrl())
+                    .placeholder(R.drawable.img_profile)
+                    .into(circleImageView);
+        }
+    }// [End setupHeaderView]
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-
     }
 
     @Override

@@ -317,6 +317,10 @@
     <string name="search_radius">Radio de búsqueda</string>
     <string name="choose_search_radius">Elige un valor para el radio de búsqueda</string>
     <string name="update_profile">Actualizar perfil</string>
-    <string name="updated_profile">Perfil actualizado</string>
+    <string name="updated_profile">Perfil actualizado correctamente</string>
+    <string name="write_your_name">Escribe tu nombre</string>
+    <string name="phone_profile">Teléfono</string>
+    <string name="write_your_phone">Escribe tu teléfono</string>
+    <string name="update_photo_profile">Actualizando foto de perfil</string>
 
 </resources>

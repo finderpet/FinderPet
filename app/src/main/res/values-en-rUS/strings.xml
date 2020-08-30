@@ -304,5 +304,9 @@
     <string name="search_radius">Search radius</string>
     <string name="choose_search_radius">Choose a value for the search radius</string>
     <string name="update_profile">Update profile</string>
-    <string name="updated_profile">Updated profile</string>
+    <string name="updated_profile">Profile successfully updated</string>
+    <string name="write_your_name">Write your name</string>
+    <string name="phone_profile">Phone</string>
+    <string name="write_your_phone">Write your phone</string>
+    <string name="update_photo_profile">Updating profile picture</string>
 </resources>

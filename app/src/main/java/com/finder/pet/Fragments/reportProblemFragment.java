@@ -149,7 +149,6 @@ public class reportProblemFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
     }
 
-
     /**
      * Method to send report without image
      */
