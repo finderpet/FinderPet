@@ -4,36 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_dark"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Fragments.tutorialSettingsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="24dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="@color/colorWhite"
-        android:text="@string/initial_config" />
-
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_outline_settings_128"
-        android:contentDescription="@string/content_description_media" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/colorWhite"
-        android:layout_margin="16dp"
-        android:textAlignment="center"
-        android:text="@string/tutorial_settings" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/tuto_setting"
+        android:layout_gravity="bottom"
+        android:contentDescription="@string/content_description_media"/>
 
 </LinearLayout>

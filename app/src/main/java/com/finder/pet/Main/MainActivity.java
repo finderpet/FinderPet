@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         // Store preference parameters
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        PreferencesApp.getPreferences(preferences, this);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         //navigationView.setBackgroundColor(getResources().getColor(R.color.colorAccent)); //Cambia color de fondo del navigation view

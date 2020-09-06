@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Fragments.tutorialHelpFragment">
+    tools:context=".Fragments.tutorialPostFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/tuto_welcome"
+        android:src="@mipmap/tuto_post"
         android:layout_gravity="bottom"
         android:contentDescription="@string/content_description_media"/>
 

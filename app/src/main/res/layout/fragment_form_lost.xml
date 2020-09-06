@@ -144,24 +144,56 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddLostName"
-                        style="@style/Widget.FinderPet.TextInputLayout"
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddLostName"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddLostName"
+                            style="@style/Widget.FinderPet.TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/name_pet"
-                            android:inputType="textCapWords"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
+                            android:layout_weight="0.7"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="4dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAddLostName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/name_pet"
+                                android:inputType="textCapWords"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/colorAccent" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputAddLostChip"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxStrokeWidth="2dp"
+                            app:boxStrokeColor="@color/primary_text"
+                            android:textColorHint="@color/colorLetterHint"
+                            app:hintTextColor="@color/colorPrimarySoft"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp">
+                            <AutoCompleteTextView
+                                android:id="@+id/fieldAddLostChip"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/microchip"
+                                android:inputType="none"
+                                tools:ignore="Deprecated,LabelFor"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/primary_text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputAddLostEmail"
@@ -292,5 +324,6 @@
         </LinearLayout>
 
     </ScrollView>
+
 
 </FrameLayout>

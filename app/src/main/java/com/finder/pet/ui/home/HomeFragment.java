@@ -74,8 +74,6 @@ public class HomeFragment extends Fragment{
         adContainerView.addView(adView);
         loadBanner();
 
-
-
         // This callback will only be called when MyFragment is at least Started.
         //Con este método manejamos el evento de boton atras solamente en este fragment
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {

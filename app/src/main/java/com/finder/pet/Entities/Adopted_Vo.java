@@ -7,6 +7,8 @@ public class Adopted_Vo implements Serializable {
     /**
      * Attributes
      */
+    private String keyPost; // Key post in firebase
+    private String idUser; // id firebase current user
     private String date; //Fecha de registro de la mascota
     private String name; //Nombre de la mascota para adoptar
     private String email; //Correo de quién perdió la mascota
@@ -30,10 +32,11 @@ public class Adopted_Vo implements Serializable {
     public Adopted_Vo() {
     }
 
-    public Adopted_Vo(String date, String name, String email, String type, String age, String breed,
+    public Adopted_Vo(String idUser, String date, String name, String email, String type, String age, String breed,
                       String sterilized, String vaccines, String observations, String phone,
                       String image1, String image2, String image3, String location,
                       double latitude, double longitude) {
+        this.idUser = idUser;
         this.date = date;
         this.name = name;
         this.email = email;
@@ -52,6 +55,19 @@ public class Adopted_Vo implements Serializable {
         this.longitude = longitude;
     }
 
+    //Getters and Setters
+    public String getKeyPost() {
+        return keyPost;
+    }
+    public void setKeyPost(String keyPost) {
+        this.keyPost = keyPost;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
     public String getName() {
         return name;
     }

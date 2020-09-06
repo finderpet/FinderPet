@@ -7,8 +7,11 @@ public class Lost_Vo implements Serializable {
     /**
      * Attributes
      */
+    private String keyPost; // Key post in firebase
+    private String idUser; // id firebase current user
     private String date; //Fecha en que se hizo el post
     private String name; //Nombre de la mascota perdida
+    private String microchip; //Nombre de la mascota perdida
     private String email; //Correo de quién perdió la mascota
     private String type; //Tipo de mascota perdida
     private String observations; //Descrición de la mascota
@@ -26,10 +29,32 @@ public class Lost_Vo implements Serializable {
     public Lost_Vo() {
     }
 
-    public Lost_Vo(String date, String name, String email, String type, String observations, String phone, String image1,
+    public Lost_Vo(String keyPost, String idUser, String date, String name, String microchip, String email, String type, String observations, String phone, String image1,
                    String image2, String image3, String location, double latitude, double longitude) {
+        this.keyPost = keyPost;
+        this.idUser = idUser;
         this.date = date;
         this.name = name;
+        this.microchip = microchip;
+        this.email = email;
+        this.type = type;
+        this.observations = observations;
+        this.phone = phone;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.image3 = image3;
+        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Lost_Vo(String idUser, String date, String name, String microchip, String email, String type, String observations, String phone, String image1,
+                   String image2, String image3, String location, double latitude, double longitude) {
+
+        this.idUser = idUser;
+        this.date = date;
+        this.name = name;
+        this.microchip = microchip;
         this.email = email;
         this.type = type;
         this.observations = observations;
@@ -44,6 +69,18 @@ public class Lost_Vo implements Serializable {
 
     //Getters and Setters
 
+    public String getKeyPost() {
+        return keyPost;
+    }
+    public void setKeyPost(String keyPost) {
+        this.keyPost = keyPost;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
     public String getDate() {
         return date;
     }
@@ -55,6 +92,12 @@ public class Lost_Vo implements Serializable {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getMicrochip() {
+        return microchip;
+    }
+    public void setMicrochip(String microchip) {
+        this.microchip = microchip;
     }
     public String getEmail() {
         return email;

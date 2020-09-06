@@ -268,6 +268,8 @@ public class FoundFragment extends Fragment{
                         }
                     }else { foundVo.setDate(getString(R.string.time_date)); }
 
+                    foundVo.setKeyPost(postSnapshot.getKey());
+                    foundVo.setIdUser(postSnapshot.child("idUser").getValue().toString());
                     foundVo.setEmail(postSnapshot.child("email").getValue().toString());
                     foundVo.setImage1(postSnapshot.child("image1").getValue().toString());
                     foundVo.setImage2(postSnapshot.child("image2").getValue().toString());
@@ -286,7 +288,7 @@ public class FoundFragment extends Fragment{
                     petLocation.setLatitude(foundVo.getLatitude());
                     petLocation.setLongitude(foundVo.getLongitude());
                     float distance = myLocation.distanceTo(petLocation)/1000;
-                    Log.e("Distancia", String.valueOf(distance));
+                    //Log.e("Distance", String.valueOf(distance));
 
                     if (distance<= PreferencesApp.search_radius){
                         //We are filling the list of found

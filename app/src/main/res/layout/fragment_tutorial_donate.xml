@@ -4,45 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A034D6"
     android:orientation="vertical"
     tools:context=".Fragments.tutorialDonateFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:textColor="@color/colorWhite"
-            android:text="@string/donations" />
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="16sp"
-            android:layout_gravity="center"
-            android:src="@drawable/img_donate_1"
-            android:contentDescription="@string/content_description_media" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/colorWhite"
-            android:layout_margin="16dp"
-            android:textAlignment="center"
-            android:text="@string/donate_for_help" />
-    </LinearLayout>
-
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/tuto_donate"
+        android:layout_gravity="bottom"
+        android:contentDescription="@string/content_description_media"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.TextButton"

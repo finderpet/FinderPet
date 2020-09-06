@@ -2,7 +2,10 @@ package com.finder.pet.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 public class PreferencesApp {
 
@@ -11,14 +14,14 @@ public class PreferencesApp {
     public static final String LANGUAGE = "language";
     public static final String ADVERTS = "adverts";
     public static final String ACCOUNT = "account";
-    public static final String ABOUT = "about";
+    public static final String UPDATE_APP = "update";
 
     public static final String DEFAULT_LATITUDE = "latDefault";
     public static final String DEFAULT_LONGITUDE = "lngDefault";
 
     public static String country;
     public static int search_radius;
-    public static String language;
+    public static boolean update;
     public static double latDefault, lngDefault;
 
     public static void setPreferenceLocation(SharedPreferences preferences, Context context, double lat, double lng){
@@ -44,9 +47,14 @@ public class PreferencesApp {
             msjError="LONGITUDE";
         }
 
-        country = preferences.getString(COUNTRY, "Colombia");
+//        country = preferences.getString(COUNTRY, "Colombia");
+//        language = preferences.getString(LANGUAGE, "Español");
 
-        language = preferences.getString(LANGUAGE, "Español");
+        if (preferences.getBoolean(UPDATE_APP, true)){
+            Log.e("Reference Update", "Automatic update enabled");
+        }else {
+            Log.e("Reference Update", "Automatic update disabled");
+        }
 
         // Search Radius
         String radius = preferences.getString(SEARCH_RADIUS, "50 Km");

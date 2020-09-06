@@ -132,7 +132,7 @@
         android:label="@string/veterinary_services"
         tools:layout="@layout/fragment_list_services" />
     <fragment
-        android:id="@+id/infoPolicyTerms"
+        android:id="@+id/informationShowFragment"
         android:name="com.finder.pet.Fragments.informationShowFragment"
         android:label="@string/label_data_policy"
         tools:layout="@layout/fragment_information_show" />
@@ -169,6 +169,9 @@
         <action
             android:id="@+id/action_detailFoundFragment_to_pagerPhotoFragment"
             app:destination="@id/pagerPhotoFragment" />
+        <action
+            android:id="@+id/action_detailFoundFragment_to_foundFragment"
+            app:destination="@id/foundFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailLostFragment"
@@ -178,6 +181,9 @@
         <action
             android:id="@+id/action_detailLostFragment_to_pagerPhotoFragment"
             app:destination="@id/pagerPhotoFragment" />
+        <action
+            android:id="@+id/action_detailLostFragment_to_lostFragment"
+            app:destination="@id/lostFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailAdoptedFragment"
@@ -187,6 +193,9 @@
         <action
             android:id="@+id/action_detailAdoptedFragment_to_pagerPhotoFragment"
             app:destination="@id/pagerPhotoFragment" />
+        <action
+            android:id="@+id/action_detailAdoptedFragment_to_adoptedFragment"
+            app:destination="@id/adoptedFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_info"
@@ -195,7 +204,10 @@
         tools:layout="@layout/fragment_information" >
         <action
             android:id="@+id/action_nav_info_to_dataPolicyFragment"
-            app:destination="@id/infoPolicyTerms" />
+            app:destination="@id/informationShowFragment" />
+        <action
+            android:id="@+id/action_nav_info_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_help"
@@ -229,6 +241,11 @@
         android:name="com.finder.pet.Fragments.pruebasFragment"
         android:label="fragment_pruebas"
         tools:layout="@layout/fragment_pruebas" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.finder.pet.aboutAppFragment"
+        android:label="@string/about_app"
+        tools:layout="@layout/fragment_about_app" />
 
 
 </navigation>

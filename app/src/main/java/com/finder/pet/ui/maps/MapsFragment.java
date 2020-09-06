@@ -270,7 +270,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         if(requestCode== REQUEST_PERMISSIONS_LOCATION){
             if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
                     && grantResults[1]==PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(getContext(), R.string.get_current_location_automatically,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), R.string.get_current_location_automatically,Toast.LENGTH_SHORT).show();
                 getCurrentLocation();
             }else{
                 //Toast.makeText(getContext(), "Permission was not granted",Toast.LENGTH_SHORT).show();
@@ -474,9 +474,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 //        lng = PreferencesApp.lngDefault;
         lat = latDefault;
         lng = lngDefault;
-        final LatLng medellin = new LatLng(lat, lng);
+        final LatLng userLocation = new LatLng(lat, lng);
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(medellin, 12));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 12));
         //map.setMapType(GoogleMap.MAP_TYPE_HYBRID);// Tipo de mapa
 
 

@@ -85,7 +85,7 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
 
     public class LostViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtName,  txtLocation, txtTimePost, txtPhone;
+        TextView txtName, txtLocation, txtTimePost, txtPhone;
         ImageView mPhoto, markType;
 
         public LostViewHolder(View itemView) {

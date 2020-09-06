@@ -4,13 +4,6 @@
 
     <PreferenceCategory android:title="@string/pref_location">
         <ListPreference
-            android:key="country"
-            android:title="@string/country"
-            android:summary="@string/choose_country"
-            android:entries="@array/country"
-            android:entryValues="@array/country"
-            android:icon="@drawable/ic_outline_location_32" />
-        <ListPreference
             android:key="search_radius"
             android:title="@string/search_radius"
             android:summary="@string/choose_search_radius"
@@ -19,23 +12,6 @@
             android:icon="@drawable/ic_search_radius_32"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_language">
-        <ListPreference
-            android:key="language"
-            android:title="@string/application_language"
-            android:summary="@string/choose_language"
-            android:entries="@array/language"
-            android:entryValues="@array/language"
-            android:icon="@drawable/ic_language_32"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/pref_ads">
-        <SwitchPreferenceCompat
-            android:key="adverts"
-            android:title="@string/configure_ads"
-            android:summary="@string/activate_ads_main"
-            android:icon="@drawable/ic_outline_event_32"/>
-    </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/pref_notifications">
         <SwitchPreferenceCompat
@@ -45,7 +21,6 @@
             android:icon="@drawable/ic_outline_notifications_active_32"/>
 
     </PreferenceCategory>
-
 
     <PreferenceCategory android:title="@string/pref_account">
         <Preference
@@ -58,6 +33,7 @@
     <PreferenceCategory android:title="@string/pref_updates">
         <SwitchPreferenceCompat
             android:key="update"
+            android:defaultValue="true"
             android:title="@string/update_app"
             android:summary="@string/automatically_update_wifi"
             android:icon="@drawable/ic_update_32"/>

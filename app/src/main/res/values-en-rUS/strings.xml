@@ -309,4 +309,11 @@
     <string name="phone_profile">Phone</string>
     <string name="write_your_phone">Write your phone</string>
     <string name="update_photo_profile">Updating profile picture</string>
+    <string name="you_must_login_again">You must log in again to continue</string>
+    <string name="delete_post_title">Do you want to delete your post completely?</string>
+    <string name="delete_post_msg">You will not be able to recover the information after deleting it</string>
+    <string name="post_was_successfully_removed">Post was successfully removed</string>
+    <string name="post_was_not_successfully_removed">Post was not removed successfully</string>
+    <string name="about_app_msg">Finderpet is a tool that seeks to solve the great problem that occurs in the world with the loss of pets. It also offers a solution for those individuals or foundations looking for a new home for unprotected pets.</string>
+    <string name="copyright_msg">" Copyright © 2020 Machine Code. All rights reserved"</string>
 </resources>

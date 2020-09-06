@@ -35,7 +35,7 @@ public class ContainerTutorialActivity extends AppCompatActivity {
      * @param pos Position indicator
      */
     private void addDotsIndicator(int pos) {
-        dotsSlide = new TextView[7];
+        dotsSlide = new TextView[6];
         linearDots.removeAllViews();
 
         for (int i=0;i<dotsSlide.length;i++){
@@ -47,7 +47,7 @@ public class ContainerTutorialActivity extends AppCompatActivity {
         }
 
         if (dotsSlide.length>0){
-            dotsSlide[pos].setTextColor(getResources().getColor(R.color.colorWhite));
+            dotsSlide[pos].setTextColor(getResources().getColor(R.color.colorPrimary));
         }
     }
 

@@ -1,17 +1,22 @@
 package com.finder.pet.Fragments;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.finder.pet.Entities.Found_Vo;
@@ -23,6 +28,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -48,9 +61,13 @@ public class detailFoundFragment extends Fragment implements OnMapReadyCallback 
 
     private TextView txtDate, txtType, txtEmail, txtLocation, txtPhone, txtObservations;
     private ImageView imgPet1, imgPet2, imgPet3;
+    private FloatingActionButton btnDeletePost;
     private String imgUrl_1, imgUrl_2, imgUrl_3;
     private double lat, lng;
-    private String namePet;
+    private String namePet, keyPost;
+
+    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference databaseRef;
 
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
@@ -105,6 +122,18 @@ public class detailFoundFragment extends Fragment implements OnMapReadyCallback 
         Found_Vo found_vo;
         if (objectFound != null){
             found_vo = (Found_Vo) objectFound.getSerializable("objeto");
+
+            // Validated user to enable delete button
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null){
+                String idUser = user.getUid();
+                if (idUser.equals(found_vo.getIdUser())){
+                    Log.i("Id current user", idUser);
+                    btnDeletePost.setVisibility(View.VISIBLE);
+                }
+            }
+
+            keyPost = found_vo.getKeyPost();
 
             //Fill the detail fields with the information of the object brought from the list of pets
             txtDate.setText(found_vo.getDate());
@@ -169,6 +198,12 @@ public class detailFoundFragment extends Fragment implements OnMapReadyCallback 
                 findNavController(view).navigate(R.id.action_detailFoundFragment_to_pagerPhotoFragment, bundle);
             }
         });
+        btnDeletePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogDeletePost().show();
+            }
+        });
 
     }
 
@@ -177,6 +212,7 @@ public class detailFoundFragment extends Fragment implements OnMapReadyCallback 
      * @param view View fragment
      */
     private void setupViews(View view) {
+        btnDeletePost = view.findViewById(R.id.fabDeletePostFound);
         txtDate= view.findViewById(R.id.detailFoundDate);
         txtType = view.findViewById(R.id.detailFoundTypePet);
         txtLocation = view.findViewById(R.id.detailFoundLocation);
@@ -190,6 +226,55 @@ public class detailFoundFragment extends Fragment implements OnMapReadyCallback 
         // Associate the fragment that will contain the map in the detail
         mapFragment = (SupportMapFragment)getChildFragmentManager()
                 .findFragmentById(R.id.mapView);
+    }
+
+    /**
+     * Method to display delete post dialog
+     */
+    private AlertDialog dialogDeletePost() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle(R.string.delete_post_title)
+                .setMessage(R.string.delete_post_msg)
+                .setPositiveButton(Html.fromHtml(getString(R.string.btn_delete)), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deletePost();
+                        findNavController(getView()).navigate(R.id.action_detailFoundFragment_to_foundFragment);
+                        //dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        return builder.create();
+    }
+
+    /**
+     * Method to delete a post
+     */
+    private void deletePost(){
+        databaseRef = ref.child("pet_found/");
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(keyPost).exists()){
+                    // Get firebase user phone
+                    databaseRef = ref.child("pet_found/"+keyPost);
+                    databaseRef.removeValue();
+                    Toast.makeText(getContext(),R.string.post_was_successfully_removed,Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getContext(),R.string.post_was_not_successfully_removed,Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), R.string.could_not_get_information, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Create map

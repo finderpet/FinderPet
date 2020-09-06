@@ -133,52 +133,52 @@
         </string>
 
     <string name="terms_of_use" translatable="false">
-        &lt;h4 align="left">1.- Quienes somos&lt;/h4>
-       La presente página web (“www.finderpet.com”), tiene dirección URL y es operada por la
-       sociedad (“Finderpet”), identificados el Sitio Web y la Sociedad con los datos que puedes encontrar en el &lt;a
+       &lt;h4 align="left">1.- Quienes somos&lt;/h4>
+       La presente aplicación, es operada por la
+       sociedad (“Finderpet”), identificados en su respectiva tienda de aplicaciones y la Sociedad con los datos que puedes encontrar en el &lt;a
         href="#">Aviso Legal.&lt;/a>
        &lt;h4 align="left">2.- Qué regulan las Condiciones.&lt;/h4>
 
        Las presentes condiciones de uso (“Condiciones”) regulan el acceso y utilización de los servicios de
-       la sociedad de la información que ponemos a vuestra disposición como usuarios (“Usuario/s”) de la red
-       Internet a través del Sitio Web (en cualquiera de sus modalidades, aplicaciones, etc. y para cualquier tipo
-       de dispositivos -fijos o móviles- a través de los cuales se acceda al Sitio Webs), así como, en general, la
-       relación entre vosotros Usuarios y el Sitio Web, a salvo de otras comunicaciones, condiciones e
-       instrucciones particulares o específicas, que en cada caso se pongan en vuestro conocimiento.
-       Vuestro acceso o mera utilización del Sitio Web implica la adhesión como Usuarios a las Condiciones
-       publicadas en cada momento en el Sitio Web y que estarán disponibles para los Usuarios. En consecuencia,
+       la sociedad de la información que ponemos a su disposición como usuarios (“Usuario/s”) de la red
+       Internet a través de la aplicación (en cualquiera de sus modalidades, aplicaciones, etc. y para cualquier tipo
+       de dispositivos -fijos o móviles- a través de los cuales se acceda a la aplicación), así como, en general, la
+       relación entre vosotros Usuarios y la aplicación, a salvo de otras comunicaciones, condiciones e
+       instrucciones particulares o específicas, que en cada caso se pongan en su conocimiento.
+       El acceso o mera utilización de la aplicación implica la adhesión como Usuarios a las Condiciones
+       publicadas en cada momento en la aplicación y que estarán disponibles para los Usuarios. En consecuencia,
        debes leer atentamente estas Condiciones. En cualquier momento, podrás guardar o imprimir las Condiciones y
        aconsejamos que lo hagas.
 
-       &lt;h4 align="left">3.- Información previa para el acceso a los servicios del Sitio Web.&lt;/h4>
-       Antes de usar los servicios del Sitio Web o de registraros, los Usuarios asumen expresamente que
-       son personas capaces de discernir, que han entrado al Sitio Web por voluntad propia y que no han sido
+       &lt;h4 align="left">3.- Información previa para el acceso a los servicios de la aplicación.&lt;/h4>
+       Antes de usar los servicios de la aplicación o de registraros, los Usuarios asumen expresamente que
+       son personas capaces de discernir, que han entrado a la aplicación por voluntad propia y que no han sido
        coaccionados para ello, y que la selección de los servicios que lleven a cabo lo hacen por su sola y única
        cuenta y riesgo, aceptando expresamente estas Condiciones, Política de Privacidad y Política de Cookies, así
        como aquellos otros avisos e instrucciones, comunicaciones, o condiciones particulares, que en cada caso se
        ponga en vuestro conocimiento.
-       En relación con las condiciones particulares que regulen otros servicios del Sitio Web, estas Condiciones
+       En relación con las condiciones particulares que regulen otros servicios de la aplicación, estas Condiciones
        completan lo previsto en esas condiciones particulares en la medida que no se opongan a las mismas.
        Debes saber que las comunicaciones a través de redes abiertas están expuestas a amenazas que hacen que no
        sean seguras. La Sociedad adopta todas las medidas de seguridad adecuadas para un correcto funcionamiento
-       del Sitio Web. No obstante, el Usuario debe adoptar todas las medidas técnicas que le correspondan para
+       de la aploicación. No obstante, el Usuario debe adoptar todas las medidas técnicas que le correspondan para
        controlar razonablemente estas amenazas (tener sistemas actualizados de detección de software malicioso,
        tales como virus, troyanos, etc., tener actualizados los parches de seguridad de los correspondientes
-       navegadores). Como Usuario eres el único y exclusivo responsable del uso por tu parte del Sitio Web y de los
+       navegadores). Como Usuario eres el único y exclusivo responsable del uso por tu parte de la aplicación y de los
        servicios y, consciente de ello, aceptas voluntariamente tal responsabilidad.
 
        &lt;h5 align="left">En relación con los menores.&lt;/h5>
-       En relación con la navegación en el Sitio Web por menores, a salvo de lo indicado en los
+       En relación con la navegación en la aplicación por menores, a salvo de lo indicado en los
        párrafos anteriores, los Usuarios quedan advertidos que la Sociedad no puede controlar, aparte de otras
-       circunstancias, que menores de edad hagan uso del Sitio Web y de sus servicios. Por ello, además de no
-       admitir el Sitio Web, la Sociedad ni su Grupo empresarial responsabilidad alguna al respecto, se comunica
+       circunstancias, que menores de edad hagan uso de la aplicación y de sus servicios. Por ello, además de no
+       admitir la aplicación, la Sociedad ni su Grupo empresarial responsabilidad alguna al respecto, se comunica
        que serán los padres y tutores los únicos responsables de controlar y asistir a los menores en la navegación
-       por este Sitio Web y habilitar cualesquiera otros mecanismos necesarios que, en su caso, impidan el acceso
-       por parte de los menores al Sitio Web y/o sus servicios, no admitiendo la Sociedad ninguna reclamación al
+       por esta aplicación y habilitar cualesquiera otros mecanismos necesarios que, en su caso, impidan el acceso
+       por parte de los menores a la aplicación y/o sus servicios, no admitiendo la Sociedad ninguna reclamación al
        respecto.
 
        &lt;h5 align="left">Claves de acceso o similares.&lt;/h5>
-       En caso de que algún servicio del Sitio Web incluya claves de acceso o nombres de usuario, elegirás e
+       En caso de que algún servicio de la aplicación incluya claves de acceso o nombres de usuario, elegirás e
        indicarás tus propias claves de acceso (nombre de usuario, contraseña, password, o similar), sin perjuicio
        de otros datos que se puedan solicitar en el correspondiente formulario, y no pudiendo elegir para ello
        palabras, expresiones o conjuntos gráfico-denominativos malsonantes, injuriosos, coincidentes con marcas,
@@ -200,53 +200,50 @@
        los usuarios - password - o bien del nombre de usuario son de tu única y exclusiva responsabilidad.
 
        &lt;h4 align="left">4.- Características generales de los servicios.&lt;/h4>
-       Los servicios a los que puedes acceder en el Sitio Web son, por regla general, gratuitos sin que
+       Los servicios a los que puedes acceder en la aplicación son, por regla general, gratuitos sin que
        los Usuarios tengan que realizar contraprestación alguna para poder disfrutar de ellos, salvo en lo relativo
        al coste de conexión a través de la red de telecomunicaciones suministrada por el proveedor de acceso que
-       hubieras contratado. No obstante lo anterior el acceso a determinados contenidos del Sitio Web puede ser no
+       hubieras contratado. No obstante lo anterior el acceso a determinados contenidos de la aplicación puede ser no
        gratuitos en función entre otros factores de volumen de accesos por el Usuario o por el tipo de contenidos,
        de lo que, en todo caso, se informará y, en su caso, se exigirá una suscripción o registro.
 
        &lt;h5 align="left">Contenidos o servicios ofrecidos por terceros.&lt;/h5>
-       Podrás acceder a través del Sitio Web a otros servicios de la propia Sociedad o a servicios
+       Podrás acceder a través de la aplicación a otros servicios de la propia Sociedad o a servicios
        ofrecidos por colaboradores, los cuales dispondrán de sus propias condiciones generales de uso o de
        contratación, en los cuales se especificará el carácter gratuito u oneroso de los mismos, y sin
        responsabilidad de la Sociedad al respecto.
        &lt;br>&lt;/br>
        En todo caso, de conformidad con lo previsto en el artículo 17 de la Ley 34/2002, de 11 de julio, de
        servicios de la sociedad de la información y de comercio electrónico (“LSSI”), y salvo que la Sociedad tenga
-       conocimiento efectivo de que la actividad o información contenida en el Sitio Web o en la web a la que se
+       conocimiento efectivo de que la actividad o información contenida en la aplicación o en la aplicación a la que se
        remite es ilícita o lesiona bienes o derechos de un tercero susceptibles de protección, la Sociedad no
-       responderá de la información ofrecida en o desde el Sitio Web, por terceros o los Usuarios.
+       responderá de la información ofrecida en o desde la aplicación, por terceros o los Usuarios.
 
-       &lt;h4 align="left">5.- Cómo debe usarse el Sitio Web.&lt;/h4>
-       Los Usuarios se comprometen a utilizar los servicios, canales y todos los contenidos del Sitio
-       Web de conformidad con lo previsto en estas Condiciones, la ley, la moral, las buenas costumbres
+       &lt;h4 align="left">5.- Cómo debe usarse la aplicación.&lt;/h4>
+       Los Usuarios se comprometen a utilizar los servicios, canales y todos los contenidos de la aplicación de conformidad con lo previsto en estas Condiciones, la ley, la moral, las buenas costumbres
        generalmente aceptadas y el orden público.
        &lt;br>&lt;/br>
-       Asimismo se obliga a no utilizar el Sitio Web con fines o efectos fraudulentos, ilícitos, contrarios a lo
+       Asimismo se obliga a no utilizar la aplicación con fines o efectos fraudulentos, ilícitos, contrarios a lo
        establecido en estas Condiciones, lesivos de los derechos e intereses de la Sociedad o de terceros, o que de
-       cualquier forma puedan dañar, inutilizar, sobrecargar o deteriorar los servicios y canales del Sitio Web y
+       cualquier forma puedan dañar, inutilizar, sobrecargar o deteriorar los servicios y canales de la aplicación y
        sus contenidos o impedir la normal utilización, funcionamiento o disfrute de los mismos por los Usuarios, ni
-       a modificar ni alterar en modo alguno tanto el contenido como demás elementos del Sitio Web . En este
+       a modificar ni alterar en modo alguno tanto el contenido como demás elementos de la aplicación . En este
        sentido, se compromete a no realizar cualquiera de las siguientes actividades:
 
        &lt;ol type="I">
            &lt;li>Remitir publicidad de cualquier clase y comunicaciones con fines de venta u otras de naturaleza
-               comercial al Sitio Web, o a una pluralidad de personas usuarias del Sitio Web sin que medie su previa
+               comercial en la aplicación, o a una pluralidad de personas usuarias de la aplicación sin que medie su previa
                solicitud o consentimiento.&lt;/li>
            &lt;li>Remitir cualesquiera otros mensajes no solicitados, ni consentidos previamente a una pluralidad de
-               personas usuarias del Sitio Web.&lt;/li>
-           &lt;li>Enviar cadenas de mensajes electrónicos no solicitados, ni previamente consentidos a usuarios del Sitio
-               Web.&lt;/li>
-           &lt;li>Utilizar listas de distribución a las que pueda accederse a través del Sitio Web o de sus servicios y
+               personas usuarias de la aplicación.&lt;/li>
+           &lt;li>Enviar cadenas de mensajes electrónicos no solicitados, ni previamente consentidos a usuarios de la aplicación.&lt;/li>
+           &lt;li>Utilizar listas de distribución a las que pueda accederse a través de la aplicación o de sus servicios y
                canales para la realización de las actividades señaladas en los apartados III) a III) anteriores.&lt;/li>
            &lt;li>Poner a disposición de terceros, con cualquier finalidad, datos captados a partir de listas de
                distribución.&lt;/li>
-           &lt;li>Obtener, e incluso intentar obtener, informaciones y cualquier clase de material accesible a través del
-               Sitio Web o de sus servicios o canales empleando para ello procedimientos distintos de los puestos a su
+           &lt;li>Obtener, e incluso intentar obtener, informaciones y cualquier clase de material accesible a través de la aplicación o de sus servicios o canales empleando para ello procedimientos distintos de los puestos a su
                disposición.&lt;/li>
-           &lt;li>Hacer un uso no correcto de los contenidos del Sitio Web utilizándolos con fines distintos a los
+           &lt;li>Hacer un uso no correcto de los contenidos de la aplicación utilizándolos con fines distintos a los
                previstos, reproduciéndolos, modificándolos o transformándolos.&lt;/li>
            &lt;li>Almacenar, publicar y/o transmitir datos, textos, imágenes, archivos, links, software u otros contenidos
                objetables según las disposiciones legales aplicables o según la estimación de la Sociedad, por ser
@@ -260,38 +257,36 @@
        &lt;/ol>
 
 
-       Adicionalmente, informamos de que el Sitio Web se financia principalmente con ingresos derivados
+       Adicionalmente, informamos de que la aplicación se financia principalmente con ingresos derivados
        de la inclusión de mensajes y reclamos publicitarios a través de los cuales anunciantes publicitan productos
-       y servicios en el Sitio Web. Al acceder como Usuario al Sitio Web, aceptas recibir la información de estos
-       mensajes publicitarios. Por este motivo no se permite, lo cual es condición necesaria para el uso del Sitio
-       Web, la instalación o uso de cualquier tipo de tecnología susceptible de producir cualquier tipo de
-       alteración que impida acceder a y/o recibir en su integridad los contenidos del Sitio Web (ya sean
+       y servicios en la aplicación. Al acceder como Usuario a la aplicación, aceptas recibir la información de estos
+       mensajes publicitarios. Por este motivo no se permite, lo cual es condición necesaria para el uso de la aplicación, la instalación o uso de cualquier tipo de tecnología susceptible de producir cualquier tipo de
+       alteración que impida acceder a y/o recibir en su integridad los contenidos de la aplicación (ya sean
        informativos, publicitarios o de cualquier otro tipo). La Sociedad se reserva la facultad de limitar,
-       suspender o impedir el acceso al Sitio Web a aquellos Usuarios que no respeten lo anterior, adoptando la
+       suspender o impedir el acceso a la aplicación a aquellos Usuarios que no respeten lo anterior, adoptando la
        Sociedad cualquier medida técnica que sea necesaria con ese fin.
        &lt;br>&lt;/br>
        Se informa a los Usuarios de que en el caso de incumplir lo establecido en estas Condiciones, en la &lt;a
         href="#">Política de Privacidad&lt;/a> y &lt;a href="#">Política de Cookies&lt;/a> o en cualesquiera otros
-       términos o condiciones particulares recogidos en el Sitio Web, la Sociedad se reserva el derecho a limitar,
-       suspender o terminar su acceso al Sitio Web, adoptando cualquier medida técnica que sea necesaria con ese
+       términos o condiciones particulares recogidos en la aplicación, la Sociedad se reserva el derecho a limitar,
+       suspender o terminar su acceso a la aplicación, adoptando cualquier medida técnica que sea necesaria con ese
        fin.
        &lt;br>&lt;/br>
        Finalmente, ponemos en conocimiento de los Usuarios que la Sociedad se reserva la facultad de decidir, en
-       todo momento, sobre la continuidad de los servicios de la sociedad de la información que presta a través del
-       Sitio Web.
+       todo momento, sobre la continuidad de los servicios de la sociedad de la información que presta a través de la aplicación.
         &lt;br>&lt;/br>
 
-       &lt;h4 align="left">6.- Formas de participación en el Sitio Web.&lt;/h4>
-       Los Usuarios pueden participar en el Sitio Web en las áreas que se habiliten con tal finalidad
+       &lt;h4 align="left">6.- Formas de participación en la aplicación.&lt;/h4>
+       Los Usuarios pueden participar en la aplicación en las áreas que se habiliten con tal finalidad
        (a título enunciativo envíos, blogs, foros, chats, comentarios, comparticiones, etc.). La Sociedad se limita
        a habilitar los espacios para esta participación, pero no participará en modo alguno en los mismos, siendo
        el resultado meras aportaciones u opiniones realizadas por los Usuarios bajo vuestra propia responsabilidad.
        La difusión de estas aportaciones de los Usuarios en modo alguno significa que las Sociedad se identifique o
        comparta las ideas, opiniones o manifestaciones expresadas por los Usuarios. Los Usuarios están abligados al
-       uso de dichas áreas en los términos indicados en la sección 5 anterior “Como debe usarse el Sitio Web”. Con
+       uso de dichas áreas en los términos indicados en la sección 5 anterior “Como debe usarse la aplicación”. Con
        el mero envío de los comentarios o con vuestra participación en estas áreas, autorizas irrevocable, gratuita
        e ilimitadamente a la Sociedad y a su grupo empresarial a publicar los comentarios más destacados en sus
-       ediciones impresas (ya sean on line, off line o por cualquier otro medio) o en los sitios webs de las
+       ediciones impresas (ya sean on line, off line o por cualquier otro medio) o en las aplicaciones de las
        mismas.
        &lt;br>&lt;/br>
        Sin que se pueda deducir que cualquier moderación o revisión que se lleve a cabo resulte ser una revisión
@@ -300,7 +295,7 @@
        &lt;br>&lt;/br>
        Los Usuarios que envíen imágenes, fotos, comentarios, etc. garantizan ser el titular, y disponer de las
        autorizaciones necesarias (en especial en caso de incluir datos o imágenes de terceros y en particular si
-       son menores de edad) para que la Sociedad pueda proceder en el Sitio Web, gratuitamente y sin cargo asociado
+       son menores de edad) para que la Sociedad pueda proceder en la aplicación, gratuitamente y sin cargo asociado
        ninguno, a su reproducción, distribución, puesta a disposición y comunicación pública. Los Usuarios,
        garantizando la tenencia de derechos, asumen el uso gratuito y sin limitación por la Sociedad y su grupo.
        &lt;br>&lt;/br>
@@ -308,7 +303,7 @@
        terceros, la existencia de prácticas ilícitas o similares, la Sociedad podrá proceder a la eliminación de
        los contenidos infractores o cualquier otra medida que considere necesaria para evitar la continuidad en la
        situación detectada. Idéntica medida podrá ser aplicable en caso de que se detecte una utilización que, por
-       sus características tales como tamaño, formato, etc., dificulten el funcionamiento del Sitio Web, contenidos
+       sus características tales como tamaño, formato, etc., dificulten el funcionamiento de la aplicación, contenidos
        o enlaces propagandísticos, spam y comentarios repetidos, así como los que no tengan sentido o estén fuera
        del tema de la noticia. Sin perjuicio de lo anterior, los Usuarios asumen que la Sociedad podrá poner en
        conocimiento de las autoridades administrativas o judiciales aquellos hechos que pudieran ser constitutivos
@@ -325,80 +320,76 @@
 
 
        &lt;h4 align="left">7.- Propiedad Intelectual e Industrial.&lt;/h4>
-       Los derechos de propiedad intelectual del Sitio Web, su código fuente, diseño, estructuras de
+       Los derechos de propiedad intelectual de la aplicación, su código fuente, diseño, estructuras de
        navegación y los distintos elementos en ella contenidos son titularidad de la Sociedad, a quien corresponde
        el ejercicio exclusivo de los derechos de explotación de los mismos en cualquier forma y en especial, los
        derechos de reproducción, distribución, comunicación pública y transformación, de acuerdo con la legislación
-       española y de la unión europea aplicable. Así mismo, ell Sitio Web es fruto de la información de cualquier
+       española y de la unión europea aplicable. Así mismo, la aplicación es fruto de la información de cualquier
        tipo relacionada con las actividades de la Sociedad (información creada por la Sociedad o creada por
        terceros), que habilita a un uso personal y no comercial de la propia información por parte de los Usuarios.
        &lt;br>&lt;/br>
        TODOS LOS DERECHOS RESERVADOS en relación con los contenidos de la Sociedad, del Medio y, en su caso, de
        otras empresas del grupo de la empresa del cual forma parte la Sociedad o de terceros. Queda prohibida la
        reproducción total o parcial, distribución, puesta a disposición, comunicación pública y utilización, total
-       o parcial, de los contenidos de esta web, en cualquier forma o modalidad, sin previa, expresa y escrita
+       o parcial, de los contenidos de esta aplicación, en cualquier forma o modalidad, sin previa, expresa y escrita
        autorización, incluyendo, en particular, su mera reproducción y/o puesta a disposición como resúmenes,
        reseñas o revistas de prensa con fines comerciales o directa o indirectamente lucrativos, a la que se
-       manifiesta oposición expresa. Así mismo, también queda prohibida la presentación de páginas del Sitio Web y
-       la inserción de imágenes difundidas en el Sitio Web en páginas no pertenecientes a la Sociedad (sea cual sea
+       manifiesta oposición expresa. Así mismo, también queda prohibida la presentación de las secciones de la aplicación y
+       la inserción de imágenes difundidas en la aplicación en páginas no pertenecientes a la Sociedad (sea cual sea
        la técnica que se use para ello). La utilización no autorizada de estos contenidos dará lugar a las
        responsabilidades legalmente establecidas. La Sociedad, de conformidad con lo establecido en la LSSI, no
-       responderá de las infracciones realizadas por el Usuario del Sitio Web que afecten a terceros, salvo que la
+       responderá de las infracciones realizadas por el Usuario de la aplicación que afecten a terceros, salvo que la
        misma tenga un “conocimiento efectivo” de dicha infracción. La Sociedad informa a los Usuarios de que, salvo
        autorización previa, expresa y por escrito, no concede licencia o autorización expresa o implícita alguna
        sobre los derechos de propiedad intelectual y/o industrial o sobre cualquier otro derecho o propiedad
-       relacionada, directa o indirectamente, con los contenidos incluidos en el Sitio Web, quedando prohibida
-       cualquier alteración o modificación de los contenidos y de cualquier otro elemento del Sitio Web.
+       relacionada, directa o indirectamente, con los contenidos incluidos en la aplicación, quedando prohibida
+       cualquier alteración o modificación de los contenidos y de cualquier otro elemento de la aplicación.
        &lt;br>&lt;/br>
-       En caso de que los Usuarios subáis contenidos al Sitio Web, la Sociedad os informa que seguiréis manteniendo
-       la titularidad de los derechos sobre vuestro contenido, si bien al subir, cargar o publicar contenido en el
-       Sitio Web (el “Contenido”) aceptáis otorgar a favor de la Sociedad, una licencia para todo el mundo, no
+       En caso de que los Usuarios suban contenidos a la aplicación, la Sociedad os informa que seguiréis manteniendo
+       la titularidad de los derechos sobre vuestro contenido, si bien al subir, cargar o publicar contenido en la aplicación (el “Contenido”) aceptáis otorgar a favor de la Sociedad, una licencia para todo el mundo, no
        exclusiva y transferible (con facultad de sublicenciar a terceros), por la duración máxima de los derechos
        de conformidad con la legislación aplicable, para utilizar, reproducir, distribuir, comunicar públicamente
        (incluida la puesta a disposición del público), realizar obras derivadas, transformar, mostrar y ejecutar
-       ese Contenido en relación con la prestación de los servicios del Sitio Web y con el funcionamiento del Sitio
-       Web y de la actividad de la Sociedad, incluyendo sin limitación alguna, a efectos de promoción y
-       redistribución de la totalidad o de una parte del Sitio Web (y de sus obras derivadas) en cualquier formato
+       ese Contenido en relación con la prestación de los servicios de la aplicación y con el funcionamiento de la aplicación y de la actividad de la Sociedad, incluyendo sin limitación alguna, a efectos de promoción y
+       redistribución de la totalidad o de una parte de la aplicación (y de sus obras derivadas) en cualquier formato
        y/o modalidades de explotación y a través de cualquier canal de comunicación. La anterior licencia otorgada
        por el Usuario con respecto al contenido que suba, quedará cancelada cuando el Usuario elimine o borre sus
-       contenidos del Sitio Web.
+       contenidos de la aplicación.
        &lt;br>&lt;/br>
        Todos los nombres comerciales, marcas o signos distintivos, logotipos, símbolos, marcas mixtas, figurativas
-       o nominativas que aparecen en este Sitio Web pertenecen a la Sociedad o bien ésta ostenta las
+       o nominativas que aparecen en esta aplicación pertenecen a la Sociedad o bien ésta ostenta las
        correspondientes licencias de uso sobre los mismos.
 
 
        &lt;h4 align="left">8.- Política de enlaces.&lt;/h4>
-       &lt;h5 align="left">Enlaces a otros sitios web.&lt;/h5>
-       En el Sitio Web se podrían incluir enlaces a sitios controlados por terceros. El Usuario debe
-       recordar que al usar un enlace para acceder desde el Sitio Web a otro, dejarán de surtir efectos la Política
-       de Privacidad y la Política de Cookies del Sitio Web. La Política de Privacidad del Sitio Web no refleja las
+       &lt;h5 align="left">Enlaces a otras aplicaciones o sitios web.&lt;/h5>
+       En la aplicación se podrían incluir enlaces a sitios controlados por terceros. El Usuario debe
+       recordar que al usar un enlace para acceder desde la aplicación a otro, dejarán de surtir efectos la Política
+       de Privacidad y la Política de Cookies de la aplicación. La Política de Privacidad de la aplicación no refleja las
        prácticas en materia de privacidad de esos otros sitios de terceros. De conformidad con lo establecido en el
        artículo 17 de la LSSI, la Sociedad declina, salvo que tenga “conocimiento efectivo” de la comisión de un
        hecho ilícito o de que se lesionan bienes o derechos de un tercero susceptible de indemnización, cualquier
-       tipo de responsabilidad con respecto a la privacidad y el tratamiento de datos de otros sitios web. La
-       navegación e interacción en cualquier otro sitio web, incluidos aquellos que estén enlazados con el Sitio
-       Web, está sujeta a las normas y políticas de dicho sitio. Recomendamos al Usuario que lea las políticas de
-       tratamiento de datos y privacidad de los sitios web que visite a través del enlace existente en el Sitio Web
+       tipo de responsabilidad con respecto a la privacidad y el tratamiento de datos de otras aplicaciones. La
+       navegación e interacción en cualquier otra aplicación o sitio web, incluidos aquellos que estén enlazados con la aplicación, está sujeta a las normas y políticas de dicho sitio. Recomendamos al Usuario que lea las políticas de
+       tratamiento de datos y privacidad de los sitios web o aplicaciones que visite a través del enlace existente en el Sitio Web
        o de cualquier otro modo.
 
-       &lt;h5 align="left">Enlaces en otros sitios web con destino al Sitio Web.&lt;/h5>
-       Si cualquier tercero, entidad o sitio web deseara establecer algún tipo de enlace con destino al
-       Sitio Web deberá respetar lo siguiente:
+       &lt;h5 align="left">Enlaces en otros sitios web con destino a la aplicación.&lt;/h5>
+       Si cualquier tercero, entidad o sitio web deseara establecer algún tipo de enlace con destino a la aplicación deberá respetar lo siguiente:
 
        &lt;ol type="a">
-           &lt;li>El enlace se podrá dirigir a la página principal del Sitio Web.&lt;/li>
+           &lt;li>El enlace se podrá dirigir a la página principal de la aplicación.&lt;/li>
            &lt;li>El enlace debe ser absoluto y completo, es decir, debe llevar al Usuario, mediante un clic, a la propia
                dirección URL del Sitio Web abarcando toda la extensión de la pantalla del Sitio Web. En ningún caso,
                salvo que la Sociedad lo autorice de manera expresa y por escrito, el sitio web que realiza el enlace
-               podrá reproducir, de cualquier manera, el Sitio Web, incluirlo como parte de su web o dentro de uno de
-               sus “frames” o crear un “browser” sobre cualquiera de las páginas del Sitio Web. En la página que
+               podrá reproducir, de cualquier manera, la aplicación, incluirlo como parte de su web o dentro de uno de
+               sus “frames” o crear un “browser” sobre cualquiera de las páginas de la aplicación. En la página que
                establece el enlace no se podrá declarar que la Sociedad ha autorizado tal enlace, salvo que así lo haya
                autorizado expresamente y por escrito la Sociedad. Si la entidad que realiza el enlace desde su página
-               al Sitio Web deseara incluir en su página web la marca, denominación, nombre comercial, rótulo,
-               logotipo, slogan o cualquier otro tipo de elemento identificativo de la Sociedad y/o del Sitio Web,
+               a la aplicación deseara incluir en su página web la marca, denominación, nombre comercial, rótulo,
+               logotipo, slogan o cualquier otro tipo de elemento identificativo de la Sociedad y/o de la aplicación,
                deberá contar previamente con su autorización expresa y por escrito.&lt;/li>
-           &lt;li>Bajo ningún concepto la Sociedad autoriza el establecimiento de un enlace al Sitio Web desde aquellas
+           &lt;li>Bajo ningún concepto la Sociedad autoriza el establecimiento de un enlace a la aplicación desde aquellas
                páginas web que de forma manifiesta fomenten el odio, el desprecio o la discriminación por motivos de
                nacimiento, raza, sexo, religión, nacionalidad, opinión o cualquier otra circunstancia personal o social
                y en general, que contravengan la moral, el orden público o las normas sociales generalmente aceptadas.
@@ -406,21 +397,21 @@
        &lt;/ol>
 
        En todo caso, la Sociedad no asume ningún tipo de responsabilidad por cualquier aspecto relativo
-       a la página web que establece ese enlace con destino al Sitio Web, en concreto, a título enunciativo y no
+       a la página web que establece ese enlace con destino a la aplicación, en concreto, a título enunciativo y no
        limitativo, sobre su funcionamiento, acceso, datos, información, archivos, calidad y fiabilidad de sus
        productos y servicios, sus propios enlaces y/o en general cualquiera de sus contenidos.
 
        &lt;h4 align="left">9.- Protección de datos de carácter personal y política de cookies.&lt;/h4>
        Los aspectos relativos al tratamiento de los datos personales de los Usuarios con motivo del uso
-       del Sitio Web se regulan en los textos de &lt;a href="#">Política de Privacidad&lt;/a> adjuntos a los diversos
-       formularios de recogida de datos que puedan incluirse en el Sitio Web.
+       de la aplicación se regulan en los textos de &lt;a href="#">Política de Privacidad&lt;/a> adjuntos a los diversos
+       formularios de recogida de datos que puedan incluirse en la aplicación.
        &lt;br>&lt;/br>
-       Al igual que otros portales de Internet, el Sitio Web utiliza una tecnología denominada “cookies" para
-       recabar información sobre la forma de utilización del Sitio Web. Para información detallada sobre cómo la
+       Al igual que otras aplicaciones de Internet, la aplicación utiliza una tecnología denominada “cookies" para
+       recabar información sobre la forma de utilización de la aplicación. Para información detallada sobre cómo la
        Sociedad utiliza las cookies, consulta el texto &lt;a href="#">Política de Cookies.&lt;/a>
 
        &lt;h4 align="left">10.- Qué puedes hacer si detectas contenidos ilícitos o no adecuados.&lt;/h4>
-       Si tienes conocimiento de que cualquier clase de información o contenido del Sitio Web o
+       Si tienes conocimiento de que cualquier clase de información o contenido de la aplicación o
        facilitado a través del mismo es ilícita, lesiva de derechos de terceros, contraria a lo establecido en las
        presentes Condiciones o, de cualquier otro modo, nociva o contrarias a la moral, usos y costumbres, puedes
        ponerte en contacto con nosotros a través del contacto recogido en el &lt;a href="#">Aviso Legal&lt;/a>,
@@ -450,13 +441,12 @@
            &lt;li>La falta de disponibilidad y continuidad por el funcionamiento, utilidad y fiabilidad de los servicios y
                del Sitio Web, ni siquiera de los servicios onerosos o no gratuitos para los Usuarios, derivada de un
                acto fortuito, fuerza mayor o no resulte imputable directamente a la Sociedad.&lt;/li>
-           &lt;li>La alteración de la privacidad y seguridad en la utilización y contenidos del Sitio Web y de los
+           &lt;li>La alteración de la privacidad y seguridad en la utilización y contenidos de la aplicación y de los
                servicios por terceros ajenos a los mismos de acuerdo con el régimen legal vigente.&lt;/li>
            &lt;li>La presencia de virus o a la presencia de otros elementos falsos en los servicios ofrecidos por terceros
-               a través del Sitio Web que puedan producir alteraciones en el sistema informático, documentos
+               a través de la aplicación que puedan producir alteraciones en el sistema informático, documentos
                electrónicos o ficheros de los usuarios.&lt;/li>
-           &lt;li>La falta de veracidad, exactitud, exclusividad, actualidad de los contenidos ofrecidos a través del
-               Sitio Web, ya se trate de contenidos ofrecidos por la propia Sociedad u ofrecidos por terceros, salvo
+           &lt;li>La falta de veracidad, exactitud, exclusividad, actualidad de los contenidos ofrecidos a través de la aplicación, ya se trate de contenidos ofrecidos por la propia Sociedad u ofrecidos por terceros, salvo
                que la Sociedad tenga “conocimiento efectivo” de la comisión de un hecho ilícito o de la lesión de
                bienes o derechos de un tercero.&lt;/li>
        &lt;/ol>
@@ -468,19 +458,19 @@
            &lt;br>&lt;/br>
            La Sociedad no garantiza la total seguridad de sus sistemas y aunque tiene adoptadas medidas de seguridad
            adecuadas, no puede descartarse totalmente la existencia de vulnerabilidades por causa de fuerza mayor o un
-           hecho fortuito y, en consecuencia, debéis ser precavidos en la interactuación con el Sitio Web.
+           hecho fortuito y, en consecuencia, debéis ser precavidos en la interactuación con la aplicación.
 
 
        &lt;h4 align="left">12.- Varios.&lt;/h4>
            Las presentes Condiciones podrán sufrir cualquier cambio, que se comunicarán mediante su
-           publicación en el Sitio Web.
+           publicación en la aplicación.
 
            En caso de que la Sociedad no ejercite cualquier derecho o acción legal contemplado en las Condiciones (o
            que le corresponda en virtud de la legislación aplicable), ello no constituirá una renuncia formal a sus
            derechos.
 
            Las relaciones establecidas entre la Sociedad y los Usuarios como consecuencia de la utilización a los
-           servicios que os prestamos a través del Sitio Web, se regirán por lo dispuesto en la normativa española
+           servicios que  prestamos a través de la aplicación, se regirán por lo dispuesto en la normativa española
            vigente en relación con la legislación aplicable y la jurisdicción competente. No obstante, para los
            supuestos en los que la normativa vigente prevea que las partes pueden someterse a fuero determinado, la
            Sociedad y los Usuarios, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, se somete

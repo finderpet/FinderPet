@@ -13,10 +13,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.finder.pet.Fragments.tutorialDonateFragment;
-import com.finder.pet.Fragments.tutorialHelpFragment;
-import com.finder.pet.Fragments.tutorialMainFragment;
+import com.finder.pet.Fragments.tutorialAdsFragment;
 import com.finder.pet.Fragments.tutorialMapsFragment;
-import com.finder.pet.Fragments.tutorialNavFragment;
+import com.finder.pet.Fragments.tutorialPostFragment;
 import com.finder.pet.Fragments.tutorialSettingsFragment;
 import com.finder.pet.Fragments.tutorialWelcomeFragment;
 import com.finder.pet.R;
@@ -36,12 +35,11 @@ public class PlaceholderFragment extends Fragment {
 
         switch (index){
             case 1:fragment=new tutorialWelcomeFragment(); break;
-            case 2:fragment=new tutorialSettingsFragment(); break;
-            case 3:fragment=new tutorialMainFragment(); break;
-            case 4:fragment=new tutorialNavFragment(); break;
-            case 5:fragment=new tutorialMapsFragment(); break;
-            case 6:fragment=new tutorialHelpFragment(); break;
-            case 7:fragment=new tutorialDonateFragment(); break;
+            case 2:fragment=new tutorialPostFragment(); break;
+            case 3:fragment=new tutorialMapsFragment(); break;
+            case 4:fragment=new tutorialAdsFragment(); break;
+            case 5:fragment=new tutorialSettingsFragment(); break;
+            case 6:fragment=new tutorialDonateFragment(); break;
         }
 
         return fragment;

@@ -44,6 +44,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -112,7 +114,6 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
     // Constants
     private final String ROOT_FOLDER="FinderPet/";
     private final String ROUTE_IMAGE=ROOT_FOLDER+"myPhotos";
-
 
     public formFoundFragment() {
         // Required empty public constructor
@@ -494,38 +495,38 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Create variables to the object
-                String rbPet="null";
-                String date = "null";
-                String email = "null";
-                String type = "null";
-                String description = "null";
-                String phone = "null";
-                String img_1 = "null";
-                String img_2 = "null";
-                String img_3 = "null";
-                String location = "null";
 
                 //getting the values to save
+                String rbPet="null";
                 if (rbDog.isChecked()) rbPet = "dog";
                 if (rbCat.isChecked()) rbPet = "cat";
                 if (rbOther.isChecked()) rbPet = "other";
-                date = commonMethods.getDateTime();
-                email = fieldEmail.getText().toString().trim();
-                type = rbPet;
-                description = fieldDescription.getText().toString().trim();
-                phone = fieldPhone.getText().toString().trim();
-                img_1 = path_uri_1;
-                img_2 = path_uri_2;
-                img_3 = path_uri_3;
-                location = fieldLocation.getText().toString().trim();
+                // Check user not null
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String idUser;
+                if (user != null){
+                    idUser = user.getUid();
+                    Log.i("Id current user", idUser);
+                }else {
+                    Toast.makeText(getContext(), getString(R.string.you_must_login_again), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                String date = commonMethods.getDateTime();
+                String email = fieldEmail.getText().toString().trim();
+                String type = rbPet;
+                String description = fieldDescription.getText().toString().trim();
+                String phone = fieldPhone.getText().toString().trim();
+                String img_1 = path_uri_1;
+                String img_2 = path_uri_2;
+                String img_3 = path_uri_3;
+                String location = fieldLocation.getText().toString().trim();
 
                 //getting a unique id using push().getKey() method
                 //it will create a unique id and we will use it as the Primary Key for our user
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Found_Vo found_vo = new Found_Vo(date, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
+                Found_Vo found_vo = new Found_Vo(idUser, date, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
                 // Puedo crear con un solo entitie global que sea mascota (pet_vo)
 
                 //Saving the lost pet

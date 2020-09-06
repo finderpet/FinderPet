@@ -12,10 +12,10 @@ import com.finder.pet.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link tutorialNavFragment#newInstance} factory method to
+ * Use the {@link tutorialPostFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class tutorialNavFragment extends Fragment {
+public class tutorialPostFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class tutorialNavFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public tutorialNavFragment() {
+    public tutorialPostFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class tutorialNavFragment extends Fragment {
      * @return A new instance of fragment tutorialNavFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static tutorialNavFragment newInstance(String param1, String param2) {
-        tutorialNavFragment fragment = new tutorialNavFragment();
+    public static tutorialPostFragment newInstance(String param1, String param2) {
+        tutorialPostFragment fragment = new tutorialPostFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class tutorialNavFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial_nav, container, false);
+        return inflater.inflate(R.layout.fragment_tutorial_post, container, false);
     }
 }

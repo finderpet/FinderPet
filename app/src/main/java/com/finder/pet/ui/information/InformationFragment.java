@@ -59,9 +59,9 @@ public class InformationFragment extends Fragment {
         btnaboutApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
-                bundle.putString("Object", "About");
-                findNavController(v).navigate(R.id.action_nav_info_to_dataPolicyFragment, bundle);
+//                Bundle bundle = new Bundle(); //Creamos el bundle para transportar al objeto
+//                bundle.putString("Object", "About");
+                findNavController(v).navigate(R.id.action_nav_info_to_aboutAppFragment);
             }
         });
         btnInfoDev.setOnClickListener(new View.OnClickListener() {

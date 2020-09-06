@@ -269,6 +269,12 @@ public class AdoptedFragment extends Fragment {
                             e.printStackTrace();
                         }
                     }else { adoptedVo.setDate(getString(R.string.time_date)); }
+
+                    adoptedVo.setKeyPost(postSnapshot.getKey());
+
+                    if (postSnapshot.child("idUser").exists()){
+                        adoptedVo.setIdUser(postSnapshot.child("idUser").getValue().toString());
+                    }else { adoptedVo.setName(getString(R.string.field_without_info)); }
                     if (postSnapshot.child("name").exists()){
                         adoptedVo.setName(postSnapshot.child("name").getValue().toString());
                     }else { adoptedVo.setName(getString(R.string.field_without_info)); }

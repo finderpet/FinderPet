@@ -322,5 +322,13 @@
     <string name="phone_profile">Teléfono</string>
     <string name="write_your_phone">Escribe tu teléfono</string>
     <string name="update_photo_profile">Actualizando foto de perfil</string>
+    <string name="microchip" translatable="false">Microchip</string>
+    <string name="you_must_login_again">Debes iniciar sesión de nuevo para continuar</string>
+    <string name="delete_post_title">¿Deseas eliminar tu publicación por completo?</string>
+    <string name="delete_post_msg">No podrá recuperar la información después de eliminarla</string>
+    <string name="post_was_successfully_removed">La publicación fue eliminada con éxito</string>
+    <string name="post_was_not_successfully_removed">La publicación no fue eliminada con éxito</string>
+    <string name="about_app_msg">Finderpet es una herramienta que busca solucionar la gran porblemática que se presenta en el mundo con la pérdida de las mascotas. También ofrece una solucíon para aquellas personas o fundaciones que buscan un nuevo hogar para mascotas desprotegidas.</string>
+    <string name="copyright_msg">Derechos de autor © 2020 Machine Code. Todos los derechos reservados</string>
 
 </resources>

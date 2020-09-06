@@ -46,6 +46,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -516,6 +518,16 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 if (rbDog.isChecked()) rbPet = "dog";
                 if (rbCat.isChecked()) rbPet = "cat";
                 if (rbOther.isChecked()) rbPet = "other";
+                // Check user not null
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String idUser;
+                if (user != null){
+                    idUser = user.getUid();
+                    Log.i("Id current user", idUser);
+                }else {
+                    Toast.makeText(getContext(), getString(R.string.you_must_login_again), Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String date = commonMethods.getDateTime();
                 String name = fieldNamePet.getText().toString().trim();
                 String email = fieldEmail.getText().toString().trim();
@@ -536,7 +548,7 @@ public class formAdoptedFragment extends Fragment implements OnMapReadyCallback 
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Adopted_Vo adopted_vo = new Adopted_Vo(date, name, email, type, age, breed, sterilized,
+                Adopted_Vo adopted_vo = new Adopted_Vo(idUser, date, name, email, type, age, breed, sterilized,
                         vaccines, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet

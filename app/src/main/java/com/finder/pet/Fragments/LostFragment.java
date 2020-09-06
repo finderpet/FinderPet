@@ -1,6 +1,5 @@
 package com.finder.pet.Fragments;
 
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,7 +48,6 @@ import java.util.Collections;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static androidx.navigation.Navigation.findNavController;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -268,10 +266,12 @@ public class LostFragment extends Fragment {
                         }catch (Exception e){
                             e.printStackTrace();
                         }
-
                     }else { lostVo.setDate(getString(R.string.time_date)); }
 
+                    lostVo.setKeyPost(postSnapshot.getKey());
+                    lostVo.setIdUser(postSnapshot.child("idUser").getValue().toString());
                     lostVo.setName(postSnapshot.child("name").getValue().toString());
+                    lostVo.setMicrochip(postSnapshot.child("microchip").getValue().toString());
                     lostVo.setEmail(postSnapshot.child("email").getValue().toString());
                     lostVo.setImage1(postSnapshot.child("image1").getValue().toString()); //Acá traigo la dirección de la imagen, debo crear las otras en firebase
                     lostVo.setImage2(postSnapshot.child("image2").getValue().toString());
@@ -290,13 +290,12 @@ public class LostFragment extends Fragment {
                     petLocation.setLatitude(lostVo.getLatitude());
                     petLocation.setLongitude(lostVo.getLongitude());
                     float distance = myLocation.distanceTo(petLocation)/1000;
-                    Log.e("Distancia", String.valueOf(distance));
+                    //Log.i("Distance", String.valueOf(distance));
 
                     if (distance<= PreferencesApp.search_radius){
                         //We are filling the list of lost
                         ListLost.add(lostVo);
                     }
-
                 }
 
                 Collections.reverse(ListLost);// reverse the order of the list

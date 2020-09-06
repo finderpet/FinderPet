@@ -5,37 +5,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="16dp">
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/donate_for_help"
-                android:justificationMode="inter_word"/>
+
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:layout_gravity="center"
-                android:src="@drawable/img_donate_1"/>
+                android:src="@mipmap/img_donate"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/method_to_donate"
+                android:text="@string/donate_for_help"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+                android:layout_margin="16dp"
+                android:gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
             <View
@@ -44,8 +39,8 @@
                 android:background="?android:attr/listDivider" />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_donate_method"
+                android:layout_height="200dp"
+                android:src="@mipmap/img_method_pay"
                 android:contentDescription="@string/content_description_media" />
 
             <com.google.android.material.button.MaterialButton
@@ -56,6 +51,7 @@
                 android:layout_marginTop="30dp"
                 app:icon="@drawable/ic_donate_up_24"
                 android:layout_gravity="bottom|center"
+                android:layout_marginBottom="16dp"
                 android:text="@string/donate"/>
         </LinearLayout>
     </ScrollView>

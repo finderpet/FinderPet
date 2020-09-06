@@ -23,6 +23,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,8 +44,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -76,8 +81,9 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
 
     // The fragment initialization parameters
     private RadioButton rbDog, rbCat, rbOther;
-    private TextInputLayout textInputLocation, textInputName, textInputEmail, textInputPhone, textInputDescription;
+    private TextInputLayout textInputLocation, textInputName, textInputChip, textInputEmail, textInputPhone, textInputDescription;
     private TextInputEditText fieldLocation, fieldNamePet, fieldEmail, fieldPhone, fieldDescription;
+    private AutoCompleteTextView fieldChip;
     private ImageView img1, img2, img3, imgUpdate;
     private Uri pathLocal1, pathLocal2, pathLocal3; // Local path of the images to upload
     private String path_uri_1, path_uri_2, path_uri_3; // Path of images saved in storage firebase
@@ -289,11 +295,13 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         rbOther = view.findViewById(R.id.rbOtherFound);
         textInputLocation = view.findViewById(R.id.textInputAddLostLocation);
         textInputName = view.findViewById(R.id.textInputAddLostName);
+        textInputChip = view.findViewById(R.id.textInputAddLostChip);
         textInputEmail = view.findViewById(R.id.textInputAddLostEmail);
         textInputPhone = view.findViewById(R.id.textInputAddLostPhone);
         textInputDescription = view.findViewById(R.id.textInputAddLostDescription);
         fieldLocation = view.findViewById(R.id.fieldAddLostLocation);
         fieldNamePet = view.findViewById(R.id.fieldAddLostName);
+        fieldChip = view.findViewById(R.id.fieldAddLostChip);
         fieldEmail = view.findViewById(R.id.fieldAddLostEmail);
         fieldPhone = view.findViewById(R.id.fieldAddLostPhone);
         fieldDescription = view.findViewById(R.id.fieldAddLostDescription);
@@ -309,6 +317,11 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
         path_uri_3="null";
         latitude = 6.2443382;
         longitude = -75.573553;
+
+
+        String[] Types = new String[]{getString(R.string.btn_yes), getString(R.string.btn_no)};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.list_type_item, Types);
+        fieldChip.setAdapter(adapter);
     }
 
     /**
@@ -492,40 +505,39 @@ public class formLostFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void run() {
 
-                // Create variables to the object
-                String rbPet="null";
-                String date = "null";
-                String name = "null";
-                String email = "null";
-                String type = "null";
-                String description = "null";
-                String phone = "null";
-                String img_1 = "null";
-                String img_2 = "null";
-                String img_3 = "null";
-                String location = "null";
-
                 //getting the values to save
+                String rbPet="null";
                 if (rbDog.isChecked()) rbPet = "dog";
                 if (rbCat.isChecked()) rbPet = "cat";
                 if (rbOther.isChecked()) rbPet = "other";
-                date = commonMethods.getDateTime();
-                name = fieldNamePet.getText().toString().trim();
-                email = fieldEmail.getText().toString().trim();
-                type = rbPet;
-                description = fieldDescription.getText().toString().trim();
-                phone = fieldPhone.getText().toString().trim();
-                img_1 = path_uri_1;
-                img_2 = path_uri_2;
-                img_3 = path_uri_3;
-                location = fieldLocation.getText().toString().trim();
+                // Check user not null
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String idUser;
+                if (user != null){
+                    idUser = user.getUid();
+                    Log.i("Id current user", idUser);
+                }else {
+                    Toast.makeText(getContext(), getString(R.string.you_must_login_again), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                String date = commonMethods.getDateTime();
+                String name = fieldNamePet.getText().toString().trim();
+                String microchip = fieldChip.getText().toString().trim();
+                String email = fieldEmail.getText().toString().trim();
+                String type = rbPet;
+                String description = fieldDescription.getText().toString().trim();
+                String phone = fieldPhone.getText().toString().trim();
+                String img_1 = path_uri_1;
+                String img_2 = path_uri_2;
+                String img_3 = path_uri_3;
+                String location = fieldLocation.getText().toString().trim();
 
                 //getting a unique id using push().getKey() method
                 //it will create a unique id and we will use it as the Primary Key for our user
                 String id = databaseRef.push().getKey();
 
                 //creating an lost pet Object
-                Lost_Vo lost_vo = new Lost_Vo(date, name, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
+                Lost_Vo lost_vo = new Lost_Vo(idUser, date, name, microchip, email, type, description, phone, img_1, img_2, img_3, location, latitude, longitude);
 
                 //Saving the lost pet
                 databaseRef.child(id).setValue(lost_vo);

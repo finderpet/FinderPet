@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class Found_Vo implements Serializable {
 
+    /**
+     * Attributes
+     */
+    private String keyPost; // Key post in firebase
+    private String idUser; // id firebase current user
     private String date; //Fecha en que se hizo el post
     private String email; //Correo de quién encontró la mascota
     private String type; //Tipo de mascota encontrada
@@ -23,8 +28,9 @@ public class Found_Vo implements Serializable {
 
     }
 
-    public Found_Vo(String date, String email, String type, String observations, String phone, String image1,
+    public Found_Vo(String idUser, String date, String email, String type, String observations, String phone, String image1,
                     String image2, String image3, String location, double latitude, double longitude) {
+        this.idUser = idUser;
         this.date = date;
         this.email = email;
         this.type = type;
@@ -38,6 +44,19 @@ public class Found_Vo implements Serializable {
         this.longitude = longitude;
     }
 
+    //Getters and Setters
+    public String getKeyPost() {
+        return keyPost;
+    }
+    public void setKeyPost(String keyPost) {
+        this.keyPost = keyPost;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
     public String getDate() {
         return date;
     }
