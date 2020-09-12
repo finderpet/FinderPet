@@ -1,7 +1,11 @@
 package com.finder.pet.ui.settings;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.Preference;
@@ -25,8 +29,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         //Referenciamos este fragment al xml donde configuramos la preferencias
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
-
-
         Preference prefAccount = findPreference("account");
         prefAccount.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -38,6 +40,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return false;
             }
         });
+
+        Preference prefNotifications = findPreference("notifications");
+        prefNotifications.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                        .putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName());
+                startActivity(intent);
+                return false;
+            }
+        });
+
 //        final Preference prefCity = findPreference("city_state");
 //        prefCity.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 //            @Override

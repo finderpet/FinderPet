@@ -274,8 +274,6 @@ public class LoginActivity extends BaseActivity {
             Intent intent=new Intent(LoginActivity.this, NoNavigationActivity.class);
             startActivity(intent);
         }
-
-
     }
 
     @Override
@@ -349,8 +347,8 @@ public class LoginActivity extends BaseActivity {
             }
         }
         hideProgressBar();
-    }
-    // [END onactivityresult]
+    }// [END onactivityresult]
+
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -383,8 +381,6 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
     }// [END auth_with_google]
-
-
 
 //    private void sendEmailVerification() {
 //        // Disable button

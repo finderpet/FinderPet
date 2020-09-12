@@ -243,7 +243,7 @@
         tools:layout="@layout/fragment_pruebas" />
     <fragment
         android:id="@+id/aboutAppFragment"
-        android:name="com.finder.pet.aboutAppFragment"
+        android:name="com.finder.pet.Fragments.aboutAppFragment"
         android:label="@string/about_app"
         tools:layout="@layout/fragment_about_app" />
 

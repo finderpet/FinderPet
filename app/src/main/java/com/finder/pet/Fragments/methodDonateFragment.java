@@ -115,8 +115,6 @@ public class methodDonateFragment extends Fragment {
         btnDownloadQr = view.findViewById(R.id.btnDownloadQR);
         imgQR = view.findViewById(R.id.imgQR);
 
-
-
         databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

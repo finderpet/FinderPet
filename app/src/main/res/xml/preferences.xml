@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/pref_location">
@@ -11,14 +12,16 @@
             android:entryValues="@array/search_radius"
             android:icon="@drawable/ic_search_radius_32"/>
     </PreferenceCategory>
-
+Activa
 
     <PreferenceCategory app:title="@string/pref_notifications">
-        <SwitchPreferenceCompat
+        <Preference
             app:key="notifications"
             app:title="@string/push_notifications"
-            android:summary="@string/pause_notificacions"
-            android:icon="@drawable/ic_outline_notifications_active_32"/>
+            android:summary="@string/preference_notificacions_msg"
+            android:icon="@drawable/ic_outline_notifications_active_32">
+
+        </Preference>
 
     </PreferenceCategory>
 
@@ -37,6 +40,9 @@
             android:title="@string/update_app"
             android:summary="@string/automatically_update_wifi"
             android:icon="@drawable/ic_update_32"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="">
     </PreferenceCategory>
 
 </PreferenceScreen>

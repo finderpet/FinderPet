@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/scan_cod_bancolombia"/>
+            android:text="@string/donation_bancolombia_msg1"/>
         <ImageView
             android:id="@+id/imgQR"
             android:layout_width="200dp"
@@ -42,6 +42,21 @@
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
             android:text="@string/download_code_qr"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/donation_bancolombia_msg2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/number_account_bancolombia"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -53,7 +68,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/donation_baloto"
+            android:text="@string/donation_davivienda"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textAllCaps="true"/>
@@ -71,7 +86,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginBottom="12dp"
-            android:text="@string/number_account_baloto"/>
+            android:text="@string/number_account_davivienda"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"

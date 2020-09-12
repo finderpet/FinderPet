@@ -151,7 +151,7 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
         // Reference FirebaseStorage instance
         progressDialog = new ProgressDialog(getContext());
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());//getActivity funciona bien
         //getLocation();
 
         // Reference FirebaseStorage instance
@@ -255,25 +255,30 @@ public class formFoundFragment extends Fragment implements OnMapReadyCallback {
     private void manualSearchLocation() {
         String location = search_view.getQuery().toString();
         searchLoc = location;
+
+        if (!Geocoder.isPresent()) {
+            Toast.makeText(getContext(),R.string.no_geocoder_available,Toast.LENGTH_LONG).show();
+            return;
+        }
+
         List<Address> addressList = null;
-        if (location != null) {
-            Geocoder geocoder = new Geocoder(getContext());
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (!addressList.isEmpty()) {
-                Address address = addressList.get(0);
-                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                latitude = address.getLatitude();
-                longitude = address.getLongitude();
-                map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-            } else {
-                searchLoc = ""; // Clear the variable with the address or area searched
-                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
-            }
+        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+        try {
+            addressList = geocoder.getFromLocationName(location, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Error de addressList", e.getMessage(), e);
+        }
+        if (addressList == null || addressList.size() == 0) {
+            Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+            searchLoc = ""; // Clear the variable with the address or area searched
+        } else {
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            latitude = address.getLatitude();
+            longitude = address.getLongitude();
+            map.addMarker(new MarkerOptions().position(latLng).title(location)).showInfoWindow();
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
         }
     }// [End manualSearchLocation]
 

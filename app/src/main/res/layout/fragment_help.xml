@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.help.HelpFragment">
 
+    <!--
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnUserManual"
         style="@style/Widget.FinderPet.ButtonText"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
+        -->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTutorial"
@@ -46,6 +48,7 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
+    <!--
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSeeVideoTutorial"
         style="@style/Widget.FinderPet.ButtonText"
@@ -58,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
+        -->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnInfoProblem"

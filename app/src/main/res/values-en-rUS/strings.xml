@@ -143,11 +143,11 @@
     <!-- Sección de preguntas frecuentes -->
     <string name="frequents_questions">Frequent questions</string>
     <string name="question_1">How to make a new publication of a pet found, lost or for adoption?</string>
-    <string name="question_2">How can I change the Country or city settings?</string>
+    <string name="question_2">How can I change the display range of the views?</string>
     <string name="question_3">How can I delete a post I made?</string>
     <string name="answer_1">You must go to the home screen, then you must choose between the 3 options we have to publish: located pet, lost or adopted pet, the list of pets with your choice will appear and at the bottom you will find a button that allows you to add a new one. post, a form appears that you need to fill out and then click save.</string>
-    <string name="answer_2">You must go to the Configuration section of the drop-down menu, then, in the LOCATION section, select "Country" or "State or city", depending on what you want to change, a list will appear where you can select the Country or City of your preference.</string>
-    <string name="answer_3">If you want to delete a publication because you have an error in the entered data, you can send an email to our support area (finderpetapp@gmail.com) so that your publication is corrected, you must report in which field the error occurred and the information correct to be entered. In case you no longer want your publication to appear in our application, please send the email with the subject Delete the publication permanently.</string>
+    <string name="answer_2">You must go to the Settings section of the drop-down menu, then enter the Search Radius section and in the list choose the search radius you prefer. Remember that the higher the display range, the more results you will see in the 3 report lists.</string>
+    <string name="answer_3">" If you want to delete a publication because it has an error in the data entered, you must go to the floating button that is on the back right of the publication you made and then accept the deletion."</string>
     <string name="send">Send</string>
     <string name="problem_description">Description of the problem</string>
     <string name="problem_title">Title of the problem</string>
@@ -189,9 +189,9 @@
     <string name="type">Type</string>
     <string name="all">All</string>
     <string name="donation_bancolombia">Bancolombia Donation</string>
-    <string name="scan_cod_bancolombia">Scan this QR code to make a donation through Bancolombia</string>
-    <string name="account_donate_baloto">You can make a donation through a ballot with this account number:</string>
-    <string name="donation_baloto">Baloto Donation</string>
+    <string name="donation_bancolombia_msg1">Scan this QR code to make a donation through bank transfer</string>
+    <string name="account_donate_baloto">You can make a donation through bank consignment or on the Baloto network to the following savings account:</string>
+    <string name="donation_davivienda">Davivienda Donation</string>
     <string name="report_format">Report Format</string>
     <string name="donations">Donations</string>
     <string name="main_menu">Main Menu</string>
@@ -205,7 +205,7 @@
     <string name="configure_ads">Configure Ads</string>
     <string name="activate_ads_main">Turn ads on or off in the main menu</string>
     <string name="push_notifications">Push notifications</string>
-    <string name="pause_notificacions">Pause all notifications</string>
+    <string name="preference_notificacions_msg">Enable or disable push notifications or a group of them</string>
     <string name="account_settings">Account settings</string>
     <string name="update_data_delete_account">Update your data or delete your account</string>
     <string name="update_app">Update the Application</string>
@@ -316,4 +316,516 @@
     <string name="post_was_not_successfully_removed">Post was not removed successfully</string>
     <string name="about_app_msg">Finderpet is a tool that seeks to solve the great problem that occurs in the world with the loss of pets. It also offers a solution for those individuals or foundations looking for a new home for unprotected pets.</string>
     <string name="copyright_msg">" Copyright © 2020 Machine Code. All rights reserved"</string>
+    <string name="tutorial_map_msg">In the map view, you can find pets reported worldwide.</string>
+    <string name="tuto_advert_msg">Do not forget to visit our announcements section where you will find everything related to the world of veterinary medicine</string>
+    <string name="tutorial_advert">Ads section</string>
+    <string name="tutorial_push_msg">You can activate the notifications and thus find out about all the reports of pets found in real time</string>
+
+
+
+
+
+
+    <!-- Politicas y condiciones de uso -->
+    <string name="data_policy">
+        &lt;div>
+            &lt;b>FinderPet data policy&lt;/b>
+            &lt;br>&lt;/br>
+            &lt;p align="justify">This policy describes the information we process in order to provide FinderPet services, as well as other products and features that FinderPet offers (“FinderPet Ads” or “FinderPet Products and Services”).&lt;/p>
+
+        &lt;/div>
+
+        &lt;div>
+        &lt;b>I. ¿What types of information do we collect?&lt;/b>
+        &lt;br>&lt;/br>
+        We must process your information in order to provide you with the FinderPet Products. The type of information we collect depends on how you use our application. Learn how to access the data we collect and how to delete it in FinderPet settings.
+
+
+
+        Things that you and other people do and provide to us.
+
+        Information and content that you provide us. We collect the content, communications and other data that you provide when you use our Products, for example, when you register for an account, create or share content. This information may correspond to data included in the content you provide (for example, metadata) or related to it, such as the place where a photo was taken or the date of creation of a file or publication. It can also include the content that you see through the features we make available to you, such as the camera, as well as give you tips on how to use camera formats. Our systems automatically process the content and communications that you and others provide to analyze the context and what they include in relation to the purposes described below.
+        &lt;br>&lt;/br>
+             &lt;b>Special category data:&lt;/b>You can choose to provide information in the fields on your FinderPet profile.
+        &lt;br>&lt;/br>
+        &lt;b>Your use:&lt;/b> We collect information about how you use our app, such as the types of content you view or interact with, the features you use, the actions you take, and the time, frequency, and duration of your activities. For example, we record when you are using and when you have last used our Products, and what posts and other content you see on our app. We also collect information about how you use features like our camera.
+
+        &lt;br>&lt;/br>
+         &lt;b>Device features:&lt;/b>information such as operating system, hardware and software version, battery charge level, signal strength, available storage space, browser type, application or file types and names, and plug-ins .
+        &lt;br>&lt;/br>
+        &lt;b>Device operations:&lt;/b>information about the operations and behaviors performed on the device, such as placing a window in the foreground or background, or mouse movements (which distinguishes humans from bots).
+        Device configuration data: information that allows us to receive when activating the corresponding configuration in the device, such as access to the GPS location, the camera and the photos.
+
+        &lt;/p>
+
+        &lt;/div>
+
+
+        &lt;p>
+        &lt;b>II.How do we use this information?&lt;/b>
+        &lt;br>&lt;/br>
+        We use the information we have (in accordance with the decisions you make) as described below to provide the FinderPet Products and related services described in the Terms of Use, as well as to ensure their operation. We use this data for the following aspects:
+        &lt;br>&lt;/br>
+        &lt;b>Provide, personalize and improve our Products.&lt;/b>
+        We use the information we have to offer our Products, as well as to personalize the functions and content (including advertisements, the section of posts of found, lost or adopted pets), and to provide suggestions (such as groups or events that you may interest or topics that you may want to follow) both inside and outside our Products. In order to create personalized Products that are unique and relevant to you, we use your connections, preferences, interests and activities based on the data that we collect and that you and others provide us (including those data from special categories that you choose to provide us with) as well as the way in which you use and interact with our Products and the people, places or things that you connect with and in which you show interest, both inside and outside of our Products.
+        &lt;br>&lt;/br>
+        &lt;b>Location-related information:&lt;/b>We use location-related information, such as your current location, to provide, personalize, and improve our Products, including advertisements, to make them more relevant to you and others. This type of information may be based on data such as the precise location of the device (if you have allowed us to collect this information), IP addresses, and usage information for FinderPet Products.
+        &lt;br>&lt;/br>
+        &lt;b>Research and product development:&lt;/b> We use the information we have to develop, test, and improve our Products (including through surveys and research), as well as to test and troubleshoot new products and features.
+        &lt;br>&lt;/br>
+        &lt;b>Ads and other sponsored content:&lt;/b>Based on the information we have about you, including information about your interests, actions and connections, we select and personalize advertisements, offers and other sponsored content that we show you..
+        &lt;br>&lt;/br>
+        &lt;b>Provide measurements, analysis and other services for companies.&lt;/b>
+       We use the information we have to help advertisers and other partners measure the effectiveness and delivery of their ads and services, and to help them understand what types of people use their services and how they interact with their websites, applications. and services.
+        &lt;br>&lt;/br>
+        &lt;b>Promote safety, integrity and security.&lt;/b>
+        We use the information we have to verify accounts and activities, combat harmful behavior, detect and prevent spam and other negative experiences, preserve the integrity of our Products, and promote security both inside and outside of FinderPet Products. For example, we use this data to investigate suspicious activity or violations of our conditions and policies.
+        &lt;br>&lt;/br>
+        &lt;b>Communicate with you.&lt;/b>We use the information at our disposal to send you marketing messages, to introduce you to our Products and to inform you about our policies and conditions. We also use it to respond to you when you contact us.
+
+        &lt;/p>
+
+        &lt;p>
+        &lt;b>III.How is this information shared?&lt;/b>
+        &lt;br>&lt;/br>
+        &lt;b>Your information is shared with others in the following ways:&lt;/b>
+        &lt;br>&lt;/br>
+
+            When you share information using our application, you agree that the publications will be public and that any user who uses our Products will be able to see it without any restriction.
+            Anyone can view public information, both inside and outside of our Products, even if they don\'t have an account. This includes your FinderPet username, information you share publicly, and information from your public profile. You, other people who use FinderPet, and we may grant access to public information or send such information to anyone both inside and outside our Products, in search results, or through tools and APIs. It is also possible to use third-party services, such as search engines, APIs and non-internet related media (such as television), as well as applications, websites and other services that are integrated with our Products to access, view, and return to public information to share or download it.
+
+            New owner
+            If ownership or control of all or part of our Products or their assets changes, we may transfer your information to the new owner.
+        &lt;br>&lt;/br>
+        &lt;b>With external partners:/b>
+            We collaborate with partners who help us provide and improve our Products for the purpose of growing your business. Thanks to them we can manage our companies and provide free services to people all over the world. We do not sell your data to anyone and we will not sell it in the future. Similarly, we impose strict restrictions on how our partners can use and disclose the data we provide. These are the types of third-party partners with whom we share information:
+            Partners using our analytics services
+            We provide sets of statistics and information that individuals and businesses use to understand how others interact with their posts, advertisements, pages, videos, and other content on and off the FinderPet Products.
+            &lt;br>&lt;/br>
+            &lt;b>Advertisers.&lt;/b>
+            We provide advertisers with reports to tell them what types of people see their ads and what results they are generating. However, unless you give us permission to do so, we do not share information that identifies you personally, such as your name or email address, data that can be used to contact you or that can reveal your identity. We provide advertisers with general demographic data and interest information (for example, that a 25-34 year old woman living in Colombia who is interested in veterinary medicine has seen your ad). This data is intended to help them better understand their audience.
+            &lt;br>&lt;/br>
+            &lt;b>Measurement partners.&lt;/b>
+            We share information about you with companies that process it together to provide analysis and measurement reports to our partners.
+            &lt;br>&lt;/br>
+            &lt;b>Partners who offer goods and services on our Products.&lt;/b>
+            If you buy an item that someone sells on our Products, the content creator or seller may receive your public information and other information that you share with them, as well as the information necessary to complete the transaction, including contact and shipping details.
+            &lt;br>&lt;/br>
+            &lt;b>Service providers.&lt;/b>
+            We provide information and content to service providers that help us to continue our business. These providers are dedicated to offering technical infrastructure services, analyzing the use of our Products, providing customer support services, facilitating payments or conducting surveys.
+            &lt;br>&lt;/br>
+            &lt;b>Researchers and academics&lt;/b>
+            We also provide information and content to research and academic partners to conduct research that deepens the knowledge and innovation necessary to contribute to our business or purpose, as well as to promote discovery and innovation on issues related to social welfare. general, advances in the field of technology and public interest, health and welfare.
+            &lt;br>&lt;/br>
+            &lt;b>Compliance with legal requirements or requests from the police authorities.&lt;/b>
+            We share information with law enforcement authorities or in response to legal requirements in the circumstances detailed below.
+            &lt;/p>
+        &lt;p>
+        &lt;b>IV. How can I manage or delete information about myself?&lt;/b>
+        &lt;br>&lt;/br>
+        We provide you with the possibility of accessing your data, rectifying and deleting it, as well as obtaining its portability.
+        We store data until it is no longer needed to provide you with our FinderPet Products and services, or until your account is deleted, whichever comes first. The need for the data is determined on a case-by-case basis and is based on factors such as the nature of the data, the reason for collection and processing, and the applicable legal or operational retention needs. For example, if you do a search in FinderPet, you can access that query and remove it from your search history at any time, but the record for that search is deleted after six months. If you send a copy of your ID to have an account verified, we will delete it 30 days after we receive it.
+       When you delete your account, we delete the content you have posted, such as photos and comments. If you don\'t want to delete the account, but want to stop using the Products for a while, you can deactivate it. You can delete your account whenever you want from FinderPet settings.
+        &lt;/p>
+        &lt;p>
+        &lt;b>V. How do we respond to legal requirements or prevent damage from occurring?&lt;/b>
+        &lt;br>&lt;/br>
+        We access your information, preserve it and share it with regulatory bodies, law enforcement authorities or other parties in the following cases:
+
+            In response to a legal requirement (a search warrant, a court order or a subpoena, for example) if we believe in good faith that the law requires us to do so. This may include responding to legal requirements from jurisdictions outside the Republic of Colombia if we believe in good faith that the legislation of that jurisdiction requires such a response, affects the users in its jurisdiction, and is consistent with internationally recognized standards.
+            If we believe in good faith that it is necessary to detect, prevent and address cases of fraud, unauthorized use of the Products, violations of applicable conditions or policies, as well as other harmful or illegal activities; to protect us (including our rights, our property, or our Products), as well as to protect you or others; also as part of regulatory investigations or inquiries; and to avoid death or imminent physical injury. For example, where appropriate, we provide and receive information from third-party partners about the reliability of your account to prevent fraud, abuse, and other harmful activities that occur on or off our Products.
+            We may access the information we receive about you (including information on financial transactions related to donations made with FinderPet) and preserve it for an extended period in the event that it is subject to a legal requirement or obligation, a government investigation or investigations related to possible infractions. of our policies or conditions, or to avoid damages. We may also retain information about accounts that have been deactivated for violating our conditions for a minimum of one year in order to prevent the recurrence of abusive behavior or violations of our conditions.
+
+        &lt;/p>
+        &lt;p>
+        &lt;b>VI. How will we notify you of changes to this policy?&lt;/b>
+        &lt;br>&lt;/br>
+        We will send you a notification before making changes to this policy so that you can review the changes and decide if you want to continue using our Products.
+        &lt;/p>
+        &lt;p>
+        &lt;b>VII.How to send your questions to FinderPet&lt;/b>
+        &lt;br>&lt;/br>
+        Learn more about how privacy works on FinderPet. If you have questions about this policy, please contact us using the methods below.
+        You can contact us by email at the address:
+        &lt;b>finderpetapp@gmail.com&lt;/b>
+        &lt;/p>
+        FinderPet
+         &lt;br>&lt;/br>
+        Medellín, Colombia.
+         &lt;br>&lt;/br>
+        &lt;p>
+        Date of last revision: 1 de agosto de 2020
+         &lt;/p>
+        </string>
+
+    <string name="terms_of_use">
+        &lt;h4 align="left">1.- About us&lt;/h4>
+       This application is operated by the
+       company ("Finderpet"), identified in their respective application store and the Company with the data that you can find in the&lt;a
+        href="#">Legal warning.&lt;/a>
+       &lt;h4 align="left">2.-What the Conditions regulate.&lt;/h4>
+
+       These conditions of use ("Conditions") regulate the access and use of the services of
+       the information society that we make available to you as users ("User / s") of the network
+       Internet through the application (in any of its modalities, applications, etc. and for any type
+       of devices -fixed or mobile- through which the application is accessed), as well as, in general, the
+       relationship between you Users and the application, safe from other communications, conditions and
+       particular or specific instructions, which are brought to your knowledge in each case.
+       Access or mere use of the application implies adherence as Users to the Conditions
+       published at all times in the application and that will be available to Users. In consecuense,
+       You must read these Conditions carefully. At any time, you can save or print the Conditions and
+       we advise you to do so.
+
+       &lt;h4 align="left">3.- Previous information for access to the application services.&lt;/h4>
+        Before using the application services or registering, Users expressly assume that
+       are people capable of discerning, who have entered the application of their own free will and who have not been
+       coerced to do so, and that the selection of the services they carry out is done for their sole and sole
+       account and risk, expressly accepting these Conditions, Privacy Policy and Cookies Policy, as well
+       as well as those other notices and instructions, communications, or particular conditions, which in each case are
+       bring to your knowledge.
+        In relation to the particular conditions that regulate other services of the application, these Conditions
+       They complete the provisions of those particular conditions to the extent that they are not opposed to them.
+       You should know that communications over open networks are exposed to threats that prevent them
+       be safe. The Company adopts all appropriate security measures for proper operation
+       of the application. However, the User must adopt all the technical measures that correspond to him to
+       reasonably control these threats (have up-to-date malicious software detection systems,
+       such as viruses, Trojans, etc., have the corresponding security patches updated
+       browsers). As a User, you are solely and exclusively responsible for your use of the application and the
+       services and, aware of this, you voluntarily accept such responsibility.
+
+       &lt;h5 align="left">In relation to minors.&lt;/h5>
+
+In relation to navigation in the application by minors, except as indicated in the
+       previous paragraphs, Users are warned that the Company cannot control, apart from other
+       circumstances, that minors make use of the application and its services. Therefore, in addition to not
+       admit the application, the Company or its business group any responsibility in this regard, it is communicated
+       that parents and guardians will be solely responsible for controlling and assisting minors in browsing
+       by this application and enable any other necessary mechanisms that, where appropriate, prevent access
+       by minors to the application and / or its services, the Company not admitting any claim to the
+       respect.
+
+       &lt;h5 align="left">Access codes or similar.&lt;/h5>
+       In the event that any application service includes access codes or user names, you will choose e
+       You will indicate your own access codes (username, password, password, or similar), without prejudice
+       of other data that can be requested in the corresponding form, and not being able to choose for it
+       words, expressions or graphic-denominative groups that are profane, insulting, coincide with marks,
+       trade names, store signs, company names, advertising expressions,
+       names and pseudonyms of people of public importance or celebrities whose use is not authorized
+       and, in general, contrary to the law or the requirements of morality and good customs generally
+       accepted.
+       &lt;br>
+       The assignment of the username occurs automatically after the User\'s choice. At
+       assuming that these requested keys are reserved, you must enter new
+       access.
+       &lt;br>
+        The User undertakes to make diligent use of the access codes, not to make them available to
+       third parties, and to notify the Company of the loss or theft of access codes and possible access by a
+       third to them.
+       &lt;br>
+       As a User, you are the only and exclusive person responsible for your identification of access to the service. The
+       consequences derived from its use by third parties, its misuse, loss or forgetfulness of the secret access code of
+       the users - password - or the username are your sole and exclusive responsibility.
+
+       &lt;h4 align="left">4.- General characteristics of the services.&lt;/h4>
+        The services that you can access in the application are, as a rule, free without
+       Users have to make any consideration to be able to enjoy them, except in relation to
+       the cost of connection through the telecommunications network provided by the access provider that
+       you would have hired. Notwithstanding the foregoing, access to certain contents of the application may not be
+       free depending on other factors of the volume of accesses by the User or by the type of content,
+       which, in any case, will be reported and, where appropriate, a subscription or registration will be required.
+
+       &lt;h5 align="left">Contents or services offered by third parties.&lt;/h5>
+       You will be able to access through the application to other services of the Company itself or to services
+       offered by collaborators, who will have their own general conditions of use or
+       contracting, in which the free or onerous nature of the same will be specified, and without
+       responsibility of the Company in this regard.
+       &lt;br>&lt;/br>
+       In any case, in accordance with the provisions of article 17 of Law 34/2002, of July 11, of
+       services of the information society and electronic commerce ("LSSI"), and unless the Company has
+       effective knowledge that the activity or information contained in the application or in the application to which it is
+       remittance is illegal or damages property or rights of a third party susceptible of protection, the Company does not
+       will be liable for the information offered in or from the application, by third parties or Users.
+
+       &lt;h4 align="left">5.- How the application should be used.&lt;/h4>
+        Users undertake to use the services, channels and all the contents of the application in accordance with the provisions of these Conditions, the law, morality, good customs
+       generally accepted and public order.
+       &lt;br>&lt;/br>
+        Likewise, you are obliged not to use the application for fraudulent, illicit purposes or effects, contrary to what
+       established in these Conditions, harmful to the rights and interests of the Company or third parties, or that
+       In any way they may damage, disable, overload or deteriorate the services and channels of the application and
+       its contents or prevent the normal use, operation or enjoyment of them by Users, or
+       to modify or alter in any way both the content and other elements of the application. In this
+       In this sense, you agree not to carry out any of the following activities:
+
+       &lt;ol type="I">
+           &lt;li>Send advertising of any kind and communications for the purpose of sale or other nature
+               commercial in the application, or to a plurality of users of the application without their prior
+               request or consent.&lt;/li>
+           &lt;li>Send any other unsolicited messages, or previously consented to a plurality of
+               people who use the application.&lt;/li>
+           &lt;li>Send unsolicited chains of electronic messages, or previously consented to users of the application.&lt;/li>
+           &lt;li>Use distribution lists that can be accessed through the application or its services and
+               channels for carrying out the activities indicated in sections III) to III) above.&lt;/li>
+           &lt;li>Make available to third parties, for any purpose, data captured from lists of
+               distribution.&lt;/li>
+           &lt;li>Obtain, and even try to obtain, information and any kind of material accessible through the application or its services or channels, using procedures other than those at your request.
+               provision.&lt;/li>
+           &lt;li>Make improper use of the contents of the application, using them for purposes other than those
+               intended, reproducing, modifying or transforming them.&lt;/li>
+           &lt;li>Store, publish and / or transmit data, texts, images, files, links, software or other content
+               objectionable according to the applicable legal provisions or according to the estimation of the Company, as
+               illegal, harmful, threatening, abusive, defamatory, vulgar, obscene, racist or objectionable or
+               illicit in any other way or that may cause harm of any kind to minors,
+               particularly pornographic, homages to violence or dangerous in any other way for the
+               youth.&lt;/li>
+           &lt;li>Not to obstruct the access to other Users to the access service through the massive consumption of the
+               computer resources through which the Company provides the service, as well as carry out actions
+               that damage, interrupt or generate errors in said systems or services.&lt;/li>
+       &lt;/ol>
+
+
+       Additionally, we inform that the application is financed mainly with derived income
+       of the inclusion of messages and advertising claims through which advertisers advertise products
+       and services in the application. By accessing the application as a User, you agree to receive information from these
+       Advertising messages. For this reason it is not allowed, which is a necessary condition for the use of the application, the installation or use of any type of technology capable of producing any type of
+       alteration that prevents access to and / or receive in its entirety the contents of the application (whether
+       informative, advertising or of any other type). The Company reserves the right to limit,
+       suspend or prevent access to the application to those Users who do not respect the above, adopting the
+       Society any technical measure that is necessary for that purpose.
+       &lt;br>&lt;/br>
+
+        Users are informed that in the event of breaching the provisions of these Conditions, in the &lt;a
+        href="#">Privacy Policy&lt;/a> and &lt;a href="#">Cookies policy&lt;/a> or in any other
+       particular terms or conditions contained in the application, the Company reserves the right to limit,
+       suspend or terminate your access to the application, adopting any technical measure that is necessary with that
+       end.
+       &lt;br>&lt;/br>
+        Finally, we inform the Users that the Company reserves the right to decide, in
+       at all times, on the continuity of the services of the information society that it provides through the application.
+        &lt;br>&lt;/br>
+
+       &lt;h4 align="left">6.- Forms of participation in the application.&lt;/h4>
+       Users can participate in the application in the areas that are enabled for this purpose
+       (By way of example shipments, blogs, forums, chats, comments, shares, etc.). The Company is limited
+       to enable the spaces for this participation, but will not participate in them in any way, being
+       The result is mere contributions or opinions made by Users under their own responsibility.
+       The dissemination of these contributions by Users in no way means that the Company identifies or
+       share the ideas, opinions or statements expressed by Users. Users are bound to
+       use of these areas in the terms indicated in section 5 above "How the application should be used". With
+       the mere sending of the comments or with your participation in these areas, you authorize irrevocably, free
+       and unlimitedly to the Company and its business group to publish the most outstanding comments in their
+       printed editions (whether online, offline or by any other means) or in the applications of the
+       themselves.
+       &lt;br>&lt;/br>
+        Without it being possible to deduce that any moderation or revision carried out turns out to be a revision
+       detailed, the Company reserves the right to suspend or eliminate those contributions or comments
+       that do not comply with current regulations as well as these Conditions.
+       &lt;br>&lt;/br>
+
+Users who send images, photos, comments, etc. guarantee to be the owner, and have the
+       Necessary authorizations (especially in case of including data or images of third parties and in particular if
+       are minors) so that the Company can proceed in the application, free of charge and without associated charge
+       none, to its reproduction, distribution, making available and public communication. The users,
+       guaranteeing the possession of rights, they assume free use and without limitation by the Company and its group.
+       &lt;br>&lt;/br>
+       In the event that it is discovered, either directly or through notifications or
+       third parties, the existence of illegal or similar practices, the Company may proceed to eliminate
+       the infringing content or any other measure that it deems necessary to avoid continuity in the
+       situation detected. The same measure may be applicable in the event that a use is detected that, for
+       its characteristics such as size, format, etc., hinder the operation of the application, content
+       or propaganda links, spam and repeated comments, as well as those that do not make sense or are out
+       of the news topic. Notwithstanding the foregoing, Users assume that the Company may put in
+       knowledge of the administrative or judicial authorities those facts that could be constitutive
+       of an illicit activity, without the need to previously notify the User.
+       &lt;br>&lt;/br>
+        In the event that the Company decides to suspend (temporarily or permanently) the participation of a
+       User in the enabled participation areas, the Company will communicate such suspension to the User through
+       sending a message by email to the email address (e-mail), in the case of
+       that said address had been provided by the User.
+       &lt;br>&lt;/br>
+        La Sociedad se reserva el derecho de dejar de prestar el servicio de cualesquiera áreas de participación en
+       cualquier momento, bastando para ello comunicarlo en la pantalla de acceso al servicio con un preaviso de al
+       menos quince (15) días.
+
+
+       &lt;h4 align="left">7.-Intellectual and Industrial Property.&lt;/h4>
+        The intellectual property rights of the application, its source code, design, structures of
+       navigation and the different elements contained therein are owned by the Company, to whom it corresponds
+       the exclusive exercise of the rights of exploitation of the same in any form and especially, the
+       rights of reproduction, distribution, public communication and transformation, in accordance with the legislation
+       Spanish and applicable European Union. Likewise, the application is the result of information from any
+       type related to the activities of the Company (information created by the Company or created by
+       third parties), which enables a personal and non-commercial use of the information itself by the Users.
+       &lt;br>&lt;/br>
+       ALL RIGHTS RESERVED in relation to the contents of the Company, the Medium and, where appropriate,
+       other companies of the group of the company of which the Company is part or of third parties. The
+       total or partial reproduction, distribution, making available, public communication and use, total
+       or partial, of the contents of this application, in any form or modality, without prior, express and written
+       authorization, including, in particular, their mere reproduction and / or making available as abstracts,
+       reviews or press reviews for commercial or directly or indirectly profit-making purposes, to which
+       manifest express opposition. Likewise, the presentation of the sections of the application and
+       the insertion of images disseminated in the application on pages not belonging to the Company (whatever
+       the technique used for this). The unauthorized use of these contents will give rise to the
+       legally established responsibilities. The Company, in accordance with the provisions of the LSSI, does not
+       will be liable for infringements carried out by the User of the application that affect third parties, unless the
+       itself has an “effective knowledge” of said infraction. The Company informs Users that, except
+       prior authorization, express and in writing, does not grant any express or implied license or authorization
+       on intellectual and / or industrial property rights or on any other right or property
+       related, directly or indirectly, with the contents included in the application, being prohibited
+       any alteration or modification of the contents and of any other element of the application.
+       &lt;br>&lt;/br>
+       In the event that Users upload content to the application, the Company informs you that you will continue to maintain
+       the ownership of the rights over your content, although by uploading, uploading or publishing content in the application (the "Content") you agree to grant in favor of the Company, a license for everyone, no
+       exclusive and transferable (with the power to sublicense to third parties), for the maximum duration of the rights
+       in accordance with applicable legislation, to use, reproduce, distribute, publicly communicate
+       (including making them available to the public), make derivative works, transform, display and perform
+       that Content in relation to the provision of the application services and the operation of the application and the activity of the Company, including without limitation, for the purposes of promotion and
+       redistribution of all or part of the application (and its derivative works) in any format
+       and / or modes of exploitation and through any communication channel. The previous license granted
+       by the User regarding the content uploaded, it will be canceled when the User removes or deletes their
+       contents of the application.
+       &lt;br>&lt;/br>
+        All trade names, trademarks or distinctive signs, logos, symbols, mixed, figurative marks
+       or registered names that appear in this application belong to the Company or it holds the
+       corresponding use licenses on them.
+
+
+       &lt;h4 align="left">8.- Links policy.&lt;/h4>
+       &lt;h5 align="left">Links to other applications or websites.&lt;/h5>
+        Links to sites controlled by third parties may be included in the application. The User must
+       Remember that when using a link to access from the application to another, the Policy will cease to have effect
+       Privacy Policy and Cookies Policy of the application. The Privacy Policy of the application does not reflect the
+       privacy practices of those other third party sites. In accordance with the provisions of the
+       Article 17 of the LSSI, the Company declines, unless it has “effective knowledge” of the commission of a
+       illicit act or that property or rights of a third party liable to compensation are injured, any
+       type of responsibility regarding privacy and data processing of other applications. The
+       Navigation and interaction in any other application or website, including those that are linked to the application, is subject to the rules and policies of said site. We recommend that the User read the policies of
+       data processing and privacy of the websites or applications you visit through the link on the Website
+       or in any other way.
+
+       &lt;h5 align="left">Links on other websites to the application.&lt;/h5>
+       If any third party, entity or website wishes to establish some type of link to the application, it must respect the following:
+
+       &lt;ol type="a">
+           &lt;li>The link may be directed to the main page of the application.&lt;/li>
+           &lt;li>The link must be absolute and complete, that is, it must take the User, by clicking, to the
+               URL address of the Website covering the entire extension of the Website screen. In no case,
+               Unless the Company expressly authorizes it in writing, the website that makes the link
+               You may reproduce, in any way, the application, include it as part of your website or within one of
+               its "frames" or create a "browser" on any of the application pages. On the page that
+               establishes the link, it will not be possible to declare that the Company has authorized such a link, unless there is so
+               expressly authorized in writing by the Company. If the entity that makes the link from your page
+               the application will want to include the brand, denomination, trade name, label,
+               logo, slogan or any other type of identifying element of the Company and / or the application,
+               You must first have your express written authorization.&lt;/li>
+           &lt;li>Under no circumstances does the Company authorize the establishment of a link to the application from those
+               web pages that manifestly promote hatred, contempt or discrimination on the grounds of
+               birth, race, sex, religion, nationality, opinion or any other personal or social circumstance
+               and in general, that contravene morality, public order or generally accepted social norms.
+           &lt;/li>
+       &lt;/ol>
+
+        In any case, the Company does not assume any type of responsibility for any relative aspect
+       to the web page that establishes that link to the application, specifically, by way of example and not
+       limiting, on its operation, access, data, information, files, quality and reliability of its
+       products and services, their own links and / or in general any of their content.
+
+       &lt;h4 align="left">9.-Protection of personal data and cookie policy.&lt;/h4>
+
+The aspects related to the treatment of the personal data of the Users due to the use
+       of the application are regulated in the texts of &lt;a href="#">Privacy Policy&lt;/a>attached to the various
+       data collection forms that can be included in the application.
+       &lt;br>&lt;/br>
+      Like other Internet applications, the application uses a technology called "cookies" to
+       collect information on how to use the application. For detailed information on how the
+       Society uses cookies, see text &lt;a href="#">Cookies policy.&lt;/a>
+
+       &lt;h4 align="left">10.-What can you do if you detect illegal or inappropriate content.&lt;/h4>
+        If you have knowledge that any kind of information or content of the application or
+       provided through it is illegal, harmful to the rights of third parties, contrary to what is established in the
+       these Conditions or, in any other way, harmful or contrary to morals, uses and customs, you can
+       get in touch with us through the contact listed in the &lt;a href="#">Legal warning&lt;/a>,
+        indicating::
+
+       &lt;ol type="a">
+           &lt;li>identification data and contact details;&lt;/li>
+           &lt;li>description of the reasons why you consider the content or information to be illegal or inappropriate
+               as the specific address where it is available;&lt;/li>
+           &lt;li>In the event of violation of the rights of third parties, provide the data of the right holder
+               infringed when it is a person other than the communicator. You must also provide the title that proves
+               the ownership of the violated rights and, where appropriate, the representation to act on behalf of the
+               holder when it is a person other than the communicator.&lt;/li>
+       &lt;/ol>
+
+
+        The receipt by the Company of the communication provided for in this clause will not imply,
+       the effective knowledge of the activities and / or contents indicated by the communicator, when this does not
+       is noticeable or obvious. In any case, the Company reserves the right to suspend or withdraw the
+       contents that, although not illegal, are contrary to the rules established in these
+       Conditions, weighing in each case the legal rights in conflict.
+
+       &lt;h4 align="left">11.-Responsibilities.&lt;/h4>
+        Given the specialties of the Internet, the Company is not responsible for:
+
+       &lt;ol type="a">
+           &lt;li>LThe lack of availability and continuity due to the operation, usefulness and reliability of the services and
+               of the Website, not even onerous or non-free services for Users, derived from a
+               fortuitous act, force majeure or is not directly attributable to the Company.&lt;/li>
+           &lt;li>The alteration of privacy and security in the use and contents of the application and the
+               services by third parties unrelated to them in accordance with the current legal regime.&lt;/li>
+           &lt;li>the presence of viruses or the presence of other false elements in the services offered by third parties
+               through the application that may cause alterations in the computer system, documents
+               electronic files or user files.&lt;/li>
+           &lt;li>The lack of veracity, accuracy, exclusivity, timeliness of the content offered through the application, whether it is content offered by the Company itself or offered by third parties, except
+               that the Company has “effective knowledge” of the commission of an illicit act or of the injury of
+               assets or rights of a third party.&lt;/li>
+       &lt;/ol>
+
+           The Company is not responsible for damages caused to Users such as
+           consequence of the risks inherent to the environment used, nor of those caused by vulnerabilities in
+           its systems and tools that are derived from a fortuitous act, force majeure or are not attributable
+           directly to the Company.
+           &lt;br>&lt;/br>
+           The Company does not guarantee the total security of its systems and although it has adopted security measures
+           adequate vulnerabilities, the existence of vulnerabilities due to force majeure or a
+           fortuitous event and, consequently, you must be cautious when interacting with the application.
+
+
+       &lt;h4 align="left">12.- Various.&lt;/h4>
+           These Conditions may undergo any change, which will be communicated through your
+           post in app.
+
+           In the event that the Company does not exercise any right or legal action contemplated in the Conditions (or
+           that corresponds to it under applicable law), this will not constitute a formal waiver of its
+           rights.
+
+           The relationships established between the Company and the Users as a consequence of the use of the
+           Services that we provide through the application, will be governed by the provisions of Spanish regulations
+           in force in relation to the applicable legislation and the competent jurisdiction. However, for
+           assumptions in which the current regulations provide that the parties may submit to a determined jurisdiction, the
+           Society and Users, expressly waiving any other jurisdiction that may correspond to them, submits
+           to the jurisdiction of the Courts and Tribunals of the city indicated in the &lt;a href="#">Legal warning&lt;/a>.
+    </string>
+
+
+    <string name="about_developers">
+        &lt;div>
+             This application was developed by two enthusiastic programmers who found a need through a very common problem in our environment.
+        &lt;/div>
+        &lt;br>&lt;/br>
+        &lt;div>
+            &lt;b>Johan Martínez,&lt;/b> is a Systems Engineer with a passion for programming and technology, he has dedicated a lot of his free time to carry out this FinderPet development.
+        &lt;div>
+        &lt;div>
+            &lt;b>Johnnatan Velásquez,&lt;/b> He is a Software Development student who begins to grow in the programming environment, in addition, he has worked in recent years in environments where pets are the center of attention.
+        &lt;/div>
+
+        Together, they started this venture that is now a reality and that is helping many people find their pets, either because they lost their way or because they made the decision to adopt one.
+    </string>
+    <string name="channel_notifications">News and promotions</string>
+    <string name="channel_description">Default notification channel</string>
+    <string name="donation_bancolombia_msg2">You can also make a deposit in bank or correspondent in the following savings account</string>
+    <string name="microchip" translatable="false">Microchip</string>
+    <string name="number_account_bancolombia" translatable="false">75287102682</string>
+    <string name="number_account_davivienda" translatable="false">488414082252</string>
 </resources>

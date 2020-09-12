@@ -148,11 +148,11 @@
     <!-- Sección de preguntas frecuentes -->
     <string name="frequents_questions">Preguntas frecuentes</string>
     <string name="question_1">¿Cómo hacer una publicación nueva de una mascota encontrada, perdida o en adopción?</string>
-    <string name="question_2">¿Cómo puedo cambiar los ajustes de País o ciudad?</string>
+    <string name="question_2">¿Cómo puedo cambiar el rango de visualización de las vistas?</string>
     <string name="question_3">¿Cómo puedo eliminar una publicación que hice?</string>
     <string name="answer_1">Debes dirigirte a la pantalla de inicio, luego debes escoger entre las 3 opciones que tenemos para publicar, puede ser encontrados, Perdidos o en Adopción, te aparecerá la lista de las mascotas con tu elección y en la parte inferior encontraras on botón que te permite agregar una nueva publicación, Te aparece un formulario que debes diligenciar y luego das clic en Guardar.</string>
-    <string name="answer_2">Debes dirigirte a la sección de Ajustes del menú desplegable, luego en la sección de UBICACIÓN seleccionas "País" o "Estado o Ciudad" dependiendo de lo que quieres cambiar, te aparece una lista donde puedes seleccionar el País o Ciudad de tu preferencia.</string>
-    <string name="answer_3">Si quieres eliminar una publicación porque tiene algún error en los datos ingresados, puedes enviar un correo a nuestra área de soporte (finderpetapp@gmail.com) para que tu publicación sea corregida, debes informar en que campo quedó el error y la información correcta que se ingresará. En el caso de que ya no quieras que aparezca tu publicación en nuestra App, envía el correo con el asunto Eliminar publicación definitivamente.</string>
+    <string name="answer_2">Debes dirigirte a la sección de Ajustes del menú desplegable, luego ingresar en la sección de Radio de búsqueda y en la lista escoger el radio de búsqueda que prefieras. Recuerda que entre más alto sea el rango de visualización, más resultados verás en las 3 listas de reportes.</string>
+    <string name="answer_3">Si quieres eliminar una publicación porque tiene algún error en los datos ingresados, debes dirigirte al boton flotante que está en la parte posterior derecha de la publicación que hiciste y luego aceptar la eliminación.</string>
     <string name="send">Enviar</string>
     <string name="problem_description">Descripción del problema</string>
     <string name="problem_title">Título del problema</string>
@@ -201,10 +201,10 @@
     <string name="type">Tipo</string>
     <string name="all">Todos</string>
     <string name="donation_bancolombia">Donación Bancolombia</string>
-    <string name="scan_cod_bancolombia">Escanea éste código QR para realizar una donación a través de Bancolombia</string>
-    <string name="account_donate_baloto">Puedes realizar una donación a través de baloto con este número de cuenta:</string>
-    <string name="donation_baloto">Donación Baloto</string>
-    <string name="number_account_baloto" translatable="false">90150001648221</string>
+    <string name="donation_bancolombia_msg1">Escanea éste código QR para realizar una donación a través de transferencia</string>
+    <string name="account_donate_baloto">Puedes realizar una donación a través de consignación bancaria o en la red Baloto a la siguiente cuenta de ahorros:</string>
+    <string name="donation_davivienda">Donación Davivienda</string>
+    <string name="number_account_davivienda">488414082252</string>
     <string name="report_format">Formato de Reporte</string>
     <string name="donations">Donaciones</string>
     <string name="main_menu">Menú Principal</string>
@@ -218,7 +218,7 @@
     <string name="configure_ads">Configurar anuncios</string>
     <string name="activate_ads_main">Activa o desactiva los anuncios del menú pricipal.</string>
     <string name="push_notifications">Notificaciones Push</string>
-    <string name="pause_notificacions">Pausar todas las notificaciones.</string>
+    <string name="preference_notificacions_msg">Habilita o deshabilita las notificaciones push o un grupo de ellas</string>
     <string name="account_settings">Configuración de la cuenta</string>
     <string name="update_data_delete_account">Actualiza tus datos o elimina tu cuenta</string>
     <string name="update_app">Actualizar la Aplicación</string>
@@ -322,13 +322,518 @@
     <string name="phone_profile">Teléfono</string>
     <string name="write_your_phone">Escribe tu teléfono</string>
     <string name="update_photo_profile">Actualizando foto de perfil</string>
-    <string name="microchip" translatable="false">Microchip</string>
+    <string name="microchip">Microchip</string>
     <string name="you_must_login_again">Debes iniciar sesión de nuevo para continuar</string>
     <string name="delete_post_title">¿Deseas eliminar tu publicación por completo?</string>
     <string name="delete_post_msg">No podrá recuperar la información después de eliminarla</string>
     <string name="post_was_successfully_removed">La publicación fue eliminada con éxito</string>
     <string name="post_was_not_successfully_removed">La publicación no fue eliminada con éxito</string>
-    <string name="about_app_msg">Finderpet es una herramienta que busca solucionar la gran porblemática que se presenta en el mundo con la pérdida de las mascotas. También ofrece una solucíon para aquellas personas o fundaciones que buscan un nuevo hogar para mascotas desprotegidas.</string>
+    <string name="about_app_msg">Finderpet es una herramienta que busca solucionar la gran problemática que se presenta en el mundo con la pérdida de las mascotas. También ofrece una solucíon para aquellas personas o fundaciones que buscan un nuevo hogar para mascotas desprotegidas.</string>
     <string name="copyright_msg">Derechos de autor © 2020 Machine Code. Todos los derechos reservados</string>
+    <string name="tutorial_map_msg">En la vista de mapa podrás encontrar mascotas reportadas en todo el mundo.</string>
+    <string name="tuto_advert_msg">No olvides visitar nuestra sección de anuncios dónde encontrarás todo lo relacionado con el mundo de la veterinaria</string>
+    <string name="tutorial_advert">Sección de anuncios</string>
+    <string name="tutorial_push_msg">Puedes activar las notificaciones y así enterarte de todos los reportes de mascotas encontradas en tiempo real</string>
+
+
+
+
+
+    <!-- Politicas y condiciones de uso -->
+    <string name="data_policy">
+        &lt;div>
+            &lt;b>Política de datos de FinderPet&lt;/b>
+            &lt;br>&lt;/br>
+            &lt;p align="justify">En esta política se describe la información que tratamos a fin de proporcionar los servicios de FinderPet, así como de otros productos y funciones que FinderPet ofrece (“Anuncios de FinderPet” o “Productos y Servicios de FinderPet”).&lt;/p>
+
+        &lt;/div>
+
+        &lt;div>
+        &lt;b>I. ¿Qué tipos de información recopilamos?&lt;/b>
+        &lt;br>&lt;/br>
+        Debemos tratar tu información a fin de proporcionarte los Productos de FinderPet. El tipo de información que recopilamos depende de la forma en la que usas nuestra aplicación. Obtén información sobre cómo acceder a los datos que recopilamos y cómo eliminarlos en la configuración de FinderPet.
+
+        Cosas que tú y otras personas hacen y nos proporcionas.
+
+        Información y contenido que nos proporcionas. Recopilamos el contenido, las comunicaciones y otros datos que proporcionas cuando usas nuestros Productos, por ejemplo, cuando te registras para crear una cuenta, creas o compartes contenido. Esta información puede corresponder a datos incluidos en el contenido que proporcionas (por ejemplo, los metadatos) o relacionados con este, como el lugar donde se hizo una foto o la fecha de creación de un archivo o publicación. También puede incluir el contenido que ves a través de las funciones que ponemos a tu disposición, como la cámara, así como darte consejos sobre cómo usar los formatos de cámara. Nuestros sistemas realizan automáticamente el tratamiento del contenido y las comunicaciones que tú y otras personas proporcionan para analizar el contexto y lo que incluyen en relación con los propósitos que se describen a continuación.
+        &lt;br>&lt;/br>
+             &lt;b>Datos de categorías especiales:&lt;/b> Puedes optar por proporcionar información en los campos de tu perfil de FinderPet.
+        &lt;br>&lt;/br>
+        &lt;b>Tu uso:&lt;/b> Recopilamos información sobre cómo usas nuestra aplicación, como los tipos de contenido que ves o con los que interactúas, las funciones que utilizas, las acciones que llevas a cabo y la hora, la frecuencia y la duración de tus actividades. Por ejemplo, registramos cuándo estás usando y cuándo has usado nuestros Productos por última vez, y qué publicaciones y otro tipo de contenido ves en nuestra aplicación. También recopilamos información sobre cómo usas funciones como nuestra cámara.
+        Si usas nuestros Productos para efectuar transacciones económicas (por ejemplo, haces una donación), recopilamos datos sobre dichas transacciones. Esos datos incluyen la información del donante.
+        Información sobre el dispositivo
+        Como se describe a continuación, recopilamos información de los ordenadores, los teléfonos y otros dispositivos conectados a la web que usas y que se integran con nuestros Productos, y combinamos esta información en los diferentes dispositivos que empleas. Por ejemplo, utilizamos la información que recopilamos sobre el uso que haces de nuestros Productos en el teléfono para mejorar la personalización del contenido (incluidos los anuncios) o las funciones que ves cuando usas nuestros Productos en otro dispositivo, como un portátil o una tableta, o bien con el fin de detectar si has realizado alguna acción en respuesta a un anuncio que te hemos mostrado en el teléfono u otro dispositivo.
+        Entre los datos que obtenemos de los dispositivos se incluyen los siguientes:
+        &lt;br>&lt;/br>
+         &lt;b>Características del dispositivo:&lt;/b> información como el sistema operativo, la versión de hardware y software, el nivel de carga de la batería, la potencia de la señal, el espacio de almacenamiento disponible, el tipo de navegador, los tipos y nombres de aplicaciones o archivos, y los plugins.
+        &lt;br>&lt;/br>
+        &lt;b>Operaciones del dispositivo:&lt;/b> información sobre las operaciones y los comportamientos realizados en el dispositivo, como poner una ventana en primer o segundo plano, o los movimientos del ratón (lo que permite distinguir a los humanos de los bots).
+        Datos de la configuración del dispositivo: información que nos permite recibir al activar la configuración correspondiente en el dispositivo, como el acceso a la ubicación de GPS, la cámara y las fotos.
+
+        &lt;/p>
+
+        &lt;/div>
+
+
+        &lt;p>
+        &lt;b>II. ¿Cómo empleamos esta información?&lt;/b>
+        &lt;br>&lt;/br>
+        Usamos la información de la que disponemos (de acuerdo con las decisiones que tomes) según lo descrito a continuación para proporcionar los Productos de FinderPet y los servicios relacionados descritos en las Condiciones de uso, así como para asegurar su funcionamiento. Utilizamos estos datos para los siguientes aspectos:
+        &lt;br>&lt;/br>
+        &lt;b>Proporcionar, personalizar y mejorar nuestros Productos.&lt;/b>
+        Utilizamos la información de la que disponemos para ofrecer nuestros Productos, así como para personalizar las funciones y el contenido (incluidos los anuncios, la sección de posts de mascotas encontradas, perdidas o en adopción), y proporcionar sugerencias (como grupos o eventos que te pueden interesar o temas que quizás quieras seguir) tanto dentro como fuera de nuestros Productos. Con el objetivo de crear Productos personalizados que sean únicos y relevantes para ti, usamos tus conexiones, preferencias, intereses y actividades en función de los datos que recopilamos y que tú y otras personas nos proporcionan (incluidos aquellos datos de categorías especiales que decidas facilitarnos), así como la forma en la que usas nuestros Productos e interactúas con ellos y las personas, los lugares o las cosas con los que te conectas y en los que muestras interés, tanto dentro como fuera de nuestros Productos.
+        &lt;br>&lt;/br>
+        &lt;b>Información relacionada con la ubicación:&lt;/b> usamos la información relacionada con la ubicación, como tu ubicación actual para proporcionar, personalizar y mejorar nuestros Productos, incluidos los anuncios, a fin de que resulten más relevantes para ti y otras personas. Este tipo de información puede basarse en datos como la ubicación precisa del dispositivo (si nos has permitido recopilar esta información), direcciones IP e información de uso de los Productos de FinderPet.
+        &lt;br>&lt;/br>
+        &lt;b>Investigación y desarrollo de productos:&lt;/b> usamos la información que tenemos para desarrollar, probar y mejorar nuestros Productos (incluso a través de encuestas e investigaciones), así como para probar y solucionar problemas de funciones y productos nuevos.
+        &lt;br>&lt;/br>
+        &lt;b>Anuncios y otro contenido patrocinado:&lt;/b> a partir de la información que tenemos sobre ti, incluidos datos sobre tus intereses, acciones y conexiones, seleccionamos y personalizamos anuncios, ofertas y otro contenido patrocinado que te mostramos.
+        &lt;br>&lt;/br>
+        &lt;b>Proporcionar mediciones, análisis y otros servicios para empresas.&lt;/b>
+        Usamos la información que tenemos con objeto de ayudar a los anunciantes y otros socios a medir la eficacia y la distribución de sus anuncios y servicios, así como para ayudarles a conocer qué tipos de personas usan sus servicios y cómo interactúan con sus sitios web, aplicaciones y servicios.
+        &lt;br>&lt;/br>
+        &lt;b>Fomentar la seguridad, la integridad y la protección.&lt;/b>
+        Utilizamos la información de la que disponemos para verificar cuentas y actividades, combatir conductas perjudiciales, detectar y prevenir spam y otras experiencias negativas, conservar la integridad de nuestros Productos y fomentar la seguridad tanto dentro como fuera de los Productos de FinderPet. Por ejemplo, empleamos estos datos para investigar actividades sospechosas o infracciones de nuestras condiciones y políticas.
+        &lt;br>&lt;/br>
+        &lt;b>Comunicarnos contigo.&lt;/b>
+        Usamos la información a nuestra disposición para enviarte mensajes de marketing, darte a conocer nuestros Productos e informarte acerca de nuestras políticas y condiciones. También la utilizamos para responderte cuando te pones en contacto con nosotros.
+
+        &lt;/p>
+
+        &lt;p>
+        &lt;b>III. ¿Cómo se comparte esta información?&lt;/b>
+        &lt;br>&lt;/br>
+        &lt;b>Tu información se comparte con otros de las siguientes formas:&lt;/b>
+        &lt;br>&lt;/br>
+            Cuando compartes información usando nuestra aplicación, aceptas que las publicaciones serán públicas y que cualquier usuario que utilice nuestros Productos podrán verla sin ninguna restricción.
+            Cualquier persona puede ver la información pública, tanto dentro como fuera de nuestros Productos, incluso aunque no tenga una cuenta. Entre estos datos se incluyen tu nombre de usuario de FinderPet, la información que compartes de forma pública y la información de tu perfil público. Tú, otras personas que usan FinderPet y nosotros podemos conceder acceso a información pública o enviar dicha información a cualquier persona tanto dentro como fuera de nuestros Productos, en los resultados de la búsqueda o por medio de herramientas y API. También es posible usar servicios de terceros, como motores de búsqueda, API y medios no relacionados con internet (como la televisión), así como aplicaciones, sitios web y otros servicios que se integran con nuestros Productos para acceder a información pública, verla, volver a compartirla o descargarla.
+            Nuevo propietario
+            Si cambian la propiedad o el control de la totalidad o de parte de nuestros Productos o de sus activos, podemos transferir tu información al nuevo propietario.
+        &lt;br>&lt;/br>
+        &lt;b>Con socios externos:&lt;/b>
+            Colaboramos con socios que nos ayudan a proporcionar y mejorar nuestros Productos con el propósito de hacer crecer su negocio. Gracias a ellos podemos gestionar nuestras empresas y proporcionar servicios gratuitos a personas de todo el mundo. No vendemos tus datos a nadie ni lo haremos en el futuro. Del mismo modo, imponemos estrictas restricciones sobre la manera en que nuestros socios pueden utilizar y divulgar los datos que proporcionamos. Estos son los tipos de socios externos con los que compartimos información:
+            Socios que usan nuestros servicios de análisis
+            Proporcionamos conjuntos de estadísticas e información que las personas y las empresas utilizan para conocer cómo interactúan los demás con sus publicaciones, anuncios, páginas, vídeos y otro contenido dentro y fuera de los Productos de FinderPet.
+            &lt;br>&lt;/br>
+            &lt;b>Anunciantes.&lt;/b>
+            Ofrecemos a los anunciantes informes para indicarles qué tipos de personas ven sus anuncios y qué resultados generan. No obstante, a menos que nos des permiso para hacerlo, no compartimos información que te identifique personalmente, como tu nombre o dirección de correo electrónico, datos que se puedan emplear para ponerse en contacto contigo o que puedan revelar tu identidad. Proporcionamos a los anunciantes datos demográficos generales e información sobre intereses (por ejemplo, que una mujer de entre 25 y 34 años que vive en Colombia y a la que le interesa la veterinaria ha visto su anuncio). Estos datos tienen como fin ayudarlos a conocer mejor su público.
+            &lt;br>&lt;/br>
+            &lt;b>Socios de medición.&lt;/b>
+            Compartimos información sobre ti con empresas que la procesan en conjunto para ofrecer análisis e informes de medición a nuestros socios.
+            &lt;br>&lt;/br>
+            &lt;b>Socios que ofrecen bienes y servicios en nuestros Productos.&lt;/b>
+            Si compras un artículo que alguien vende en nuestros Productos, el creador del contenido o el vendedor pueden recibir tu información pública y otros datos que compartas con ellos, así como la información necesaria para completar la transacción, incluidos detalles de contacto y envío.
+            &lt;br>&lt;/br>
+            &lt;b>Proveedores de servicios.&lt;/b>
+            Proporcionamos información y contenido a proveedores de servicios que nos ayudan a que podamos continuar con nuestro negocio. Estos proveedores se dedican a ofrecer servicios de infraestructura técnica, analizar el uso de nuestros Productos, proporcionar servicios de asistencia al cliente, facilitar pagos o realizar encuestas.
+            &lt;br>&lt;/br>
+            &lt;b>Investigadores y académicos&lt;/b>
+            También facilitamos información y contenido a socios investigadores y académicos a fin de que realicen investigaciones que permitan profundizar en los conocimientos y la innovación necesarios para contribuir a nuestro negocio o propósito, así como para promover el descubrimiento y la innovación en temas relacionados con el bienestar social general, los avances en el campo de la tecnología y el interés, la salud y el bienestar públicos.
+            &lt;br>&lt;/br>
+            &lt;b>Cumplimiento de requerimientos legales o solicitudes de las autoridades policiales.&lt;/b>
+            Compartimos información con las autoridades policiales o en respuesta a requerimientos legales en las circunstancias que se detallan a continuación.
+            &lt;/p>
+        &lt;p>
+        &lt;b>IV. ¿Cómo puedo administrar o eliminar información sobre mí?&lt;/b>
+        &lt;br>&lt;/br>
+        Te proporcionamos la posibilidad de acceder a tus datos, rectificarlos y suprimirlos, así como de obtener su portabilidad.
+        Almacenamos los datos hasta que dejan de ser necesarios para proporcionarte nuestros servicios y Productos de FinderPet, o hasta que se elimina tu cuenta, lo que ocurra primero. La necesidad de los datos se determina en función de cada caso y obedece a factores como la naturaleza de los datos, el motivo de la recopilación y el tratamiento, y las necesidades de retención operativas o legales aplicables. Por ejemplo, si realizas una búsqueda en FinderPet, puedes acceder a esa consulta y eliminarla del historial de búsqueda en cualquier momento, pero el registro de dicha búsqueda se elimina transcurridos seis meses. Si envías una copia de tu documento de identidad para que se verifique una cuenta, la eliminaremos 30 días después de recibirla.
+        Cuando eliminas tu cuenta, eliminamos el contenido que has publicado, como las fotos y comentarios. Si no quieres eliminar la cuenta, pero quieres dejar de usar los Productos durante un tiempo, puedes desactivarla. Puedes eliminar tu cuenta cuando quieras desde la configuración de FinderPet.
+        &lt;/p>
+        &lt;p>
+        &lt;b>V. ¿Cómo respondemos a requerimientos legales o evitamos que se produzcan daños?&lt;/b>
+        &lt;br>&lt;/br>
+        Accedemos a tu información, la preservamos y la compartimos con organismos reguladores, autoridades policiales u otras partes en los supuestos siguientes:
+
+            En respuesta a un requerimiento legal (una orden de registro, una orden judicial o una citación, por ejemplo) si creemos de buena fe que la legislación nos obliga a hacerlo. Esto puede incluir la respuesta a requerimientos legales de jurisdicciones ajenas a la República de Colombia si creemos de buena fe que la legislación de esa jurisdicción exige dicha respuesta, afecta a los usuarios de su jurisdicción y resulta coherente con estándares reconocidos internacionalmente.
+            Si creemos de buena fe que es necesario para detectar, impedir y abordar casos de fraude, uso no autorizado de los Productos, infracciones de las condiciones o las políticas aplicables, así como otras actividades dañinas o ilegales; para protegernos (incluidos nuestros derechos, nuestra propiedad o nuestros Productos), así como para protegerte a ti o a otras personas; también como parte de investigaciones o consultas de tipo regulatorio; y para evitar la muerte o daños físicos inminentes. Por ejemplo, en los casos pertinentes, proporcionamos información a socios externos y la recibimos de ellos sobre la fiabilidad de tu cuenta para prevenir fraudes, usos abusivos y otras actividades dañinas que se produzcan en nuestros Productos o fuera de ellos.
+
+        Podemos acceder a la información que recibamos sobre ti (incluida información sobre transacciones económicas relativa a donaciones realizadas con FinderPet) y preservarla durante un período prolongado en caso de que esté sujeta a un requerimiento u obligación judicial, una investigación gubernamental o investigaciones relacionadas con posibles infracciones de nuestras políticas o condiciones, o bien para evitar daños. También podemos conservar información sobre las cuentas que se han desactivado por incumplir nuestras condiciones durante un mínimo de un año con el objetivo de evitar que se repitan conductas abusivas o infracciones de nuestras condiciones.
+        &lt;/p>
+        &lt;p>
+        &lt;b>VI. ¿Cómo te notificaremos los cambios que se produzcan en esta política?&lt;/b>
+        &lt;br>&lt;/br>
+        Te enviaremos una notificación antes de realizar cambios en esta política para que puedas revisar las modificaciones y decidir si quieres seguir usando nuestros Productos.
+        &lt;/p>
+        &lt;p>
+        &lt;b>VII. Cómo remitir tus dudas a FinderPet&lt;/b>
+        &lt;br>&lt;/br>
+        Obtén más información sobre cómo funciona la privacidad en FinderPet. Si tienes preguntas acerca de esta política, contacta con nosotros a través de los métodos que se indican a continuación.
+        Puedes ponerte en contacto con nosotros por correo electrónico en la dirección:
+        &lt;b>finderpetapp@gmail.com&lt;/b>
+        &lt;/p>
+        FinderPet
+         &lt;br>&lt;/br>
+        Medellín, Colombia.
+         &lt;br>&lt;/br>
+        &lt;p>
+        Fecha de la última revisión: 1 de agosto de 2020
+         &lt;/p>
+        </string>
+
+    <string name="terms_of_use">
+       &lt;h4 align="left">1.- Quienes somos&lt;/h4>
+       La presente aplicación, es operada por la
+       sociedad (“Finderpet”), identificados en su respectiva tienda de aplicaciones y la Sociedad con los datos que puedes encontrar en el &lt;a
+        href="#">Aviso Legal.&lt;/a>
+       &lt;h4 align="left">2.- Qué regulan las Condiciones.&lt;/h4>
+
+       Las presentes condiciones de uso (“Condiciones”) regulan el acceso y utilización de los servicios de
+       la sociedad de la información que ponemos a su disposición como usuarios (“Usuario/s”) de la red
+       Internet a través de la aplicación (en cualquiera de sus modalidades, aplicaciones, etc. y para cualquier tipo
+       de dispositivos -fijos o móviles- a través de los cuales se acceda a la aplicación), así como, en general, la
+       relación entre vosotros Usuarios y la aplicación, a salvo de otras comunicaciones, condiciones e
+       instrucciones particulares o específicas, que en cada caso se pongan en su conocimiento.
+       El acceso o mera utilización de la aplicación implica la adhesión como Usuarios a las Condiciones
+       publicadas en cada momento en la aplicación y que estarán disponibles para los Usuarios. En consecuencia,
+       debes leer atentamente estas Condiciones. En cualquier momento, podrás guardar o imprimir las Condiciones y
+       aconsejamos que lo hagas.
+
+       &lt;h4 align="left">3.- Información previa para el acceso a los servicios de la aplicación.&lt;/h4>
+       Antes de usar los servicios de la aplicación o de registraros, los Usuarios asumen expresamente que
+       son personas capaces de discernir, que han entrado a la aplicación por voluntad propia y que no han sido
+       coaccionados para ello, y que la selección de los servicios que lleven a cabo lo hacen por su sola y única
+       cuenta y riesgo, aceptando expresamente estas Condiciones, Política de Privacidad y Política de Cookies, así
+       como aquellos otros avisos e instrucciones, comunicaciones, o condiciones particulares, que en cada caso se
+       ponga en vuestro conocimiento.
+       En relación con las condiciones particulares que regulen otros servicios de la aplicación, estas Condiciones
+       completan lo previsto en esas condiciones particulares en la medida que no se opongan a las mismas.
+       Debes saber que las comunicaciones a través de redes abiertas están expuestas a amenazas que hacen que no
+       sean seguras. La Sociedad adopta todas las medidas de seguridad adecuadas para un correcto funcionamiento
+       de la aploicación. No obstante, el Usuario debe adoptar todas las medidas técnicas que le correspondan para
+       controlar razonablemente estas amenazas (tener sistemas actualizados de detección de software malicioso,
+       tales como virus, troyanos, etc., tener actualizados los parches de seguridad de los correspondientes
+       navegadores). Como Usuario eres el único y exclusivo responsable del uso por tu parte de la aplicación y de los
+       servicios y, consciente de ello, aceptas voluntariamente tal responsabilidad.
+
+       &lt;h5 align="left">En relación con los menores.&lt;/h5>
+       En relación con la navegación en la aplicación por menores, a salvo de lo indicado en los
+       párrafos anteriores, los Usuarios quedan advertidos que la Sociedad no puede controlar, aparte de otras
+       circunstancias, que menores de edad hagan uso de la aplicación y de sus servicios. Por ello, además de no
+       admitir la aplicación, la Sociedad ni su Grupo empresarial responsabilidad alguna al respecto, se comunica
+       que serán los padres y tutores los únicos responsables de controlar y asistir a los menores en la navegación
+       por esta aplicación y habilitar cualesquiera otros mecanismos necesarios que, en su caso, impidan el acceso
+       por parte de los menores a la aplicación y/o sus servicios, no admitiendo la Sociedad ninguna reclamación al
+       respecto.
+
+       &lt;h5 align="left">Claves de acceso o similares.&lt;/h5>
+       En caso de que algún servicio de la aplicación incluya claves de acceso o nombres de usuario, elegirás e
+       indicarás tus propias claves de acceso (nombre de usuario, contraseña, password, o similar), sin perjuicio
+       de otros datos que se puedan solicitar en el correspondiente formulario, y no pudiendo elegir para ello
+       palabras, expresiones o conjuntos gráfico-denominativos malsonantes, injuriosos, coincidentes con marcas,
+       nombres comerciales, rótulos de establecimientos, denominaciones sociales, expresiones publicitarias,
+       nombres y seudónimos de personajes de relevancia pública o famosos para cuya utilización no esté autorizado
+       y, en general, contrarios a la ley o a las exigencias de la moral y buenas costumbres generalmente
+       aceptadas.
+       &lt;br>
+       La asignación del nombre de usuario se produce de manera automática previa elección del Usuario. En el
+       supuesto de que estas claves solicitadas se encuentren reservadas, deberás introducir unas nuevas claves de
+       acceso.
+       &lt;br>
+       El Usuario se compromete a hacer un uso diligente de las claves de acceso, a no ponerlas a disposición de
+       terceros, y a comunicar a la Sociedad la pérdida o robo de las claves de acceso y el posible acceso por un
+       tercero a las mismas.
+       &lt;br>
+       Como Usuario eres el único y exclusivo responsable de tu identificación de acceso al servicio. Las
+       consecuencias derivadas de su uso por terceros, su mal uso, pérdida u olvido del código secreto de acceso de
+       los usuarios - password - o bien del nombre de usuario son de tu única y exclusiva responsabilidad.
+
+       &lt;h4 align="left">4.- Características generales de los servicios.&lt;/h4>
+       Los servicios a los que puedes acceder en la aplicación son, por regla general, gratuitos sin que
+       los Usuarios tengan que realizar contraprestación alguna para poder disfrutar de ellos, salvo en lo relativo
+       al coste de conexión a través de la red de telecomunicaciones suministrada por el proveedor de acceso que
+       hubieras contratado. No obstante lo anterior el acceso a determinados contenidos de la aplicación puede ser no
+       gratuitos en función entre otros factores de volumen de accesos por el Usuario o por el tipo de contenidos,
+       de lo que, en todo caso, se informará y, en su caso, se exigirá una suscripción o registro.
+
+       &lt;h5 align="left">Contenidos o servicios ofrecidos por terceros.&lt;/h5>
+       Podrás acceder a través de la aplicación a otros servicios de la propia Sociedad o a servicios
+       ofrecidos por colaboradores, los cuales dispondrán de sus propias condiciones generales de uso o de
+       contratación, en los cuales se especificará el carácter gratuito u oneroso de los mismos, y sin
+       responsabilidad de la Sociedad al respecto.
+       &lt;br>&lt;/br>
+       En todo caso, de conformidad con lo previsto en el artículo 17 de la Ley 34/2002, de 11 de julio, de
+       servicios de la sociedad de la información y de comercio electrónico (“LSSI”), y salvo que la Sociedad tenga
+       conocimiento efectivo de que la actividad o información contenida en la aplicación o en la aplicación a la que se
+       remite es ilícita o lesiona bienes o derechos de un tercero susceptibles de protección, la Sociedad no
+       responderá de la información ofrecida en o desde la aplicación, por terceros o los Usuarios.
+
+       &lt;h4 align="left">5.- Cómo debe usarse la aplicación.&lt;/h4>
+       Los Usuarios se comprometen a utilizar los servicios, canales y todos los contenidos de la aplicación de conformidad con lo previsto en estas Condiciones, la ley, la moral, las buenas costumbres
+       generalmente aceptadas y el orden público.
+       &lt;br>&lt;/br>
+       Asimismo se obliga a no utilizar la aplicación con fines o efectos fraudulentos, ilícitos, contrarios a lo
+       establecido en estas Condiciones, lesivos de los derechos e intereses de la Sociedad o de terceros, o que de
+       cualquier forma puedan dañar, inutilizar, sobrecargar o deteriorar los servicios y canales de la aplicación y
+       sus contenidos o impedir la normal utilización, funcionamiento o disfrute de los mismos por los Usuarios, ni
+       a modificar ni alterar en modo alguno tanto el contenido como demás elementos de la aplicación . En este
+       sentido, se compromete a no realizar cualquiera de las siguientes actividades:
+
+       &lt;ol type="I">
+           &lt;li>Remitir publicidad de cualquier clase y comunicaciones con fines de venta u otras de naturaleza
+               comercial en la aplicación, o a una pluralidad de personas usuarias de la aplicación sin que medie su previa
+               solicitud o consentimiento.&lt;/li>
+           &lt;li>Remitir cualesquiera otros mensajes no solicitados, ni consentidos previamente a una pluralidad de
+               personas usuarias de la aplicación.&lt;/li>
+           &lt;li>Enviar cadenas de mensajes electrónicos no solicitados, ni previamente consentidos a usuarios de la aplicación.&lt;/li>
+           &lt;li>Utilizar listas de distribución a las que pueda accederse a través de la aplicación o de sus servicios y
+               canales para la realización de las actividades señaladas en los apartados III) a III) anteriores.&lt;/li>
+           &lt;li>Poner a disposición de terceros, con cualquier finalidad, datos captados a partir de listas de
+               distribución.&lt;/li>
+           &lt;li>Obtener, e incluso intentar obtener, informaciones y cualquier clase de material accesible a través de la aplicación o de sus servicios o canales empleando para ello procedimientos distintos de los puestos a su
+               disposición.&lt;/li>
+           &lt;li>Hacer un uso no correcto de los contenidos de la aplicación utilizándolos con fines distintos a los
+               previstos, reproduciéndolos, modificándolos o transformándolos.&lt;/li>
+           &lt;li>Almacenar, publicar y/o transmitir datos, textos, imágenes, archivos, links, software u otros contenidos
+               objetables según las disposiciones legales aplicables o según la estimación de la Sociedad, por ser
+               ilegales, dañinos, amenazantes, abusivos, difamatorios, vulgares, obscenos, racistas u objetables o
+               ilícitos de otra forma o que puedan ocasionar daños de cualquier índole a menores de edad,
+               particularmente los pornográficos, homenajes a la violencia o peligrosos de cualquier otra forma para la
+               juventud.&lt;/li>
+           &lt;li>No obstaculizar el acceso a otros Usuarios al servicio de acceso mediante el consumo masivo de los
+               recursos informáticos a través de los cuales la Sociedad presta el servicio, así como realizar acciones
+               que dañen, interrumpan o generen errores en dichos sistemas o servicios.&lt;/li>
+       &lt;/ol>
+
+
+       Adicionalmente, informamos de que la aplicación se financia principalmente con ingresos derivados
+       de la inclusión de mensajes y reclamos publicitarios a través de los cuales anunciantes publicitan productos
+       y servicios en la aplicación. Al acceder como Usuario a la aplicación, aceptas recibir la información de estos
+       mensajes publicitarios. Por este motivo no se permite, lo cual es condición necesaria para el uso de la aplicación, la instalación o uso de cualquier tipo de tecnología susceptible de producir cualquier tipo de
+       alteración que impida acceder a y/o recibir en su integridad los contenidos de la aplicación (ya sean
+       informativos, publicitarios o de cualquier otro tipo). La Sociedad se reserva la facultad de limitar,
+       suspender o impedir el acceso a la aplicación a aquellos Usuarios que no respeten lo anterior, adoptando la
+       Sociedad cualquier medida técnica que sea necesaria con ese fin.
+       &lt;br>&lt;/br>
+       Se informa a los Usuarios de que en el caso de incumplir lo establecido en estas Condiciones, en la &lt;a
+        href="#">Política de Privacidad&lt;/a> y &lt;a href="#">Política de Cookies&lt;/a> o en cualesquiera otros
+       términos o condiciones particulares recogidos en la aplicación, la Sociedad se reserva el derecho a limitar,
+       suspender o terminar su acceso a la aplicación, adoptando cualquier medida técnica que sea necesaria con ese
+       fin.
+       &lt;br>&lt;/br>
+       Finalmente, ponemos en conocimiento de los Usuarios que la Sociedad se reserva la facultad de decidir, en
+       todo momento, sobre la continuidad de los servicios de la sociedad de la información que presta a través de la aplicación.
+        &lt;br>&lt;/br>
+
+       &lt;h4 align="left">6.- Formas de participación en la aplicación.&lt;/h4>
+       Los Usuarios pueden participar en la aplicación en las áreas que se habiliten con tal finalidad
+       (a título enunciativo envíos, blogs, foros, chats, comentarios, comparticiones, etc.). La Sociedad se limita
+       a habilitar los espacios para esta participación, pero no participará en modo alguno en los mismos, siendo
+       el resultado meras aportaciones u opiniones realizadas por los Usuarios bajo vuestra propia responsabilidad.
+       La difusión de estas aportaciones de los Usuarios en modo alguno significa que las Sociedad se identifique o
+       comparta las ideas, opiniones o manifestaciones expresadas por los Usuarios. Los Usuarios están abligados al
+       uso de dichas áreas en los términos indicados en la sección 5 anterior “Como debe usarse la aplicación”. Con
+       el mero envío de los comentarios o con vuestra participación en estas áreas, autorizas irrevocable, gratuita
+       e ilimitadamente a la Sociedad y a su grupo empresarial a publicar los comentarios más destacados en sus
+       ediciones impresas (ya sean on line, off line o por cualquier otro medio) o en las aplicaciones de las
+       mismas.
+       &lt;br>&lt;/br>
+       Sin que se pueda deducir que cualquier moderación o revisión que se lleve a cabo resulte ser una revisión
+       pormenorizada, la Sociedad se reserva el derecho de suspender o eliminar aquellas aportaciones o comentarios
+       que incumplan la normativa vigente así como las presentes Condiciones.
+       &lt;br>&lt;/br>
+       Los Usuarios que envíen imágenes, fotos, comentarios, etc. garantizan ser el titular, y disponer de las
+       autorizaciones necesarias (en especial en caso de incluir datos o imágenes de terceros y en particular si
+       son menores de edad) para que la Sociedad pueda proceder en la aplicación, gratuitamente y sin cargo asociado
+       ninguno, a su reproducción, distribución, puesta a disposición y comunicación pública. Los Usuarios,
+       garantizando la tenencia de derechos, asumen el uso gratuito y sin limitación por la Sociedad y su grupo.
+       &lt;br>&lt;/br>
+       En caso de que se descubriera, bien de forma directa o través de notificaciones o requerimientos de
+       terceros, la existencia de prácticas ilícitas o similares, la Sociedad podrá proceder a la eliminación de
+       los contenidos infractores o cualquier otra medida que considere necesaria para evitar la continuidad en la
+       situación detectada. Idéntica medida podrá ser aplicable en caso de que se detecte una utilización que, por
+       sus características tales como tamaño, formato, etc., dificulten el funcionamiento de la aplicación, contenidos
+       o enlaces propagandísticos, spam y comentarios repetidos, así como los que no tengan sentido o estén fuera
+       del tema de la noticia. Sin perjuicio de lo anterior, los Usuarios asumen que la Sociedad podrá poner en
+       conocimiento de las autoridades administrativas o judiciales aquellos hechos que pudieran ser constitutivos
+       de una actividad ilícita, sin necesidad de comunicarlo previamente al Usuario.
+       &lt;br>&lt;/br>
+       En el supuesto de que la Sociedad decida suspender (temporal o definitivamente) la participación de un
+       Usuario en las áreas de participación habilitadas, la Sociedad comunicará tal suspensión al Usuario mediante
+       el envío de un mensaje por correo electrónico a la dirección de correo electrónico (e-mail), en el caso de
+       que dicha dirección hubiera sido facilitada por el Usuario.
+       &lt;br>&lt;/br>
+       La Sociedad se reserva el derecho de dejar de prestar el servicio de cualesquiera áreas de participación en
+       cualquier momento, bastando para ello comunicarlo en la pantalla de acceso al servicio con un preaviso de al
+       menos quince (15) días.
+
+
+       &lt;h4 align="left">7.- Propiedad Intelectual e Industrial.&lt;/h4>
+       Los derechos de propiedad intelectual de la aplicación, su código fuente, diseño, estructuras de
+       navegación y los distintos elementos en ella contenidos son titularidad de la Sociedad, a quien corresponde
+       el ejercicio exclusivo de los derechos de explotación de los mismos en cualquier forma y en especial, los
+       derechos de reproducción, distribución, comunicación pública y transformación, de acuerdo con la legislación
+       española y de la unión europea aplicable. Así mismo, la aplicación es fruto de la información de cualquier
+       tipo relacionada con las actividades de la Sociedad (información creada por la Sociedad o creada por
+       terceros), que habilita a un uso personal y no comercial de la propia información por parte de los Usuarios.
+       &lt;br>&lt;/br>
+       TODOS LOS DERECHOS RESERVADOS en relación con los contenidos de la Sociedad, del Medio y, en su caso, de
+       otras empresas del grupo de la empresa del cual forma parte la Sociedad o de terceros. Queda prohibida la
+       reproducción total o parcial, distribución, puesta a disposición, comunicación pública y utilización, total
+       o parcial, de los contenidos de esta aplicación, en cualquier forma o modalidad, sin previa, expresa y escrita
+       autorización, incluyendo, en particular, su mera reproducción y/o puesta a disposición como resúmenes,
+       reseñas o revistas de prensa con fines comerciales o directa o indirectamente lucrativos, a la que se
+       manifiesta oposición expresa. Así mismo, también queda prohibida la presentación de las secciones de la aplicación y
+       la inserción de imágenes difundidas en la aplicación en páginas no pertenecientes a la Sociedad (sea cual sea
+       la técnica que se use para ello). La utilización no autorizada de estos contenidos dará lugar a las
+       responsabilidades legalmente establecidas. La Sociedad, de conformidad con lo establecido en la LSSI, no
+       responderá de las infracciones realizadas por el Usuario de la aplicación que afecten a terceros, salvo que la
+       misma tenga un “conocimiento efectivo” de dicha infracción. La Sociedad informa a los Usuarios de que, salvo
+       autorización previa, expresa y por escrito, no concede licencia o autorización expresa o implícita alguna
+       sobre los derechos de propiedad intelectual y/o industrial o sobre cualquier otro derecho o propiedad
+       relacionada, directa o indirectamente, con los contenidos incluidos en la aplicación, quedando prohibida
+       cualquier alteración o modificación de los contenidos y de cualquier otro elemento de la aplicación.
+       &lt;br>&lt;/br>
+       En caso de que los Usuarios suban contenidos a la aplicación, la Sociedad os informa que seguiréis manteniendo
+       la titularidad de los derechos sobre vuestro contenido, si bien al subir, cargar o publicar contenido en la aplicación (el “Contenido”) aceptáis otorgar a favor de la Sociedad, una licencia para todo el mundo, no
+       exclusiva y transferible (con facultad de sublicenciar a terceros), por la duración máxima de los derechos
+       de conformidad con la legislación aplicable, para utilizar, reproducir, distribuir, comunicar públicamente
+       (incluida la puesta a disposición del público), realizar obras derivadas, transformar, mostrar y ejecutar
+       ese Contenido en relación con la prestación de los servicios de la aplicación y con el funcionamiento de la aplicación y de la actividad de la Sociedad, incluyendo sin limitación alguna, a efectos de promoción y
+       redistribución de la totalidad o de una parte de la aplicación (y de sus obras derivadas) en cualquier formato
+       y/o modalidades de explotación y a través de cualquier canal de comunicación. La anterior licencia otorgada
+       por el Usuario con respecto al contenido que suba, quedará cancelada cuando el Usuario elimine o borre sus
+       contenidos de la aplicación.
+       &lt;br>&lt;/br>
+       Todos los nombres comerciales, marcas o signos distintivos, logotipos, símbolos, marcas mixtas, figurativas
+       o nominativas que aparecen en esta aplicación pertenecen a la Sociedad o bien ésta ostenta las
+       correspondientes licencias de uso sobre los mismos.
+
+
+       &lt;h4 align="left">8.- Política de enlaces.&lt;/h4>
+       &lt;h5 align="left">Enlaces a otras aplicaciones o sitios web.&lt;/h5>
+       En la aplicación se podrían incluir enlaces a sitios controlados por terceros. El Usuario debe
+       recordar que al usar un enlace para acceder desde la aplicación a otro, dejarán de surtir efectos la Política
+       de Privacidad y la Política de Cookies de la aplicación. La Política de Privacidad de la aplicación no refleja las
+       prácticas en materia de privacidad de esos otros sitios de terceros. De conformidad con lo establecido en el
+       artículo 17 de la LSSI, la Sociedad declina, salvo que tenga “conocimiento efectivo” de la comisión de un
+       hecho ilícito o de que se lesionan bienes o derechos de un tercero susceptible de indemnización, cualquier
+       tipo de responsabilidad con respecto a la privacidad y el tratamiento de datos de otras aplicaciones. La
+       navegación e interacción en cualquier otra aplicación o sitio web, incluidos aquellos que estén enlazados con la aplicación, está sujeta a las normas y políticas de dicho sitio. Recomendamos al Usuario que lea las políticas de
+       tratamiento de datos y privacidad de los sitios web o aplicaciones que visite a través del enlace existente en el Sitio Web
+       o de cualquier otro modo.
+
+       &lt;h5 align="left">Enlaces en otros sitios web con destino a la aplicación.&lt;/h5>
+       Si cualquier tercero, entidad o sitio web deseara establecer algún tipo de enlace con destino a la aplicación deberá respetar lo siguiente:
+
+       &lt;ol type="a">
+           &lt;li>El enlace se podrá dirigir a la página principal de la aplicación.&lt;/li>
+           &lt;li>El enlace debe ser absoluto y completo, es decir, debe llevar al Usuario, mediante un clic, a la propia
+               dirección URL del Sitio Web abarcando toda la extensión de la pantalla del Sitio Web. En ningún caso,
+               salvo que la Sociedad lo autorice de manera expresa y por escrito, el sitio web que realiza el enlace
+               podrá reproducir, de cualquier manera, la aplicación, incluirlo como parte de su web o dentro de uno de
+               sus “frames” o crear un “browser” sobre cualquiera de las páginas de la aplicación. En la página que
+               establece el enlace no se podrá declarar que la Sociedad ha autorizado tal enlace, salvo que así lo haya
+               autorizado expresamente y por escrito la Sociedad. Si la entidad que realiza el enlace desde su página
+               a la aplicación deseara incluir en su página web la marca, denominación, nombre comercial, rótulo,
+               logotipo, slogan o cualquier otro tipo de elemento identificativo de la Sociedad y/o de la aplicación,
+               deberá contar previamente con su autorización expresa y por escrito.&lt;/li>
+           &lt;li>Bajo ningún concepto la Sociedad autoriza el establecimiento de un enlace a la aplicación desde aquellas
+               páginas web que de forma manifiesta fomenten el odio, el desprecio o la discriminación por motivos de
+               nacimiento, raza, sexo, religión, nacionalidad, opinión o cualquier otra circunstancia personal o social
+               y en general, que contravengan la moral, el orden público o las normas sociales generalmente aceptadas.
+           &lt;/li>
+       &lt;/ol>
+
+       En todo caso, la Sociedad no asume ningún tipo de responsabilidad por cualquier aspecto relativo
+       a la página web que establece ese enlace con destino a la aplicación, en concreto, a título enunciativo y no
+       limitativo, sobre su funcionamiento, acceso, datos, información, archivos, calidad y fiabilidad de sus
+       productos y servicios, sus propios enlaces y/o en general cualquiera de sus contenidos.
+
+       &lt;h4 align="left">9.- Protección de datos de carácter personal y política de cookies.&lt;/h4>
+       Los aspectos relativos al tratamiento de los datos personales de los Usuarios con motivo del uso
+       de la aplicación se regulan en los textos de &lt;a href="#">Política de Privacidad&lt;/a> adjuntos a los diversos
+       formularios de recogida de datos que puedan incluirse en la aplicación.
+       &lt;br>&lt;/br>
+       Al igual que otras aplicaciones de Internet, la aplicación utiliza una tecnología denominada “cookies" para
+       recabar información sobre la forma de utilización de la aplicación. Para información detallada sobre cómo la
+       Sociedad utiliza las cookies, consulta el texto &lt;a href="#">Política de Cookies.&lt;/a>
+
+       &lt;h4 align="left">10.- Qué puedes hacer si detectas contenidos ilícitos o no adecuados.&lt;/h4>
+       Si tienes conocimiento de que cualquier clase de información o contenido de la aplicación o
+       facilitado a través del mismo es ilícita, lesiva de derechos de terceros, contraria a lo establecido en las
+       presentes Condiciones o, de cualquier otro modo, nociva o contrarias a la moral, usos y costumbres, puedes
+       ponerte en contacto con nosotros a través del contacto recogido en el &lt;a href="#">Aviso Legal&lt;/a>,
+       indicando:
+
+       &lt;ol type="a">
+           &lt;li>datos de identificación y datos de contacto;&lt;/li>
+           &lt;li>descripción de las motivos por los que consideras ilícito o inadecuado el contenido o información así
+               como la dirección concreta en la que se encuentra disponible;&lt;/li>
+           &lt;li>en el supuesto de violación de derechos de terceros, facilita los datos del titular del derecho
+               infringido cuando sea persona distinta del comunicante. Asimismo deberás aportar el título que acredite
+               la titularidad de los derechos conculcados y, en su caso, la representación para actuar por cuenta del
+               titular cuando sea persona distinta del comunicante.&lt;/li>
+       &lt;/ol>
+
+
+       La recepción por parte de la Sociedad de la comunicación prevista en esta cláusula no supondrá,
+       el conocimiento efectivo de las actividades y/o contenidos indicados por el comunicante, cuando ello no
+       resulte notorio o evidente. En todo caso, la Sociedad se reserva el derecho de suspender o retirar los
+       contenidos que, aun no siendo ilícitos, resulten contrarios a las normas establecidas en las presentes
+       Condiciones, sopesando en cada caso los bienes jurídicos en conflicto.
+
+       &lt;h4 align="left">11.- Responsabilidades.&lt;/h4>
+       Dadas las especialidades de Internet, la Sociedad no se hace responsable de:
+
+       &lt;ol type="a">
+           &lt;li>La falta de disponibilidad y continuidad por el funcionamiento, utilidad y fiabilidad de los servicios y
+               del Sitio Web, ni siquiera de los servicios onerosos o no gratuitos para los Usuarios, derivada de un
+               acto fortuito, fuerza mayor o no resulte imputable directamente a la Sociedad.&lt;/li>
+           &lt;li>La alteración de la privacidad y seguridad en la utilización y contenidos de la aplicación y de los
+               servicios por terceros ajenos a los mismos de acuerdo con el régimen legal vigente.&lt;/li>
+           &lt;li>La presencia de virus o a la presencia de otros elementos falsos en los servicios ofrecidos por terceros
+               a través de la aplicación que puedan producir alteraciones en el sistema informático, documentos
+               electrónicos o ficheros de los usuarios.&lt;/li>
+           &lt;li>La falta de veracidad, exactitud, exclusividad, actualidad de los contenidos ofrecidos a través de la aplicación, ya se trate de contenidos ofrecidos por la propia Sociedad u ofrecidos por terceros, salvo
+               que la Sociedad tenga “conocimiento efectivo” de la comisión de un hecho ilícito o de la lesión de
+               bienes o derechos de un tercero.&lt;/li>
+       &lt;/ol>
+
+           La Sociedad no se responsabiliza de los daños y perjuicios causados a los Usuarios como
+           consecuencia de los riesgos inherentes al medio empleado, ni de los ocasionados por las vulnerabilidades en
+           sus sistemas y herramientas que se deriven de un acto fortuito, fuerza mayor o no resulte imputable
+           directamente a la Sociedad.
+           &lt;br>&lt;/br>
+           La Sociedad no garantiza la total seguridad de sus sistemas y aunque tiene adoptadas medidas de seguridad
+           adecuadas, no puede descartarse totalmente la existencia de vulnerabilidades por causa de fuerza mayor o un
+           hecho fortuito y, en consecuencia, debéis ser precavidos en la interactuación con la aplicación.
+
+
+       &lt;h4 align="left">12.- Varios.&lt;/h4>
+           Las presentes Condiciones podrán sufrir cualquier cambio, que se comunicarán mediante su
+           publicación en la aplicación.
+
+           En caso de que la Sociedad no ejercite cualquier derecho o acción legal contemplado en las Condiciones (o
+           que le corresponda en virtud de la legislación aplicable), ello no constituirá una renuncia formal a sus
+           derechos.
+
+           Las relaciones establecidas entre la Sociedad y los Usuarios como consecuencia de la utilización a los
+           servicios que  prestamos a través de la aplicación, se regirán por lo dispuesto en la normativa española
+           vigente en relación con la legislación aplicable y la jurisdicción competente. No obstante, para los
+           supuestos en los que la normativa vigente prevea que las partes pueden someterse a fuero determinado, la
+           Sociedad y los Usuarios, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, se somete
+           a la jurisdicción de los Juzgados y Tribunales de la ciudad que se indica en el &lt;a href="#">Aviso Legal&lt;/a>.
+    </string>
+
+
+    <string name="about_developers">
+        &lt;div>
+            Esta aplicación fue desarrollada por dos entusiasmados programadores que encontraron una necesidad a través de una problemática muy común en nuestro entorno.
+        &lt;/div>
+        &lt;br>&lt;/br>
+        &lt;div>
+            &lt;b>Johan Martínez,&lt;/b> es un Ingeniero de Sistemas apasionado por la programación y la tecnología, ha dedicado mucho de su tiempo libre para realizar este desarrollo de FinderPet.
+        &lt;div>
+        &lt;div>
+            &lt;b>Johnnatan Velásquez,&lt;/b> es un estudiante de Desarrollo de Software que comienza a crecer en el ambiente de la programación, además, ha trabajado en los últimos años en ambientes donde las mascotas son el centro de atención.
+        &lt;/div>
+
+        Juntos, comenzaron este emprendimiento que ahora es una realizadad y que está ayudando a muchas personas a encontrar sus mascotas, ya sea porque se estravió o porque tomó la desición de adoptar una.
+    </string>
+    <string name="channel_notifications">Noticias y Promociones</string>
+    <string name="channel_description">Canal de notificaciones por defecto</string>
+    <string name="donation_bancolombia_msg2">También puede realizar un depósito en banco o corresponsal en la siguiente cuenta de ahorros</string>
+    <string name="number_account_bancolombia">75287102682</string>
 
 </resources>

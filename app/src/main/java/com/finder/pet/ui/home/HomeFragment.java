@@ -3,6 +3,7 @@ package com.finder.pet.ui.home;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.finder.pet.Adapters.AdvertAdapter;
+import com.finder.pet.Entities.Advert;
 import com.finder.pet.R;
 import com.finder.pet.Utilities.commonMethods;
 import com.google.android.gms.ads.AdRequest;
@@ -28,22 +31,30 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 import static androidx.navigation.Navigation.findNavController;
 import static androidx.navigation.Navigation.setViewNavController;
 
 public class HomeFragment extends Fragment{
 
-    private HomeViewModel homeViewModel;
-    private Button btn;
-    private CardView cardViewFound, cardViewLost, cardViewAdopted;
+    CardView cardViewFound, cardViewLost, cardViewAdopted;
     private ViewFlipper viewFlipper;
-    // [START declare_auth ]
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener firebaseAuthListener;
     // [END declare_auth]
     private AdView adView;
-    private FrameLayout adContainerView;
+    FrameLayout adContainerView;
+    private ArrayList<Advert> imagesUrl;
+
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference databaseRef;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,14 +68,14 @@ public class HomeFragment extends Fragment{
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        //FirebaseUser user = firebaseAuth.getCurrentUser();
-
         // Initialize the Mobile Ads SDK.
         MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {}
         });
+
+        imagesUrl = new ArrayList<>();
+        consultListImageEvents();
 
         //Banner adaptativo
         adContainerView = view.findViewById(R.id.ad_view_container);
@@ -109,15 +120,7 @@ public class HomeFragment extends Fragment{
             }
         });
 
-        //Código para mostrar el flipper de imagenes
-        String[] imagesUrl = {"https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FJuanPabloG.jpeg?alt=media&token=ce927f99-89ca-4c75-8e8a-48f05c027cc0",
-                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FRonroneos.png?alt=media&token=47a9f2ac-e821-4768-a1e2-0b4ece2ecd7c",
-                "https://firebasestorage.googleapis.com/v0/b/finderpet-2cd1d.appspot.com/o/adverts%2FPetService1.jpeg?alt=media&token=701c0d05-20e7-462c-ac80-e2a5d67cc8d2"};
         viewFlipper = view.findViewById(R.id.flipperAdverts);
-        for (String image: imagesUrl){
-            flipperImg(image);
-        }
-
         viewFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +131,46 @@ public class HomeFragment extends Fragment{
         });
 
     }// [End onViewCreated]
+
+    private void setViewFlipper(ArrayList<Advert> imgUrl){
+        for (Advert advert: imgUrl){
+            flipperImg(advert.getImage());
+        }
+    }
+
+    /**
+     * Method for querying database image news and events in Firebase
+     */
+    private void consultListImageEvents() {
+        databaseRef = ref.child("events");
+        databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Advert advert;
+                //clearing the previous list
+                imagesUrl.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    advert=new Advert();
+                    if (postSnapshot.child("image").exists()){
+                        advert.setImage(postSnapshot.child("image").getValue().toString());
+                    }
+                    //We are filling the list
+                    imagesUrl.add(advert);
+                }
+
+                Collections.shuffle(imagesUrl); // Show random listing
+                setViewFlipper(imagesUrl);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("List Services", getString(R.string.could_not_get_information));
+            }
+        });
+    }// [consultListImageEvents]
 
     /**
      * Method to load banner ads adaptative
