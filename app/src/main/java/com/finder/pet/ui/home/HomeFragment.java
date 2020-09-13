@@ -44,6 +44,10 @@ import java.util.Iterator;
 import static androidx.navigation.Navigation.findNavController;
 import static androidx.navigation.Navigation.setViewNavController;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 public class HomeFragment extends Fragment{
 
     CardView cardViewFound, cardViewLost, cardViewAdopted;

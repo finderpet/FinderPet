@@ -38,7 +38,7 @@
         -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-8783893803181261~6769293062" />
 
         <activity
             android:name=".Main.ContainerTutorialActivity"
@@ -111,12 +111,6 @@
             android:name=".Utilities.FetchAddressIntentService"
             android:exported="false"/>
 
-        <service android:name=".Main.MyFirebaseMessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
 
 
     </application>
