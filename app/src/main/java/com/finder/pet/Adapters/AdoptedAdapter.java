@@ -37,8 +37,6 @@ public class AdoptedAdapter extends RecyclerView.Adapter<AdoptedAdapter.AdoptedV
 
         mContext= parent.getContext();// Get the context of the fragment to the adapter
 
-
-
         view.setOnClickListener((View.OnClickListener) this);
         return new AdoptedViewHolder(view);
     }

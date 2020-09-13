@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,7 @@ public class LostFragment extends Fragment {
     RecyclerView recyclerListLost;
     ArrayList<Lost_Vo> ListLost;
 
+    private LinearLayout layoutNoResults;
     private ProgressBar progressBar;
     private TextView txtLoad;
 
@@ -122,6 +124,7 @@ public class LostFragment extends Fragment {
         progressBar =  view.findViewById(R.id.progressBarLost);
         txtLoad = view.findViewById(R.id.textLoad);
         btn = view.findViewById(R.id.btn_new_lost);
+        layoutNoResults = view.findViewById(R.id.layoutNoResultsLost);
     }
 
     /**
@@ -303,15 +306,19 @@ public class LostFragment extends Fragment {
                 recyclerListLost.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
                 txtLoad.setVisibility(View.GONE);
-                adapter.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
-                        Bundle bundle = new Bundle(); // Create the bundle to transport the object
-                        bundle.putSerializable("objeto", ListLost.get(recyclerListLost.getChildAdapterPosition(view)));
-                        findNavController(view).navigate(R.id.action_lostFragment_to_detailLostFragment, bundle);
-                    }
-                });
+                if (ListLost.size()>0){
+                    adapter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
+                            Bundle bundle = new Bundle(); // Create the bundle to transport the object
+                            bundle.putSerializable("objeto", ListLost.get(recyclerListLost.getChildAdapterPosition(view)));
+                            findNavController(view).navigate(R.id.action_lostFragment_to_detailLostFragment, bundle);
+                        }
+                    });
+                }else {
+                    layoutNoResults.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

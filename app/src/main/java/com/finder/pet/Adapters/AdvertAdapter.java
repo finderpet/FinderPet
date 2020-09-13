@@ -125,8 +125,6 @@ public class AdvertAdapter extends RecyclerView.Adapter<AdvertAdapter.AdvertView
             mPhoto=itemView.findViewById(R.id.imageAdvert);
             btnUrl=itemView.findViewById(R.id.btnUrlAdvert);
             btnCall=itemView.findViewById(R.id.btnCall);
-
-
         }
     }
 

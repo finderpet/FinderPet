@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context=".Fragments.formFoundFragment">
 
     <ScrollView
@@ -15,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -52,224 +51,218 @@
 
             </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="4dp">
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="@string/new_pet_found"
+                    android:layout_marginTop="18dp"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/new_pet_found"
-                        android:layout_marginTop="18dp"
-                        android:textSize="20sp"
-                        android:gravity="center"
-                        android:textColor="@color/primary_text"/>
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/rbDogFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/dog"
-                            android:textColor="@color/primary_text" />
-
-                        <RadioButton
-                            android:id="@+id/rbCatFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/cat"
-                            android:textColor="@color/primary_text" />
-
-                        <RadioButton
-                            android:id="@+id/rbOtherFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/other"
-                            android:textColor="@color/primary_text" />
-
-                    </RadioGroup>
-
-                    <!--
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddFoundType"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp"
-                        android:textColorHint="@color/colorLetterHint">
-                        <AutoCompleteTextView
-                            android:id="@+id/fieldAddFoundType"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/select_type_pet"
-                            android:inputType="none"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                    -->
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddFoundLocation"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp"
-                        app:errorIconDrawable="@null"
-                        app:endIconMode="custom"
-                        app:endIconDrawable="@drawable/ic_my_location_24"
-                        app:endIconTint="@color/colorBlack">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddFoundLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusable="false"
-                            android:hint="@string/location"
-                            android:inputType="textCapWords"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddFoundEmail"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddFoundEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/email_contact"
-                            android:inputType="textEmailAddress"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddFoundPhone"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddFoundPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/phone"
-                            android:inputType="phone"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddFoundDescription"
-                        style="@style/Widget.FinderPet.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddFoundDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/description_observations"
-                            android:inputType="textMultiLine"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/add_img_pet"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:textColor="@color/primary_text"/>
-
-                    <LinearLayout
+                    <RadioButton
+                        android:id="@+id/rbDogFound"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/dog"
+                        android:textColor="@color/primary_text" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/cat"
+                        android:textColor="@color/primary_text" />
+
+                    <RadioButton
+                        android:id="@+id/rbOtherFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/other"
+                        android:textColor="@color/primary_text" />
+
+                </RadioGroup>
+
+                <!--
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddFoundType"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    android:textColorHint="@color/colorLetterHint">
+                    <AutoCompleteTextView
+                        android:id="@+id/fieldAddFoundType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/select_type_pet"
+                        android:inputType="none"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddFoundLocation"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    app:errorIconDrawable="@null"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_my_location_24"
+                    app:endIconTint="@color/colorBlack">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddFoundLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/location"
+                        android:inputType="textCapWords"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddFoundEmail"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddFoundEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email_contact"
+                        android:inputType="textEmailAddress"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddFoundPhone"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddFoundPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone"
+                        android:inputType="phone"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddFoundDescription"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddFoundDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/description_observations"
+                        android:inputType="textMultiLine"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_img_pet"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_1"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_1"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_2"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_2"/>
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageFound_1"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="4dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_1"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageFound_2"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_2"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageFound_3"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="4dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_3"/>
-
-                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageFound_3"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_3"/>
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnAddNewFound"

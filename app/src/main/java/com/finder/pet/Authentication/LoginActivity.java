@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity {
     private AlertDialog newDialog;
 
     // Declare buttons
-    Button btnLogin, btnRegister, btnGoogle, btnFacebook, btnRecoverPass;
+    Button btnLogin, btnRegister, btnGoogle, btnRecoverPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,12 +174,6 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "Iniciar Sesión con Facebook", Toast.LENGTH_SHORT).show();
-            }
-        });
         btnRecoverPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,7 +207,6 @@ public class LoginActivity extends BaseActivity {
         btnLogin = findViewById(R.id.emailSignInButton);
         btnRegister = findViewById(R.id.btn_register_email);
         btnGoogle = findViewById(R.id.googleSingInButton);
-        btnFacebook = findViewById(R.id.facebookSignInButton);
         btnLoginFacebook = findViewById(R.id.btnLoginFacebook);
         btnRecoverPass = findViewById(R.id.btnRecoverPassword);
 

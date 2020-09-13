@@ -71,7 +71,6 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundViewHol
         if (listFound.get(position).getType().equals("cat")){
             holder.markType.setImageResource(R.mipmap.ic_cat);
         }
-
     }
 
     @Override

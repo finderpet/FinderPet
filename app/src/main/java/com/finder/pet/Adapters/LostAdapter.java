@@ -64,7 +64,6 @@ public class LostAdapter extends RecyclerView.Adapter<LostAdapter.LostViewHolder
         if (listLost.get(position).getType().equals("cat")){
             holder.markType.setImageResource(R.mipmap.ic_cat);
         }
-
     }
 
     @Override

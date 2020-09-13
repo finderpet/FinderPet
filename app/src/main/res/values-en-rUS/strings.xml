@@ -315,7 +315,7 @@
     <string name="post_was_successfully_removed">Post was successfully removed</string>
     <string name="post_was_not_successfully_removed">Post was not removed successfully</string>
     <string name="about_app_msg">Finderpet is a tool that seeks to solve the great problem that occurs in the world with the loss of pets. It also offers a solution for those individuals or foundations looking for a new home for unprotected pets.</string>
-    <string name="copyright_msg">" Copyright © 2020 Machine Code. All rights reserved"</string>
+    <string name="copyright_msg">" All rights reservde FinderPet © 2020 "</string>
     <string name="tutorial_map_msg">In the map view, you can find pets reported worldwide.</string>
     <string name="tuto_advert_msg">Do not forget to visit our announcements section where you will find everything related to the world of veterinary medicine</string>
     <string name="tutorial_advert">Ads section</string>
@@ -825,7 +825,6 @@ The aspects related to the treatment of the personal data of the Users due to th
     <string name="channel_notifications">News and promotions</string>
     <string name="channel_description">Default notification channel</string>
     <string name="donation_bancolombia_msg2">You can also make a deposit in bank or correspondent in the following savings account</string>
-    <string name="microchip" translatable="false">Microchip</string>
-    <string name="number_account_bancolombia" translatable="false">75287102682</string>
-    <string name="number_account_davivienda" translatable="false">488414082252</string>
+    <string name="developed_by">Developed by Machine Code Designs</string>
+    <string name="no_results_msg">You can expand the search range in the Settings section</string>
 </resources>

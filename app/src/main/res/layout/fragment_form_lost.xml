@@ -5,14 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context=".Fragments.formLostFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground"
-        android:contentDescription="@string/content_description_media" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -58,256 +52,248 @@
 
             </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:background="@color/colorWhite"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="4dp">
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_pet_lost"
+                    android:layout_marginTop="18dp"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text"/>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbDogFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/dog"
+                        android:textColor="@color/primary_text" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/cat"
+                        android:textColor="@color/primary_text" />
+
+                    <RadioButton
+                        android:id="@+id/rbOtherFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/primary_text"
+                        android:text="@string/other"
+                        android:textColor="@color/primary_text" />
+
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddLostLocation"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    app:errorIconDrawable="@null"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_my_location_24"
+                    app:endIconTint="@color/colorBlack">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddLostLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/location"
+                        android:inputType="textCapWords"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/new_pet_lost"
-                        android:layout_marginTop="18dp"
-                        android:textSize="20sp"
-                        android:gravity="center"
-                        android:textColor="@color/primary_text"/>
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/rbDogFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/dog"
-                            android:textColor="@color/primary_text" />
-
-                        <RadioButton
-                            android:id="@+id/rbCatFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/cat"
-                            android:textColor="@color/primary_text" />
-
-                        <RadioButton
-                            android:id="@+id/rbOtherFound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/primary_text"
-                            android:text="@string/other"
-                            android:textColor="@color/primary_text" />
-
-                    </RadioGroup>
-
+                    android:orientation="horizontal">
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddLostLocation"
+                        android:id="@+id/textInputAddLostName"
                         style="@style/Widget.FinderPet.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp"
-                        app:errorIconDrawable="@null"
-                        app:endIconMode="custom"
-                        app:endIconDrawable="@drawable/ic_my_location_24"
-                        app:endIconTint="@color/colorBlack">
+                        android:layout_marginRight="4dp">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddLostLocation"
+                            android:id="@+id/fieldAddLostName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="false"
-                            android:hint="@string/location"
+                            android:hint="@string/name_pet"
                             android:inputType="textCapWords"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="@color/colorAccent" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputAddLostName"
-                            style="@style/Widget.FinderPet.TextInputLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.7"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginRight="4dp">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/fieldAddLostName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/name_pet"
-                                android:inputType="textCapWords"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/colorAccent" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputAddLostChip"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:boxStrokeWidth="2dp"
-                            app:boxStrokeColor="@color/primary_text"
-                            android:textColorHint="@color/colorLetterHint"
-                            app:hintTextColor="@color/colorPrimarySoft"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginRight="8dp">
-                            <AutoCompleteTextView
-                                android:id="@+id/fieldAddLostChip"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/microchip"
-                                android:inputType="none"
-                                tools:ignore="Deprecated,LabelFor"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/primary_text" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddLostEmail"
-                        style="@style/Widget.FinderPet.TextInputLayout"
+                        android:id="@+id/textInputAddLostChip"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="@color/primary_text"
+                        android:textColorHint="@color/colorLetterHint"
+                        app:hintTextColor="@color/colorPrimarySoft"
+                        android:layout_marginLeft="4dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddLostEmail"
+                        <AutoCompleteTextView
+                            android:id="@+id/fieldAddLostChip"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/email_contact"
-                            android:inputType="textEmailAddress"
+                            android:hint="@string/microchip"
+                            android:inputType="none"
+                            tools:ignore="Deprecated,LabelFor"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-
+                            android:textColor="@color/primary_text" />
                     </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddLostPhone"
-                        style="@style/Widget.FinderPet.TextInputLayout"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddLostEmail"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddLostEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddLostPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/phone"
-                            android:inputType="phone"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
+                        android:hint="@string/email_contact"
+                        android:inputType="textEmailAddress"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputAddLostDescription"
-                        style="@style/Widget.FinderPet.TextInputLayout"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddLostPhone"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddLostPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:hint="@string/phone"
+                        android:inputType="phone"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAddLostDescription"
+                    style="@style/Widget.FinderPet.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fieldAddLostDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/description_observations"
+                        android:inputType="textMultiLine"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorAccent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_img_pet"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageLost_1"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_1"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageLost_2"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginBottom="16dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAddLostDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/description_observations"
-                            android:inputType="textMultiLine"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorAccent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/add_img_pet"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:textColor="@color/primary_text"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_2"/>
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageLost_1"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="4dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_1"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageLost_2"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_2"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageLost_3"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_margin="4dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:background="@drawable/background_dot_line"
-                            android:src="@drawable/img_upload_3"/>
-
-                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageLost_3"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/background_dot_line"
+                        android:src="@drawable/img_upload_3"/>
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnAddNewLost"

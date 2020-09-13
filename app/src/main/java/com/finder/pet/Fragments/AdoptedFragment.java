@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +66,7 @@ public class AdoptedFragment extends Fragment {
     RecyclerView recyclerListAdopted;
     ArrayList<Adopted_Vo> ListAdopted;
 
+    private LinearLayout layoutNoResults;
     private ProgressBar progressBar;
     private TextView txtLoad;
 
@@ -124,6 +126,7 @@ public class AdoptedFragment extends Fragment {
         progressBar =  view.findViewById(R.id.progressBarAdopted);
         txtLoad = view.findViewById(R.id.textLoad);
         btn = view.findViewById(R.id.btn_new_adopted);
+        layoutNoResults = view.findViewById(R.id.layoutNoResultsAdopted);
     }
 
     /**
@@ -332,15 +335,19 @@ public class AdoptedFragment extends Fragment {
                 recyclerListAdopted.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);
                 txtLoad.setVisibility(View.GONE);
-                adapter.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
-                        Bundle bundle = new Bundle(); // Create the bundle to transport the object
-                        bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view)));
-                        findNavController(view).navigate(R.id.action_adoptedFragment_to_detailAdoptedFragment, bundle);
-                    }
-                });
+                if (ListAdopted.size()>0){
+                    adapter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Event to call the DetailAdoptedFragment fragment passing it a bundle type object
+                            Bundle bundle = new Bundle(); // Create the bundle to transport the object
+                            bundle.putSerializable("objeto", ListAdopted.get(recyclerListAdopted.getChildAdapterPosition(view)));
+                            findNavController(view).navigate(R.id.action_adoptedFragment_to_detailAdoptedFragment, bundle);
+                        }
+                    });
+                }else {
+                    layoutNoResults.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

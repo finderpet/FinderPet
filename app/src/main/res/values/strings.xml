@@ -172,7 +172,7 @@
     For more information, see https://support.google.com/admob/answer/3052638
 <!- -->
     <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="adaptive_banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="adaptive_banner_ad_unit_id" translatable="false">ca-app-pub-8783893803181261/8119686145</string>
     <string name="content_description_media">Imagen o multimedia</string>
     <string name="contact_us">Contáctanos</string>
     <string name="version_app">Versión 1.0.0</string>
@@ -204,7 +204,7 @@
     <string name="donation_bancolombia_msg1">Escanea éste código QR para realizar una donación a través de transferencia</string>
     <string name="account_donate_baloto">Puedes realizar una donación a través de consignación bancaria o en la red Baloto a la siguiente cuenta de ahorros:</string>
     <string name="donation_davivienda">Donación Davivienda</string>
-    <string name="number_account_davivienda">488414082252</string>
+    <string name="number_account_davivienda" translatable="false">488414082252</string>
     <string name="report_format">Formato de Reporte</string>
     <string name="donations">Donaciones</string>
     <string name="main_menu">Menú Principal</string>
@@ -322,14 +322,14 @@
     <string name="phone_profile">Teléfono</string>
     <string name="write_your_phone">Escribe tu teléfono</string>
     <string name="update_photo_profile">Actualizando foto de perfil</string>
-    <string name="microchip">Microchip</string>
+    <string name="microchip" translatable="false">Microchip</string>
     <string name="you_must_login_again">Debes iniciar sesión de nuevo para continuar</string>
     <string name="delete_post_title">¿Deseas eliminar tu publicación por completo?</string>
     <string name="delete_post_msg">No podrá recuperar la información después de eliminarla</string>
     <string name="post_was_successfully_removed">La publicación fue eliminada con éxito</string>
     <string name="post_was_not_successfully_removed">La publicación no fue eliminada con éxito</string>
     <string name="about_app_msg">Finderpet es una herramienta que busca solucionar la gran problemática que se presenta en el mundo con la pérdida de las mascotas. También ofrece una solucíon para aquellas personas o fundaciones que buscan un nuevo hogar para mascotas desprotegidas.</string>
-    <string name="copyright_msg">Derechos de autor © 2020 Machine Code. Todos los derechos reservados</string>
+    <string name="copyright_msg">Todos los derechos reservados FinderPet  © 2020</string>
     <string name="tutorial_map_msg">En la vista de mapa podrás encontrar mascotas reportadas en todo el mundo.</string>
     <string name="tuto_advert_msg">No olvides visitar nuestra sección de anuncios dónde encontrarás todo lo relacionado con el mundo de la veterinaria</string>
     <string name="tutorial_advert">Sección de anuncios</string>
@@ -834,6 +834,8 @@
     <string name="channel_notifications">Noticias y Promociones</string>
     <string name="channel_description">Canal de notificaciones por defecto</string>
     <string name="donation_bancolombia_msg2">También puede realizar un depósito en banco o corresponsal en la siguiente cuenta de ahorros</string>
-    <string name="number_account_bancolombia">75287102682</string>
+    <string name="number_account_bancolombia" translatable="false">75287102682</string>
+    <string name="developed_by">Desarrollado por Machine Code Designs</string>
+    <string name="no_results_msg">Puede ampliar el rango de búsqueda en la sección de Ajustes</string>
 
 </resources>
