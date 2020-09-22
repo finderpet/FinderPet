@@ -11,7 +11,6 @@
         android:id="@+id/id_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +23,8 @@
                 android:layout_height="120dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 app:cardElevation="4dp"
                 app:cardCornerRadius="10dp">
 
@@ -72,7 +72,8 @@
                 android:layout_height="120dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 app:cardElevation="4dp"
                 app:cardCornerRadius="10dp">
 
@@ -120,7 +121,8 @@
                 android:layout_height="120dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 app:cardElevation="4dp"
                 app:cardCornerRadius="10dp">
 
@@ -158,6 +160,34 @@
                             android:textColor="@color/colorWhite"
                             android:textSize="10sp" />
                     </LinearLayout>
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/id_cardViewMap"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/card_view_map">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/maps_reports"
+                        android:layout_margin="8dp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_gravity="bottom|right"
+                        android:textStyle="bold"
+                        android:textSize="22sp" />
                 </FrameLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -210,12 +240,13 @@
 
         </LinearLayout>
     </ScrollView>
-    <!-- Contendedor para ads banner adaptativo -->
+    <!-- Contendedor para ads banner adaptativo
     <FrameLayout
         android:id="@+id/ad_view_container"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/id_scroll"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="wrap_content"/>
+        -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

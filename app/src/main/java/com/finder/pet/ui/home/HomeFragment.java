@@ -50,11 +50,11 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 public class HomeFragment extends Fragment{
 
-    CardView cardViewFound, cardViewLost, cardViewAdopted;
+    CardView cardViewFound, cardViewLost, cardViewAdopted, cardViewMap;
     private ViewFlipper viewFlipper;
-    // [END declare_auth]
-    private AdView adView;
-    FrameLayout adContainerView;
+//    // [END declare_auth]
+//    private AdView adView;
+//    FrameLayout adContainerView;
     private ArrayList<Advert> imagesUrl;
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -72,22 +72,22 @@ public class HomeFragment extends Fragment{
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the Mobile Ads SDK.
-        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {}
-        });
+//        // Initialize the Mobile Ads SDK.
+//        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+//        });
 
         imagesUrl = new ArrayList<>();
         consultListImageEvents();
 
-        //Banner adaptativo
-        adContainerView = view.findViewById(R.id.ad_view_container);
-        // Step 1 - Create an AdView and set the ad unit ID on it.
-        adView = new AdView(getContext());
-        adView.setAdUnitId(getString(R.string.adaptive_banner_ad_unit_id));
-        adContainerView.addView(adView);
-        loadBanner();
+//        //Banner adaptativo
+//        adContainerView = view.findViewById(R.id.ad_view_container);
+//        // Step 1 - Create an AdView and set the ad unit ID on it.
+//        adView = new AdView(getContext());
+//        adView.setAdUnitId(getString(R.string.adaptive_banner_ad_unit_id));
+//        adContainerView.addView(adView);
+//        loadBanner();
 
         // This callback will only be called when MyFragment is at least Started.
         //Con este método manejamos el evento de boton atras solamente en este fragment
@@ -121,6 +121,13 @@ public class HomeFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 findNavController(view).navigate(R.id.action_nav_home_to_adoptedFragment);
+            }
+        });
+        cardViewMap = view.findViewById(R.id.id_cardViewMap);
+        cardViewMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findNavController(view).navigate(R.id.action_nav_home_to_nav_map);
             }
         });
 
@@ -176,43 +183,43 @@ public class HomeFragment extends Fragment{
         });
     }// [consultListImageEvents]
 
-    /**
-     * Method to load banner ads adaptative
-     */
-    private void loadBanner() {
-        // Create an ad request. Check your logcat output for the hashed device ID
-        // to get test ads on a physical device, e.g.,
-        // "Use AdRequest.Builder.addTestDevice("ABCDE0123") to get test ads on this
-        // device."
-        AdRequest adRequest =
-                new AdRequest.Builder().build();
-
-        AdSize adSize = getAdSize();
-        // Step 4 - Set the adaptive ad size on the ad view.
-        adView.setAdSize(adSize);
-
-        // Step 5 - Start loading the ad in the background.
-        adView.loadAd(adRequest);
-    }
-
-    /**
-     * Method to calculate the screen width
-     * @return screen width
-     */
-    private AdSize getAdSize() {
-        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        display.getMetrics(outMetrics);
-
-        float widthPixels = outMetrics.widthPixels;
-        float density = outMetrics.density;
-
-        int adWidth = (int) (widthPixels / density);
-
-        // Step 3 - Get adaptive ad size and return for setting on the ad view.
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(getContext(), adWidth);
-    }
+//    /**
+//     * Method to load banner ads adaptative
+//     */
+//    private void loadBanner() {
+//        // Create an ad request. Check your logcat output for the hashed device ID
+//        // to get test ads on a physical device, e.g.,
+//        // "Use AdRequest.Builder.addTestDevice("ABCDE0123") to get test ads on this
+//        // device."
+//        AdRequest adRequest =
+//                new AdRequest.Builder().build();
+//
+//        AdSize adSize = getAdSize();
+//        // Step 4 - Set the adaptive ad size on the ad view.
+//        adView.setAdSize(adSize);
+//
+//        // Step 5 - Start loading the ad in the background.
+//        adView.loadAd(adRequest);
+//    }
+//
+//    /**
+//     * Method to calculate the screen width
+//     * @return screen width
+//     */
+//    private AdSize getAdSize() {
+//        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
+//        Display display = getActivity().getWindowManager().getDefaultDisplay();
+//        DisplayMetrics outMetrics = new DisplayMetrics();
+//        display.getMetrics(outMetrics);
+//
+//        float widthPixels = outMetrics.widthPixels;
+//        float density = outMetrics.density;
+//
+//        int adWidth = (int) (widthPixels / density);
+//
+//        // Step 3 - Get adaptive ad size and return for setting on the ad view.
+//        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(getContext(), adWidth);
+//    }
 
     /**
      * Metodo para mostrar el flipper de imagenes de promociones
@@ -229,7 +236,7 @@ public class HomeFragment extends Fragment{
                 //.centerCrop()
                 .into(imageView);
         viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setFlipInterval(4000);
         viewFlipper.setAutoStart(true);
         viewFlipper.startFlipping();
         viewFlipper.setInAnimation(getContext(), android.R.anim.fade_in);

@@ -101,7 +101,7 @@
     <string name="map_location_pet">Pet location</string>
     <string name="banner_inferior_ad_unit_id">Ads by Google</string>
     <string name="confirm_location">Confirm location or area</string>
-    <string name="location_not_found">Address or zone not found</string>
+    <string name="location_not_found">Your location has not been found. Check the location permissions in Settings.</string>
     <string name="msg_close_app">Closing application...</string>
     <string name="msg_come_back_soon">¡Come back soon!</string>
     <string name="select_category">Select a category</string>
@@ -164,7 +164,7 @@
     <string name="label_policy_terms">By accessing, you accept our:</string>
     <string name="content_description_media">Image or multimedia</string>
     <string name="contact_us">Contact Us</string>
-    <string name="version_app">Version 1.0.0</string>
+    <string name="version_app">Version 1.0.1</string>
     <string name="add_found">Add found</string>
     <string name="add_lost">Add lost</string>
     <string name="add_adoption">Add adoption</string>
@@ -827,4 +827,5 @@ The aspects related to the treatment of the personal data of the Users due to th
     <string name="donation_bancolombia_msg2">You can also make a deposit in bank or correspondent in the following savings account</string>
     <string name="developed_by">Developed by Machine Code Designs</string>
     <string name="no_results_msg">You can expand the search range in the Settings section</string>
+    <string name="maps_reports">Reports on the map</string>
 </resources>

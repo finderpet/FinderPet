@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -38,6 +39,12 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import com.google.android.ump.ConsentForm;
+import com.google.android.ump.ConsentInformation;
+import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.FormError;
+import com.google.android.ump.UserMessagingPlatform;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -45,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView circleImageView;
     private TextView txtName, txtEmail;
     private ProgressDialog progressDialogQuestions;
+
+    //Consent Europe
+//    private ConsentInformation consentInformation;
+//    private ConsentForm consentForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +70,35 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         PreferencesApp.getPreferences(preferences, this);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
+//        ConsentRequestParameters params = new ConsentRequestParameters.Builder().build();
+
+        //Solicitar consentimiento para Unión Europea
+//        consentInformation = UserMessagingPlatform.getConsentInformation(this);
+//        consentInformation.requestConsentInfoUpdate(
+//                this,
+//                params,
+//                new ConsentInformation.OnConsentInfoUpdateSuccessListener() {
+//                    @Override
+//                    public void onConsentInfoUpdateSuccess() {
+//                        // The consent information state was updated.
+//                        // You are now ready to check if a form is available.
+//                        if (consentInformation.isConsentFormAvailable()) {
+//                            loadForm();
+//                        }
+//                    }
+//                },
+//                new ConsentInformation.OnConsentInfoUpdateFailureListener() {
+//                    @Override
+//                    public void onConsentInfoUpdateFailure(FormError formError) {
+//                        // Handle the error.
+//                    }
+//                });
+
+//        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//            }
+//        });
 
         createNotificationChannel();
 
@@ -88,6 +123,37 @@ public class MainActivity extends AppCompatActivity {
         setupHeaderView();
 
     }// [End onCreate]
+
+//    public void loadForm(){
+//        UserMessagingPlatform.loadConsentForm(
+//                this,
+//                new UserMessagingPlatform.OnConsentFormLoadSuccessListener() {
+//                    @Override
+//                    public void onConsentFormLoadSuccess(ConsentForm consentForm) {
+//                        MainActivity.this.consentForm = consentForm;
+//                        if(consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
+//                            consentForm.show(
+//                                    MainActivity.this,
+//                                    new ConsentForm.OnConsentFormDismissedListener() {
+//                                        @Override
+//                                        public void onConsentFormDismissed(@Nullable FormError formError) {
+//                                            // Handle dismissal by reloading form.
+//                                            loadForm();
+//                                        }
+//                                    });
+//
+//                        }
+//
+//                    }
+//                },
+//                new UserMessagingPlatform.OnConsentFormLoadFailureListener() {
+//                    @Override
+//                    public void onConsentFormLoadFailure(FormError formError) {
+//                        /// Handle Error.
+//                    }
+//                }
+//        );
+//    }
 
     /**
      * Method to update user information at the nav view
@@ -192,8 +258,8 @@ public class MainActivity extends AppCompatActivity {
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             String aux = "Descarga la App\n";
-            //aux = aux + "https://play.google.com/store/apps/details?id=" + getBaseContext().getPackageName();
-            aux = aux + "https://play.google.com/store/apps/details?id=com.wakypetapp.cliente&hl=es_CO";
+            aux = aux + "https://play.google.com/store/apps/details?id=" + getBaseContext().getPackageName();
+            //aux = aux + "https://play.google.com/store/apps/details?id=com.wakypetapp.cliente&hl=es_CO";
             intent.putExtra(Intent.EXTRA_TEXT, aux);
             startActivity(intent);
         }catch (Exception e){

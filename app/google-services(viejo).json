@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "381532477103",
+    "firebase_url": "https://finderpet-2cd1d.firebaseio.com",
+    "project_id": "finderpet-2cd1d",
+    "storage_bucket": "finderpet-2cd1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381532477103:android:55e6af1bab537066bc665a",
+        "android_client_info": {
+          "package_name": "com.finder.pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381532477103-75ct0962qu4sap2l8vui3j9rdl0dodaf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "dfe20c53dd4c12cd86b8ced2b5ba31ae761338c5"
+          }
+        },
+        {
+          "client_id": "381532477103-tnvdcfqna1cokctf9vejqvodjaddcfo6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "e207635bc97c72d4c5eb869f18bcba232af11fb8"
+          }
+        },
+        {
+          "client_id": "381532477103-gstg892qfffo16va0qma4598f67u9ucv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_qHnQyoFRi_Prn-AmOvhpbyl0o_zXSMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381532477103-gstg892qfffo16va0qma4598f67u9ucv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

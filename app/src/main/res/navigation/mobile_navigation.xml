@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_nav_home_to_listServicesFragment"
             app:destination="@id/listServicesFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_map"
+            app:destination="@id/nav_map" />
     </fragment>
 
     <fragment

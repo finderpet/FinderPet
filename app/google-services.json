@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "381532477103-r74egb5qdd5g865472us3t1o42jnefct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "4b342f75aaafaea56ec120de6e4c14589840fe9e"
+          }
+        },
+        {
+          "client_id": "381532477103-ojv4i8da6l9uuee9nujo8bvk9ed85107.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "7815bb1bb424e41717a277bbeaf26db968cb541d"
+          }
+        },
+        {
+          "client_id": "381532477103-6kluqqueokq5d8s23k9b36pck6jsdgep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finder.pet",
+            "certificate_hash": "116307fda55f1a56ac5b4db1ae0116240424f3df"
+          }
+        },
+        {
           "client_id": "381532477103-75ct0962qu4sap2l8vui3j9rdl0dodaf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -49,7 +73,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-8783893803181261~6769293062"
     }
   ],
   "configuration_version": "1"

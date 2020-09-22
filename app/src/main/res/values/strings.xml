@@ -33,6 +33,7 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb320939478933651</string>
 
 
+
     <string name="name">Nombre</string>
     <string name="password">Contraseña</string>
     <string name="load_image">Seleccionar Imagen</string>
@@ -104,7 +105,7 @@
     <string name="map_location_pet">Ubicación de la mascota</string>
     <string name="banner_inferior_ad_unit_id">Ads by Google</string>
     <string name="confirm_location">Confirmar ubicación o zona</string>
-    <string name="location_not_found">Dirección o zona no encontrada</string>
+    <string name="location_not_found">Tu ubicación no ha sido encontrada. Verifica los permisos de ubicación en Ajustes.</string>
     <string name="msg_close_app">Cerrando aplicación...</string>
     <string name="msg_come_back_soon">¡Vuelve pronto!</string>
     <string name="select_category">Selecciona una categoría</string>
@@ -175,7 +176,7 @@
     <string name="adaptive_banner_ad_unit_id" translatable="false">ca-app-pub-8783893803181261/8119686145</string>
     <string name="content_description_media">Imagen o multimedia</string>
     <string name="contact_us">Contáctanos</string>
-    <string name="version_app">Versión 1.0.0</string>
+    <string name="version_app">Versión 1.0.1</string>
     <string name="register_user">Registrar</string>
     <string name="add_found">Agregar encontrada</string>
     <string name="add_lost">Agregar perdida</string>
@@ -837,5 +838,6 @@
     <string name="number_account_bancolombia" translatable="false">75287102682</string>
     <string name="developed_by">Desarrollado por Machine Code Designs</string>
     <string name="no_results_msg">Puede ampliar el rango de búsqueda en la sección de Ajustes</string>
+    <string name="maps_reports">Reportes en el mapa</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.finder.pet.Fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -172,6 +173,8 @@ public class LostFragment extends Fragment {
         return false;
     }
 
+
+
     /**
      * Method to display location permission recommendation dialog
      */
@@ -183,7 +186,7 @@ public class LostFragment extends Fragment {
         dialogo.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                requestPermissions(new String[]{ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION},105);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},105);
             }
         });
         dialogo.show();
